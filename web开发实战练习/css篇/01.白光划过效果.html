@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <style type="text/css">
+    .highlight-box{
+    	width:1300px;
+    	height:300px;
+    	left:50%;
+    	transform:translateX(-50%);
+    	overflow: hidden;
+    	position: relative;
+    }
+    .highlight-box img{
+    	width: 100%;
+    	height: 100%;
+    }
+    /*每个"*"元素之前插入内容*/
+    .highlight-box:before{
+    	display: block;
+    	top:-200%;
+    	left:-100%;
+    	width:50%;
+    	height:300%;
+    	-webkit-transform:rotate(45deg);
+    	transform:rotate(45deg);
+    	/*linear-gradient 渐变 */
+    	background: -webkit-linear-gradient(left, rgba(255, 255, 255, .05) 20%, rgba(255, 255, 255, .6) 65%, rgba(255, 255, 255, .05) 100%);
+    	background: -o-linear-gradient(left, rgba(255, 255, 255, .05) 20%, rgba(255, 255, 255, .6) 65%, rgba(255, 255, 255, .05) 100%);
+    	background: linear-gradient(to right, rgba(255, 255, 255, .05) 20%, rgba(255, 255, 255, .6) 65%, rgba(255, 255, 255, .05) 100%);;
+    	content: '';
+		z-index: 2;
+		position: absolute;
+    }
+    /*hover 在鼠标移到链接上时添加的特殊样式*/
+    .highlight-box:hover:before{
+    	animation: crossed .5s linear;
+    }
+    @keyframes crossed {
+		0% {
+			top: -200%;
+			left: -100%;
+		}
+		100% {
+			top: -50px;
+			left: 100%;
+		}
+	}
+    </style>
+</head>
+<body>
+    <div class="highlight-box">
+    	<img src="./image/white.jpg">
+    </div>
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        
+    };
+</script>
+</html>

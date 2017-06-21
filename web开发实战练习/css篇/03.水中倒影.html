@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>水中倒影</title>
+	<style type="text/css">
+		.box-reflect{
+			padding-bottom: 200px;
+		}
+		img{
+			width:600px;
+			height: 600px;
+			left:50%;
+			transform: translateX(-50%);
+			position: relative;
+			/*-webkit-box-reflect:above;*/
+			/*-webkit-box-reflect:below;*/
+			-webkit-box-reflect:below 10px;
+			/*-webkit-box-reflect:left 10px;*/
+			-webkit-box-reflect:right 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box-reflect">
+		<img src="./image/02_4.png" class="">
+	</div>
+</body>
+</html>

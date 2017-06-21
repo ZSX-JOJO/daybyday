@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>timeago</title>
+</head>
+<body>
+	<div class="need_to_be_rendered" datetime="2017-08-01 21:55:28"></div>
+	<div class="need_to_be_rendered" data-timeage="2017-08-01 21:55:28"></div>
+</body>
+	<script type="text/javascript" src="./timeago.js">
+		var timeagoInstance = timeago();
+		timeagoInstance.render(document.querySelectorAll('.need_to_be_rendered'));
+	</script>
+</html>
