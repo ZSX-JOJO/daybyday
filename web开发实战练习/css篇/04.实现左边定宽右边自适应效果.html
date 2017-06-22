@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>实现左边定宽右边自适应效果</title>
+</head>
+<style type="text/css">
+	/*html,body {
+	  margin: 0;
+	  padding: 0;
+	  height: 100%;
+	  background-color: #ffffff;
+	}
+	.cont {
+	  width: 80%;
+	  height: 40%;
+	  margin: 50px auto 0;
+	  background-color: red;
+	}
+	.left-item{
+	  width: 10em;
+	  height: 100%;
+	  background-color: green;
+	}
+	.right-item{
+	  height: 100%;
+	  background-color: blue;
+	}*/
+	/*1 inline-block + calc()*/
+	/*.cont{
+		font-size:0;
+	}
+	.left-item{
+		font-size:16px;
+		display: inline-block;
+	}
+	.right-item{
+		font-size: 16px;
+		display: inline-block;
+		width:-moz-calc(100% - 10em);
+		width:-webkit-calc(100% - 10em);
+		width:calc(100% - 10em);
+	}*/
+	/*2 float + calc()*/
+	/*.cont {
+	  zoom: 1;
+	}
+	.cont::after {
+	  content: ' ';
+	  display: block;
+	  font-size: 0;
+	  line-height: 0;
+	  clear: both;
+	  overflow: hidden;
+	  visibility: hidden;
+	}
+	.left-item {
+	  float: left;
+	}
+	.right-item {
+	  float: right;
+	  width: calc(100% - 10em);
+	}*/
+	/*3 left float*/
+	/*.cont {
+	  zoom: 1;
+	}
+	.cont::after {
+	  content: ' ';
+	  display: block;
+	  font-size: 0;
+	  line-height: 0;
+	  clear: both;
+	  overflow: hidden;
+	  visibility: hidden;
+	}
+	.left-item {
+	  float: left;
+	}
+	.right-item {
+	  width: 100%;
+	  padding-left: 10em;
+	  box-sizing: border-box;
+	}*/
+	/*4 left absolute*/
+	/*.cont {
+	  position: relative;
+	}
+	.left-item {
+	  position: absolute;
+	}
+	.right-item {
+	  width: 100%;
+	  padding-left: 10em;
+	  box-sizing: border-box;
+	}*/
+	/*5 absolute*/
+	/*.cont {
+	  position: relative;
+	}
+	.left-item {
+	  position: absolute;
+	}
+	.right-item {
+	  position: absolute;
+	  left: 10em;
+	  right: 0;
+	}*/
+	/*6 right flex*/
+	/*.cont {
+	  display: -webkit-flex;
+	  display: -ms-flex;
+	  -webkit-display: flex;
+	  -ms-display: flex;
+	  display: flex;
+	}
+	.left-item {}
+	.right-item {
+	  flex: 1;
+	}*/
+	/*7 table*/
+	/*.cont {
+	  display: table;
+	}
+	.left-item {
+	  display: table-cell;
+	}
+	.right-item {
+	  display: table-cell;
+	}*/
+	/*8 grid*/
+	.cont {
+	  display: grid;
+	  grid-template-columns: 10em auto;
+	}
+	.left-item {
+	}
+	.right-item {
+	}
+</style>
+<body>
+	<div class="cont">
+		<div class="left-item">23</div>
+		<div class="right-item">32</div>
+	</div>
+</body>
+</html>
