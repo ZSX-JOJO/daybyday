@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=0">
+    <title>APICloud</title>
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style>
+    	.bttn {
+			background-color: #EEEEEE;
+			background-image: -webkit-linear-gradient(top, #EEEEEE, #CCCCCC);
+			border-color: #CCCCCC #CCCCCC #BBBBBB;
+			-webkit-border-radius: 4px;
+			border-style: solid;
+			border-width: 1px;
+			color: #333333;
+			font: bold 18px;
+			padding: 8px 0;
+			text-align: center;
+			text-shadow: 0 1px 0 #EEEEEE;
+			width: 220px;
+			margin-top:15px;
+		}
+		
+		.active {
+			background-color: #CCCCCC;
+			background-image: -webkit-linear-gradient(top, #CCCCCC, #DDDDDD);
+			border-color: #CCCCCC #CCCCCC #BBBBBB;
+		}
+		
+		.line{
+			margin:10px 0px;
+			border-bottom:3px solid;
+		}
+		
+    </style>
+    <script type="text/javascript">
+
+		var jpush = null;
+		apiready = function(){
+	    	jpush = api.require('ajpush');
+	    }
+	    
+		function initJPush(){
+			jpush.init(function(ret, err){
+				if(ret && ret.status){
+					alert('操作成功!');
+				}else{
+					alert('操作失败!');
+				}
+			});
+		}
+		
+		function setListener(){
+			jpush.setListener(function(ret, err){
+				if(ret){
+					alert('收到消息：\n' + JSON.stringify(ret));
+				}else{
+					//
+				}
+			});
+			alert('设置成功，收到的消息将通过此函数回调给网页，不再弹出通知到状态栏');
+		}
+		
+		function removeListener(){
+			jpush.removeListener();
+			alert('移除成功，移除后网页将不再收到消息，消息将弹出通知到状态栏');
+		}
+		
+		function bindAliasAndTags(){
+			var alias = valueOf('alias');
+			var tags = valueOf('tags');
+			if(!alias && !tags){
+				alert('别名和标签至少传一个');
+				return;
+			}
+			if(!alias){
+				alias = '';
+			}
+			if(!tags){
+				tags = '';
+			}
+			tags = tags.split(',');
+			jpush.bindAliasAndTags({
+				alias:alias,
+				tags:tags
+			}, function(ret, err){
+				alert('处理结果：\n' + JSON.stringify(ret));
+			});
+		}
+		
+		function clearNotification(id){
+			if(!id){
+				id = -1;
+			}
+			jpush.clearNotification({id:id});
+		}
+		
+		function setPushTime(){
+			var days = valueOf('days');
+			var startHour = valueOf('startHour');
+			var endHour = valueOf('endHour');
+			if(!days){
+				alert('日期不能为空');
+				return;
+			}
+			days = days.split(',');
+			if(!startHour){
+				startHour = 0;
+			}
+			if(!endHour){
+				endHour = 23;
+			}
+			jpush.setPushTime({
+				days: days,
+				startHour: startHour,
+				endHour: endHour
+			}, function(ret, err){
+				if(ret && ret.status){
+					alert('操作成功!');
+				}else{
+					alert('操作失败!');
+				}
+			});
+		}
+		
+		function setSilenceTime(){
+			var startHour = valueOf('startHour');
+			var endHour = valueOf('endHour');
+			var startMinute = valueOf('startMinute');
+			var endMinute = valueOf('endMinute');
+			if(!startHour){
+				startHour = 0;
+			}
+			if(!endHour){
+				endHour = 23;
+			}
+			if(!startMinute){
+				startMinute = 0
+			}
+			if(!endMinute){
+				endMinute = 50;
+			}
+			jpush.setSilenceTime({
+				startHour: startHour,
+				endHour: endHour,
+				startMinute: startMinute,
+				endMinute: endMinute
+			}, function(ret, err){
+				if(ret && ret.status){
+					alert('操作成功!');
+				}else{
+					alert('操作失败!');
+				}
+			});
+		}
+		
+		function stopPush(){
+			jpush.stopPush(function(ret, err){
+				if(ret && ret.status){
+					alert('操作成功!');
+				}else{
+					alert('操作失败!');
+				}
+			});
+		}
+		
+		function resumePush(){
+			jpush.resumePush(function(ret, err){
+				if(ret && ret.status){
+					alert('操作成功!');
+				}else{
+					alert('操作失败!');
+				}
+			});
+		}
+		
+		function isPushStopped(){
+			jpush.isPushStopped(function(ret, err){
+				if(ret.isStopped == 1){
+					alert('已停止');
+				}else{
+					alert('未停止');
+				}
+			});
+		}
+
+		function getId(){
+			jpush.getRegistrationId(function(ret, err){
+				alert(JSON.stringify(ret));
+			});
+		}
+		
+		function valueOf(id){
+			if(!id){
+				return '';
+			}
+			return document.getElementById(id).value;
+		}
+	</script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="main"> 
+            <div>
+            	<div class="bttn" tapmode="active" onclick="initJPush()" >初始化推送</div>
+            	<div class='line'></div>
+            	<div class="bttn" tapmode="active" onclick="setListener()" >在网页中监听收到的消息</div>
+            	<div class="bttn" tapmode="active" onclick="removeListener()" >移除消息监听</div>
+            	<div class='line'></div>
+            	<br>
+            	<div>
+            		输入别名：<input type='text' id='alias' value="" placeholder="输入别名"/><br>
+            		输入标签：<input type='text' id='tags' value="" placeholder="输入标签，半角逗号隔开"/>
+            	</div>
+            	<br>
+            	<div class="bttn" tapmode="active" onclick="bindAliasAndTags()" >绑定别名和标签</div>
+            	<div class='line'></div>
+            	<div class="bttn" tapmode="active" onclick="clearNotification()" >清除所有极光推送发出的通知</div>
+            	<div class='line'></div>
+            	<br>
+            	<div>
+            		允许使用的日期：<input type='text' id='days' value="" placeholder="0-6，半角逗号隔开"/><br>
+            		允许的开始时间：<input type='number' id='startHour' value="" placeholder="开始时间，0-23"/><br>
+            		允许的结束时间：<input type='number' id='endHour' value="" placeholder="结束时间，0-23"/><br>
+            	</div>
+            	<br>
+            	<div class="bttn" tapmode="active" onclick="setPushTime()" >设置推送允许推送的时间</div>
+            	<br>
+            	<div>
+            		静默开始时：<input type='number' id='startHour' value="" placeholder="开始时，0-23"/><br>
+            		静默开始分：<input type='number' id='startMinute' value="" placeholder="开始分，0-59"/><br>
+            		静默结束时：<input type='number' id='endHour' value="" placeholder="结束时，0-23"/><br>
+            		静默结束分：<input type='number' id='endMinute' value="" placeholder="结束分，0-59"/><br>
+            	</div>
+            	<br>
+            	<div class="bttn" tapmode="active" onclick="setSilenceTime()" >设置通知静默时间</div>
+            	<div class='line'></div>
+            	<div class="bttn" tapmode="active" onclick="stopPush()" >停止推送</div>
+            	<div class="bttn" tapmode="active" onclick="resumePush()" >恢复推送</div>
+            	<div class="bttn" tapmode="active" onclick="isPushStopped()" >判断推送是否停止</div>
+				<div class="bttn" tapmode="active" onclick="getId()" >获取RegistrationId</div>
+            	<div class='line'></div>
+            </div>
+        </div>   
+    </div>
+</body>
+</html>
