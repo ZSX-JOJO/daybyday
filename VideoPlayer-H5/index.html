@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-US">  
+<head>
+  <meta charset="utf-8">
+  <title>Video Player</title>
+  <meta http-equiv="Content-type" content="text/html" charset="utf-8">
+  <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="VideoPlayerStyle.css">
+  <link rel="stylesheet" href="VideoPlayerSpacing.css">
+  
+  <script>
+  var myVideo;
+  var nextVideo = 0;
+  var currentVideo = 0;
+  var vidName;
+  var vidChoice;
+  var num;
+  var sources = [
+ "https://media.w3.org/2010/05/sintel/trailer.mp4",
+ "http://html5doctor.com/demos/video-canvas-magic/video.webm",
+ "http://cwrmcd.com/Videos/BigBuckBunny_320x180.mp4"
+  ]; 
+  var videoNames = [
+    "Sintel",
+    "Samurai Pizza Cat",
+    "Big Buck Bunny"
+  ];
+  // Called when the page is loaded
+  function init() {
+    // get the video element using the DOM api
+    myVideo = document.querySelector("#myVideo");
+    vidName = document.getElementById("videoName");
+    myVideo.addEventListener('ended', loadAndplayNextVideo, false);
+  }
+  function playVideo() {
+    myVideo.play(); 
+  }
+  
+  function pauseVideo() {
+    myVideo.pause();
+  }
+
+  function rewindVideo() {
+    myVideo.load();
+  }
+  
+  function loadNextVideo() {
+    nextVideo ++;
+    if (nextVideo >2) {
+      nextVideo = 0;
+    }
+    myVideo.src = sources[nextVideo % sources.length]
+    console.log("loadNextVideo, next video ",nextVideo);
+    myVideo.load();
+    vidName.innerText = videoNames[nextVideo];
+  }
+
+
+function loadAndplayNextVideo() {
+    console.log("playing " + sources[nextVideo % sources.length])
+    loadNextVideo();
+    myVideo.play();
+}
+
+function previousVideo() {
+    console.log("playing " + sources[nextVideo % sources.length])
+    console.log("previousVideo, nextVideo = ",nextVideo);
+    switch(nextVideo) {
+      case 0:
+        nextVideo = 1;
+        break;
+      default:
+        nextVideo = nextVideo - 2;
+        break;
+      }
+      console.log("previousVideo, nextVideo = ",nextVideo);
+    loadNextVideo();
+    myVideo.play();
+}
+function vidChoice1() {
+    nextVideo=2;
+    loadNextVideo();
+    myVideo.play();
+}
+function vidChoice2() {
+    nextVideo = 0;
+    loadNextVideo();
+    myVideo.play();
+  }
+function vidChoice3() {
+    nextVideo = 1;
+    loadNextVideo();
+    myVideo.play();
+}
+  </script>
+  
+</head>
+<body onload="init();">
+  
+  <header class="header">
+    <h1>HTML5 VIDEO PLAYER</h1>
+  </header>
+  <div class="flexcontainer">
+  <!-- <section class="element1">
+      <h2>Custom Video Player Features</h2>
+      <ul>
+        <li>Custom Video Controls</li>
+        <li>3 Video Playlist</li>
+        <li>Thumbnails</li>
+        <li>Used a listener to detect the <i>ended </i>event</li>
+        <li>Callback used to start next video</li>
+        <li>Changing Video name in Aside panel</li>
+        <li>Layout based on the new structuring elements</li>
+      </ul>
+   </section> -->
+
+  <main class="element2" >
+      <div class="customPlayer">
+        <h2 class="offset">
+          Custom Video Player with play, pause, start over, volume -, volume +, next video, and previous video controls
+        </h2>
+          <video id="myVideo" width="480" autoplay controls
+          poster="https://media.w3.org/2010/05/sintel/poster.png">
+            <source src="https://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+            <source src="https://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
+            <source src="https://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogv">
+              This browser does not support HTML5 Video
+          </video>
+
+          <div class="Controls">
+            <p class="title">Video Player Controls</p>
+          <br>
+          <button onclick="playVideo();" class="Button" >Play</button>
+          <button onclick="pauseVideo();" class="Button">Pause</button>
+          <button onclick="rewindVideo();" class="Button">Start Over</button>
+          <button onclick="document.getElementById('myVideo').volume-=0.2">Volume -</button>
+          <button onclick="document.getElementById('myVideo').volume+=0.2">Volume +</button>
+          <button onclick="loadAndplayNextVideo();" class="myButton">Next</button>
+          <button onclick="previousVideo();" class="myButton">Previous</button>
+          </div>
+
+            <!-- <div class="thumbs">
+              <img id="vid1" onclick="vidChoice1()" src="https://media.w3.org/2010/05/sintel/poster.png" width="128" height="72" alt="Sintel image">
+              <img id="vid2" onclick="vidChoice2()" src="http://html5doctor.com/wp-content/uploads/2010/10/video_canvas_fig1.jpg" alt="Video Canvas Magic image">
+              <img id="vid3" onclick="vidChoice3()" src="https://peach.blender.org/wp-content/uploads/bbb-splash.png" width="128" height="72" alt="Big Buck Bunny image">
+            </div> -->
+      </div>
+  </main>
+
+  <!-- <aside class="element3">
+  <h2>Current Video Title</h2>
+  <p id="videoName">Sintel</p>
+  </aside> -->
+  </div>
+  <!-- <footer>
+      <h1 class="footer"> Christi Savino May 2016</h1>
+  </footer> -->
+</body>
+</html>

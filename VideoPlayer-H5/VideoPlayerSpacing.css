@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    width: 100%;
+}
+.header {
+    padding:10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    margin: 0px;
+}
+header h1 {
+    margin: 0px;
+    font-size: 25px;
+}
+.footer {
+    display: block;
+    padding:10px;
+    width: 100%;
+    bottom: 0;
+    margin: 0px;
+}
+
+.offset {
+    position: absolute;
+    clip: rect(1px 1px 1px 1px); /* for Internet Explorer */
+    
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.flexcontainer {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+}
+.element1, .element2, .element3 {
+    flex: 1 1; 
+}
+.element1, .element3 {
+    min-height: 90vh;
+    min-width: 10vw;
+    max-width: 30vw;
+}
+.element2 {
+    min-height: 90vh;
+    min-width: calc(100vw-60vw);
+}
+
+img {
+    height: 100px;
+    padding: 5px;
+    border: 2px solid indianred;
+    border-radius: 5px;
+    background-color: white;
+    margin: 20px;
+}
+h2 { 
+    padding:10px;
+    margin-top: 5rem;
+    text-align: center;
+}
+button {
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+}
+div.Controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   /* margin: 10px;*/
+    padding-left: 10px;
+}
+#myVideo {
+    margin: 10px 50px 0px 50px;
+}
+.customPlayer {
+    margin-top: 50px;
+    /*margin-left: 40px;*/
+}
+section h2 {
+    margin-top: 15rem;
+}
+aside h2 {
+    margin-top: 15rem;
+}
+#vid1 {
+    margin-left: 30x;
+}
+div.thumbs {
+    margin-left: 30px;
+}

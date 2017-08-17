@@ -1,0 +1,58 @@
+body {
+    background-color: beige;
+    font-family: 'Lucida Grande', Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif';
+}
+.header {
+    background-color: beige;
+    color: indianred;
+    text-align: center;
+    border-top: 2px solid orange;
+    border-bottom: 2px solid orange;
+    font-weight: bold;
+    font-size: 20px;   
+}
+.footer {
+    background-color: beige;
+    color: indianred;
+    text-align: center;
+    border-top: 2px solid orange;
+    border-bottom: 2px solid orange;
+    font-weight: bold;
+    font-size: 20px;   
+}
+
+.element1, .element3 {
+    background-color: red;
+    background: linear-gradient(indianred, orange);
+}
+button {
+    background-color: indianred;
+    border: 2px solid indianred;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+.customPlayer h2 {
+    color: darkred;
+    text-align: center;
+}
+video {
+    border: 5px solid indianred;
+    border-radius: 8px;
+}
+div.Controls {
+    border: 2px solid indianred;
+    color: indianred;
+}
+section, aside {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+li {
+    list-style-type: none;
+}
+aside p{
+    font-size: 24px;
+    font-weight: bold;
+}
