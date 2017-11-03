@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <style type="text/css">
+    
+    </style>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        
+    };
+    /**
+     *在生成执行环境时，会有两个阶段。第一个阶段是创建的阶段，JS 解释器会找出需要提升的变量和函数，并且给他们提前在内存中开辟好空间，函数的话会将整个函数存入内存中，变量只声明并且赋值为 undefined，所以在第二个阶段，也就是代码执行阶段，我们可以直接提前使用
+     */
+
+
+    /**
+     * 
+     */
+    // b() // call b
+	// alert(a) // undefined
+	// var a = 'Hello world'
+	// function b() {
+	//     alert('call b')
+	// }
+
+	/**
+	 * 在提升的过程中，相同的函数会覆盖上一个函数，并且函数优先于变量提升
+	 */
+	// b() // call b second
+	// function b() {
+	//     alert('call b fist')
+	// }
+	// function b() {
+	//     alert('call b second')
+	// }
+	// var b = 'Hello world'
+
+	//异步
+	// function sleep() {
+	// 	var ms = 2000 + new Date().getTime()
+	// 	while( new Date() < ms) {}
+	// 	alert('sleep finish');
+	// }
+
+	// document.addEventListener('click', function() {
+	//   	alert('click');
+	// })
+
+	// sleep();
+	// alert('finish');
+
+	//深浅拷贝
+	// var a = [1,2];
+	// var b = a;
+	// b.push(3);//push() 方法可向数组的 末尾 添加一个或多个元素，并返回新的长度
+	// /*
+	// unshift() 方法可向数组的 开头 添加一个或更多元素，并返回新的长度。
+	//  */
+	// b.unshift(0);
+	// alert(a,b);
+</script>
+</html>
