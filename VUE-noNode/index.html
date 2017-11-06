@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div id="app">
+  		{{ message }}
+	</div>
+	<!--指令带有前缀 v- -->
+	<div id="app-2">
+		<span v-bind:title="message">
+			鼠标悬停几秒钟查看此处动态绑定的提示信息！
+		</span>
+	</div>
+	<!--Vue 也提供一个强大的过渡效果系统，可以在 Vue 插入 / 更新 / 删除元素时自动应用过渡效果-->
+	<div id="app-3">
+		<p v-if="seen">现在你看到我了</p>
+	</div>
+	<!--v-for 指令可以绑定数组的数据来渲染一个项目列表-->
+	<div id="app-4">
+		<ol>
+			<li v-for="todo in todos">
+				{{todo.text}}
+			</li>
+		</ol>
+	</div>
+</body>
+<script type="text/javascript" src="./script/vue.js"></script>
+<script type="text/javascript">
+	/**
+	 * [声明式渲染]
+	 * @type {Vue}
+	 */
+	var app = new Vue({
+		el: '#app',
+		data: {
+		  message: 'Hello Vue!'
+		}
+	})
+	var app2 = new Vue({
+		el:'#app-2',
+		data:{
+			message:'页面加载于'+new Date().toLocaleString()
+		}
+	})
+	/**
+	 * 条件与循环
+	 */
+	var app3 = new Vue({
+		el:'#app-3',
+		data:{
+			seen:true
+		}
+	})
+	var app4 = new Vue({
+		el:'#app-4',
+		data:{
+			todos:[
+				{text:'学习 JavaScript'},
+				{text:'学习 Vue'},
+				{text:'学习 Node'}
+			]
+		}
+	})
+</script>
+</html>
