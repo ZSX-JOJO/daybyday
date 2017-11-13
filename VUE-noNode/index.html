@@ -31,6 +31,30 @@
 			</li>
 		</ol>
 	</div>
+	<!-- v-on 指令绑定一个事件监听器 -->
+	<div id="app-5">
+		<p>{{message}}</p>
+		<button v-on:click="reverseMessage"></button>
+	</div>
+	<!-- v-model 指令 -->
+	<div id="app-6">
+		<p>{{message}}</p>
+		<input v-model="message">
+	</div>
+	<!-- 组件化应用构建 -->
+	<div id="app-7">
+		<ol>
+			<!--为每个 todo-item 提供 todo 对象
+				todo 对象是变量，即其内容可以是动态的
+				为每个组件提供一个“key”
+			-->
+			<todo-item
+				v-for="item in groceryList"
+			    v-bind:todo="item"
+			    v-bind:key="item.id">
+			</todo-item>
+		</ol>
+	</div>
 </body>
 <script type="text/javascript" src="./script/vue.js"></script>
 <script type="text/javascript">
@@ -68,6 +92,51 @@
 				{text:'学习 Node'}
 			]
 		}
+	})
+	/**
+	 * 处理用户输入
+	 *
+	/*
+	split()用于把一个字符串分割成字符串数组
+	reverse()用于颠倒数组中元素的顺序
+	join()用户把数组中的所有元素转换一个字符串
+	 */
+	var app5 = new Vue({
+		el:'#app-5',
+		data:{
+			message:'123456789'
+		},
+		methods:{
+			reverseMessage:function(){
+				this.message = this.message.split('').reverse().join('')
+			}
+		}
+	})
+	/*
+	
+	 */
+	var app6 = new Vue({
+		el:'#app-6',
+		data:{
+			message:'hello vue!'
+		}
+	})
+	/*
+	组件化应用构建
+	 */
+	Vue.component('todo-item', {
+	  props: ['todo'],
+	  template: '<li>{{ todo.text }}</li>'
+	})
+	var app7 = new Vue({
+	  el: '#app-7',
+	  data: {
+	    groceryList: [
+	      { id: 0, text: '蔬菜' },
+	      { id: 1, text: '奶酪' },
+	      { id: 2, text: '随便其他什么人吃的东西' }
+	    ]
+	  }
 	})
 </script>
 </html>

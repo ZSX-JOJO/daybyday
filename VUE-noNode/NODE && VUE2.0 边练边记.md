@@ -30,6 +30,10 @@
 
 ​		npm config list
 
+    清理缓存
+    
+        npm cache clean --force
+
 ## 3：nrm 
 
 ​	npm registry 管理工具 能够查看和切换当前使用的 registry
