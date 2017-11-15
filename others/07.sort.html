@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>排序算法</title>
+    <link rel="stylesheet" type="text/css" href="" />
+    <style type="text/css">
+    	.case{
+    		text-align: center;
+    		font-size: 30px;
+    		color: red;
+    	}
+    	.case-item{
+    		text-align: center;
+    		margin:20px auto 5px;
+    		font-size:20px;
+    		font-weight: bold;
+    	}
+    	div img{
+    		margin:0 auto;
+    		display: block;
+    	}
+    </style>
+</head>
+<body>
+    <div>
+    	<ol>
+    		<li>冒泡排序</li>
+    			<p>[内外循环 两两比较] 冒泡排序需要两个嵌套的循环. 其中,<b>外层循环</b>移动游标; <b>内层循环</b>遍历游标及之后 (或之前) 的元素, 通过两两交换的方式, 每次只确保该内循环结束位置排序正确, 然后<b>内层循环</b>周期结束, 交由<b>外层循环</b>往后 (或前) 移动游标, 随即开始下一轮<b>内层循环</b>, 以此类推, 直至循环结束</p>
+    		<li>双向冒泡排序</li>
+    			<p>双向冒泡排序是冒泡排序的一个简易升级版, 又称鸡尾酒排序. 冒泡排序是从低到高 (或者从高到低) 单向排序, 双向冒泡排序顾名思义就是从两个方向分别排序 (通常, 先从低到高, 然后从高到低). 因此它比冒泡排序性能稍好一些.</p>
+    		<li>选择排序</li>
+    			<p>从算法逻辑上看, 选择排序是一种简单且直观的排序算法. 它也是两层循环. <b>内层循环</b>就像工人一样, 它是真正做事情的, <b>内层循环</b>每执行一遍, 将选出本次待排序的元素中最小 (或最大) 的一个, 存放在数组的起始位置. 而 <b>外层循环</b>则像老板一样, 它告诉<b>内层循环</b>你需要不停的工作, 直到工作完成 (也就是全部的元素排序完成).<br>
+				<b>Tips</b>: 选择排序每次交换的元素都有可能不是相邻的, 因此它有可能打破原来值为相同的元素之间的顺序. 比如数组 [2,2,1,3], 正向排序时, 第一个数字 2 将与数字 1 交换, 那么两个数字 2 之间的顺序将和原来的顺序不一致, <b>虽然它们的值相同, 但它们相对的顺序却发生了变化</b>. 我们将这种现象称作 <b>不稳定性</b></p>
+    		<li>插入排序</li>
+    			<p>插入排序的设计初衷是往<b>有序的数组中</b>快速<b>插入</b>一个<b>新的元素</b>. 它的算法思想是: 把要排序的数组分为了两个部分, 一部分是数组的全部元素 (除去待插入的元素), 另一部分是待插入的元素; 先将第一部分排序完成, 然后再插入这个元素. 其中第一部分的排序也是通过再次拆分为两部分来进行的.</p>
+    			<ol>
+    				<li>直接插入排序</li>
+    					<p>将待排序的元素按照大小顺序, 依次插入到一个已经排好序的数组之中, 直到所有的元素都插入进去<br><b>Tips</b>: 由于直接插入排序每次只移动一个元素的位置, 并不会改变值相同的元素之间的排序, 因此它是一种<b>稳定排序</b></p>
+    				<li>折半插入排序(二分插入排序)</li>
+    					<p><b>Tips</b>: 同直接插入排序类似, 折半插入排序每次交换的是相邻的且值为不同的元素, 它并不会改变值相同的元素之间的顺序. 因此它是<b>稳定的</b><br>1:取 0 ~ i-1 的中间点 ( m = (i-1)>>1 ), array[i] 与 array[m] 进行比较, 若 array[i] < array[m] , 则说明待插入的元素 array[i] 应该处于数组的 0 ~ m 索引之间; 反之, 则说明它应该处于数组的 m ~ i-1 索引之间.<br>
+						2:重复步骤 1, 每次缩小一半的查找范围, 直至找到插入的位置.<br>
+						3:将数组中插入位置之后的元素全部后移一位.<br>
+						4:在指定位置插入第 i 个元素.</p>
+    				<li>希尔排序</li>
+    					<p><b>Tips</b>: 我们知道, 单次直接插入排序是稳定的, 它不会改变相同元素之间的相对顺序, 但在多次不同的插入排序过程中, 相同的元素可能在各自的插入排序中移动, 可能导致相同元素相对顺序发生变化. 因此, 希尔排序并<b>不稳定</b><br>1:将数组拆分为若干个子分组, 每个分组由相距一定” 增量” 的元素组成. 比方说将 [0,1,2,3,4,5,6,7,8,9,10] 的数组拆分为” 增量” 为 5 的分组, 那么子分组分别为 [0,5], [1,6], [2,7], [3,8], [4,9] 和 [5,10].<br>
+						2:然后对每个子分组应用直接插入排序.<br>
+						3:逐步减小” 增量”, 重复步骤 1,2.<br>
+						4:直至” 增量” 为 1, 这是最后一个排序, 此时的排序, 也就是对全数组进行直接插入排序.</p>
+						<img src="./img/shell-case.png">
+    			</ol>
+			<li>归并排序</li><p>归并排序建立在归并操作之上, 它采取分而治之的思想, 将数组拆分为两个子数组, 分别排序, 最后才将两个子数组合并; 拆分的两个子数组, 再继续递归拆分为更小的子数组, 进而分别排序, 直到数组长度为 1, 直接返回该数组为止<br><b>Tips</b>: 归并排序严格按照从左往右 (或从右往左) 的顺序去合并子数组, 它并不会改变相同元素之间的相对顺序, 因此它也是一种<b>稳定的</b>排序算法.<br>归并排序可通过两种方式实现:<br>
+			1:自上而下的递归<br>
+			2:自下而上的迭代</p>
+			<li>快速排序 [整理ing]</li>
+    	</ol>
+    </div>
+    <div class="case">各种排序方法 动图效果:</div>
+    <div class="case-item">冒泡排序<img src="./img/bubbleSort.gif" alt=""></div>
+    <div class="case-item">选择排序<img src="./img/selectionSort.gif" alt=""></div>
+    <div class="case-item">直接插入排序<img src="./img/directInsertionSort.gif" alt=""></div>
+    <div class="case-item">归并排序<img src="./img/margeSort.gif" alt=""></div>
+</body>
+<script type="text/javascript">
+	array = [8,2,4,6,3,1,9,22,17,23,54,49];
+	/**
+	 * [冒泡排序]  只需要开辟 缓存的 temp内部空间
+	 * 不改变相同元素之间的相对顺序 稳定的排序算法
+	 */
+	//两两交换
+	function swap(i,j,array){
+		var temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+	//外正内正 最后的元素位置先确定
+	function bubbleSort(array){
+		var length = array.length, isSwap;
+		for(var i = 0; i < length; i++){//正序
+			isSwap = false;
+			for(var j = 0; j < length - 1 - i;j++){//正序
+				array[j] > array[j+1] && (isSwap = true) && swap(j,j+1,array);
+
+			}
+			if(!isSwap)
+				break;
+		}
+		return array;
+	}
+	// document.write("直接插入排序"+"bubbleSort()方法"+"<br>");
+	// document.write("排序前:"+array+"<br>");
+	// document.write("排序后:"+bubbleSort(array)+"<br>");
+
+	//外正内逆 最前的元素位置先确定
+	function bubbleSort(array){
+		var length = array.length, isSwap;
+		for(var i = 0;i < length; i++){
+			isSwap = false;
+			for(var j = length -1; j >= i+1; j--){
+				array[j] < array[j-1] && (isSwap = true) && swap(j,j-1,array);
+			}
+			if(!isSwap)
+				break;
+		}
+		return array;
+	}
+	//外逆内正 靠后的元素位置先确定
+	function bubbleSort(array){
+		var length = array.length,isSwap;
+		for(var i = length - 1;i >= 0; i--){
+			isSwap = false;
+			for(var j = 0; j < i; j++){
+				array[j] > array[j+1] && (isSwap = true) && swap(j,j+1,array);
+			}
+			if(!isSwap)
+				break;
+		}
+		return array;
+	}
+	//外逆内逆 最前的元素先确定
+	function bubbleSort(array){
+		var length = array.length,isSwap;
+		for(var i = length - 1;i >= 0;i--){
+			isSwap = false;
+			for(var j = length - 1;j >= lenght -1 - i; j--){
+				array[j] < array[j-1] && (isSwap = true) && swap(j,j-1,array)
+			}
+			if(!isSwap)
+				break;
+		}
+		return array;
+	}
+	/**
+	 * 双向冒泡排序
+	 */
+	function bothwayBubbleSort(array){
+		var tail = array.length-1, i, isSwap = false;
+		for(i = 0; i < tail; tail--){
+			for(var j = tail; j > i; j--){//第一轮, 先将最小的数据冒泡到前面 ['类似正序']
+				array[j-1] > array[j] && (isSwap = true) && swap(j,j-1,array);
+			}
+			i++;
+			for(j = i; j < tail; j++){//第二轮, 将最大的数据冒泡到后面 ['类似逆序']
+				array[j] > array[j+1] && (isSwap = true) && swap(j,j+1,array);
+			}
+		}
+		return array;
+	}
+	/**
+	 * [选择排序]  不需要开辟额外的空间
+	 * 是不稳定的排序  例如[1,8,8,4,5,2] 第二遍排序8与2会发生位置调换 原数组两个8之间相对前后顺序被破坏 故不稳定
+	 */
+	function selectSort(array){
+		var length = array.length, min;
+		for(var i = 0; i < length - 1; i++){
+			min = i;//当前的数 假设 为最小值
+			for(var j = i + 1; j < length; j++){
+				array[j] < array[min] && (min = j);//记住最小数的下表
+			}
+			min != i && swap(i,min,array);
+		}
+		return array;
+	}
+	/**
+	 * 插入排序
+	 */
+	//直接插入排序
+	function directInsertionSort(array){
+		var length = array.length, index, current;
+		for(var i = 1; i < length; i++){
+			index = i - 1;//待比较元素的下表
+			current = array[i];//当前元素
+			while(index >= 0 && array[index] > current){//待比较元素比当前元素大
+				array[index+1] = array[index];//将待比较元素后移一位
+				index--;//游标 前移一位
+
+			}
+			if(index+1 != i){//避免同一个元素赋值给自身
+				array[index+1] = current;//将当前元素插入预留空位
+			}
+		}
+		return array;
+	}
+	document.write("直接插入排序"+"directInsertionSort()方法"+"<br>");
+	document.write("未排序前:"+array + "<br />");
+	document.write("排序后:"+directInsertionSort(array));
+
+	//折半插入排序(二分插入排序)  折半插入排序每次交换的是相邻的且值为不同的元素, 它并不会改变值相同的元素之间的顺序. 因此它是稳定的
+	function binaryInsertionSort(array){
+	  	var current, i, j, low, high, m;
+		for(i = 1; i < array.length; i++){
+		    low = 0;
+		    high = i - 1;
+		    current = array[i];
+
+		    while(low <= high){            //步骤1&2:折半查找
+		      	m = (low + high)>>1;
+		      	if(array[i] >= array[m]){//值相同时, 切换到高半区，保证稳定性
+		        	low = m + 1;        //插入点在高半区
+		      	}else{
+		        	high = m - 1;        //插入点在低半区
+		      	}
+		    }
+		    for(j = i; j > low; j--){     //步骤3:插入位置之后的元素全部后移一位
+		      	array[j] = array[j-1];
+		    }
+		    array[low] = current;         //步骤4:插入该元素
+		}
+	  	return array;
+	}
+
+	//希尔排序  实际上就是不断的进行直接插入排序
+
+	//形参增加步数gap(实际上就相当于gap替换了原来的数字1)
+	function directInsertionSort(array, gap) {
+	  	gap = (gap == undefined) ? 1 : gap;       //默认从下标为1的元素开始遍历
+	  	var length = array.length, index, current;
+	  	for (var i = gap; i < length; i++) {
+	    	index = i - gap;    //待比较元素的下标
+	    	current = array[i];    //当前元素
+		    while(index >= 0 && array[index] > current) { //前置条件之一:待比较元素比当前元素大
+		      	array[index + gap] = array[index];    //将待比较元素后移gap位
+		      	index -= gap;                           //游标前移gap位
+		    }
+		    if(index + gap != i){                   //避免同一个元素赋值给自身
+		      	array[index + gap] = current;            //将当前元素插入预留空位
+		    }
+	  	}
+	  	return array;
+	}
+	function shellSort(array){
+	  	var length = array.length, gap = length>>1, current, i, j;
+	  	while(gap > 0){
+	    	directInsertionSort(array, gap); //按指定步长进行直接插入排序
+	    	gap = gap>>1;
+	  	}
+	  	return array;
+	}
+
+	//归并排序 (方法1:递归)
+	function mergeSort(array) {  //采用自上而下的递归方法
+	  	var length = array.length;
+	  	if(length < 2) {
+	    	return array;
+	  	}
+	  	var m = (length >> 1),
+	    left = array.slice(0, m),
+	    right = array.slice(m); //拆分为两个子数组
+	  	return merge(mergeSort(left), mergeSort(right));//子数组继续递归拆分,然后再合并
+	}
+	function merge(left, right){ //合并两个子数组
+	  	var result = [];
+	  	while (left.length && right.length) {
+	    	var item = left[0] <= right[0] ? left.shift() : right.shift();//注意:判断的条件是小于或等于,如果只是小于,那么排序将不稳定.
+	    	result.push(item);
+	  	}
+	  	return result.concat(left.length ? left : right);
+	}
+
+	//快速排序
+</script>
+</html>
