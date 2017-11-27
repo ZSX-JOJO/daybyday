@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <style type="text/css">
+    	/**
+    	 * 1.黑白图像
+    	 */
+    	img.desaturate {
+    		filter:grayscale(100%);
+    		-webkit-filter:grayscale(100%);
+			-moz-filter:grayscale(100%);
+			-ms-filter:grayscale(100%);
+			-o-filter:grayscale(100%);
+			/*此处自定义*/
+			width:100%;
+    	}
+    	/*
+    	3.页面顶部阴影
+    	 */
+    	body:before{
+    		content:"";
+    		position: fixed;
+    		top:-10px;
+    		left:0;
+    		width: 100%;
+    		height:10px;
+    		-webkit-box-shadow:0px 0px 0px 10px rgba(0,0,0,.8);
+    		-moz-box-shadow:0px 0px 0px 10px rgba(0,0,0,.8);
+    		box-shadow:0px,0px,10px rgba(0,0,0,.8);
+    		z-index:10;
+    	}
+    	/* 4 body添加行高 */
+    	body{
+    		line-height: 1;
+    	}
+    	/*
+    	5 所有元素垂直居中
+    	 */
+    	html, body{
+    		height:100%;
+    		margin:0;
+    	}
+    	body{
+    		-webkit-align-items:center;
+    		-ms-flex-align:center;
+    		align-items:center;
+    		display:-webkit-flex;
+    		display:flex;
+    	}
+    	/*
+    	6 逗号分隔的列表
+    	 */
+    	ul>li:not(:last-child)::after{
+    		content:",";
+    	}
+    	/*
+    	7 使用负的 nth-child 选择项目
+    	 */
+    	li{
+    		display: none;
+    	}
+    	li:nth-child(-n+3){
+    		display:block;
+    	}
+    	/**
+    	 * 8 对图标使用svg
+    	 */
+    	.logo{
+    		background:url("./image/Google.svg");
+    	}
+    	/**
+    	 * 9 优化显示文本
+    	 */
+    	html{
+    		-moz-osx-font-smoothing:grayscale;/*灰阶*/
+    		-webkit-font-smoothing:antialiased;/*抗锯齿*/
+    		text-rendering:optimizeLegibility;/*优化 易读性*//*IE /Edge 没有 text-rendering 支持*/
+    	}
+    	/**
+    	 * 14 使用属性选择器用于空链接
+    	 */
+    	a[href="http"]:empty::before{
+    		content:attr(href);
+    	}
+    	/**
+    	 * 19 禁用鼠标事件
+    	 */
+    	.disabled {pointer-events:
+ 			none;
+ 		}
+ 		/**
+ 		 * 20 模糊文本/
+ 		 */\
+ 		.blur{
+ 			color:transparent;
+ 			text-shadow: 0 0 5px rgba(0,0,0,0.5);
+ 		}
+    </style>
+</head>
+<body>
+    <div>
+    	<img src="./image/white.jpg" class="desaturate ">
+    	<ul>
+    		<li>20个css高级技巧</li>
+    		<li>20个css高级技巧</li>
+    		<li>20个css高级技巧</li>
+    	</ul>
+    	<ul class="blur">模糊效果</ul>
+    	<a href="http://www.baidu.com">baidu</a>
+    </div>
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        
+    };
+</script>
+</html>
