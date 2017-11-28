@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <style type="text/css">
+    body{
+		font-family: "Microsoft yahei";
+	}
+	.box{
+		float:left;
+		margin:10px;
+	}
+	.jojo-icheck-radio *,
+	.jojo-icheck-checkbox *{
+	  -webkit-box-sizing:border-box;
+	  -moz-box-sizing:border-box;
+	  box-sizing: border-box;
+	}
+    .jojo-icheck-radio > input,
+	.jojo-icheck-checkbox >input{
+	    display: none;
+	}
+	.jojo-icheck-radio,.jojo-icheck-checkbox{
+	    display: -webkit-box;
+	    display:    -moz-box;
+	    display: -ms-flexbox;
+	    display: -webkit-flex;
+	    display:         flex;
+	}
+	.jojo-icheck-radio,.jojo-icheck-checkbox{
+	    padding: 5px 0;
+	    cursor: pointer;
+	    -webkit-box-align: center;
+	    -webkit-align-items: center;
+	            align-items: center;
+	}
+	.jojo-icheck-inner,.jojo-icheck-media{
+	    position: relative;
+	}
+	.jojo-icheck-media{
+	    line-height: 20px;
+	    width: 22px;
+	    height: 22px;
+	    margin-right: 5px;
+	    text-align: center;
+	    color: #fff;
+	    border: 1px solid #d9d9d9;
+	}
+	.jojo-icheck-radio .jojo-icheck-media{
+	  border-radius: 50%;
+	}
+	.jojo-icheck-radio:hover .jojo-icheck-media,
+	.jojo-icheck-checkbox:hover .jojo-icheck-media{
+	    border-color: #009a61;
+	}
+	.jojo-icheck-radio .jojo-icheck-media:after,
+	.jojo-icheck-checkbox .jojo-icheck-media:after{
+	    font-family: "Ionicons";;
+	    content: "\f122";
+	}
+	.jojo-icheck-radio > input:checked + .jojo-icheck-media,
+	.jojo-icheck-checkbox > input:checked + .jojo-icheck-media{
+	    border-color: #009a61;
+	    background: #009a61;
+	}
+	.jojo-icheck-flat-checkbox .jojo-icheck-media{
+	  	border-radius:5px;
+	}
+	.jojo-icheck-flat-radio.jojo-icheck-radio:hover .jojo-icheck-media{
+	    border-color: #009a61;
+	}
+	.jojo-icheck-flat-radio.jojo-icheck-radio .jojo-icheck-media:after{
+	   content:'';
+	   position:absolute;
+	   top:4px;
+	   left:4px;
+	   width:12px;
+	   height:12px;
+	   background:#fff;
+	   border-radius:50%;
+	   background: #009a61;
+	}
+	.jojo-icheck-flat-radio.jojo-icheck-radio .jojo-icheck-media:after{
+	   -webkit-transform:scale(0);
+	   -moz-transform:scale(0);
+	   transform: scale(0);
+	    -webkit-transition: .3s ease;
+	       -moz-transition: .3s ease;
+	            transition: .3s ease;
+	    -webkit-transition-delay: 0ms;
+	       -moz-transition-delay: 0ms;
+	            transition-delay: 0ms;
+	}
+    .jojo-icheck-flat-radio.jojo-icheck-radio > input:checked + .jojo-icheck-media{
+	    border-color: #009a61;
+	    background:#fff;
+	}
+	.jojo-icheck-flat-radio.jojo-icheck-radio > input:checked + .jojo-icheck-media:after{
+	   -webkit-transform:scale(1);
+	   -moz-transform:scale(1);
+	   transform: scale(1);
+	}
+    </style>
+</head>
+<body>
+	<div class="box">
+	    <label for="radio3" class="jojo-icheck-radio jojo-icheck-flat-radio">
+	    	<input type="radio" id="radio3" name="sex1" checked>
+	    	<div class="jojo-icheck-media"></div>
+	    	<div class="jojo-icheck-inner">
+	    		<div class="jojo-icheck-title">男</div>
+	    	</div>
+	    </label>
+	    <label for="radio4" class="jojo-icheck-radio jojo-icheck-flat-radio">
+	    	<input type="radio" id="radio4" name="sex1" checked>
+	    	<div class="jojo-icheck-media"></div>
+	    	<div class="jojo-icheck-inner">
+	    		<div class="jojo-icheck-title">女</div>
+	    	</div>
+	    </label>
+    </div>
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        
+    };
+</script>
+</html>
