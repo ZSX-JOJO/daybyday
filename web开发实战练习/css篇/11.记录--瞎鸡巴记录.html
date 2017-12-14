@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>记录</title>
+	<style type="text/css">
+		.demo1 input[type='radio'],.demo3 input[type='checkbox']{
+			/*display: none;*/
+		}
+	</style>
+</head>
+<body>
+<div>
+	<li>
+		<p>关于input</p>
+		<b style="color: red">radio 单选框</b>
+		<div>
+			<p>要实现互斥， 可以让name一致</p>
+			<div class="demo1">
+				<input type="radio" name="sex"><label class="">男</label>
+            	<input type="radio" name="sex"><label class="">女</label>
+            </div>
+            <p>没有互斥,name不相同 或者没有name</p>
+            <div class="demo2">
+            	<input type="radio" name="sex1"><label class="">男</label>
+            	<input type="radio" name="sex"><label class="">女</label>
+            </div>
+		</div>
+		<p>关于checkbox</p>
+		<b style="color: red">关于checkbox 多选框</b>
+		<div class="demo3">
+			<input type="checkbox" name=""><label class="">吃饭</label>
+			<input type="checkbox" name=""><label class="">睡觉</label>
+			<input type="checkbox" name=""><label class="">打豆豆儿</label>
+		</div>
+	</li>
+	<li>querySelectorAll<br>
+		querySelector<br>
+		
+	</li>
+</div>
+</body>
+</html>
