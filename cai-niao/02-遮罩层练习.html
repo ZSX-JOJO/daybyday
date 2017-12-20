@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>遮罩层</title>
+    <link rel="stylesheet" type="text/css" href="" />
+    <style type="text/css">
+    	body{
+    		background:transparent;
+    	}
+    	.box{
+    		background-color: red;
+    		position: absolute;
+    		top:50%;
+    		left:50%;
+    		width: 84%;
+    		height:200px;
+    		margin-top: -79px;
+    		margin-left: -42%;
+    		border-radius: 6px;
+    		padding-top:10px;
+    	}
+    	.info{
+    		font-size: 15px;
+    		color:green;
+    		text-align: center;
+    	}
+    	.middle{
+    		font-size: 20px;
+    		color:yellow;
+    		text-align: center;
+    		margin-top:20px;
+    		padding:0 25px;
+    	}
+    	.bottom{
+    		width: 100%;
+    		margin-top:50px;
+    		text-align: center;
+    		font-size:30px;
+    		color:blue;
+    	}
+    	.left,.right{
+    		float: left;
+    		width: 50%;
+    		text-align: center;
+    	}
+    </style>
+</head>
+<body>
+    <div class="pop">
+    	<div class="box">
+    		<div class="info">顶部提示</div>
+    		<div class="middle">中间</div>
+    		<div class="bottom">
+    			<div class="left">取消</div>
+    			<div class="right">确认</div>
+    		</div>
+    	</div>
+    </div>
+</body>
+<script type="text/javascript" src=""></script>
+<script type="text/javascript">
+    apiready = function(){
+        
+    };
+</script>
+</html>

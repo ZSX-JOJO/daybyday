@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.show-hide{
+			font-size:12px;
+			color:red;
+		}
+		..show-hide-cls{
+			font-size:12px;
+			color:green;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="input">
+			<input type="number" id="pass" name="" placeholder="密码密码密码" maxlength="8">
+		</div>
+		<div class="show-hide">切换</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var show_hide = document.getElementsByClassName('show-hide');
+    var pass=document.getElementById('pass');
+    show_hide[0].onclick = function () {
+      if(show-hide[0].getAttribute("class")=='show-hide'){
+        //隐藏密码
+        show_hide[0].classList.add('show-hide-cls');
+        pass.setAttribute('type','password');
+      }else {
+        //显示密码
+        show_hide[0].classList.remove('show-hide-cls');
+        pass.setAttribute('type','number');
+      }
+    }
+</script>
+</html>

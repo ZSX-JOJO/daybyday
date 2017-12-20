@@ -35,11 +35,30 @@
 	</li>
 	<li>querySelectorAll<br>
 		querySelector<br>
-		
 	</li>
+    <li>原始 JS 选择器<br>
+        getElementById <br>
+        getElementsByName <br>
+        getElementsByTagName <br>
+        getElementsByClassName 
+    </li>
 </div>
 </body>
 <script type="text/javascript">
+    // 星星
+    function star(n){
+        var els = $api.domAll('.star');
+        for(var i=0;i<els.length;i++){
+            $api.removeCls(els[i],'star-after');
+            if(i <= n){
+              $api.addCls(els[i],'star-after');
+            }
+        }
+        $api.val($api.byId('stars'), parseInt(n) + 1);
+        // console.log($api.val($api.byId('stars')))
+    }
+    // document.querySelector(".recharge-num-active").classList.remove(".recharge-num-active");
+    // document.getElementById("money-"+num).classList.add("recharge-num-active");
 	function getAllUrlParams(url) {
         // 从url(可选)或window对象获取查询字符串
         var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
