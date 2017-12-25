@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+
+		<style id="stylesheet">
+			.box {
+				position: absolute;
+				top: 10px;
+				left: 450px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content">
+			<canvas id="canvas" width="400" height="300" style="background:#333"></canvas>
+			<div class="box"></div>
+		</div>
+
+		<script src="scripts/tool.js?id=1"></script>
+		<script id="scripts">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var centerX = Math.floor(canvas.width / 2);
+			var centerY = Math.floor(canvas.height / 2);
+
+			var balles = []; //存放页面上的球
+			// 球函数
+			function Ball(x, y, radius, speed) {
+				this.x = x;
+				this.y = y;
+				this.radius = radius;
+				this.angle = 0;
+				this.speed = speed;
+			};
+			var speed = {
+				x: 0,
+				y: 3
+			};
+			
+			balles.push(new Ball(centerX, centerY, 40, speed));
+			var box = document.querySelector('.box');
+			//绘制球
+			function drawBall() {
+				var ball = balles[0];
+				ctx.fillStyle = '#fff';
+				ctx.beginPath();
+				ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI, true);
+				ctx.fill();
+				requestAnimationFrame(drawBall);
+			};
+
+			function mousedown(event) {
+
+			};
+
+			function mousemove(event) {
+				var ball = balles[0];
+				var body = {
+					x: (ball.x - ball.radius),
+					y: (ball.y - ball.radius),
+					width: ball.radius * 2,
+					height: ball.radius * 2
+				};
+				if(tool.containsPoint(body, event.point.x, event.point.y)) {
+					box.innerHTML = '鼠标移到球上了';
+				} else {
+					box.innerHTML = '鼠标离开球上了';
+				};
+			};
+			window.onload = function() {
+				drawBall();
+				tool.captureMT(canvas, mousedown, mousemove);
+			};
+		</script>
+	</body>
+
+</html>

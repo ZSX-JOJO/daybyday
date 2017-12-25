@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+
+		<style id="stylesheet">
+			.box {
+				position: absolute;
+				top: 10px;
+				left: 450px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content">
+			<canvas id="canvas" width="400" height="300" style="background:#333"></canvas>
+			<div class="box"></div>
+		</div>
+
+		<script src="scripts/tool.js?id=1"></script>
+		<script id="scripts">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var centerX = Math.floor(canvas.width / 2);
+			var centerY = Math.floor(canvas.height / 2);
+
+			var balles = []; //存放页面上的球
+			// 球函数
+			function Ball(x, y, radius, speed) {
+				this.x = x;
+				this.y = y;
+				this.radius = radius;
+				this.angle = 0;
+				this.speed = speed;
+			};
+			var speed = {
+				x: 0,
+				y: 0
+			};
+			var isPressed = false;
+			var oldX = 0;
+			var oldY = 0;
+
+			balles.push(new Ball(30, 30, 20, speed));
+			var ball = balles[0];
+			var box = document.querySelector('.box');
+			//绘制球
+			function drawBall() {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				var ball = balles[0];
+				ctx.fillStyle = '#fff';
+				ctx.beginPath();
+				if(!isPressed) {
+					ball.x += ball.speed.x;
+					ball.y += ball.speed.y;
+				};
+				if(ball.x > canvas.width || ball.x < (-ball.width) || ball.y > canvas.height || ball.y < (-ball.height)) {
+					ball.x = 30;
+					ball.y = 30;
+					ball.speed.x = 0;
+					ball.speed.y = 0;
+				};
+				ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI, true);
+				ctx.fill();
+				requestAnimationFrame(drawBall);
+			};
+
+			function drag(event) {
+				var body = {
+					x: (ball.x - ball.radius),
+					y: (ball.y - ball.radius),
+					width: ball.radius * 2,
+					height: ball.radius * 2
+				};
+				if(isPressed && tool.containsPoint(body, event.point.x, event.point.y)) {
+					var point = event.point;
+					ball.x = event.point.x;
+					ball.y = event.point.y;
+					ball.speed.x = ball.x - oldX;
+					ball.speed.y = ball.y - oldY;
+					oldX = ball.x;
+					oldY = ball.y;
+				};
+			};
+
+			function mousedown(event) {
+				isPressed = true;
+				oldX = event.point.x;
+				oldY = event.point.y;
+				drag(event);
+			};
+
+			function mousemove(event) {
+				drag(event);
+			};
+
+			function mouseup(event) {
+				isPressed = false;
+			};
+			window.onload = function() {
+				drawBall();
+				tool.captureMT(canvas, mousedown, mousemove, mouseup);
+			};
+		</script>
+	</body>
+
+</html>

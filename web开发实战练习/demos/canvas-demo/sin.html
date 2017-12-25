@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+
+	<body>
+		<div id="content">
+			<div class="point">
+				<button id="addDisk">增加球</button>
+			</div>
+			<canvas id="canvas" width="400" height="300" style="background:#333"></canvas>
+		</div>
+
+		<script src="scripts/tool.js"></script>
+		<script id="scripts">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var balles = []; //存放页面上的球
+			// 球函数
+			function Ball(x, y, radius) {
+				this.x = x;
+				this.y = y;
+				this.radius = radius;
+				this.angle = 0;
+			};
+			// 事件
+			document.getElementById("addDisk").addEventListener('click', function() {
+
+				balles.push(new Ball(0, 20, 10));
+			});
+
+			function drawSinLine() {
+				var x = 0;
+				var y = 20;
+				for(var angle = 0; angle < Math.PI *14; angle += 0.1) {
+					ctx.fillStyle = '#fff';
+					ctx.beginPath();
+					x += 1;
+					y += Math.sin(angle) * 10;
+					ctx.arc(x,y, 2, 2 * Math.PI, true);
+					ctx.fill();
+				}
+			};
+			var requestID = null;
+			//绘制球
+			function drawBall() {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				drawSinLine();
+				for(var i = 0; i < balles.length; i++) {
+					var ball = balles[i];
+					if(ball.x > canvas.width) {
+						balles.splice(i, 1);
+						i -= 1;
+					} else {
+						ctx.save();
+						//使用径向渐变
+						var grd = ctx.createRadialGradient(ball.x, ball.y, 0, ball.x, ball.y, ball.radius - 1);
+						grd.addColorStop(0.5, 'rgba(255,255,255,1)');
+						grd.addColorStop(1, 'rgba(255,255,255,.7)');
+						ctx.fillStyle = grd;
+						ctx.beginPath();
+						//重新计算球的位置
+						ball.x += 1;
+						ball.y += Math.sin(ball.angle) * 10;
+						ball.angle += 0.1;
+						ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI, true);
+						ctx.fill();
+						ctx.restore();
+					}
+				};
+				requestID = requestAnimationFrame(drawBall);
+			};
+			window.onload = function() {
+				drawBall();
+			};
+		</script>
+	</body>
+
+</html>

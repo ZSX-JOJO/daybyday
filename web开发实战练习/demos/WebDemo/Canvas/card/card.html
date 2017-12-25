@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style>
+			.prize{
+				padding:10px;
+				-webkit-user-select:none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="prize"></div>
+		<div id="box"></div>
+		<script src="rub.js"></script>
+		<script>
+			
+			//实例化
+			var rub = new Rub("#canvas", {
+				container:"#box",
+				width: 300,
+				height: 200,
+				backgroundImage: "../../common/Images/girl.jpg",
+				onRubEnd: function() {
+					document.querySelector(".prize").innerHTML="你中奖了";
+				}
+			});
+		</script>
+	</body>
+
+</html>

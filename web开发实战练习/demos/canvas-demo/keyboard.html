@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>keyboard</title>
+	</head>
+
+	<body>
+		<div id="content">
+			<canvas id="canvas" width="400" height="300" style="background:#333"></canvas>
+			<div class="point">
+				<div class="key">点击键盘箭头按钮试试</div>
+			</div>
+		</div>
+		<script id="scripts">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var keybox = document.querySelector('.key');
+			function keyEvent(event){
+				switch (event.keyCode){
+                  case 38:
+                      keybox.innerHTML = '你点击了向上箭头（↑）';
+                      break;
+                  case 40:
+                      keybox.innerHTML = '你点击了向下箭头（↓）';
+                      break;
+                  case 37:
+                     keybox.innerHTML = '你点击了向左箭头（←）';
+                      break;
+                  case 39:
+                       keybox.innerHTML = '你点击了向右箭头（→）';
+                      break;
+                  default:
+                      keybox.innerHTML = '你点击了其他按钮';
+              };
+			};
+			window.addEventListener('keydown',keyEvent,false);
+		</script>
+	</body>
+
+</html>

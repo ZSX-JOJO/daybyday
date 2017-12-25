@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    #large {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+    
+    #review {
+        background: #eee;
+    }
+    </style>
+</head>
+
+<body>
+	<canvas id="canvas" width="400" height="400"></canvas>
+	<div id="large"></div>
+	<canvas id="review" width="200" height="200"></canvas>
+	<script>
+    window.tool = {};
+    window.tool.captureMT = function(element, touchStartEvent, touchMoveEvent, touchEndEvent) {
+        'use strict';
+        var isTouch = ('ontouchend' in document);
+        var touchstart = null;
+        var touchmove = null
+        var touchend = null;
+        var isPressed = false;
+        if (isTouch) {
+            touchstart = 'touchstart';
+            touchmove = 'touchmove';
+            touchend = 'touchend';
+        } else {
+            touchstart = 'mousedown';
+            touchmove = 'mousemove';
+            touchend = 'mouseup';
+        };
+        /*传入Event对象*/
+        function getPoint(event) {
+            /*将当前的触摸点坐标值减去元素的偏移位置，返回触摸点相对于element的坐标值*/
+            event = event || window.event; //e.originalEvent.targetTouches[0]
+            var touchEvent = isTouch ? event.changedTouches[0] : event;
+            var x = (touchEvent.pageX || touchEvent.clientX + document.body.scrollLeft + document.documentElement.scrollLeft);
+            x -= element.offsetLeft;
+            var y = (touchEvent.pageY || touchEvent.clientY + document.body.scrollTop + document.documentElement.scrollTop);
+            y -= element.offsetTop;
+            return {
+                x: x,
+                y: y
+            };
+        };
+        if (!element) return;
+        /*为element元素绑定touchstart事件*/
+        element.addEventListener(touchstart, function(event) {
+            event.point = getPoint(event);
+            touchStartEvent && touchStartEvent.call(this, event);
+        }, false);
+
+        /*为element元素绑定touchmove事件*/
+        element.addEventListener(touchmove, function(event) {
+            event.point = getPoint(event);
+            touchMoveEvent && touchMoveEvent.call(this, event);
+        }, false);
+
+        /*为element元素绑定touchend事件*/
+        element.addEventListener(touchend, function(event) {
+            event.point = getPoint(event);
+            touchEndEvent && touchEndEvent.call(this, event);
+        }, false);
+    };
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext('2d');
+    var review = document.getElementById("review");
+    var rctx = review.getContext('2d');
+    var img = new Image();
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0, 658, 877, 0, 0, 300, 400);
+        tool.captureMT(canvas, mousedown, mousemove);
+    }
+    img.src = '../../common/Images/b.jpg';
+    var large = document.getElementById("large");
+
+    function mousedown(e) {
+
+    }
+
+    function mousemove(e) {
+        var y = Math.floor(e.pageY - large.offsetHeight / 2);
+        var x = Math.floor(e.pageX - large.offsetWidth / 2);
+        large.style.top = y + 'px';
+        large.style.left = x + 'px';
+        rctx.clearRect(0, 0, review.width, review.height);
+        rctx.drawImage(canvas, x, y, large.offsetWidth, large.offsetHeight,
+            0, 0, review.width, review.height);
+    }
+    </script>
+</body>
+
+</html>

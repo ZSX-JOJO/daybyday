@@ -1,0 +1,62 @@
+.slice-list,
+.slice-list * {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.slice-list {
+	position:relative;
+	overflow:hidden;
+}
+
+.slice-list ul{
+	list-style: none;
+}
+
+.slice-list ul li.slice-item{
+	position:relative;
+}
+
+.slice-list ul li.slice-item:after{
+	content:"";
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:1px;
+	background:#eee;
+	z-index:3;
+}
+
+.slice-list .slice-content{
+	position:relative;
+	z-index:2;
+	background:#fff;
+	height:40px;
+	line-height:40px;
+	padding:0 10px;
+}
+ 
+.slice-list .slice-content,
+.slice-list .slice-tool{
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+
+.slice-list .slice-tool{
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	text-align:right;
+	color:#fff;
+	z-index:1;
+	background:red;
+}
+
+.slice-list .slice-tool span{
+	line-height: 40px;
+	padding:0 10px;
+}

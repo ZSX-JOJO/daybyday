@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>captureMousePoint</title>
+		<style id="stylesheet">
+			.point {
+				position: absolute;
+				top: 10px;
+				left: 450px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content">
+			<canvas id="canvas" width="400" height="300" style="background:#333"></canvas>
+			<div class="point">
+				<p>mousedown(鼠标点击时坐标)</p>
+				<p>X: <span class="pointX">0</span></p>
+				<p>Y: <span class="pointY">0</span></p>
+				<p>mousemove(鼠标移动时坐标)</p>
+				<p>X: <span class="pointX1">0</span></p>
+				<p>Y: <span class="pointY1">0</span></p>
+				<p>mouseup(鼠标释放时坐标)</p>
+				<p>X: <span class="pointX2">0</span></p>
+				<p>Y: <span class="pointY2">0</span></p>
+			</div>
+		</div>
+		<script id="scripts">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+
+			function mousedown(event) {
+				console.log(event.point);
+				console.log(this);
+				document.querySelector('.pointX').innerHTML = event.point.x;
+				document.querySelector('.pointY').innerHTML = event.point.y;
+			};
+
+			function mousemove(event) {
+				console.log(event.point);
+				document.querySelector('.pointX1').innerHTML = event.point.x;
+				document.querySelector('.pointY1').innerHTML = event.point.y;
+				var x = event.point.x;
+				var y = event.point.y;
+				var radius = 5;
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+				ctx.fillStyle = 'red';
+				ctx.beginPath();
+				ctx.arc(x,y,radius,0,2*Math.PI,true);
+				ctx.fill();
+				ctx.closePath();
+			};
+
+			function mouseup(event) {
+				console.log(event.point);
+				document.querySelector('.pointX2').innerHTML = event.point.x;
+				document.querySelector('.pointY2').innerHTML = event.point.y;
+			};
+			window.tool = {};
+			window.tool.captureMouse = function(element, mousedown, mousemove, mouseup) {
+
+				/*传入Event对象*/
+				function getPoint(event) {
+					event = event || window.event;
+					/*将当前的鼠标坐标值减去元素的偏移位置，返回鼠标相对于element的坐标值*/
+					var x = (event.pageX || event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft);
+					x -= element.offsetLeft;
+					var y = (event.pageY || event.clientY + document.body.scrollTop + document.documentElement.scrollTop);
+					y -= element.offsetTop;
+					return {
+						x: x,
+						y: y
+					};
+				};
+
+				if(!element) return;
+				/*为element元素绑定mousedown事件*/
+				element.addEventListener('mousedown', function(event) {
+					event.point = getPoint(event);
+					mousedown && mousedown.call(this, event);
+				}, false);
+
+				/*为element元素绑定mousemove事件*/
+				element.addEventListener('mousemove', function(event) {
+					event.point = getPoint(event);
+					mousemove && mousemove.call(this, event);
+				}, false);
+
+				/*为element元素绑定mouseup事件*/
+				element.addEventListener('mouseup', function(event) {
+					event.point = getPoint(event);
+					mouseup && mouseup.call(this, event);
+				}, false);
+			};
+			tool.captureMouse(canvas, mousedown, mousemove, mouseup);
+		</script>
+	</body>
+
+</html>

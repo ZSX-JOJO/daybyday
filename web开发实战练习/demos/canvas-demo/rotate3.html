@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+
+		<style id="stylesheet">
+
+		</style>
+	</head>
+
+	<body>
+		<div id="content">
+			<canvas id="canvas" width="400" height="300" style="background:#333"></canvas>
+		</div>
+
+		<script src="scripts/tool.js?id=1"></script>
+		<script id="scripts">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var centerX = Math.floor(canvas.width / 2);
+			var centerY = Math.floor(canvas.height / 2);
+
+			var balles = []; //存放页面上的球
+			var ballNums = 10;
+			var sin = 0;
+			var cos = 0;
+			var mouse = {x:centerX,y:centerY};
+			// 球函数
+			function Ball(x, y, radius, speed) {
+				this.x = x;
+				this.y = y;
+				this.radius = radius;
+				this.angle = 0;
+				this.speed = speed;
+			};
+
+			function animation() {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				ctx.fillStyle = '#fff';
+				var angle = (mouse.x - centerX) * 0.0005;
+				sin = Math.sin(angle);
+				cos = Math.cos(angle);
+				balles.forEach(function(ball, i) {
+					var x1 = ball.x - centerX;
+					var y1 = ball.y - centerY;
+					ball.x = centerX + (x1 * cos - y1 * sin);
+					ball.y = centerY + (y1 * cos + x1 * sin);
+					ctx.beginPath();
+					ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI, true);
+					ctx.fill();
+				});
+				ctx.beginPath();
+				ctx.arc(centerX, centerY, 2, 0, 2 * Math.PI, true);
+				ctx.fill();
+				requestAnimationFrame(animation);
+			};
+			function mousedown(){
+				
+			};
+			function mousemove(event){
+				mouse = event.point;
+			};
+			window.onload = function() {
+				for(var i = 0; i < ballNums; i++){
+					var x = Math.random() * canvas.width;
+					var y = Math.random() * canvas.height;
+					var ball = new Ball(x,y,10);
+					balles.push(ball);
+				};
+				tool.captureMT(canvas,mousedown,mousemove);
+				animation();
+			};
+		</script>
+	</body>
+
+</html>

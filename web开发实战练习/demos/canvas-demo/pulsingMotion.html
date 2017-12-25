@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+
+	<body>
+		<div id="content">
+			<div class="point">
+				<button id="addDisk">增加球</button>
+			</div>
+			<canvas id="canvas" width="400" height="300" style="background:#333"></canvas>
+		</div>
+
+		<script src="scripts/tool.js"></script>
+		<script id="scripts">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var balles = []; //存放页面上的球
+			// 球函数
+			function Ball(x, y, radius) {
+				this.x = x;
+				this.y = y;
+				this.radius = radius;
+				this.angle = 0;
+				this.scale = 1;
+			};
+			// 事件
+			document.getElementById("addDisk").addEventListener('click', function() {
+				var x = Math.floor(Math.random()*canvas.width);
+				var y = Math.floor(Math.random()*canvas.height);
+				balles.push(new Ball(x,y, 10));
+			});
+			var requestID = null;
+			//绘制球
+			function drawBall() {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				for(var i = 0; i < balles.length; i++) {
+					var ball = balles[i];
+					ctx.fillStyle = '#fff';
+					ctx.beginPath();
+					//重新计算球的位置
+					ball.scale = 1 + Math.sin(ball.angle);
+					ball.angle += 0.1;
+					ball.radius = 10 * ball.scale;
+					ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI, true);
+					ctx.fill();
+				};
+				requestID = requestAnimationFrame(drawBall);
+			};
+			window.onload = function() {
+				drawBall();
+			};
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<title></title>
+		<link rel="stylesheet" href="sliceList.css" />
+		<style>
+			body{
+				margin:0;
+				padding:0;
+			}
+		</style>
+	</head>
+	<body> 
+		<div class="slice-list slice-non">
+			<ul>
+				<li class="slice-item">
+					<div class="slice-tool">
+						<span>删除</span>
+						<span>删除</span>
+					</div>
+					<div class="slice-content">
+						列表项
+					</div>
+				</li>
+				<li class="slice-item">
+					<div class="slice-tool">
+						<span>删除</span>
+					</div>
+					<div class="slice-content">
+						列表项
+					</div>
+				</li>
+				<li class="slice-item">
+					<div class="slice-tool">
+						<span>删除</span>
+					</div>
+					<div class="slice-content">
+						列表项
+					</div>
+				</li>
+			</ul>
+		</div>
+		<script src="sliceList.js"></script>
+		<script>
+			var sliceList = new SliceList('.slice-list',{
+				type: 2
+			});
+		</script>
+	</body>
+</html>

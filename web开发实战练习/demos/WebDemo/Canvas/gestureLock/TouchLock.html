@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title></title>
+	</head>
+	<body>
+		<div class="code"></div>
+		<script src="TouchLock.js"></script>
+		<script>
+			var code = new TouchLock('.code', {
+				grid: {
+					cols: 3,
+					rows: 3
+				},
+				near:true,
+				onSuccess: function(lock) {
+					console.log('成功');
+				},
+				onError: function(lock) {
+					console.log('失败');
+				}
+			});
+		</script>
+	</body>
+</html>

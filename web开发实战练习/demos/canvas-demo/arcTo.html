@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		canvas {
+			border: 1px solid #d9d9d9;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="400" height="300">
+		不支持canvas
+	</canvas>
+	<script>
+		var canvas = document.getElementById('canvas');
+		var ctx = '';
+        ctx = canvas.getContext('2d');
+		ctx.beginPath();
+		ctx.beginPath();
+		ctx.moveTo(20,20);           
+		ctx.lineTo(100,20);          
+		ctx.arcTo(150,20,150,70,50); 
+		ctx.lineTo(150,120);         
+		ctx.stroke(); 
+	</script>
+</body>
+</html>

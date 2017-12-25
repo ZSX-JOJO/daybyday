@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+
+	<body>
+		<div id="content">
+			<h4>在屏幕上移动鼠标试试</h4>
+			<div class="point">
+				<button id="addDisk">增加三角磁铁</button>
+			</div>
+			<canvas id="canvas" width="400" height="300" style="background:#333"></canvas>
+		</div>
+		
+			<script src="scripts/tool.js"></script>
+		<script id="scripts">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			
+			var centerX = Math.floor(canvas.width / 2);  //取canvas的中心
+			var centerY = Math.floor(canvas.height / 2); //取canvas的中心
+			var rotation = 0;  //旋转角度
+			var disks = [];  //存放页面上有多少个三角磁铁
+			// 三角磁铁函数
+			function Disk(x,y,width,height){
+				this.x = x;
+				this.y = y;
+				this.width = width;
+				this.height = height;
+			};
+			// 事件
+			document.getElementById("addDisk").addEventListener('click',function(){
+				var height= tool.getRandom(5,10);
+				var width = tool.getRandom(30,70);
+				var x = Math.floor(Math.random()*canvas.width);
+				var y = Math.floor(Math.random()*canvas.height);
+				disks.push(new Disk(x,y,width,height));
+			});
+			// 初始化有一个磁铁
+			var d = new Disk(centerX,centerY,100,10);
+			var point = {};
+			disks.push(d);
+			//绘制磁铁
+			function drawDisk() {
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+				for(var i = 0; i < disks.length; i++){
+					var d = disks[i];
+					//计算旋转角度
+					rotation = Math.atan2(point.y - d.y, point.x - d.x);  
+					// 绘制红色小圆点
+					ctx.beginPath();
+					ctx.fillStyle = 'red';
+					ctx.arc(point.x,point.y,5,0,2*Math.PI,true);
+					ctx.fill();
+					//绘制三角磁铁
+					ctx.save();
+					ctx.translate(d.x,d.y);
+					ctx.rotate(rotation);
+					ctx.beginPath();
+					ctx.fillStyle = 'red';
+					ctx.moveTo(d.width,0);
+					ctx.lineTo(0,-d.height);
+					ctx.lineTo(0,d.height);
+					ctx.closePath();
+					ctx.fill();
+					ctx.beginPath();
+					ctx.fillStyle = 'blue';
+					ctx.moveTo(-d.width,0);
+					ctx.lineTo(0,-d.height);
+					ctx.lineTo(0,d.height);
+					ctx.closePath();
+					ctx.fill();
+					ctx.restore();
+				};
+				requestAnimationFrame(drawDisk); //循环调用本身
+			};
+			drawDisk();
+
+			function touchstart(event) {
+				
+			};
+
+			function touchmove(event) {
+				point = event.point;
+			};
+
+			function touchend(event) {
+
+			};
+			tool.captureMT(canvas, touchstart, touchmove, touchend);
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fillRect</title>
+	<style>
+		canvas {
+			border: 1px solid #d9d9d9;
+		}
+	</style>
+</head>
+<body>
+	<select id="type" onchange="drawText(this)">
+		<option value="start">start</option>
+		<option value="center">center</option>
+		<option value="end">end</option>
+		<option value="left">left</option>
+		<option value="right">right</option>
+	</select>
+	<canvas id="canvas" width="400" height="300">
+		不支持canvas
+	</canvas>
+	<script>
+		var canvas = document.getElementById('canvas');
+		var ctx = '';
+        ctx = canvas.getContext('2d');
+
+        ctx.font = '20px Arial';
+        ctx.fillStyle = 'red';
+        	ctx.fillText('textAlign', 0, 100);
+        function drawText(e) {
+        	ctx.clearRect(0, 0, canvas.width, canvas.height);
+        	ctx.textAlign = e.value;
+        	ctx.fillText('textAlign', 0, 100);
+        }
+	</script>
+</body>
+</html>

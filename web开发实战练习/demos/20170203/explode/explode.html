@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+		<canvas id="canvas2"></canvas>
+		<script src="explode.js"></script>
+		<script>
+			var explode = new Explode('#canvas',{
+				type: 1,
+				width: 500,
+				height: 300,
+				text: '聚合文字'
+			});
+			var explode2 = new Explode('#canvas2',{
+				type: 2,
+				width: 150,
+				height: 100,
+				img: 'mm.jpg'
+			});
+		</script>
+	</body>
+</html>

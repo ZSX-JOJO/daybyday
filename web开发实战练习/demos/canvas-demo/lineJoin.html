@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		canvas {
+			border: 1px solid #d9d9d9;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="600" height="400">
+		不支持canvas
+	</canvas>
+	<script>
+		var canvas = document.getElementById('canvas');
+		var ctx = '';
+        ctx = canvas.getContext('2d');
+		
+		ctx.lineJoin ='round';
+		ctx.lineWidth = 10;
+		ctx.beginPath();
+		ctx.moveTo(110,10);
+		ctx.lineTo(210,10);
+		ctx.lineTo(210, 40);
+		ctx.stroke();
+
+		ctx.lineJoin = 'bevel';
+		ctx.beginPath();
+		ctx.moveTo(110,70);
+		ctx.lineTo(210,70);
+		ctx.lineTo(210, 100);
+		ctx.stroke();
+
+		ctx.lineJoin = 'miter';
+		ctx.beginPath();
+		ctx.moveTo(110,140);
+		ctx.lineTo(210,140);
+		ctx.lineTo(210, 170);
+		ctx.stroke();
+	</script>
+</body>
+</html>

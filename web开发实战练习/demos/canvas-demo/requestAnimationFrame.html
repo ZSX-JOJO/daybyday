@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		canvas {
+			border: 1px solid #d9d9d9;
+		}
+	</style>
+	<script src="scripts/tool.js"></script>
+</head>
+<body>
+	<canvas id="canvas" width="600" height="400">
+		不支持canvas
+	</canvas>
+	<script>
+		var canvas = document.getElementById('canvas');
+		var ctx = '';
+        ctx = canvas.getContext('2d');
+		
+		var dirt = 0;
+		var vx = 3;
+	
+		gameStart();
+        function gameStart() {
+        	ctx.clearRect(0, 0, 600, 400);
+        	if (dirt + 50 >= canvas.width || dirt < 0) {
+        		vx = -vx;
+        	} 
+        	dirt = dirt + vx;
+        	ctx.fillRect(dirt, 0, 50, 50);
+        	requestAnimationFrame(gameStart);
+        }
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+			.canvas{
+				width:300px;
+				height:300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="canvas"></div>
+		<script src="snow.js"></script>
+		<script>
+			var snow = new Snow('.canvas',{
+				speed: 2, // 雪花增加的速度
+				bg: '../../common/Images/example.jpg'  //背景图
+			});
+		</script>
+	</body>
+</html>

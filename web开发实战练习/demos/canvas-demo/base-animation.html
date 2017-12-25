@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fillRect</title>
+	<style>
+	</style>
+</head>
+<body>
+	<canvas id="canvas">
+		不支持canvas
+	</canvas>
+	<script>
+		var cc = document.getElementById("canvas");   
+		var cxt = cc.getContext("2d");   
+		var ca = document.createElement("canvas");   
+		ca.width=500;   
+		ca.height=500;   
+		var cxt2 = ca.getContext("2d");   
+		var x = y = 0;  
+
+		//加载多个图片
+		function loadImages(sources, callback) {  
+		    var count = 0,    
+		    images = {},   
+		    imgNum = 0;   
+		    for (k in sources) {   
+		        imgNum++;   
+		    }    
+
+		    for (k in sources) {   
+		        images[k] = new Image();   
+		        images[k].onload = function() {   
+		            if (++count >= imgNum) {   
+		                callback(images);   
+		            }   
+		        }   
+		        images[k].src = sources[k];   
+		    }   
+		}   
+
+		var sources = []; 
+
+		function drawimages() {    
+		    sources = ["images/0.png", "images/1.png", "images/2.png", "images/3.png", "images/4.png", "images/5.png", "images/2.png", "images/3.png", "images/4.png", "images/5.png"];
+		    
+		    //调用图片预加载函数，实现回调函数     
+		    loadImages(sources, function(images) {   
+		        var x = y = 0;   
+		        for (var i = 0; i < sources.length; i++) {   
+		            cxt2.drawImage(images[i], x * 100, y * 100, 100, 100);   
+		            if (i < 4) {
+		                 x++; 
+		             } else if (i >= 4 && i < 8) {   
+		                  y++;   
+		             } else if (i >= 8 && i < 12) {   
+		                  x--;   
+		             } else {   
+		                   y--;
+		             } 
+		        }    
+		     });   
+		}    
+		drawimages();   
+		var times = Math.floor(Math.random() * 10) + sources.length * 2;   
+		var v = 0;    
+		var timeId = '';
+		function move() {   
+		     var moveX = 400;
+		     var speed = 100; 
+		     if (x < moveX && y == 0) {   
+		        x += speed;
+		     } else if (x == moveX && y < moveX) { 
+		        y += speed;   
+		     } else if (y == moveX && x > 0) {   
+		         x -= speed;   
+		     } else if (x == 0 && y > 0) {   
+		         y -= speed;   
+		     }   
+		     cxt.clearRect(0, 0, 500, 500);   
+
+		     cxt.drawImage(ca,0,0,500,500);   
+		     cxt.fillStyle = "rgba(0,0,0,.5)";   
+		     cxt.fillRect(x, y, 100, 100);   
+		     if (v > times) {   
+		         cancelAnimationFrame(timeId);   
+		     }   
+		     v++;   
+		    timeId = requestAnimationFrame(move);   
+		}   
+		move();
+	</script>
+</body>
+</html>

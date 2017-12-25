@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			body{
+				overflow:hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="particles"></canvas>
+		<script src="particle.js"></script>
+		<script>
+			var particle = new Particle('#particles', {
+				effect: 'line'
+			});
+		</script>
+	</body>
+</html>

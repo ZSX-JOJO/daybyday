@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<video id="video" width="400" height="300" controls autoplay>
+			<source src="../../common/Images/video.mp4" type="video/mp4"/>
+		</video>
+		<canvas id="canvas" width='400' height='300'></canvas>
+		<button id="btn">截图</button>
+		<a download="截图.png" id="download">下载</a>
+		<script>
+			var video = document.getElementById("video");
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext('2d');
+			var mouseXY = {};
+			var isPressed = false;
+			var url = '';
+			ctx.fillStyle = '#333';
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			setInterval(function(){
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+			}, 33);
+			document.getElementById('btn').addEventListener('click',function(){
+				document.getElementById('download').href = canvas.toDataURL('image/png');
+			});
+		</script>
+	</body>
+
+</html>
