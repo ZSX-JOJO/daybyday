@@ -2,13 +2,14 @@
 
 ## 1：node安装以及 环境变量 （略。。。）
 
-## 2： npm 
+## 2： npm
 
 ​	（若执行 npm 某项命令时提示要求更高版本的 npm时 使用）
 
-​	   npm install -g npm     or     npm update -g  【全局安装】 
+​	   npm install -g npm     or     npm update -g  【全局安装or 升级npm】
+       cnpm install npm -g [使用淘宝镜像的命令]
 
-​	设置npm代理 
+​	设置npm代理
 
 ​		npm config set proxy http://地址:端口
 
@@ -26,6 +27,8 @@
 
 ​		npm config delete https-proxy
 
+        或者npm config set proxy null
+
 ​	查看`config`配置
 
 ​		npm config list
@@ -33,6 +36,26 @@
     清理缓存
 
         npm cache clean --force
+
+    查看全局安装的模块
+
+        npm list -g
+
+    查看某个模块的版本号
+
+        npm list 模块名称
+
+    卸载模块
+
+        npm uninstall 模块名称
+
+    更新模块
+
+        npm update 模块名称
+
+    搜索模块
+
+        npm search 模块名称
 
 ## 3：nrm 
 
