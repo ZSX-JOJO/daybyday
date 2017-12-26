@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>记录</title>
+	<title>瞎鸡巴记录</title>
 	<style type="text/css">
 		.demo1 input[type='radio'],.demo3 input[type='checkbox']{
 			/*display: none;*/
 		}
+        dt{
+            font-size:20px;
+            font-weight: bold;
+        }
+        dd:first-line{
+            color:red;
+        }
+        dd:first-letter{
+            color:blue;
+            font-size: 20px;
+        }
+        dd:before{
+            content:"zhao shou xin";
+        }
+        dd:after{
+            content:"xin shou zhao";
+        }
+        input:focus{
+            background-color: red;
+        }
 	</style>
 </head>
 <body>
@@ -44,12 +64,29 @@
         checked 属性<br>
         box-pack<br>
         CSS 动画<br>
-
+        闭包<br>
+        box-shadow:inset x-offset y-offset blur-radius spread-radius color<br>
+        投影方式 X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色<br>
+        filter(滤镜) filter: none | blur() | brightness() | contrast() | drop-shadow() | grayscale() | hue-rotate() | invert() | opacity() | saturate() | sepia() | url();<br>
+        filter:box-shadow滤镜和drop-shadow区别
+        <a href="http://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/" target="_blank">参考链接</a><br>
+        text-shadow给文本添加阴影;box-shadow给元素添加阴影<br>
+        cursor 属性定义了鼠标指针放在一个元素边界范围内时所用的光标形状<br>
     </li>
     <li>
         伪类选择器<br>
         关系选择器<br>
     </li>
+    <dl>
+        <dt>伪元素<br>"first-line" 伪元素用于向文本的首行设置特殊样式<br>
+        "first-letter" 伪元素用于向文本的首字母设置特殊样式<br>
+        :focus 选择器用于选择具有焦点的元素<br>
+        </dt>
+        <dd>213333333333333333333333333333333333333<br>asdadadsadasdsadsadasdasdsadadad</dd>
+        <dd>
+            <input type="text" name="">
+        </dd>
+    </dl>
 </div>
 </body>
 <script type="text/javascript">

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.default{
+			color:#333;
+			background-color: #fff;
+			border-color:#ccc;
+		}
+		.default:focus{
+			color:#333;
+			background-color: #e6e6e6;
+			border-color:#8c8c8c;
+		}
+		.default:hover,
+		.default:active{
+			color:#333;
+			background-color: #e6e6e6;
+			border-color:#adadad;
+		}
+		.default:active:hover,
+		.default:active:focus{
+			color:#333;
+			background-color: #d4d4d4;
+			border-color:#8c8c8c;
+		}
+		/*立体*/
+		.button {
+			text-decoration: none;
+			font: 24px/1em 'Droid Sans', sans-serif;
+			font-weight: bold;
+			text-shadow: rgba(255, 255, 255, .5) 0 1px 0;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			user-select: none;
+			padding: .5em .6em .4em .6em;
+			margin: .5em;
+			display: inline-block;
+			position: relative;
+			-webkit-border-radius: 8px;
+			-moz-border-radius: 8px;
+			border-radius: 8px;
+			border-top: 1px solid rgba(255, 255, 255, 0.8);
+			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+			/*background-image: -webkit-gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255, 255, 255, 0)), to( rgba(255, 255, 255, 0.7)));*/
+			background-image: -moz-radial-gradient(top, ellipse cover, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: -webkit-radial-gradient(top, ellipse cover, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			background-image: radial-gradient(top, ellipse cover, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+			/*background-image: gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255, 255, 255, 0)), to( rgba(255, 255, 255, 0.7)));*/
+			-webkit-transition: background .2s ease-in-out;
+			-moz-transition: background .2s ease-in-out;
+			transition: background .2s ease-in-out;
+			color: hsl(0, 0%, 40%) !important;
+			background-color: hsl(0, 0%, 75%);
+			/*-webkit-box-shadow: inset rgba(255, 254, 255, 0.6) 0 0.3em .3em, inset rgba(0, 0, 0, 0.15) 0 -0.1em .3em, 
+			hsl(0, 0%, 60%) 0 .1em 3px, hsl(0, 0%, 45%) 0 .3em 1px, 
+			rgba(0, 0, 0, 0.2) 0 .5em 5px;
+			-moz-box-shadow: inset rgba(255, 254, 255, 0.6) 0 0.3em .3em, inset rgba(0, 0, 0, 0.15) 0 -0.1em .3em, 
+			hsl(0, 0%, 60%) 0 .1em 3px, hsl(0, 0%, 45%) 0 .3em 1px, 
+			rgba(0, 0, 0, 0.2) 0 .5em 5px;*/
+			box-shadow: inset rgba(255, 254, 255, 0.6) 0 0.3em .3em, inset rgba(0, 0, 0, 0.15) 0 -0.1em .3em, 
+			hsl(0, 0%, 60%) 0 .1em 3px, hsl(0, 0%, 45%) 0 .3em 1px, 
+			rgba(0, 0, 0, 0.2) 0 .5em 5px;
+		}
+		.button:before {
+			font: 1.2em/0 'Pictos', sans-serif;
+			/*content: attr(data-icon);*/
+			margin-right: 0.4em;
+		}
+		.button.transparent {
+			color: rgba(0, 0, 0, 0.5) !important;
+		}
+
+		.button.transparent,
+		.button.transparent:hover,
+		.button.transparent:active {
+			background-color: transparent;
+			background-image: none;
+		}
+
+		.button.transparent:hover {
+			opacity: .9;
+		}
+		.button:hover {
+			background-color: hsl(0, 0%, 83%);
+		}
+		.button:active {
+			background-image: -webkit-gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255, 255, 255, 0)), to( rgba(255, 255, 255, 0)));
+			background-image: -moz-gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255, 255, 255, 0)), to( rgba(255, 255, 255, 0)));
+			background-image: gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255, 255, 255, 0)), to( rgba(255, 255, 255, 0)));
+			-webkit-box-shadow: inset rgba(255, 255, 255, 0.6) 0 0.3em .3em, inset rgba(0, 0, 0, 0.2) 0 -0.1em .3em, 
+			rgba(0, 0, 0, 0.4) 0 .1em 1px, 
+			rgba(0, 0, 0, 0.2) 0 .2em 6px;
+			-moz-box-shadow: inset rgba(255, 255, 255, 0.6) 0 0.3em .3em, inset rgba(0, 0, 0, 0.2) 0 -0.1em .3em, 
+			rgba(0, 0, 0, 0.4) 0 .1em 1px, 
+			rgba(0, 0, 0, 0.2) 0 .2em 6px;
+			box-shadow: inset rgba(255, 255, 255, 0.6) 0 0.3em .3em, inset rgba(0, 0, 0, 0.2) 0 -0.1em .3em, 
+			rgba(0, 0, 0, 0.4) 0 .1em 1px, 
+			rgba(0, 0, 0, 0.2) 0 .2em 6px;
+			-webkit-transform: translateY(.2em);
+			-moz-transform: translateY(.2em);
+			transform: translateY(.2em);
+		}
+
+		.button:focus {
+			outline: none;
+			color: rgba(254, 255, 255, 0.9) !important;
+			text-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px;
+		}
+	</style>
+</head>
+<body>
+	<button class="default">按钮</button>
+	<button class="button">立体的</button>
+</body>
+</html>
