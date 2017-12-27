@@ -9,14 +9,16 @@
  * @return {[type]} [description]
  * (function(){})
  * (function(){})()
- * !function(){}
+ * !function(){}()
  * 在函数声明前 加一元运算符 甚至将一元运算符进行组合
  */
 !function() {
 	var addEvent = function(dom, type, handle, capture) {
+		//document.addEventListener() 方法用于向文档添加事件句柄。
 		if(dom.addEventListener) {
 			dom.addEventListener(type, handle, capture);
 		} else if(dom.attachEvent) {
+			// attachEvent为了兼容ie8以及更早版本ie 和其他浏览器的特殊版本号
 			dom.attachEvent("on" + type, handle);
 		}
 	};

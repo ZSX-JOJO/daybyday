@@ -1,9 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>点击水波效果</title>
+	<title>我的--点击水波效果</title>
+	<style type="text/css">
+		.ripple-effect{
+			position: relative;
+			overflow: hidden;
+		}
+		.btn{
+			width: 150px;
+			height:40px;
+			border:1px solid #d9d9d9;
+			outline:none;
+			background:#008dc5;
+			color:#fff;
+		}
+		/*放置波纹动画元素*/
+		.ripple{
+			border-radius:50%;
+			background:rgba(0,0,0,0.2);
+			transform:scale(0);
+			-webkit-transform:scale(0);
+			position: absolute;
+			opacity:1;
+		}
+		/*添加波纹动画*/
+		.rippleEffect{
+			animation:rippleEffect 2s cubic-bezier(0.23, 1, 0.32, 1);
+			-webkit-animation:rippleEffect 2s cubic-bezier(0.23, 1, 0.32, 1);
+		}
+		@keyframes rippleEffect{
+			100%{
+				-webkit-transform:scale(2);
+				transform:scale(2);
+				opacity:0;
+			}
+		}
+		@-webkit-keyframes rippleEffect{
+			100%{
+				-webkit-transform:scale(2);
+				transform:scale(2);
+				opacity:0;
+			}
+		}
+	</style>
 </head>
 <body>
 	<button class="btn btn-default ripple-effect">点击波纹效果</button>
 </body>
+<script type="text/javascript" src="01.js"></script>
 </html>
