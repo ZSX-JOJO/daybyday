@@ -1,4 +1,6 @@
 + function() {
+	// 给所有accordion-item-toggle(打开/关闭)添加点击事件
+	// handle 处理 capture 捕获
 	var collapse = document.querySelectorAll('.accordion-item');
 	var addEvent = function(dom, type, handle, capture) {
 		if(dom.addEventListener) {
@@ -7,18 +9,21 @@
 			dom.attachEvent("on" + type, handle);
 		}
 	};
+	//绑定过渡结束的事件监听
 	var transitionEnd = function(elem, handler) {
 		elem.addEventListener('transitionend', handler, false);
 		elem.addEventListener('webkitTransitionEnd', handler, false);
 		elem.addEventListener('mozTransitionEnd', handler, false);
 		elem.addEventListener('oTransitionEnd', handler, false);
 	};
+	//移除过渡结束的事件监听
 	var deleteTransitionEnd = function(elem, handler) {
 		elem.removeEventListener('transitionend', handler, false);
 		elem.removeEventListener('webkitTransitionEnd', handler, false);
 		elem.removeEventListener('mozTransitionEnd', handler, false);
 		elem.removeEventListener('oTransitionEnd', handler, false);
 	};
+	//设置css3过渡时间
 	var setTransitionDuration = function(element, times) {
 		if(typeof times === 'number') {
 			times = times + 'ms';
@@ -35,6 +40,7 @@
 			if(item.classList.contains('accordion-item-expand')) {
 				setTransitionDuration(content, 0);
 				content.style.height = 'auto';
+				// 延迟过渡
 				var clientLeft = content.clientLeft;
 				setTransitionDuration(content, '');
 			} else {
@@ -44,7 +50,9 @@
 		open: function(item) {
 			var content = item.querySelector('.accordion-item-content');
 			content.style.height = content.scrollHeight + 'px';
+			// 移除过渡结束的事件监听
 			deleteTransitionEnd(content, accordionCallapse.transitionEnd);
+			// 绑定过渡结束的事件监听
 			transitionEnd(content, accordionCallapse.transitionEnd);
 			item.classList.add('accordion-item-expand');
 		},
@@ -56,7 +64,9 @@
 			var clientLeft = content.clientLeft;
 			setTransitionDuration(content, '');
 			content.style.height = '';
+			// 移除过渡结束的事件监听
 			deleteTransitionEnd(content, accordionCallapse.transitionEnd);
+			// 绑定过渡结束的事件监听
 			transitionEnd(content, accordionCallapse.transitionEnd);
 		}
 	};

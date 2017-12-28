@@ -10,7 +10,7 @@
  * (function(){})
  * (function(){})()
  * !function(){}()
- * 在函数声明前 加一元运算符 甚至将一元运算符进行组合
+ * 在函数声明前 加一元运算符 甚至将一元运算符进行组合 例如 "+ - ++ -- !" 其他运算符 目前发现不可以用
  */
 !function() {
 	var addEvent = function(dom, type, handle, capture) {
