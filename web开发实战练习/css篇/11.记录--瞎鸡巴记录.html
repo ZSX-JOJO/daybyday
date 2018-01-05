@@ -92,6 +92,36 @@
         oninput 事件在用户输入时触发<br>
         onpropertychange:property(属性)change(改变) 的时候，触发事件 [IE独有方法]<br>
         JSON.parse() 和 JSON.stringify()区别<br>
+        <p>通用选择器（*） <元素 (类型) 选择器 < 类选择器 < 属性选择器 < 伪类 < ID 选择器 < 内联样式</p>
+        <p>绝对定位的盒子居中position:absolute;left:50%;margin-left:负的宽度的一半</p>
+        <p>隐式转换和显式转换</p>
+        <p>link rel="shortcut icon" href="XXX.icon" 特指浏览器中地址栏左侧显示的图标</p>
+        <p>清除浮动:
+            伪元素:
+            .clearfix:after {
+                content:””;
+                Visibility:hidden;
+                Display:block;
+                Height:0;
+                Clear:both;
+            }
+            .clearfix{
+                zoom:1;
+            }
+        </p>
+        <p>清除浮动:
+            双伪元素:
+            .clearfix:before,.clearfix:after{
+                display: table;
+                content: "";
+            }
+            .clearfix:after {
+                clear: both;
+            }
+            .clearfix {
+                zoom: 1;
+            }
+        </p>
     </li>
     <li>
         伪类选择器<br>
@@ -107,6 +137,9 @@
             <input type="text" name="">
         </dd>
     </dl>
+    <p>单击:onclick 双击:ondblclick</p>
+    <p>onfocus:获得焦点</p>
+    <p>onblur:失去焦点</p>
 </div>
 </body>
 <script type="text/javascript">
