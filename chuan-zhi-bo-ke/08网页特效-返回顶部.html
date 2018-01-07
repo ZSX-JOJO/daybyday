@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>返回顶部</title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		body{
+			width: 2000px;
+		}
+		.top{
+			position: fixed;
+			right:50px;
+			bottom:100px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<p>长发飘飘</p>
+	<p>笑颜生花</p>
+	<p>楚楚动人</p>
+	<p>回眸一笑百媚生</p>
+	<p>愿你一生笑颜如花</p>
+	<p>长发飘飘</p>
+	<p>笑颜生花</p>
+	<p>楚楚动人</p>
+	<p>回眸一笑百媚生</p>
+	<p>愿你一生笑颜如花</p>
+	<p>长发飘飘</p>
+	<p>笑颜生花</p>
+	<p>楚楚动人</p>
+	<p>回眸一笑百媚生</p>
+	<p>愿你一生笑颜如花</p>
+	<p>长发飘飘</p>
+	<p>笑颜生花</p>
+	<p>楚楚动人</p>
+	<p>回眸一笑百媚生</p>
+	<p>愿你一生笑颜如花</p>
+	<p>长发飘飘</p>
+	<p>笑颜生花</p>
+	<p>楚楚动人</p>
+	<p>回眸一笑百媚生</p>
+	<p>愿你一生笑颜如花</p>
+	<p>长发飘飘</p>
+	<p>笑颜生花</p>
+	<p>楚楚动人</p>
+	<p>回眸一笑百媚生</p>
+	<p>愿你一生笑颜如花</p>
+	<p>长发飘飘</p>
+	<p>笑颜生花</p>
+	<p>楚楚动人</p>
+	<p>回眸一笑百媚生</p>
+	<p>愿你一生笑颜如花</p>
+	<p>长发飘飘</p>
+	<p>笑颜生花</p>
+	<p>楚楚动人</p>
+	<p>回眸一笑百媚生</p>
+	<p>愿你一生笑颜如花</p>
+	<p>长发飘飘</p>
+	<p>笑颜生花</p>
+	<p>楚楚动人</p>
+	<p>回眸一笑百媚生</p>
+	<p>愿你一生笑颜如花</p>
+	<p>长发飘飘</p>
+	<p>笑颜生花</p>
+	<p>楚楚动人</p>
+	<p>回眸一笑百媚生</p>
+	<p>愿你一生笑颜如花</p>
+	<p>长发飘飘</p>
+	<p>笑颜生花</p>
+	<p>楚楚动人</p>
+	<p>回眸一笑百媚生</p>
+	<p>愿你一生笑颜如花</p>
+	<div id="gotop" class="top">
+		<img src="./img/Top.jpg" alt="">
+	</div>
+</body>
+<script type="text/javascript">
+	function $(id){return document.getElementById(id);}
+	function show(obj){obj.style.display = "block";}
+	function hide(obj){obj.style.display = "none";}
+	function scroll(){
+		if(window.pageYoffset != null){//ie9+ 和其他浏览器
+			return{
+				left:window.pageXoffset,
+				top:window.pageYoffset
+			}
+		}
+		else if(document.compatMode == "CSS1Compat"){  // 声明的了 DTD
+	    	// 检测是不是怪异模式的浏览器 -- 就是没有 声明<!DOCTYPE html>
+	        return {
+	            left: document.documentElement.scrollLeft,
+	            top: document.documentElement.scrollTop
+	        }
+	    }
+	    return { //  剩下的肯定是怪异模式的
+	        left: document.body.scrollLeft,
+	        top: document.body.scrollTop
+	    }
+	}
+	// 以上的方法 是特别的
+	window.onload = function(){
+		var goTop = $("gotop");
+		window.onscroll = function(){
+			scroll().top > 0 ? show(goTop) : hide(goTop);//如果大约 0 显示 否则隐藏
+			 leader = scroll().top;//把卷去的头部 给 起始位置
+		}
+		var leader = 0;//起始位置
+		var target = 0;//目标位置
+		var timer = null;
+		goTop.onclick = function(){
+			target = 0;
+			timer = setInterval(function(){
+				leader = leader + (target - leader)/10;
+				window.scrollTo(0,leader);//去往页面的某个位置
+				if(leader == target){
+					clearInterval(timer);
+				}
+			},20)
+		}
+	}
+</script>
+</html>
