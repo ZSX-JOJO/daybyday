@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		.onmousemove{
+			width: 100%;
+			height:100px;
+			background-color: red;
+			color:black;
+			margin-bottom:30px;
+		}
+		.onmouseover{
+			width: 100%;
+			height:100px;
+			background-color: yellow;
+			color:black;
+			margin-bottom:30px;
+		}
+		.onmousedown{
+			width: 100%;
+			height:100px;
+			background-color: black;
+			color:white;
+			margin-bottom:30px;
+		}
+		.onmouseup{
+			width: 100%;
+			height:100px;
+			background-color: blue;
+			color:black;
+			margin-bottom:30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="onmousemove" id="onmousemove">onmousemove</div>
+	<div class="onmouseover" id="onmouseover">onmouseover</div>
+	<div class="onmousedown" id="onmousedown">onmousedown</div>
+	<div class="onmouseup" id="onmouseup">onmouseup</div>
+</body>
+<script type="text/javascript">
+	var num = 0,num2 = 0, num3 = 0, num4 = 0;
+	var div = document.getElementById("onmousemove");
+	var div2 = document.getElementById("onmouseover");
+	var div3 = document.getElementById("onmousedown");
+	var div4 = document.getElementById("onmouseup");
+	div.onmousemove = function(){
+		num++;
+		console.log("鼠标移动--多次触发事件"+num);
+	}
+	div2.onmouseover = function(){
+		num2++;
+		console.log("鼠标经过--每次触发一次"+num2);
+	}
+	div3.onmousedown = function(){
+		num3++;
+		console.log("鼠标每次按下--触发一次"+num3);
+	}
+	div4.onmouseup = function(){
+		num4++;
+		console.log("鼠标每次抬起--触发一次"+num4);
+	}
+</script>
+</html>
