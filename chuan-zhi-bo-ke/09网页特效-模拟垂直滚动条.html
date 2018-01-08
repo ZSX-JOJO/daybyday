@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		.box {
+            width: 300px;
+            height: 500px;
+            border: 1px solid red;
+            margin:100px;
+            position: relative;
+        }
+        .content {
+            height: auto;
+            padding: 5px 18px 5px 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .scroll {
+            width: 18px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #eee;
+        }
+        .bar {
+            width: 100%;
+            height: 100px;
+            background-color: red;
+            cursor: pointer;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+	</style>
+</head>
+<body>
+	<div class="box" id="box">
+		<div class="content">
+			俺是一个普普通通的庄户人家     一个人家种了八亩大棚，四亩桃树     一年365天  就从来就没歇过班【休息】 更不用说是放过假了  掩上（等到）收成好的时候  一年还剩下儿万儿八千的  掩上那收成不好啊 本儿都扒不回来（意思是还亏钱）本来地里的活就多 整天的累的待死似的（整天很累）后晌困觉浑身疼（晚上睡觉全身疼）不哈上两碗子酒教都困不着（晚上不喝点酒 无法睡觉）可这两年又添了些愁【这两年又增添了烦恼和忧愁】 什么事呢 就是俺那上小学四年级的儿啊 天天晚上让俺陪他做作业  又是那一起作业网【某教学平台】  又是那什么安全的 咱还不懂  俺自个就是个小学三年级木（没有）毕业啊 中国字儿都不认滴  你这还26个英文字母  更是不认滴      现在你级俺后晌盯孩子背英语单词儿啊【你让我晚上督促孩子背英语单词】 当着孩子的面儿咱还不好意思的说咱不懂 其实说点心的话【说句心里话】 是一个词也听不懂啊 数学又是那X 又是那Y啊【平面坐标轴 X轴 Y轴】 囊囊囊【语气助词 下同】 咱更看不懂了 囊 俺要是有本事 什么也懂 囊俺就不用让俺那孩子上学了 木个事的时候 俺就哈了个酒在寻思【闲着的时候 喝点酒 然后寻思】 囊 怎么寒（还） 一年交了这么多学费 国家又把老师那工资 涨滴比那喜马拉雅山还高 囊可为啥 你们拿着那工资不教学生 囊俺要是什么也会  让俺孩子自个在家里学 学他个十年八年滴 俺让俺那孩子自个去考个清华北大 囊 俺也有吹牛逼的资本了 俺就说俺那孩子是神童   寒（还）一天学校也木去 就考上大学了 俺可治不了滴【我没有那种能力】 治不滴俺才去找恁啊【我做不到 所以才去找你们老师】 恁弄着孩子怎么给俺教的【你们老师怎么教育我这孩子的？】 俺那八十年代上学的时候  俺那老师一个月才六块钱 六块钱的工资 见上午吃饭【每天中午吃饭】 俺那学生轮着给俺老师送饭  也有送煎饼的  也有送爬鼓【爬鼓 有歧义 未曾听说】滴 囊 俺老师别看着吃的不好  寒真教学生 下晌（下午）放了学 俺老师也布置作业啊 第二天早上交上去 俺老师都是一锅一锅的检查 一锅一锅的看（一锅一锅通一个一个） 对滴对 是错的改啊【对的标注正确 错误的进行批改】 现在阔好【现在可好】 那下晌放了学  也是布置作业 可这作业是家长辅导这孩子做的 囊这作业是家长做的 还是孩子做的 囊恁老师也不知道啊 恁说是波（是不？） 俺那孩子 恁肯定是知道 他都做差了 这不是俺不会啊囊 囊俺那许迪（可能 为学历的意思）寒不如他高 你说俺怎么去教他 是波 到了期中考试 期末考试的时候 恁学校有了理由了 为了自个的儿 不公布分数啊 不排名次啊 怕打击学生那自尊心 嗯 孩子放了假  来家（回到家中）一问三不知 就是会说一句话 知不道啊（不知道的意思） 俺老师木说啊 其实是什么俺也知不道啊 俺那孩子是学了些啥 俺也不知道啊 囊 现在国家对教育 投玉（投入）了这么多钱  阔恁这些当老师滴【可是你们这些当老师的】 恁 恁对得起国家对恁的重托不？ 囊 恁对得起俺和那孩子对恁的期盼不 囊 恁要是觉得教不了了  恁赶紧打个招呼 要不恁就家去和俺似的种大棚 要不恁就去看个大门  您别个级俺耽误俺那孩子【你们不要给我 再耽误我的孩子了】
+		</div>
+		<div class="scroll">
+			<div class="bar"></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var box = document.getElementById("box");//获取最大的盒子
+	var content = box.children[0];//获取内容盒子
+	var scroll = box.children[1];//获取滚动条所在的盒子
+	var bar = scroll.children[0];
+	//滚动条长度  容器盒子的高度 / 内容盒子的高度 * 容器盒子的高度
+	var barHeight = box.offsetHeight/content.offsetHeight*box.offsetHeight;
+	bar.style.height = barHeight + "px";
+	// 拖动红色盒子
+	startScroll(bar,content);
+	function startScroll(obj,target){
+		obj.onmousedown = function(event){
+			var event = event || window.event;
+			var t = event.clientY - this.offsetTop;//红色盒子  距离父亲盒子  的顶部距离
+			var that = this;//把bar对象 给that对象
+			document.onmousemove = function(event){
+				var event = event || window.event;
+				var barTop = event.clientY - t;//红色移动距离
+				//内容盒子要移动的距离: （内容盒子高度 -  大盒子高度） /  (大盒子高度 - 红色盒子的高度)   * 红色盒子移动的数值
+				var contentTop = (target.offsetHeight - target.parentNode.offsetHeight) / (target.parentNode.offsetHeight - that.offsetHeight) *  barTop;
+				// 内容盒子移动的距离
+				if(barTop < 0 ){
+					barTop = 0;
+				}
+				else if(barTop > target.parentNode.offsetHeight - that.offsetHeight){
+               // 大于  大盒子的高度  -  红色盒子的高度
+                   barTop = target.parentNode.offsetHeight - that.offsetHeight ;
+               }
+               else{
+                   target.style.top = -contentTop + "px";  // 往上走是负值
+               }
+               that.style.top = barTop + "px";
+               window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();   // 防止拖动滑块的时候， 选中文字
+			}
+		}
+		document.onmouseup = function() {
+            document.onmousemove = null;
+        }
+	}
+</script>
+</html>

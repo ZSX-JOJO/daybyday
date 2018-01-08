@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		@charset "utf-8";
+		/* CSS Document */
+		  /* 初始化CSS  重置浏览器样式*/
+		html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { margin:0; padding:0; }
+		fieldset, img { border:none; } /*为了照顾ie6 链接图片有边框*/
+		img{display: block;}
+		ul, ol { list-style:none; }
+		input { padding-top:0; padding-bottom:0; font-family: "SimSun","宋体";}
+		select, input { vertical-align:middle; }
+		 select, input, textarea { font-size:12px; margin:0; }
+		textarea { resize:none; }
+		table { border-collapse:collapse; }
+		h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal;}
+		body {font-size:12px; color:#999;}
+		.clearfix:after { content:"."; display:block; height:0; visibility:hidden; clear:both; }
+		 .clearfix { zoom:1; }
+		 .clearit { clear:both; height:0; font-size:0; overflow:hidden; }
+		 a { color:#666; text-decoration:none; }
+
+		a:hover { color:#ff8400; text-decoration:none; }
+		/*头部开始*/
+		.site-nav{
+			height: 60px;
+			background-color: #262626;
+			}
+		.nav-inner{
+			width: 1200px;
+			height: 60px;
+			margin: 0 auto;
+			}
+		.yunLogo{
+			float: left;
+			width: 185px;
+			height: 39px;
+			background-color: purple;
+			margin-top: 9px;
+			background:url(./img/logo.png) no-repeat;
+			}
+		.yunLogo a{
+			display:block;
+			width:185px;
+			height: 39px;
+			text-indent:-3000px;
+			}
+		.nav{
+			float: left;
+			margin-left:85px;
+			}
+		.nav li{
+			float: left;}
+		.nav li a{
+			display: inline-block;
+			padding:0 18px;
+			line-height: 60px;
+			font-size:14px;
+			color:white;
+			height:60px;
+			}
+		.nav li a.current,.nav li a:hover{
+			background-color:#008aff;
+			color:white;
+			}
+
+		.user-btn{
+			float: right;}
+		.login,.register{
+			width:45px;
+			height:26px;
+			border:2px solid #ff6400;
+			float:left;
+			text-align:center;
+			line-height:26px;
+			font-size:14px;
+			color:#ff6400;
+			margin-top:13px;
+			}
+		.register{
+			background-color: #ff6400;
+			color:white;
+			margin-left:6px;
+			}
+		/*视频区域*/
+		.video{
+			height: 470px;
+			background-color: #526da0;
+			}
+		.inner{
+			width:1200px;
+			margin:0 auto;
+			overflow:hidden;
+			}
+		.crumbs{
+			line-height:45px;
+			color:#f2f2f2;
+			}
+		.crumbs a{
+			color:#f2f2f2;}
+		.crumbs a:hover{
+			text-decoration:underline;}
+		.video-l{
+			float:left;
+			padding-left:75px;
+		}
+		.video-r{
+			width: 280px;
+			height: 380px;
+			background-color: #fff;
+			float: right;
+			padding:20px 15px 0;
+			margin-right:75px;
+			}
+		.video-r h2{
+			font-size:24px;
+			font-family:"microsoft yahei";
+			color:#333;
+			height:35px;}
+
+		.video-r p{
+			line-height: 20px;
+			color:#666;}
+		.date{
+			margin:30px 0 20px;}
+		.price{
+			font-size:24px;
+			font-family:"microsoft yahei";
+			color:#ff6400;}
+		.buy{
+			margin:45px 0 25px;
+			}
+		.listen a{
+			float:left;
+			width: 130px;
+			height: 46px;
+			background-color: #ff6400;
+			color:white;
+			border-radius:5px;
+			text-align:center;
+			line-height:46px;
+			margin-right:6px;
+			}
+		/*footer部分*/
+		.footer{
+			border-top:2px solid #293751;
+			}
+		.footer-t{
+			height:180px;
+			background-color: #314363;
+			}
+		.footer-b{
+			height:40px;
+			line-height: 40px;
+			background-color: #1b2435;}
+		.footer-con{
+			width: 1200px;
+			margin:0 auto;
+			padding-top:30px;
+			position:relative;	
+			}
+		.footer-con dl{
+			width:190px;
+			float:left;}
+		.footer-con dt{
+			height:36px;
+			font-size:18px;
+			color:white;}
+		.footer-con dd{
+			height:25px;
+		}
+		.footer-con dd a{
+			color:#b0bcd0;
+			background:url(../images/square_05.png) no-repeat left center;
+			padding-left:12px;}
+		.footer-con dd a:hover{
+			color:#b0bcd0;
+			text-decoration:underline;}
+		.erweima{
+			position: absolute;
+			right:0;
+			top:40px;}
+		.footer-b p{
+			width:1200px;
+			margin:0 auto;
+			}
+	</style>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="site-nav">
+		<div class="nav-inner">
+			<div class="yunLogo">
+				<h1>
+            		<a href="http://www.google.com" title="云课堂">云课堂</a>
+            	</h1>
+			</div>
+			<div class="nav">
+				<ul>
+					<li><a href="#" title="" class="current">首页</a></li>
+					<li><a href="#" title="">课程</a></li>
+					<li><a href="#" title="">每日作业</a></li>
+					<li><a href="#" title="">免费视频</a></li>
+					<li><a href="#" title="">免费直播厅</a></li>
+					<li><a href="#" title="">问答</a></li>
+					<li><a href="#" title="">学习指南</a></li>
+					<li><a href="#" title="">个人中心</a></li>
+				</ul>
+			</div>
+			<div class="user-btn">
+				<a href="#" title="" class="login">登录</a>
+				<a href="#" title="" class="register">注册</a>
+			</div>
+		</div>
+	</div>
+	<!-- 视频区域 -->
+	<div class="video">
+		<div class="inner">
+			<div class="crumbs">您的位置：<a href="#">首页</a> &gt; <a href="#">平面设计</a> &gt; <a href="#">Photoshop基础班</a>
+       		</div>
+		</div>
+		<div class="video-con">
+            <div class="video-l">
+            	<img src="./img/video_03.png" width="860" height="400" alt=""/>
+            </div>
+            <div class="video-r">
+            	<h2>PS网页设计精品网络班</h2>
+                <p>课程以基础入门为主，详细讲解软件的每一个工具的使用与技巧，让喜欢PS的你能够对软件迅速熟练及运用，课程简单易学，非常适合广大的设计爱好者、已经或即将踏入设计行业的新人们...
+                </p>
+                <p class="date">开课时间：2015年01月10日</p>
+                <p>课程价格：<span class="price">¥1400</span></p>
+                <p class="buy">已经有3215人购买</p>
+                <div class="listen">
+                	<a href="#">免费试听</a><a href="#">立即报名</a>
+                </div>
+            </div>
+       </div>
+	</div>
+	<!-- footer部分  -->
+	<div class="footer">
+	<div class="footer-t">
+    	<div class="footer-con">
+        	 <dl>
+        	 	<dt>新手入门</dt>
+        	 	<dd><a href="#">如何注册</a></dd>  
+        	 	<dd><a href="#">如何登录</a></dd>  
+        	 	<dd><a href="#">账号设置</a></dd>  
+        	 	<dd><a href="#">账号安全</a></dd>  
+  	         </dl>
+        	 <dl>
+        	 	<dt>新手入门</dt>
+        	 	<dd><a href="#">如何注册</a></dd>  
+        	 	<dd><a href="#">如何登录</a></dd>  
+        	 	<dd><a href="#">账号设置</a></dd>  
+        	 	<dd><a href="#">账号安全</a></dd>  
+  	         </dl>    	
+        	 <dl>
+        	 	<dt>新手入门</dt>
+        	 	<dd><a href="#">如何注册</a></dd>  
+        	 	<dd><a href="#">如何登录</a></dd>  
+        	 	<dd><a href="#">账号设置</a></dd>  
+        	 	<dd><a href="#">账号安全</a></dd>  
+  	         </dl>    	
+        	 <dl>
+        	 	<dt>新手入门</dt>
+        	 	<dd><a href="#">如何注册</a></dd>  
+        	 	<dd><a href="#">如何登录</a></dd>  
+        	 	<dd><a href="#">账号设置</a></dd>  
+        	 	<dd><a href="#">账号安全</a></dd>  
+  	         </dl>
+             <div class="erweima">
+             	<img src="./img/erweima_07.jpg" alt="">
+             </div>
+        </div>
+    </div>
+	<div class="footer-b">
+    	<p>版权所有 2006 - 2015</p>
+    </div>
+</div>
+</body>
+</html>

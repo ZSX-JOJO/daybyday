@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		img{
+            position: absolute;
+            left:0;
+            top:50px;
+        }
+        #demo{
+            width:1000px;
+            margin:0 auto;
+        }
+	</style>
+</head>
+<body>
+	<img src="./img/aside.jpg" alt="" id="pic">
+	<div class="" id="demo">
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+		<p>No BB show your code</p>
+	</div>
+</body>
+<script type="text/javascript">
+	function $(id){return document.getElementById(id);}
+	function show(obj){obj.style.display = "block";}
+	function hide(obj){obj.style.display = "none";}
+	function scroll() {
+	    if(window.pageYOffset != null){  //  ie9+ 和其他浏览器
+	        return {
+	            left: window.pageXOffset,
+	            top: window.pageYOffset
+	        }
+	    }
+	    else if(document.compatMode == "CSS1Compat"){ // 声明的了 DTD
+	    // 检测是不是怪异模式的浏览器 -- 就是没有 声明<!DOCTYPE html>
+	        return {
+	            left: document.documentElement.scrollLeft,
+	            top: document.documentElement.scrollTop
+	        }
+	    }
+	    return { //  剩下的肯定是怪异模式的
+	        left: document.body.scrollLeft,
+	        top: document.body.scrollTop
+	    }
+	}
+	// 以上为特别的方法
+	window.onload = function(){
+		var pic = $("pic");
+		var leader = 0;
+		var target = 0;
+		var timer = null;
+		var top = pic.offsetTop;
+		window.onscroll = function(){
+			clearInterval(timer);
+			target = scroll().top + top;// 把最新的 scrolltop 给  target
+			timer = setInterval(function(){
+				leader = leader + (target - leader)/10;
+				pic.style.top = leader +"px";
+			},20)
+		}
+	}
+</script>
+</html>
