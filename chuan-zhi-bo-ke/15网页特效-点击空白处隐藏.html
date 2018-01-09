@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		body{width:2000px;height:2000px;}
+		#mask{
+			width: 100%;
+			height:100%;
+			opacity:0.4;
+			background-color: black;
+			position: fixed;
+			top:0;
+			left:0;
+			display:none;
+		}
+		#show{
+			width: 300px;
+            height: 300px;
+            background-color: #fff;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin: -150px 0 0 -150px;
+            display: none;
+		}
+	</style>
+</head>
+<body>
+	<a href="javascript:;" title="" id="login">登录</a>
+	<a href="javascript:;" title="">注册</a>
+	<div id="mask"></div>
+	<div id="show"></div>
+</body>
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id);
+	}
+	var login = document.getElementById("login");
+	login.onclick = function(event){
+		$("mask").style.display = "block";
+		$("show").style.display = "block";
+		document.body.style.overflow = "hidden";//不显示滚动条
+		//取消冒泡
+		var event = event || window.event;
+		if(event && event.stopPropagation){
+			event.stopPropagation();
+		}else{
+			event.canceBubble = true;//for IE  目前chrome和ff 也已支持
+		}
+	}
+
+	document.onclick = function(event){
+		var event = event || window.event;
+		var targetId = event.target ? event.target.id : event.srcElement.id;
+        if(targetId != "show")  // 不等于当前点点击的名字
+        {
+            $("mask").style.display = "none";
+            $("show").style.display = "none";
+            document.body.style.overflow = "visible"; // 显示滚动条
+        }
+	}
+</script>
+</html>
