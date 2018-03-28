@@ -2,14 +2,13 @@
 
 ## 1：node安装以及 环境变量 （略。。。）
 
-## 2： npm
+## 2： npm 
 
 ​	（若执行 npm 某项命令时提示要求更高版本的 npm时 使用）
 
-​	   npm install -g npm     or     npm update -g  【全局安装or 升级npm】
-       cnpm install npm -g [使用淘宝镜像的命令]
+​	   npm install -g npm     or     npm update -g  【全局安装】 
 
-​	设置npm代理
+​	设置npm代理 
 
 ​		npm config set proxy http://地址:端口
 
@@ -27,35 +26,9 @@
 
 ​		npm config delete https-proxy
 
-        或者npm config set proxy null
-
 ​	查看`config`配置
 
 ​		npm config list
-
-    清理缓存
-
-        npm cache clean --force
-
-    查看全局安装的模块
-
-        npm list -g
-
-    查看某个模块的版本号
-
-        npm list 模块名称
-
-    卸载模块
-
-        npm uninstall 模块名称
-
-    更新模块
-
-        npm update 模块名称
-
-    搜索模块
-
-        npm search 模块名称
 
 ## 3：nrm 
 
@@ -117,15 +90,10 @@
 
 ​			7：项目运行成功后，浏览器会自动打开 localhost:8080 (or 其他端口)
 
-​		css预编译
-
-​			
-
 ### 	4.3
 
 ​		遇到的问题：
 
 ​			问题？不存在的！依赖问题？挂代理再来一次就好了！其他？百度就好了！
-            1.405 Method Not Allowed  [是否使用了代理?若报此错 关闭代理]
 
 ​		

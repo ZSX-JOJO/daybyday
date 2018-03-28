@@ -20,3 +20,27 @@ JavaScript 字符串（String） 对象
 JavaScript Date（日期） 对象
 
 JavaScript Array（数组） 对象
+
+------------------------------------------
+祖传代码1:
+var bb = 1;
+function aa(bb){
+bb = 2;
+alert(bb+"内");
+}
+aa(bb);
+alert(bb+"外");
+
+2  1
+---------------------------------
+祖传代码2:
+var bb = 1;
+function aa(cc){
+bb = 2;
+alert(bb+"内");
+}
+aa(bb);
+alert(bb+"外");
+
+2  2
+-----------------------------------
