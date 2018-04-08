@@ -96,4 +96,6 @@
 
 ​			问题？不存在的！依赖问题？挂代理再来一次就好了！其他？百度就好了！
 
-​		
+# Electron
+
+npm install -g electron-packager   //electron打包工具
