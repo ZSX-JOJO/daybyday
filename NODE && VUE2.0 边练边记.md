@@ -8,25 +8,25 @@
 
 ​	   npm install -g npm     or     npm update -g  【全局安装】 
 
-​	设置npm代理 
+### 	2.1 设置npm代理 
 
 ​		npm config set proxy http://地址:端口
 
 ​		npm config set https-proxy http://地址:端口
 
-​	若代理需要认证
+### 	2.2 若代理需要认证
 
 ​		npm config set proxy http://username:password@server:port
 
 ​		npm config set https-proxy http://username:pawword@server:port
 
-​	清除npm代理
+### 	2.3 清除npm代理
 
 ​		npm config delete proxy
 
 ​		npm config delete https-proxy
 
-​	查看`config`配置
+### 	2.4 查看`config`配置
 
 ​		npm config list
 
@@ -96,6 +96,68 @@
 
 ​			问题？不存在的！依赖问题？挂代理再来一次就好了！其他？百度就好了！
 
+# cmder 
+
+```javascript
+1、把 Cmder 加到环境变量 
+把 Cmder.exe 存放的目录添加到系统环境变量； 
+加完之后, Win+r 一下输入 cmder, 即可。
+
+2、添加 cmder 到右键菜单：环境变量添加后，在任意文件夹中即可打开 Cmder，上一步的把 Cmder 加到环境变量就是为此服务的, 在管理员权限的终端输入以下语句即可: 
+Cmder.exe /REGISTER ALL
+
+3、为 Cmder.exe 创建快捷方式，右击 Cmder.exe 选择 “创建快捷方式” 点击即可，以后打开 Cmder.exe 只要点击桌面对应的快捷方式即可
+```
+
+
+
 # Electron
 
-npm install -g electron-packager   //electron打包工具
+```javascript
+1 electron-packager //electron打包工具
+npm install -g electron-packager  
+
+2 electron-builder //electron打包工具  ok的
+npm install electron-builder -g
+electron-builder --version
+//查询命令
+electron-builder -help
+```
+
+# bower  包管理工具
+
+```javascript
+npm install -g bower
+
+.bowerrc //配置文件
+{
+  "directory" : "js/lib" //自定义位置
+}
+1 bower 初始化
+bower init //在项目目录下 执行  初始化
+2 包的安装
+bower install 库的名字 --save //包的安装   --save参数是保存配置到你的bower.json
+3 包的信息
+bower info 库的名称  //  查找库的版本(所有) 
+4 包的更新
+直接修改bower.json文件中的 库 版本号
+"dependencies": {
+    "jquery": "~1.11.3"
+  }
+bower update //执行 进行更新
+5 包的查找
+bower search 库的名字 
+6 包的卸载
+bower uninstall //库的名字
+7 当前应用中 安装的包
+bower list
+8 查找单个包信息
+bower info 名字#版本号
+```
+
+# express  (Node 应用框架)
+
+```JavaScript
+
+```
+
