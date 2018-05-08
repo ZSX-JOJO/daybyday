@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		p:first-child{
+			color:red;
+		}
+		div > p:first-child{
+			color:blue;
+			font-size:20px;
+		}
+		p:first-child i{
+			color:green;
+			font-size:40px;
+		}
+	</style>
+</head>
+<body>
+	<p>第一个p<br>
+		p:first-child选择器匹配作为任何元素的第一个子元素的 p 元素
+	</p>
+	<p>第二个p</p>
+	<div> div > p:first-child 选择器匹配作为任何元素的第一个子元素的 p 元素
+		<p>div中的 p 1</p>
+		<p>div中的 p 2</p>
+		<p>div中的 p 3</p>
+	</div>
+	<section>p:first-child i 选择器匹配所有作为元素的第一个子元素的 p 元素中的所有 i 元素
+		<p>
+			<i>此P1中的i 1</i>
+			<i>此P1中的i 2</i>
+			<i>此P1中的i 3</i>
+		</p>
+		<p>
+			<i>此P2中的i 1</i>
+			<i>此P2中的i 2</i>
+			<i>此P2中的i 3</i>
+		</p>
+		<p>
+			<i>此P3中的i 1</i>
+			<i>此P3中的i 2</i>
+			<i>此P3中的i 3</i>
+		</p>
+	</section>
+	<div style="color:red">
+		CSS 伪类 (Pseudo-classes)  &&  CSS 选择器
+	</div>
+</body>
+</html>
