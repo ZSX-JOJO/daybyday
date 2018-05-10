@@ -2,6 +2,8 @@
 
 ## 1：node安装以及 环境变量 （略。。。）
 
+​	   清理本地缓存 npm cache clean 
+
 ## 2： npm 
 
 ​	（若执行 npm 某项命令时提示要求更高版本的 npm时 使用）
@@ -30,7 +32,7 @@
 
 ​		npm config list
 
-## 3：nrm 
+## 3：3.1   nrm          registry 管理工具[管理 npm 源的工具 ] 
 
 ​	npm registry 管理工具 能够查看和切换当前使用的 registry
 
@@ -167,3 +169,23 @@ bower info 名字#版本号
 
 ```
 
+# Koa(Node 应用框架)
+
+```javascript
+
+```
+
+# MongoDB 的安装与使用
+
+```javascript
+
+```
+
+# supervisor
+
+```javascript
+//supervisor 会监听当前目录下 node 和 js 后缀的文件，当这些文件发生改动时，supervisor 会自动重启程序
+npm i -g supervisor
+//使用
+supervisor ***.js
+```
