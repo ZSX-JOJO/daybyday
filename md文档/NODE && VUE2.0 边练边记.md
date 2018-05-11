@@ -189,3 +189,20 @@ npm i -g supervisor
 //使用
 supervisor ***.js
 ```
+## Express + MongoDB 搭建一个博客 
+
+```JavaScript
+所需模块:
+npm i config-lite connect-flash connect-mongo ejs express express-formidable express-session marked moment mongolass objectid-to-timestamp sha1 winston express-winston --save
+代码规范 && 语法检查错误:
+npm i eslint -g
+eslint --init
+
+/**
+页面布局
+jQuery + Semantic-UI
+操作数据库
+Mongolass 模块操作 mongodb 进行增删改查
+*/
+```
+
