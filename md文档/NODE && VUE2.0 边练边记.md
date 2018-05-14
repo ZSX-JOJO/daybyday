@@ -1,5 +1,21 @@
 # NODE && VUE2.0 边练边记
 
+从github拉取源码龟速的话,请将git设置代理
+
+```JavaScript
+/**设置/
+git config --global https.proxy http://127.0.0.1:1080
+git config --global https.proxy https://127.0.0.1:1080
+git config --global http.proxy 'socks5://127.0.0.1:1080' 
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+
+/**取消/
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
+
+
 ## 1：node安装以及 环境变量 （略。。。）
 
 ​	   清理本地缓存 npm cache clean 
@@ -203,6 +219,7 @@ eslint --init
 jQuery + Semantic-UI
 操作数据库
 Mongolass 模块操作 mongodb 进行增删改查
+使用 winston 和 express-winston 记录日志
 */
 ```
 
