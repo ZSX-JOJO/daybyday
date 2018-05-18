@@ -4,7 +4,7 @@ var fs = require('fs');
 //交易
 function home(response) {
     response.writeHead(200, { 'Content-Type': 'text/html' });
-    fs.createReadStream(__dirname + '/index.html', 'utf8').pipe(response);
+    fs.createReadStream(__dirname + '/post.html', 'utf8').pipe(response);
 }
 
 function review(response) {

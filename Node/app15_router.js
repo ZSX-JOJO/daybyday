@@ -4,6 +4,7 @@ var fs = require('fs');
 function route(handle, pathname, response,params) {
     console.log('Routing a request for ' + pathname);
     if (typeof handle[pathname] === 'function') {
+        //params 传递给 handler
         handle[pathname](response,params);
     } else {
         response.writeHead(200, { 'Content-Type': 'text/html' });
