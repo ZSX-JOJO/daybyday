@@ -205,7 +205,7 @@ npm i -g supervisor
 //使用
 supervisor ***.js
 ```
-## Express + MongoDB 搭建一个博客 
+# Express + MongoDB 搭建一个博客 
 
 ```JavaScript
 所需模块:
@@ -221,5 +221,23 @@ jQuery + Semantic-UI
 Mongolass 模块操作 mongodb 进行增删改查
 使用 winston 和 express-winston 记录日志
 */
+```
+
+# body-parser  (express常用中间件)
+
+```javascript
+/**
+用来处理post请求
+*/
+npm install body-parser
+```
+
+# multer(express常用中间件)
+
+```JavaScript
+/**
+用于处理文件上传
+*/
+
 ```
 
