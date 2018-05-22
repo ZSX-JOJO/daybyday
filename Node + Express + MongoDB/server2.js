@@ -3,6 +3,9 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 
 var app = express();
+
+app.set('view engine', 'ejs');//ejs模版引擎
+
 var multer = require('multer');
 
 var createFolder = function(folder) {
@@ -29,7 +32,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 // create application/json parser
-var jsonParser = bodyParser.json()
+var jsonParser = bodyParser.json();
 
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -39,9 +42,21 @@ app.get('/', function(req, res) {
     res.send("home page: " + req.query.find);
 });
 
-app.get('/form', function(req, res) {
-    var form = fs.readFileSync('./form.html', { encoding: "utf8" });
-    res.send(form);
+app.get('/form/:name', function(req, res) {
+    // var form = fs.readFileSync('./form.html', { encoding: "utf8" });
+    // res.send(form);
+
+    // var person = req.params.name;
+    // res.sendFile(__dirname + '/form.html');
+
+    // var person = req.params.name;
+    var person = {name:"zhaoshouxin",age:29,like:["study","happy","cry"]};
+    // res.render('form',{person:person});
+    res.render('form',{person:person});
+});
+
+app.get('/about',function(req,res){
+    res.render('about');
 });
 
 app.post('/', urlencodedParser, function(req, res) {

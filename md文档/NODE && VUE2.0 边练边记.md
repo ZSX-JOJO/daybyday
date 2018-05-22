@@ -221,6 +221,11 @@ jQuery + Semantic-UI
 Mongolass 模块操作 mongodb 进行增删改查
 使用 winston 和 express-winston 记录日志
 */
+
+https://github.com/chyingp/nodejs-learning-guide
+
+
+https://github.com/chyingp/Express-learning-guide/blob/master/SUMMARY.md
 ```
 
 # body-parser  (express常用中间件)
@@ -232,12 +237,18 @@ Mongolass 模块操作 mongodb 进行增删改查
 npm install body-parser
 ```
 
-# multer(express常用中间件)
+# multer(express常用中间件) 类似express-fileupload
 
 ```JavaScript
 /**
 用于处理文件上传
 */
+
+```
+
+# ejs模版引擎
+
+```javascript
 
 ```
 
