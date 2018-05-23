@@ -1,3 +1,7 @@
+---
+typora-root-url: img
+---
+
 # NODE && VUE2.0 边练边记
 
 从github拉取源码龟速的话,请将git设置代理
@@ -246,9 +250,90 @@ npm install body-parser
 
 ```
 
-# ejs模版引擎
+# ejs模版引擎 使用详解
 
-```javascript
+[](http://ejs.co/#docs)
 
+```JavaScript
+/**
+使用方法:
+*/
+1:赋值
+<%= person.name %>
+2:遍历
+<ul>
+    <% person.like.forEach(function(item) { %>//forEach
+        <li>
+        <%= item %>
+        </li>
+    <% }) %>
+</ul>
+3:引入
+<%- include(path) %> 引入 path 代表你引入其他模板的路径;模版需要添加后缀名
+4:判断
+<% if (user) { %>
+  <h2><%= user.name %></h2>
+<% } %>
+5:具体使用
+	str：html 模版
+ 	data：数据
+ 	options：配置选项
+    
+	5.1:compile
+    var template = ejs.compile(str, options);
+        template(data);
+    5.2:render
+    ejs.render(str, data, options);
+    
+    /**
+    body部分
+    */          
+    <div id="box"></div>
+    <script id="ejsTemplate">
+        <div>
+  			<%='姓名：' + name%>
+  			<%='年龄：' + age%>
+  		</div>
+	    <ul>
+  			<%if (isShowSource) {%>
+  				<%for(var i = 0; i < source.length; i++) {%>
+  					<li><%=source[i]%></li>
+  				<%}%>
+	    	<%} else {%>
+	    		<li>test</li>
+	    	<%}%>
+	    </ul>
+    </script>
+    ---------------------------------
+    /**
+    js部分
+    */                  
+    <script>
+    var data = {
+  		name: '张三',
+  		age: '18',
+  		isShowSource: true,
+  		source: [
+  			'语文: 60',
+  			'数学: 60',
+  			'英语: 60',
+  			]
+  	};            
+    var getHtml = document.getElementById('ejsTemplate').innerHTML;
+
+  	// compile方法
+  	var template = ejs.compile(getHtml);
+  	var setHtml = template(data);
+    /**简写*/
+   	//document.getElementById('box').innerHTML = 	ejs.compile(document.getElementById('ejsTemplate').innerHTML)(data);                   
+
+ 	// render方法
+ 	// var setHtml = ejs.render(getHtml, data);
+
+  	document.getElementById('box').innerHTML = setHtml;
+    </script>                  
+              
 ```
+
+![](/ejs.jpg)
 
