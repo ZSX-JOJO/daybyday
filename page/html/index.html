@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .carousel-inner img {
+            width: 100%;
+            height:100%;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid"><!--container-->
+        <!--导航-->
+        <ul class="nav nav-pills justify-content-end bg-dark">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" href="#home">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#function">FUNCTION</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#photo">PHOTO</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#service">SERVICE</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#about">ABOUT US</a>
+            </li>
+        </ul>
+        <!--选项卡 内容 测试测试-->
+        <div class="tab-content">
+            <div id="home" class="container tab-pane active">
+                <h3>HOME页</h3>
+            </div>
+            <div id="function" class="container tab-pane fade">
+                <h3>FUNCTION页</h3>
+            </div>
+            <div id="photo" class="container tab-pane fade">
+                <h3>PHOTO页</h3>
+            </div>
+            <div id="service" class="container tab-pane fade">
+                <h3>SERVICE页</h3>
+            </div>
+            <div id="about" class="container tab-pane fade">
+                <h3>ABOUT页</h3>
+            </div>
+        </div>
+        <!--轮播图-->
+        <div id="slide" class="carousel slide" data-ride="carousel">
+            <!--指示符-->
+            <ul class="carousel-indicators">
+                <li data-target="#slide" data-slide-to="0" active></li>
+                <li data-target="#slide" data-slide-to="1"></li>
+                <li data-target="#slide" data-slide-to="2"></li>
+            </ul>
+            <!--轮播图片-->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../img/slide1.png" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="../img/slide2.png" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="../img/slide3.png" alt="">
+                </div>
+            </div>
+            <!--左右切换按钮-->
+            <a class="carousel-control-prev" href="#slide" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#slide" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+        <!--Function-->
+        <div class="container-fluid" style="background-color: yellow">
+            <div class="text-center" style="font-size: 36px">Fucntion</div>
+            <div class="text-center" style="font-size:20px">背起行囊,用双脚丈量大地,露营于山野之间,逃离城市</div>
+            <div class="row">
+                <div class="col">
+                    <div><img src="../img/1.png" alt="" style="width: 40px"></div>
+                    <div>
+                            <div>领队服务</div>
+                            <div>强大的领队后台管理系统,一键发布活动</div>
+                            <div>支持在线体现</div>
+                    </div>
+                </div>
+                <div class="col">123213213</div>
+                <div class="col">123123</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script></script>
+</html>
