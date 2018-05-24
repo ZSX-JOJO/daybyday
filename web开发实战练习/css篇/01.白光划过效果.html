@@ -6,13 +6,16 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>Hello APP</title>
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
-    <style type="text/css">
+	<style type="text/css">
     .highlight-box{
     	width:1300px;
     	height:300px;
-    	left:50%;
-    	transform:translateX(-50%);
-    	overflow: hidden;
+		left:50%;
+		/* 防止出现 上下和左右的滚动条 */
+		transform:translateX(-50%);
+		/* overflow 属性指定如果内容溢出一个元素的框，会发生什么 */
+		overflow: hidden;
+		/* 防止出现上下和左右的滚动条 */
     	position: relative;
     }
     .highlight-box img{
