@@ -24,11 +24,15 @@
     }
     /*每个"*"元素之前插入内容*/
     .highlight-box:before{
-    	display: block;
+		display: block;
+		/*注意这里top和left，让白光移动到图片左上角，
+		后续的划过动画也是依靠这两个属性*/
     	top:-200%;
-    	left:-100%;
+		left:-100%;
+		/* 定义白光的宽高 */
     	width:50%;
-    	height:300%;
+		height:300%;
+		/* 白光右旋45° */
     	-webkit-transform:rotate(45deg);
     	transform:rotate(45deg);
     	/*linear-gradient 渐变 */
@@ -41,8 +45,16 @@
     }
     /*hover 在鼠标移到链接上时添加的特殊样式*/
     .highlight-box:hover:before{
+		/* animation-name:名字;动画指定名称*/
+		/* animation-duration:0.5s;属性定义动画完成一个周期需要多少秒或毫秒 */
+		/* animation-timing-function: linear;指定动画将如何完成一个周期 linear匀速*/
     	animation: crossed .5s linear;
-    }
+	}
+	/* @keyframes 动画指定名称 */
+	/* @keyframes 名字{
+		from{left:0%;}
+		to{left:200%;}
+	} */
     @keyframes crossed {
 		0% {
 			top: -200%;

@@ -11,10 +11,11 @@
 		    position: absolute;
 		    top: 30%;
 		    left: 200px;
-		    margin-top: -150px;
+			margin-top: -150px;
 		    -webkit-transition: transform .6s;
 		    transition: transform .6s;
 		}
+		/* 存放 6个面 */
     	.cude {
 			width: 200px;
 		    height: 200px;
@@ -27,8 +28,9 @@
 		    transform-origin: 50% 50% 0;
 		    -webkit-transform-origin: 50% 50% 0;
 		    -webkit-animation: rotate 20s infinite;
-		    animation: rotate 20s infinite;
+		    animation: rotate 10s infinite;
 		}
+		/* 立方体 每一面 */
 		.surface {
 			position: absolute;
 		    top: 0;
@@ -46,6 +48,7 @@
 		    -webkit-transition: all .3s;
 		    transition: all .3s;
 		}
+		/* 前 */
 		.front {
 		    transform: rotateY(0) translateZ(100px);
 		}
@@ -69,7 +72,8 @@
 		.bottom {
 		    transform: rotateX(90deg) translateZ(-100px);
 		}
-
+		
+		/* 鼠标停留在每一面上的效果 */
 		.cude:hover .front {
 		    transform: rotateY(0) translateZ(150px);
 		}
@@ -102,7 +106,8 @@
 		        transform: rotateX(360deg) rotateY(360deg);
 		    }
 		}
-
+		
+		/*  */
 		.surface-in {
 		    width: 100px;
 		    height: 100px;
@@ -146,7 +151,7 @@
 <body>
 	<div class="box">
 	    <div class="cude">
-			<div class="front surface">
+			<div class="surface front">
 				正面
 			</div>
 			<div class="surface left">
@@ -165,22 +170,22 @@
 				背面
 			</div>
 			<div class="surface-in front-in">
-				<img src="./image/02_3.jpg" alt="" />
-			</div>
-			<div class="surface-in back-in">
-				<img src="./image/02_3.jpg" alt="" />
+				<img src="./image/02_1.jpg" alt="" />
 			</div>
 			<div class="surface-in left-in">
-				<img src="./image/02_3.jpg" alt="" />
+				<img src="./image/02_2.jpg" alt="" />
 			</div>
 			<div class="surface-in right-in">
 				<img src="./image/02_3.jpg" alt="" />
 			</div>
-			<div class="surface-in top-in">
-				<img src="./image/02_3.jpg" alt="" />
-			</div>
 			<div class="surface-in bottom-in">
-				<img src="./image/02_3.jpg" alt="" />
+				<img src="./image/02_4.png" alt="" />
+			</div>
+			<div class="surface-in top-in">
+				<img src="./image/02_5.jpg" alt="" />
+			</div>
+			<div class="surface-in back-in">
+				<img src="./image/02_6.jpg" alt="" />
 			</div>
 		</div>
 	</div>

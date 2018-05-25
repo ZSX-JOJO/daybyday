@@ -1,0 +1,130 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+.matrix_box { position:relative; left:75px; top:75px; }
+.matrix_i,
+.matrix_j {
+	position:absolute;
+	width:5px;
+	height:5px;
+	overflow:hidden;
+}
+.matrix_i {
+	background-color:#a0b3d6;
+	z-index:1;
+}
+.matrix_j {
+	background-color:#F60;
+	-webkit-transition:all 1s ease-in-out;
+	-moz-transition:all 1s ease-in-out;
+    -o-transition:all 1s ease-in-out;
+    -ms-transition:all 1s ease-in-out;
+    transition:all 1s ease-in-out;
+}
+.p_button { margin-top:200px; }
+</style>
+</head>
+
+<body>
+<div id="main">
+	<h1>CSS3 transform matrix矩阵偏移分解实例页面</h1>
+    <div id="body">
+    	<div id="code" class="part">
+        	<h3>代码：</h3>
+            <div class="show">
+                <p>&nbsp;&nbsp;.matrix_box { position:relative; left:75px; top:75px; } <span style="color:#999;">/* 中心点位置 */</span></p>
+            </div>
+        </div>
+        <div id="effect" class="part">
+            <h3>效果：</h3>
+            <div class="show">
+            	<div class="demo">
+                	<p>对于matrix(1, 0, 0, 1, 30, 30)偏移，位置计算等式为：<br />x' = ax+cy+e = 1*x+0*y+30 = x + 30;<br />y' = bx+dy+f = 0*x+1*y+30 = y + 30;</p>
+                	<p id="matrixCalc"></p>
+                	<div id="matrixBox" class="matrix_box"></div>
+                    <p class="p_button">
+                    	<button id="matrixButton" type="button">开始分解演示</button>
+                        <input id="matrixChk" type="checkbox" checked="checked" autocomplete="off" /><label for="matrixChk">自动演示</label>
+                    </p>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+<script>
+(function() {
+	var $ = function(selector) {
+		return document.querySelector(selector);
+	};
+	var htmlMatrixI = '',
+		eleMatrixBox = $("#matrixBox"), eleMatrixCalc = $("#matrixCalc"), eleMatrixBtn = $("#matrixButton");
+	if (eleMatrixBox && eleMatrixCalc && eleMatrixBtn) {
+		for (var x=-75; x<75; x+=5) {
+			for (var y=-75; y<75; y+=5) {
+				htmlMatrixI = htmlMatrixI + '<i class="matrix_i" style="left:'+x+'px;top:'+y+'px;"></i><b class="matrix_j" style="left:'+x+'px;top:'+y+'px;"></b>';	
+			}
+		}
+		eleMatrixBox.innerHTML = htmlMatrixI;
+		
+		var eleMatrixIs = eleMatrixBox.getElementsByTagName("i"),
+			eleMatrixBs = eleMatrixBox.getElementsByTagName("b"),
+			index = 0, isText = true, timer = "undefined";
+		
+		var funStepMove = function() {
+			if (eleMatrixIs[index]) {
+				var left = eleMatrixIs[index].style.left.replace(/[a-z]+/, ""),
+					top = eleMatrixIs[index].style.top.replace(/[a-z]+/, ""),
+					posL = Number(left) + 30, posT = Number(top) + 30;
+					
+				var textButton = '';
+				if (isText) {
+					// 描述演示
+					eleMatrixCalc.innerHTML = "现在是第"+ (index + 1) +"块，坐标是("+ left +", "+ top +"). 于是有：<br /> x' = x + 30 = "+ left +" + 30 = "+ posL +";<br />y' = y + 30 = "+ top +" + 30 = "+ posT +";";
+					textButton = '移动演示';
+					isText = false;
+				} else {
+					// 计算演示
+					eleMatrixIs[index].style.display = "none";
+					eleMatrixBs[index].style.zIndex = 2;
+					eleMatrixBs[index].style.left = posL + "px";
+					eleMatrixBs[index].style.top = posT + "px";
+					textButton = '描述演示';
+					isText = true;
+					index++;
+				}	
+				if (timer) {
+					textButton = "分解演示中...";
+					timer = setTimeout(funStepMove, 100);	
+				}
+				eleMatrixBtn.innerHTML = textButton;
+			}
+		};
+		
+		eleMatrixBtn.addEventListener("click", function() {
+			if (!timer || timer === "undefined") {
+				funStepMove();
+			}
+		});
+		
+		$("#matrixChk").addEventListener("click", function() {
+			if (this.checked) {
+				timer = true;
+				funStepMove();
+			} else {
+				if (timer && timer !== true) {
+					clearTimeout(timer);	
+				}
+				timer = false;
+				eleMatrixBtn.innerHTML = "开始分解演示"
+			}
+		});
+	}
+	
+})();
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .animation-info h1{
+            color:brown;
+        }
+        .animation-info div{
+            color:darkorange;
+        }
+        .animation-info{
+            color:blue;
+            font-size:20px;
+            text-align: center;
+        }
+        ul li {
+            list-style: none;
+        }
+        .animation{
+            color:black;
+            text-align: center;
+            width: 100px;
+            height:100px;
+            top: 100px;
+            /* 单纯的将div上移200px 防止运动时页面滚动 */
+            transform:translateY(-200px);
+            /* overflow: hidden; */
+            position:relative;
+            background: red;
+            animation:myfirst 5s infinite;
+            animation-direction:alternate;
+            /* safari chrome */
+            -webkit-animation:myfirst 5s infinite; 
+            -webkit-animation-direction:alternate; 
+        }
+        @keyframes myfirst{
+            0% {background: red;left:0px;top:0px}
+            25% {background: black;left:200px;top:0px}
+            50% {background: yellow;left:200px;top:200px}
+            75% {background: blue;left:0px;top:200px}
+            100% {background: green;left:0px;top:0px}
+        }
+        @-webkit-keyframes myfirst{
+            0% {background: red;left:0px;top:0px}
+            25% {background: black;left:200px;top:0px}
+            50% {background: yellow;left:200px;top:200px}
+            75% {background: blue;left:0px;top:200px}
+            100% {background: green;left:0px;top:0px}
+        }
+    </style>
+</head>
+<body>
+        <div class="animation-info">
+            <h1>animation所有属性</h1>
+            <ul>
+                <li>animation-name
+                    <div>animation-name: keyframename|none;</div>
+                    <div>@keyframes 动画指定一个名称</div>
+                </li>
+                <li>animation-duration
+                    <div>animation-duration: time;</div>
+                    <div>定义动画完成一个周期需要多少秒或毫秒</div>
+                </li>
+                <li>animation-timing-function
+                    <div>animation-timing-function: value;</div>
+                    <div>指定动画将如何完成一个周期</div>
+                </li>
+                <li>nimation-iteration-count
+                    <div>animation-iteration-count: value;</div>
+                    <div>定义动画应该播放多少次</div>
+                </li>
+                <li>animation-direction
+                    <div>animation-direction: normal|reverse|alternate|alternate-reverse|initial|inherit;</div>
+                    <div>定义是否循环交替反向播放动画</div>
+                </li>
+                <li>animation-fill-mode
+                    <div>animation-fill-mode: none|forwards|backwards|both|initial|inherit;</div>
+                    <div>规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式</div>
+                </li>
+                <li>animation-play-state
+                    <div>animation-play-state: paused|running;</div>
+                    <div>指定动画是否正在运行或已暂停</div>
+                </li>
+                <li>initial
+                    <div>设置属性为其默认值</div>
+                </li>
+                <li>inherit
+                    <div>从父元素继承属性</div>
+                </li>
+            </ul>
+        </div>
+        <p style="text-align: center;"><strong>注意：</strong>Internet Explorer 9 及其之前的版本不支持 animation-direction 属性。</p>
+        <div class="animation">animation效果</div>
+</body>
+</html>
