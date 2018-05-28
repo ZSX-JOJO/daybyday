@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/localforage.js"></script>
+    <title>用于本地存储的类库</title>
+</head>
+<body>
+      <p>用于本地存储的类库,兼容各种浏览器</p>
+</body>
+<script>
+    // 初始化
+    (function(){
+        // setItem
+        var store = localforage.createInstance({
+            name: "nameHere"
+        });
+
+        var otherStore = localforage.createInstance({
+            name: "otherName"
+        });
+
+        // 设置某个数据仓库 key 的值不会影响到另一个数据仓库
+        store.setItem("key", "value");
+        otherStore.setItem("key2", "value2");
+    })/*初始化完成*/
+
+    // getitem
+    localforage.getItem('somekey').then(function(value) {
+        // 当离线仓库中的值被载入时，此处代码运行
+        console.log(value);
+    }).catch(function(err) {
+        // 当出错时，此处代码运行
+        console.log(err);
+    });
+
+    // 回调版本：
+    localforage.getItem('key', function(err, value) {
+        // 当离线仓库中的值被载入时，此处代码运行
+        console.log(value);
+    });
+    console.log('localforage is: ', localforage);
+</script>
+</html>

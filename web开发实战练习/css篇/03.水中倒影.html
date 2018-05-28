@@ -3,12 +3,28 @@
 <head>
 	<title>水中倒影</title>
 	<style type="text/css">
-		.box-reflect{
-			padding-bottom: 200px;
+		.info{
+			text-align: center;
+			color:red;
+			font-size:30px;
 		}
-		img{
-			width:600px;
-			height: 600px;
+		li{
+			list-style: none;
+			/* 默认 */
+			color:initial;
+			/* 继承父类 */
+			/* color:inherit; */
+			font-size:20px;
+		}
+		.box-reflect{
+			padding-bottom: 100px;
+		}
+		.box-reflect2{
+			padding-bottom: 100px;
+		}
+		.img1{
+			width:300px;
+			height: 400px;
 			left:50%;
 			transform: translateX(-50%);
 			position: relative;
@@ -18,11 +34,39 @@
 			/*-webkit-box-reflect:left 10px;*/
 			-webkit-box-reflect:right 10px;
 		}
+		.img2{
+			width:300px;
+			height: 400px;
+			left:50%;
+			transform: translateX(-50%);
+			position: relative;
+			/*-webkit-box-reflect:above;*/
+			/*-webkit-box-reflect:below;*/
+			/* -webkit-box-reflect:below 0px; */
+			-webkit-box-reflect:left 10px;
+		}
 	</style>
 </head>
 <body>
-	<div class="box-reflect">
-		<img src="./image/02_4.png" class="">
+	<div class="info">box-reflect
+		<li>box-reflect：none | direction offset? mask-box-image?</li>
+		<li>box-reflect：none | direction: 此值表示box-reflect生成倒影的方向，主要包括以下几个值:<br>
+				above: 表示生成的倒影在对象（原图）的上方;<br>
+				below: 表示生成的倒影在对象（原图）的下方<br>
+				left: 表示生成的倒影在对象 (原图) 的左侧;<br>
+				right: 表示生成的倒影在对象 (原图) 的右侧;
+		</li>
+		<li>offset: 用来设置生成倒影与对象（原图）之间的间距，其取值可以是固定的像素值，也可以是百分比值，如：
+				: 使用长度值来设置生成的倒影与原图之间的间距，只要是 CSS 中的长度单位都可以，此值可以使用负值；
+				: 使用百分比来设置生成的倒影与原图之间的间距，此值也可以使用负值
+		</li>
+		<li>mask-box-image: 用来设置倒影的遮罩效果，可以是背景图片，也可以是渐变生成的背景图像</li>
 	</div>
+	<div class="box-reflect">
+		<img src="./image/02_4.png" class="img1">
+	</div>
+	<div class="box-reflect2">
+			<img src="./image/02_5.jpg" class="img2">
+		</div>
 </body>
 </html>

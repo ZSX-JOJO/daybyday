@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>indexedDB客户端存储大量结构化数据</title>
+</head>
+<body>
+    <div>indexedDB客户端存储大量结构化数据</div>
+</body>
+<script>
+    const request = indexedDB.open('myDatabase',2);//数据库名,版本号
+   
+    // request.addEventListener('success',e => {//箭头函数
+    //     console.log('连接数据库成功');
+    // });
+
+    request.addEventListener('success',function(){
+        console.log('连接数据库成功');
+    });
+
+    request.addEventListener('error', function(){
+        console.log("连接数据库失败");
+    });
+
+    const request2 = indexedDB.open('myDatabase', 3);
+    
+    request2.addEventListener('upgradeneeded',function(){
+        const db = e.target.result;
+        const  store = db.createObjectStore('Users', {keyPath: 'userId', autoIncrement: false});
+        console.log('创建对象仓库成功');
+    });
+</script>
+</html>
