@@ -1,0 +1,171 @@
+.banner{
+	position: relative;
+	top:0;
+	z-index: 5;
+}
+.banner img{
+	width: 100%;
+}
+.banner .txtBox{
+	position: absolute;
+	top:47%;
+	left:357px;
+	text-align: left;
+	color: #fff;
+	line-height: 1.5;
+}
+.txtBox .txt1{
+	font-size:52px;
+	font-weight: normal;
+}
+.txtBox .txt2{
+	font-size:52px;
+	font-family:  "Microsoft JhengHei";
+}
+.txtBox .txt3{
+	width: 250px;
+	height: 56px;
+	line-height: 56px;
+	font-size:20px;
+	border: 1px solid #fff;
+	box-sizing: border-box;
+	border-radius: 50px;
+	text-align: center;
+	margin-top:20px;
+}
+.banner #banDown{
+	cursor: pointer;
+}
+#main{
+	width: 1200px;
+	margin:0 auto;
+	padding:80px 0 126px;
+}
+.conBox .content{
+	width: 450px;
+	line-height: 32px;
+	float: left;
+	margin-top:33px;
+}
+.conBox .content .title span{
+	font-size:26px;
+	color: #40a3db;
+	padding-bottom: 5px;
+	border-bottom:5px solid #e0f7ff;
+}
+.conBox .content .iosTit{
+	font-size:18px;
+	padding:20px 0 25px;
+}
+.conBox .content .msgInfor{
+	line-height: 32px;
+	font-size:16px;
+}
+.conBox .content .see{
+	width: 160px;
+	height: 44px;
+	line-height: 44px;
+	box-sizing: border-box;
+	border: 1px solid #40a3db;
+	text-align: center;
+	border-radius: 4px;
+	margin-top:32px;
+}
+.con-bom{
+	margin-top:110px;
+}
+.conPhoto{
+	float: left;
+	width: 640px;
+	height:500px;
+}
+.margin-right{
+	margin-right:110px;
+}
+.conPhoto img{
+	width: 100%;
+}
+.brea{
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	font-size:36px;
+	color:#d3d4d5;
+	background: #f4f5f6;
+}
+#intro{
+	width: 1090px;
+	margin:80px auto 130px;
+}
+#intro dl{
+	width: 290px;
+	float: left;
+	margin-left: 110px;
+}
+.margin-l-0{
+	margin-left: 0 !important;
+}
+#intro dl dt{
+	width: 127px;
+	margin:0 auto 40px;
+}
+#intro dl dd{
+	font-size:16px;
+	line-height: 36px;
+	color:#888888;
+}
+.color-777{
+	color:#777777 !important;
+}
+
+
+
+
+
+
+/*产品详情页css*/
+.info{
+	background: #f0f3f7;
+	padding: 56px 0;
+}
+.info p{
+	text-align: center;
+	width: 480px;
+	margin:0 auto;
+	line-height: 32px;
+	font-size:16px;
+	color:#666666;
+}
+#mainDetail{
+	width: 1060px;
+	margin:0 auto;
+	padding:44px 0 75px;
+}
+.infoItem{
+	margin-bottom:90px;
+}
+.infoItem .show{
+	float: left;
+	width: 480px;
+	height: 400px
+}
+.infoItem .right{
+	margin-right:98px;
+}
+.infoItem .producInfo{
+	float: left;
+	width: 480px;
+	margin-top:70px;
+}
+.infoItem .producInfo .tit{
+	font-size:22px;
+}
+.infoItem .producInfo .titInfo{
+	font-size:18px;
+	padding: 4px 0 15px;
+	color:#444;
+}
+.infoItem .producInfo .msgInfor{
+	font-size:16px;
+	line-height: 32px;
+}

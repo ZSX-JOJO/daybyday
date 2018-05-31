@@ -1,0 +1,290 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+------------------------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	outline: 0;
+
+	font-size: 1em;
+}
+
+html,body {
+	font-size: 62.5%;
+	font-family: "Microsoft YaHei","Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC","Microsoft JhengHei","WenQuanYi Micro Hei", sans-serif;
+}
+
+body,
+table,
+input, textarea, select, option {
+	 
+	line-height: 1.1;
+}
+
+table,
+input, textarea, select, option {
+	line-height: 1.1;
+}
+
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary {
+	display: block;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+:focus {
+	outline: 0;
+}
+
+ins {
+	text-decoration: none;
+}
+
+del {
+	text-decoration: line-through;
+}
+a{
+	text-decoration: none;
+	color:#333;
+}
+img {
+	vertical-align: top;
+	max-width: 100%;
+	display: block;
+}
+
+.font-size-16{
+	font-size:16px !important;
+}
+
+.color-blue{
+	color: #40a3db !important;
+}
+.color-666{
+	color:#666 !important;
+}
+
+
+.padded-t-10{
+	padding-top: 10px !important;
+}
+
+.margin-t-20{
+	margin-top: 20px !important;
+}
+.margin-b-20{
+	margin-bottom: 20px !important;
+}
+/*------------------------------------------------------------
+------------------------------------------------------------*/
+body {
+	color: #666;
+	line-height: 1.5;
+	background-color: #fff;
+	min-width: 1250px;
+}
+
+#container {
+	text-align: left;
+	/*position: relative;*/
+}
+
+#main {	
+}
+
+* html #main {
+	zoom: 1;
+}
+
+*+html #main {
+	zoom: 1;
+}
+
+#main:after {
+	height: 0;
+	visibility: hidden;
+	content: ".";
+	display: block;
+	clear: both;
+}
+
+* html .clearfix {
+	zoom: 1;
+}
+
+*+html .clearfix {
+	zoom: 1;
+}
+.clearfix:after {
+	height: 0;
+	visibility: hidden;
+	content: ".";
+	display: block;
+	clear: both;
+}
+/*banner图片*/
+.banner img{
+	width: 100%;
+}
+
+/*header*/
+.header{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	min-width: 1250px;
+	z-index: 10;
+}
+.header .hBox{
+	padding:17px 0 ;
+	margin: 0 58px 0 64px;
+}
+.header .logo{
+	float: left;
+}
+.header .logo img{
+	width: 70px;
+}
+.header .hBox ul {
+	float: right;
+}
+.header .hBox ul li{
+	display: inline-block;
+	padding: 7px 28px;
+}
+.header .hBox ul li:last-child{
+	padding-right: 0;
+}
+.header .hBox ul li a{
+	display: block;
+	padding: 15px 5px;
+	font-size:16px;
+	color:#fff;
+	box-sizing: border-box;
+}
+.header .hBox ul li a.on{
+	border-bottom:4px solid #3af7d9;
+}
+
+
+
+
+/*footer*/
+.footer{
+	height: 140px;
+	background: #494a4f;
+	position: relative;
+}
+.footer .fooInner{
+	width: 1200px;
+	margin:0 auto;
+	font-size:12px;
+	color: #fff;
+}
+.footer .fooLeft{
+	float: left;
+	line-height: 140px;
+}
+.footer .fooRight{
+	float: right;
+	margin:43px 0;
+}
+.footer .fooRight div img{
+	padding-right:5px;
+	vertical-align: middle;
+	width: 12px;
+	float: left;
+}
+.footer .fooRight a{
+	padding-bottom: 3px;
+	color: #fff;
+	border-bottom:1px solid #808184;
+}
+/*返回顶部*/
+#top{
+	width: 55px;
+	height: 55px;
+	line-height: 65px;
+	background: #9ac2bb;
+	position: absolute;
+	right: 300px;
+	top:-71px;
+	text-align: center;
+	color:#fff;
+	font-size:14px;
+	border-radius: 5px;
+	z-index: 11;
+	cursor: pointer;	
+}
+/*top向上箭头*/
+.top-arrow:before {
+	display: block;
+	content: '';
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	left: 40%;
+	top:15px;
+	background: transparent;
+	border: 1.5px solid #fff;
+	border-left: none;
+    border-top: none;
+	z-index: 15;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	-webkit-transform: rotate(-135deg);
+	transform: rotate(-135deg);
+}
+/*banner处的向下箭头*/
+.bom-arrow{
+	position: relative;
+}
+.bom-arrow:before {
+	display: block;
+	content: '';
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	left: 50%;
+	top:-25px;
+	background: transparent;
+	border: 1.5px solid #fff;
+	border-right: none;
+    border-bottom: none;
+	z-index: 15;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	-webkit-transform: rotate(-135deg);
+	transform: rotate(-135deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

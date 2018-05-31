@@ -1,0 +1,310 @@
+
+/*------------------------------------------------------------
+	server.css
+------------------------------------------------------------*/
+.serviceContainer .serviceInfo {
+	padding: 52px 0 64px 0;
+	margin: 0 auto;
+	width: 632px;
+	font-size: 16px;
+	text-align: center;
+	color: #999999;
+	line-height: 36px;
+}
+
+.serviceContainer .planBox li {
+	height: 334px;
+	width: 100%;
+}
+
+.serviceContainer .planBox .list {
+	width: 894px;
+	margin: 0 auto;
+}
+
+.serviceContainer .planBox .list_left {
+	float: left;
+	width: 433px;
+	padding-top: 107px;
+}
+
+.planBox .list_right {
+	float: right;
+}
+
+.planBox .left_top {
+	font-size: 26px;
+	color: #fff;
+	line-height: 36px;
+	padding-bottom: 40px;
+}
+
+.planBox .left_top span {
+	font-size: 24px;
+	line-height: 36px;
+	color: #fff;
+}
+
+.planBox .left_bottom {
+	font-size: 16px;
+	line-height: 36px;
+	color: #FFFFFF;
+}
+
+.planBox .list_right {
+	padding-top: 107px;
+}
+.design{
+	width: 1150px;
+	margin:0 auto;
+}
+.design_top{
+	text-align: center;
+}
+.design_top .top-title{
+	font-size: 24px;
+	color: #7ab9e4;
+	padding:100px 0 24px 0;
+}
+.design_top_bottom {
+	font-size: 16px;
+	line-height: 36px;
+	width: 434px;
+	margin: 0 auto;
+	color: #999999;
+	padding-bottom: 80px;
+}
+
+/*------------------------------------------------------------
+	contact.css
+------------------------------------------------------------*/
+.contactContainer{
+	width: 680px;
+	padding-top: 80px;
+	padding-bottom: 99px;
+	margin:  0 auto  ;
+}
+.contactContainer .conInfo{
+	text-align: center;
+	margin-bottom: 50px;
+}
+.contactContainer .conInfo .con{
+	color: #40a3db;
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+.contactContainer .infoInput {
+	height: 187px;
+}
+.contactContainer .infoInput li{
+	width: 318px;
+	float: left;
+	padding-bottom: 24px;
+}
+.contactContainer .infoInput li div{
+	font-size: 14px;
+	padding-bottom: 12px;
+}
+.contactContainer .infoInput li input{
+	height: 42px;
+	width: 312px;
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;
+}
+.contactContainer .infoInput span{
+	color: #40a3db;
+}
+.contactContainer .infoInput .infoBox{
+	padding-right: 44px;
+}
+.contactContainer .project{
+	font-size: 14px;
+}
+.contactContainer .project div{
+	padding-bottom: 12px;
+}
+.contactContainer .project textarea{
+	width: 650px;
+	height: 180px;
+	font-size: 14px;
+	color: #999999;
+	padding:13px ;
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;
+	resize: none;
+}
+.send{
+	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #fff;
+	background: #40a3db;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 40px;
+	border-radius: 2px;
+}
+/*------------------------------------------------------------
+	about.css
+------------------------------------------------------------*/
+.aboutContainer .two{
+height: 192px;
+width: 100%;
+color: #FFFFFF;
+text-align: center;
+background: #40a3db;
+}
+.aboutContainer .two .two_top{
+font-size: 16px;
+padding: 52px 0 26px 0;
+}
+.aboutContainer .two .two_bottom{
+font-size: 14px;
+line-height: 32px;
+width: 463px;
+margin: 0 auto;
+}
+.aboutContainer .three{
+width: 837px;
+margin: 0 auto;
+padding:70px 0 120px 0 ;
+}
+.aboutContainer .three .th_height{
+height: 130px;
+}
+.aboutContainer .three .bh{
+padding-bottom: 40px;
+}
+.aboutContainer .three .three_left{
+float: left;
+}
+.aboutContainer .three .three_right{
+padding:22px 0 0px 30px;
+float: left;
+}
+.aboutContainer .three .right_top{
+font-size: 16px;
+color: #666666;
+}
+.aboutContainer .three .right_bottom{
+width: 617px;
+font-size: 14px;
+line-height: 32px;
+color: #666666;
+}
+.aboutContainer .one{
+width: 1202px;
+margin: 0 auto;
+height: 1359px;
+padding-top: 100px;
+}
+.aboutContainer .one .one_left{
+height: 100%;
+width: 515px;
+float: left;
+/*background: red;*/
+}
+.aboutContainer .one .one_left .leftTit{
+height: 32px;
+margin-bottom: 20px;
+}
+.aboutContainer .one .one_middle{
+height: 100%;
+width: 172px;
+float: left;
+/*background: yellow;*/
+}
+.aboutContainer .one .one_middle>ul .modeList{
+width: 1px;
+background: #40a3db;
+margin:0 auto;
+}
+.aboutContainer .one .one_right{
+height: 100%;
+width: 515px;
+float: right;
+/*background: pink;*/
+}
+.aboutContainer .left1{
+width: 406px;
+height: 159px;
+float: right;
+padding-bottom: 117px;
+padding-top: 280px;
+}
+.aboutContainer .leftBtn{
+width: 100px;
+font-size: 14px;
+text-align: center;
+line-height: 32px;
+border-radius: 25px;
+background: #40a3db; 
+color: #fff;
+float: left;
+}
+.aboutContainer .rightBtn{
+width: 100px;
+font-size: 14px;
+text-align: center;
+line-height: 32px;
+border-radius: 25px;
+background: #40a3db; 
+color: #fff;
+float: right;
+}
+.aboutContainer .txt{
+width: 100%;
+height: 106px;
+font-size: 14px;
+line-height: 32px;
+color: #999999;
+}
+.aboutContainer .left3{
+width: 406px;
+height: 159px;
+float: right;
+padding-bottom: 117px;
+padding-top: 144px;
+}
+.aboutContainer .right1{ 
+padding-top: 225px;
+}
+.aboutContainer .right2{
+width: 406px;
+height: 159px;
+/*padding-bottom: 117px;*/
+padding-top: 144px;
+}
+.aboutContainer .right2 .rightInner{
+height: 32px;
+margin-bottom: 20px;
+}
+.aboutContainer .right3{ 
+padding-top: 100px;
+}
+.aboutContainer .one_middle{
+text-align: center;
+}
+.aboutContainer .middle_top{
+font-size: 24px;
+color: #40a3db; 
+}
+.aboutContainer .middle1{
+padding: 34px 65px;
+}
+.aboutContainer .dot{
+width: 10px;
+height: 10px;
+background: #40a3db;
+margin: 0 auto;
+border-radius: 50%;
+margin-top: 6px;
+margin-bottom: 6px;
+}
+.c1 img{
+	padding: 0px 43px;
+}
+.c2 img{
+	padding: 0px 43px;
+}

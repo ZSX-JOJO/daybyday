@@ -12,12 +12,14 @@
 		{
 		    position: relative;
 		}
+		/* content 搭配:before 和 :after伪元素 */
 		.tooltip:before
 		{
 		    position: absolute;
 		    content: '';
 		    border: 5px solid transparent;
 		}
+		/* content:attr(attribute); */
 		.tooltip:after
 		{
 		    font-size: 14px;
@@ -41,11 +43,13 @@
 		    visibility: hidden;
 
 		    -webkit-transition: .3s ease;
-		       -moz-transition: .3s ease;
+			   -moz-transition: .3s ease;
+			   /* 过渡 */
 		            transition: .3s ease;
 		    -webkit-transition-delay: 0ms;
 		       -moz-transition-delay: 0ms;
-		            transition-delay: 0ms;
+					transition-delay: 0ms;
+			/* pointer-events来阻止元素成为鼠标事件 */
 		    pointer-events: none;
 
 		    opacity: 0;
@@ -54,11 +58,13 @@
 		.tooltip:hover:after
 		{
 		    visibility: visible;
-
+			/* opacity 不透明度 */
 		    opacity: 1;
 		}
 		[data-direction='down']:before
 		{
+			/* calc() 函数用于动态计算长度值。 */
+			/* 运算符前后需要添加一个空格 */
 		    top: -webkit-calc(100% - 5px);
 		    top:    -moz-calc(100% - 5px);
 		    top:         calc(100% - 5px);
