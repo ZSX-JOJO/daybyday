@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>切角</title>
+    <style>
+        .box{
+            width:500px;
+            height:50px;
+            float:left;
+            padding:10px;
+            margin:10px 20px;
+            color:#333;
+            text-align: center;
+            font-size:16px;
+            font-weight: bold;
+        }
+        .corner {
+            background: linear-gradient(-45deg, transparent 15px, #58a 0);
+        }
+        .corner2 {
+            background: linear-gradient(135deg, transparent 15px, #58a 0) top left, linear-gradient(-135deg, transparent 15px, #58a 0) top right, linear-gradient(-45deg, transparent 15px, #58a 0) bottom right, linear-gradient(45deg, transparent 15px, #58a 0) bottom left;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+        }
+        
+        .corner3 {
+            background: radial-gradient(circle at top left, transparent 15px, #58a 0) top left, radial-gradient(circle at top right, transparent 15px, #58a 0) top right, radial-gradient(circle at bottom right, transparent 15px, #58a 0) bottom right, radial-gradient(circle at bottom left, transparent 15px, #58a 0) bottom left;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://www.runoob.com/css3/css3-gradients.html" target="_blank">参考链接</a>
+    <div class="box corner">切角</div>
+    <div class="box corner2">切角2</div>
+    <div class="box corner3">切角3</div>
+</body>
+</html>
