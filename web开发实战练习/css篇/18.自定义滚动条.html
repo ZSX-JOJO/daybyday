@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无效果...</title>
+    <style>
+        body{
+            height:1000px
+        }
+        .box{
+            position: fixed;
+            top:0;
+            left:0;
+            padding:20px;
+        }
+        /* 以下样式 仅支持webKit内核的浏览器 */
+
+        /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+		::-webkit-scrollbar{
+            width: 10px;
+            height:10px;
+        }
+        /*定义滚动条轨道（track）和滑块（thumb）*/  
+        ::-webkit-scrollbar-track,
+        ::-webkit-scrollbar-thumb {
+            border-right: 1px solid transparent;
+            border-left: 1px solid transparent;
+        }
+        /*定义滚动条顶部（左侧）的按钮块   上箭头*/
+        ::-webkit-scrollbar-button:start {
+            width: 10px;
+            height: 12px;
+            background: transparent url(./image/arrow.png) no-repeat 0 0;
+        }
+        /*定义滚动条底部（右侧）的按钮块  下箭头*/
+        ::-webkit-scrollbar-button:end {
+            width: 10px;
+            height: 12px;
+            background: transparent url(./image/arrow.png) no-repeat -50px 0;
+        }
+        ::-webkit-scrollbar-button:start:hover {
+            background-color: #eee;
+        }
+
+        ::-webkit-scrollbar-button:end {
+            background-color: #eee;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 8px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        /*定义水平和垂直滚动条两者的交界处（拐角）*/
+        ::-webkit-scrollbar-corner {
+            display: block;
+        }
+
+        ::-webkit-scrollbar-track:hover {
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            -webkit-border-radius: 8px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">自定义滚动条</div>
+</body>
+</html>

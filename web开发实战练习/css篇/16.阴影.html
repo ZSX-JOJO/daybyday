@@ -4,7 +4,15 @@
 	<meta charset="UTF-8">
 	<title>boxShadow阴影</title>
 	<style>
+		.headr{
+			color:red;
+			font-size:40px;
+			text-align: center;
+		}
         /* box-shadow:[inset] x-offset y-offset blur-radius spread-radius color; */
+        /* inset 默认为空 表示外阴影 inset代表内阴影 */
+        /* x-offset:水平偏移量 */
+        /* y-offset:垂直偏移量 */
         /* blur-radius ：阴影模糊半径 */
         /* spread-radius ：阴影扩展半径 */
 		.box{
@@ -45,10 +53,39 @@
 		.shadow-left{
 			box-shadow:-15px 0 10px -10px rgba(0,0,0,.22);
 		}
+		/* .clearfix:after{
+			height: 0;
+			visibility: hidden;
+			content: ".";
+			display: block;
+			clear: both;
+		} */
+		ul li{
+			list-style: none;
+		}
+		li{
+			font-size: 20px;
+			color:green;
+		}
+		li div{
+			font-size:16px;
+			color:red;
+		}
+		.test{
+			width: 400px;
+			height:400px;
+			/* background: red; */
+			border:1px solid blue;
+			border-radius:100px 80px 60px 40px / 20px 40px 60px 80px;
+			text-align: center;
+			line-height: 400px;
+			color:black;
+		}
 	</style>
 </head>
 <body>
-	<div class="box shadow">四周阴影</div>
+	<div class="headr">%到底相对于谁? who care? i care!</div>
+	<div class="box shadow ">四周阴影</div>
 	<div class="box shadow-top-left">左上阴影</div>
 	<div class="box shadow-top-right">右上阴影</div>
 	<div class="box shadow-bottom-right">右下阴影</div>
@@ -57,5 +94,42 @@
 	<div class="box shadow-right">右单边阴影</div>
 	<div class="box shadow-bottom">下单边阴影</div>
 	<div class="box shadow-left">左单边阴影</div>
+	<!-- 以下为%具体相对于谁 -->
+	<ul style="float: left">
+		<li>定位类position 
+			<div>static  position 的默认值，并没有对元素起到定位的作用,所以 left、right 等位置属性并不能被有效赋值，所以不存在在定位功能上的 % 值</div>
+			<div>absolute  %相对的元素便是这个参照物。left、right 是相对于 width，top 和 bottom 是相对于 height</div>
+			<div>relative 子绝父相</div>
+			<div>fixed %相对于视窗</div>
+		</li>
+		<li>盒子模型
+			<div>width & height %相对于父盒子</div>
+			<div>margin & padding %相对于父元素宽度,父元素宽度!父元素!!宽度!!!</div>
+			<div>border 不存在%</div>
+			<div>border-radius 前四个值和后四个值用 / 隔开，顺时针排序 斜杠前表示各角水平方向上的圆角半径，斜杠后表示各角竖直方向上的圆角半径<br>
+					border-radius:top-left|top-right|bottom-right|border-left / top-left|top-right|bottom-right|border-left
+			</div>
+			<div class="test">border-radius 最多可以取八个值</div>
+		</li>
+		<li>背景值
+			<div>background-posation
+					它的参照对象就是原盒子。但是这个属性比较特殊，他不是参照原盒子的宽高值，而是原盒子的宽高值减去背景图片的宽高值所得到的剩余值，更为形象的说，下面这两个属性值是等价的："center center" 和 "50% 50%"
+			</div>
+		</li>
+		<li>transform
+			<div>translate
+				<div>translate(x,y) 参照物 自身的宽高</div>
+				<div>translate3d(x,y,z) 当在z轴上进行偏移时 不起作用 因为z-index默认为auto</div>
+			</div>
+			<div>transform-origin</div>
+			<div>scale() 控制元素的缩放比例</div>
+			<div>zoom  它的取值既可以是浮点数，也可以是 %，包括参照物，都与 scale() 等价</div>
+		</li>
+		<li>字体
+			<div>font-size  参照父盒子</div>
+			<div>line-height 如果属性值 是数字 最后的结果便是这个数字与该元素字体大小的乘积</div>
+			<div>text-indent 缩进   如果设置的是 %，则参照的是父元素的 width 特例!!!</div>
+		</li>
+	</ul>
 </body>
 </html>
