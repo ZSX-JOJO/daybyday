@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表格</title>
+    <style>
+        body{
+            font-family: "microsoft yahei";
+        }
+        table{
+            margin:10px;
+        }
+        table,
+        table *{
+            -webkit-box-sizing:border-box;
+            box-sizing:border-box;
+        }
+        table.table-border{
+            border-top:1px solid #d9d9d9;
+            border-left:1px solid #d9d9d9;
+        }
+        table.table-border thead tr th,
+        table.table-border tbody tr td,
+        table.table-border tfoot tr td{
+            border-right:1px solid #d9d9d9;
+            border-bottom:1px solid #d9d9d9;
+            padding:5px 25px;
+        }
+        table.table-hover tbody tr{
+            -webkit-transition:background .3s;
+            transition:background .3s;
+        }
+        table.table-striped tbody tr:nth-child(2n+1){
+            background:#eee;
+        }
+        /* table.table-hover tbody tr:nth-child(2n+1):hover */
+        table.table-hover tbody tr:hover{
+            background:#eee;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 每个表格均有若干行（由 <tr> 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。 -->
+    <table cellpadding="0" cellspacing="0" class="table-border table-striped">
+        <thead><!--组合表格的 表头内容-->
+            <tr><!--定义 行-->
+                <th>标题</th><!--标签定义 HTML 表格中的表头单元格-->
+                <th>标题</th>
+                <th>标题</th>
+                <th>标题</th>
+                <th>标题</th>
+            </tr>
+        </thead>
+        <tbody><!--组合表格的 主体内容-->
+            <tr>
+                <td>表格</td><!--定义 HTML 表格中的标准单元格-->
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+            </tr>
+            <tr>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+            </tr>
+            <tr>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+            </tr>
+        </tbody>
+        <tfoot><!--组合表格的 页脚内容-->
+            <tr>
+                <td>页脚</td>
+                <td>页脚</td>
+                <td>页脚</td>
+                <td>页脚</td>
+                <td>页脚</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table cellpadding="0" cellspacing="0" class="table-border table-hover">
+        <thead><!--组合表格的 表头内容-->
+            <tr><!--定义 行-->
+                <th>标题</th><!--标签定义 HTML 表格中的表头单元格-->
+                <th>标题</th>
+                <th>标题</th>
+                <th>标题</th>
+                <th>标题</th>
+            </tr>
+        </thead>
+        <tbody><!--组合表格的 主体内容-->
+            <tr>
+                <td>表格</td><!--定义 HTML 表格中的标准单元格-->
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+            </tr>
+            <tr>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+            </tr>
+            <tr>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+            </tr>
+            <tr>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+            </tr>
+            <tr>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+                <td>表格</td>
+            </tr>
+        </tbody>
+        <tfoot><!--组合表格的 页脚内容-->
+            <tr>
+                <td>页脚</td>
+                <td>页脚</td>
+                <td>页脚</td>
+                <td>页脚</td>
+                <td>页脚</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <!-- 其他标签 -->
+    <dl><!--定义一个描述列表-->
+        <dt>1</dt><!--定义项目 / 名字-->
+        <dd>1.1</dd><!--对一个描述列表中的项目 / 名字进行描述-->
+        <dd>1.2</dd>
+
+        <dt>2</dt>
+        <dd>2.1</dd>
+        <dd>2.2</dd>
+    </dl>
+</body>
+</html>
