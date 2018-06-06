@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多形状图形</title>
+    <style>
+        .test{
+            width: 300px;
+            height:300px;
+            background: #d9d9;
+            border-top-left-radius: 40px 40px;
+        }
+        ul li{
+            list-style: none;
+        }
+        ul{
+            color:red;
+            font-size:24px;
+        }
+        li{
+            color:black;
+            font-size:20px;
+        }
+        /* 正文 */
+        .thumb{
+            float:left;
+            margin:10px;
+            width: 80px;
+            height:80px;
+            overflow: hidden;
+            padding: 5px;
+            background: #eee;
+            border:1px solid #d9d9d9;
+        }
+        .thumb img{
+            width:100%;
+            height:100%;
+        }
+        .img1,
+        .img1 img{
+            border-radius:50%;
+        }
+
+        .img2,
+        .img2 img{
+            border-radius:2em / 3em;
+        }
+
+        .img3,
+        .img3 img{
+            border-radius:3em 1em / 3em 1em;
+        }
+
+        .img4,
+        .img4 img{
+            border-radius:3em 1em 1em / 3em 1em 1em;
+        }
+
+        .img5,
+        .img5 img{
+            border-radius:3em 1em 1em 3em / 3em 1em 1em 3em;
+        }
+
+        .img6,
+        .img6 img{
+            border-radius:100% 0 0;
+        }
+
+        .img7,
+        .img7 img{
+            border-radius:50% 50% 0 0 /100% 100% 0 0;
+        }
+        .clearfix{
+            clear:both;
+        }
+    </style>
+</head>
+<body>
+    <p>水平半径 垂直半径</p>
+    <p>border-radius:top right bottom left / top right bottom left</p>
+    <p>border-radius: 左上角水平圆角半径大小 右上角水平圆角半径大小 右下角水平圆角半径大小 左下角水平圆角半径大小/左上角垂直圆角半径大小 右上角垂直圆角半径大小 右下角垂直圆角半径大小 左下角垂直圆角半径大小;</p>
+    <div class="test"></div>
+    <ul>border-radius单独指定某个圆角(顺序不可变!!!!)
+        <p>单独指定 使用空格!!!!</p>
+        <li>border-top-left-radius: 200px 100px;</li>
+        <li>border-top-right-radius: 200px 100px;</li>
+        <li>border-bottom-left-radius: 200px 100px;</li>
+        <li>border-bottom-right-radius: 200px 100px;</li>
+        <li>border - 垂直 - 水平 - radius: 水平 垂直</li>
+    </ul>
+
+    <div class="thumb img1">
+        <img src="./image/logos.png" alt="">
+    </div>
+    <div class="thumb img2">
+        <img src="./image/logos.png" alt="">
+    </div>
+
+    <div class="thumb img3">
+        <img src="./image/logos.png" alt="">
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="thumb img4">
+        <img src="./image/logos.png" alt="">
+    </div>
+
+    <div class="thumb img5">
+        <img src="./image/logos.png" alt="">
+    </div>
+
+    <div class="thumb img6">
+        <img src="./image/logos.png" alt="">
+    </div>
+
+    <div class="thumb img7">
+        <img src="./image/logos.png" alt="">
+    </div>
+</body>
+</html>

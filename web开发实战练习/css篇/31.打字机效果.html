@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打字机效果</title>
+    <style>
+        @keyframes typing { from { width: 0; } }
+        @keyframes blink-caret { 50% { border-color: transparent; } }
+
+        h1 {
+            font: bold 200% Consolas, Monaco, monospace;
+            border-right: .1em solid;
+            width: 6.6em; 
+            margin: 2em 1em;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 20s steps(12, end), 
+            blink-caret .5s step-end infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <p style="color:red;font-size:28px">animation step()函数</p>
+    <div>step(number,end | start)</div>
+    <div>step-start等同于steps(1,start)<br>
+        动画分成1步，动画执行时以左侧端点为
+        开始
+    </div>
+    <div>step-end等同于steps(1,end)<br>
+        动画分成1步，动画执行时以结尾端点为开始
+    </div>
+    <h1>Hello World!</h1>
+</body>
+</html>

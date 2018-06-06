@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>33.心跳灯和呼吸灯</title>
+    <style>
+        /* 心跳灯 */
+        .local{
+            margin-top:120px;
+            margin-left:50%;
+            /* -webkit-transform:translateX(-50%); */
+            /* transform:translateX(-50%); */
+        }
+        .heart{
+            float:left;
+        }
+        .heartbeat-top-left{
+            /* 规定文本块中首行文本的缩进 */
+            /* text-indent:-200px; */
+            text-align: center;
+            line-height:30px;
+            height:30px;
+            width:30px;
+            overflow: hidden;
+            background: #ef0000;
+            color: #fff;
+            opacity:0.1;
+            box-shadow: 0 0 3px #ef0000;
+            /* border-right-width:none; */
+            /* border-style:solid; */
+            /* border-bottom-width:0; */
+            /* border-radius:2px; */
+            border-radius:50% 50% 0 0 / 100% 100% 0 0;
+            animation:heartbeat-bottom 0.83s ease-in-out infinite; 
+        }
+        .heartbeat-top-right{
+            /* 规定文本块中首行文本的缩进 */
+            /* text-indent:-200px; */
+            text-align: center;
+            line-height:30px;
+            height:30px;
+            width:30px;
+            overflow: hidden;
+            background: #ef0000;
+            color: #fff;
+            opacity:0.1;
+            box-shadow: 0 0 3px #ef0000;
+            /* border-left-width:none; */
+            /* border-bottom-width:none; */
+            /* border-radius:2px; */
+            border-radius:50% 50% 0 0 / 100% 100% 0 0;
+            animation:heartbeat-bottom 0.83s ease-in-out infinite; 
+        }
+        .heartbeat-bottom{
+            /* margin:150px auto; */
+            /* 规定文本块中首行文本的缩进 */
+            /* text-indent:-200px; */
+            text-align: center;
+            line-height:60px;
+            height:60px;
+            width:60px;
+            overflow: hidden;
+            background: #ef0000;
+            color: #fff;
+            opacity:0.1;
+            box-shadow: 0 0 3px #ef0000;
+            /* border-top-style:none; */
+            /* border-radius:2px; */
+            border-radius:0 0 50% 50% / 0 0 100% 100%;
+            animation:heartbeat-bottom 0.83s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat-bottom{
+            from{
+                opacity:0.1;
+            }
+            50%{
+                opacity:1;
+            }
+            to{
+                opacity:0.1;
+            }
+        }
+        .clearfix{
+            clear:both;
+        }
+
+        /* 呼吸灯 */
+        .breath{
+            margin:150px auto;
+            transform:translateX(-50%);
+            text-align: center;
+            line-height:60px;
+            height:60px;
+            width:60px;
+            overflow: hidden;
+            background: #1db602;
+            color: #fff;
+            opacity:0.1;
+            box-shadow: 0 0 3px #1db602;
+            border-radius:2px;
+            animation:breath 5s ease-in-out infinite;
+        }
+
+        @keyframes breath{
+            from{
+                opacity:0.1;
+            }
+            50%{
+                opacity:1;
+            }
+            to{
+                opacity:0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 心跳灯 -->
+    <div class="local">
+        <div class="heart heartbeat-top-left"></div>
+        <div class="heart heartbeat-top-right"></div>
+        <div class="clearfix"></div>
+        <div class="heart heartbeat-bottom">心跳灯</div>
+    </div>
+
+    <!-- 呼吸灯 -->
+    <div class="breath">呼吸灯</div>
+</body>
+</html>

@@ -13,3 +13,12 @@ cursor 光标
 
 css选择器 :before :after
 
+
+tt td
+
+css伪类
+
+css选择器
+
+
+writing-mode
