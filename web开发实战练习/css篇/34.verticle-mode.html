@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>verticle-mode</title>
+    <style>
+        .box {
+            width: 400px; height: 300px;
+            background-color: #f0f3f9;
+            overflow: hidden;
+        }
+        .auto {
+            display: block;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .verticle-mode {
+            writing-mode: tb-rl;
+            -webkit-writing-mode: vertical-rl;      
+            writing-mode: vertical-rl;
+        }
+    </style>
+</head>
+<body>
+    <p><strong>默认流-margin-top:auto;margin-bottom:auto不居中</strong></p>
+    <div class="box">
+        <img src="./image/girl.jpg" class="auto">
+    </div>
+    
+    <p><strong>垂直流-margin-top:auto;margin-bottom:auto垂直居中</strong></p>
+    <div class="box verticle-mode">
+        <img src="./image/girl.jpg" class="auto">
+    </div>
+</body>
+</html>
