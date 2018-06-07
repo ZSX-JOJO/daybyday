@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* div~ul 选择器 div 之后出现的所有 ul。
+        两种元素必须拥有相同的父元素，
+        但是 ul 不必直接紧随 div。 */
+        div~ul{
+            background: blue;
+        }
+        /* A+B 表示 HTML 中紧随 A 的 B 元素：
+        用一个结合符只能选择两个相邻兄弟中的第二个元素 */
+        li+li{
+            color:red;
+        }
+        /* css3 特有的选择器，A>B 表示选择 A 元素的所有子 B 元素。
+        A>B 只选择一代 */
+        dl>dd{
+            color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>赵守鑫</p>
+        <p>赵守鑫</p>
+        <p>赵守鑫</p>
+        <p>赵守鑫</p>
+    </div>
+
+    <ol>
+        <li>4</li>
+        <li>4</li>
+        <li>4</li>
+    </ol>
+
+    <ul>44444
+        <li>赵守鑫</li>
+        <li>赵守鑫</li>
+        <li>赵守鑫</li>
+        <li>赵守鑫</li>
+        <li>赵守鑫</li>
+    </ul>
+
+    <dl>dl
+        <dt>dt
+            <dd>dd</dd>
+            <dd>dd</dd>
+            <dd>dd</dd>
+            <dd>dd</dd>
+        </dt>
+        <dt>dt
+            <dd>dd</dd>
+            <dd>dd</dd>
+            <dd>dd</dd>
+            <dd>dd</dd>
+        </dt>
+    </dl>
+</body>
+</html>

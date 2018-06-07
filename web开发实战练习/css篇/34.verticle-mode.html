@@ -8,6 +8,7 @@
     <style>
         .box {
             width: 400px; height: 300px;
+            margin:0 auto;
             background-color: #f0f3f9;
             overflow: hidden;
         }
@@ -22,17 +23,59 @@
             -webkit-writing-mode: vertical-rl;      
             writing-mode: vertical-rl;
         }
+        .details{
+            width:100%;
+            margin:0 auto;
+            background: #f0f3f9;
+            overflow: hidden;
+            text-align: center;
+        }
+        .verticle-mode-lists{
+            color:blue;
+            font-size:20px;
+        }
+        .horizontal-tb{
+            writing-mode: horizontal-tb; 
+        }
+        .vertical-rl{
+            writing-mode: vertical-rl;
+        }
+        .vertical-lr{
+            writing-mode:vertical-lr;
+        }
     </style>
 </head>
 <body>
-    <p><strong>默认流-margin-top:auto;margin-bottom:auto不居中</strong></p>
+    <p style="text-align: center;"><strong>默认流-margin-top:auto;margin-bottom:auto不居中</strong></p>
     <div class="box">
         <img src="./image/girl.jpg" class="auto">
     </div>
     
-    <p><strong>垂直流-margin-top:auto;margin-bottom:auto垂直居中</strong></p>
+    <p style="text-align: center;"><strong>垂直流-margin-top:auto;margin-bottom:auto垂直居中</strong></p>
     <div class="box verticle-mode">
         <img src="./image/girl.jpg" class="auto">
+    </div>
+
+    <!-- verticle-mode 详解 -->
+    <div class="details">verticle-mode 详解
+        <p><strong>css3语法</strong></p>
+        <div>writing-mode: horizontal-tb
+            <div class="verticle-mode-lists horizontal-tb">文本流是水平方向 (horizontal) 的，元素是从上往下(tb:top-bottom) 堆叠的</div>
+        </div>
+
+        <div>writing-mode: vertical-rl
+            <div class="verticle-mode-lists vertical-rl">
+                文本是垂直方向 (vertical) 展示，然后阅读的顺序是从右往左 (rl:right-left)
+                从右往左 从右往左 从右往左
+            </div>
+        </div>
+
+        <div>writing-mode:vertical-lr
+            <div class="verticle-mode-lists vertical-lr">
+                文本是垂直方向 (vertical) 展示，然后阅读的顺序还是默认的从左往右 (lr:left-right)
+                从左往右 从左往右 从左往右
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面包屑导航</title>
+    <style>
+        body{
+            color:blue;
+        }
+        .box{
+            /* width:50px; */
+            width:0;
+            /* height:50px; */
+            height:0;
+            margin:50px auto;
+            /* border:10px solid red; */
+            border-top:50px solid red;
+            border-right:50px solid blue;
+            border-bottom:50px solid purple;
+            border-left:50px solid green;
+            background: black;
+            color:#fff;
+        }
+        .triangle-top{
+            /* width:0;
+            height:0;
+            border-right:100px solid red;
+            border-bottom:50px solid red;
+            border-left:50px solid red; */
+            
+            /*  */
+            width: 0;
+            height: 0;
+            margin:10px;
+		    border-bottom: 100px solid red;
+		    border-left: 50px solid transparent;
+		    border-right: 50px solid transparent;
+        }
+        .triangle-right{
+            width:0;
+            height:0;
+            margin:10px;
+			border-left:100px solid red;
+			border-top:50px solid transparent;
+			border-bottom:50px solid transparent;
+        }
+        .triangle-bottom{
+            width:0;
+            height:0;
+            margin:10px;
+            border-top:100px solid red;
+            border-left:50px solid transparent;
+            border-right:50px solid transparent;
+        }
+        .triangle-left{
+            width:0;
+            height:0;
+            margin:10px;
+            border-right:100px solid red;
+            border-top:50px solid transparent;
+            border-bottom:50px solid transparent;
+        }
+
+        /* 面包屑导航 */
+        * {
+            -webkit-box-sizing:border-box;
+            -moz-box-sizing:border-box;
+            box-sizing:border-box;
+        }
+
+        :before,
+        :after{
+            -webkit-box-sizing:border-box;
+            -moz-box-sizing:border-box;
+            box-sizing:border-box;
+        }
+
+        a {
+            color:#428bca;
+            /* 规定添加到文本的修饰 */
+            text-decoration:none;
+        }
+
+        ul.breadcrumbs{
+            margin:0;
+            padding:0;
+            list-style:none;
+            overflow: hidden;
+            width:100%;
+        }
+
+        ul.breadcrumbs a{
+            background: #f5f5f5;
+            padding:.3em 1em;
+            float:left;
+            color:#666;
+            text-decoration:none;
+            position:relative;
+        }
+
+        ul.breadcrumbs a:after{
+            content:"";
+            position:absolute;
+            top:50%;
+            margin-top:-1.5em;
+            border-top:1.5em solid transparent;
+            border-bottom:1.5em solid transparent;
+            border-left:1em solid #f5f5f5;
+            right:-1em;
+            margin-right:1px;
+        }
+
+        ul.breadcrumbs li{
+            float:left;
+            margin:0 .2em 0 1em;
+        }
+
+        ul.breadcrumbs a:hover{
+            background: #bdbdbd;
+        }
+
+        ul.breadcrumbs a:hover:after{
+            border-left-color:#bdbdbd;
+        }
+
+       .breadcrumbs-path{
+           padding:8px 15px;
+           margin-bottom:20px;
+           list-style:none;
+           background: #f5f5f5;
+           border-radius:4px;
+       }
+
+       .breadcrumbs-path>li{
+           display:inline-block;
+       }
+
+       .breadcrumbs-path>li+li:before{
+           padding:0 5px;
+           color:#ccc;
+           content:"/\00a0";
+       }
+
+       .breadcrumbs-path>li.active{
+           color:#666;
+       }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <b>实现三角形</b>
+    <div class="triangle-top">顶点在上</div>
+    <div class="triangle-right">顶点在右</div>
+    <div class="triangle-bottom">顶点在下</div>
+    <div class="triangle-left">顶点在左</div>
+
+    <!-- 面包屑导航 -->
+    <p style="margin-top:50px;"><strong>面包屑导航</strong></p>
+    <nav>
+        <ul class="breadcrumbs">
+            <li>
+                <a href="#">Thema</a>
+            </li>
+            <li>
+                <a href="#">Data Table</a>
+            </li>
+            <li class="active">
+                <a href="#">Basic Table</a>
+            </li>
+        </ul>
+        <ol class="breadcrumbs-path">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li class="active">Library</li>
+        </ol>
+    </nav>
+</body>
+</html>
