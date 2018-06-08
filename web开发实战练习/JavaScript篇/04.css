@@ -8,8 +8,8 @@
     /* 设置用户是否能够选中文本 */
     user-select:none;
     /* appearance 使元素看上去像标准的用户界面元素 */
-    appearance:none;
-    -webkit-appearance:none;
+    appearance:none !important;
+    -webkit-appearance:none !important;
 }
 
 .range-slider{
@@ -20,19 +20,19 @@
 }
 
 .range-slider .range-slider-tooltip{
-    font-size:18px;
-    position: absolute;
-    z-index:1;
-    top:-34px;
-    padding:5px 10px;
-    text-align:center;
-    opacity:0.8;
-    color:#333;
-    border:1px solid #ddd;
-    border-radius:6px;
-    background-color:#fff;
-    text-shadow:0 1px 0 #f3f3f3;
-    display: none;
+    font-size: 18px;
+	position: absolute;
+	z-index: 1;
+	top: -34px;
+	padding: 5px 10px;
+	text-align: center;
+	opacity: .8;
+	color: #333;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	background-color: #fff;
+	text-shadow: 0 1px 0 #f3f3f3;
+	display: none;
 }
 
 .range-slider input[type=range]{
@@ -60,9 +60,8 @@
     /*  根据水平或者垂直的具体数值 判断四个方向的阴影 */
     box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.13), 0 0 0 1px rgba(0, 0, 0, 0.02); 
     pointer-events:none;
-    /* ??? */
-    -webkit-appearance:none;
-    appearance:none;
+    -webkit-appearance:none !important;
+    appearance:none !important;
 }
 
 /* ???-webkit-slider-runnable-track  */
@@ -81,8 +80,8 @@
     background: #fff;
     box-shadow:0 3px 1px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.13), 0 0 0 1px rgba(0, 0, 0, 0.02);
     pointer-events:none;
-    -webkit-appearance:none;
-    appearance:none;
+    -webkit-appearance:none !important;
+    appearance:none !important;
 }
 
 .range-slider input[type=range]:-moz-range-track{
@@ -101,8 +100,8 @@
 .range-slider input[type=range]:-ms-track{
     /* 轨道 */
     border-radius:10px;
-    -webkit-appearance:none;
-    appearance:none;
+    -webkit-appearance:none !important;
+    appearance:none !important;
 }
 
 .range-slider input[type=range]::-ms-thumb {
@@ -115,15 +114,16 @@
 	box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.13), 0 0 0 1px rgba(0, 0, 0, 0.02);
 	pointer-events: none;
 	-webkit-appearance: none!important;
+	appearance: none!important;
 }
 
-.range-slider input[type=range]::-ms-fill-lower {
+.range-slider input[type=range]:-ms-fill-lower {
 	/*进度条已填充的部分*/
 	background:#059CFA;
 	border-radius: 10px;
 }
 
-.range-slider input[type=range]::-ms-fill-upper {
+.range-slider input[type=range]:-ms-fill-upper {
 	/*进度条未填充的部分*/
 	background:#333;
 	border-radius: 10px;
