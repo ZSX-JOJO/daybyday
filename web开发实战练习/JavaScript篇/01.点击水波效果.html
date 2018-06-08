@@ -15,19 +15,27 @@
 			background:#008dc5;
 			color:#fff;
 		}
+
 		/*放置波纹动画元素*/
 		.ripple{
+			/* 圆形 */
 			border-radius:50%;
 			background:rgba(0,0,0,0.2);
-			transform:scale(0);
+			/* scale  定义 2D 缩放转换 */
+			/* 此处代表缩放比例为0 */
 			-webkit-transform:scale(0);
+			transform:scale(0);
 			position: absolute;
+			/* 透明度为 1 */
 			opacity:1;
 		}
+
 		/*添加波纹动画*/
+		/* 透明度在动画中变为0，而缩放比例变为2，也就是说，圆形由小变大，且透明度逐渐变为0 */
 		.rippleEffect{
-			animation:rippleEffect 2s cubic-bezier(0.23, 1, 0.32, 1);
+			/* cubic-bezier 即为 贝茨曲线 */
 			-webkit-animation:rippleEffect 2s cubic-bezier(0.23, 1, 0.32, 1);
+			animation:rippleEffect 2s cubic-bezier(0.23, 1, 0.32, 1);
 		}
 		@keyframes rippleEffect{
 			100%{

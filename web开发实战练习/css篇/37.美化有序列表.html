@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>美化有序列表</title>
+    <title>美化有序列表_css计数器</title>
     <style>
         .roundedList,
         .roundedList *,
@@ -20,7 +20,7 @@
         .roundedList ol,
         .rectangleList ol{
             width:200px;
-            /* ??? */
+            /* 计数器 重置 */
             counter-reset:li;
             list-style:none;
             font-size:15px;
@@ -48,8 +48,9 @@
         }
 
         .roundedList ol li:before{
-            /* ??? */
+            /* 计数器方法 */
             content:counter(li);
+            /* 计数器 递增 */
             counter-increment:li;
             position:absolute;
             left:-1.3em;

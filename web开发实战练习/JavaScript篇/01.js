@@ -13,9 +13,10 @@
  * 在函数声明前 加一元运算符 甚至将一元运算符进行组合 例如 "+ - ++ -- !" 其他运算符 目前发现不可以用
  */
 !function() {
-	var addEvent = function(dom, type, handle, capture) {
+	var addEvent = function(dom, type, handle, capture) {//handle 处理 capture 捕获
 		//document.addEventListener() 方法用于向文档添加事件句柄。
 		if(dom.addEventListener) {
+			// addEventListener 给一个事件指派多个处理过程
 			dom.addEventListener(type, handle, capture);
 		} else if(dom.attachEvent) {
 			// attachEvent为了兼容ie8以及更早版本ie 和其他浏览器的特殊版本号

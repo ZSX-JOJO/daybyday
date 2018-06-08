@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS计数器counter</title>
+    <style>
+        /* counter-reset之 计数器命名 */
+        .p0{
+            font-size: 16px; 
+            font-family: arial black; 
+            color:yellowgreen;
+        }
+
+        .details{
+            font-size: 20px; 
+            font-family: arial black; 
+        }
+
+        .p1{
+            font-size:25px;
+            color:red;
+        }
+
+        .counter-detail { 
+            counter-reset: wangxiaoer-detail 2;
+            font-size: 24px; 
+            font-family: arial black; 
+            color: #cd0000;
+        }
+
+        .counter-detail:before,
+        .counter-detail:after {
+            display: block; 
+            content: counter(wangxiaoer-detail, lower-roman); 
+            counter-increment: wangxiaoer-detail;
+        }
+
+        .counter1 {
+            counter-reset: wangxiaoer1 2;
+            font-size: 24px;
+            font-family: arial black;
+            color: #cd0000;
+        }
+        .counter1:before {
+             content: counter(wangxiaoer1); 
+        }
+
+        /* counter-reset之 多个计数器同时命名 */
+        .p2{
+            font-size:25px;
+            color:red;
+        }
+        .counter2 {
+            counter-reset: wangxiaoer2 2 wangxiaosan2 3;
+            font-size: 24px;
+            font-family: arial black;
+            color: #cd0000;
+        }
+        .counter2:before {
+             content: counter(wangxiaoer2); 
+        }
+        .counter2:after { 
+            content: counter(wangxiaosan2);
+        }
+
+        /* MDN实例 计数器嵌套 */
+        .p3{
+            font-size:26px;
+            color:green;
+        }
+
+        ol {
+            counter-reset: section;                /*为每个ol元素创建新的计数器实例*/
+            list-style-type: none;
+        }
+        li:before {
+            counter-increment: section;            /*只增加计数器的当前实例*/
+            content: counters(section, ".") " ";   /*为所有计数器实例增加以“.”分隔的值*/
+        }
+    </style>
+</head>
+<body>
+    <p class="p0"><strong>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Counters" target="_blank">css计数器简介</a><br>
+        CSS计数器只能跟content属性一起时才有作用,<br>
+        content只用在before/after伪元素.<br>
+        计数器<-->伪元素<-->content属性<br>
+        CSS计数器2个属性和1个方法<br>
+        counter-reset<br>
+        counter-increment<br>
+        counter()/counters()
+    </strong></p>
+
+    <!-- CSS计数器详解 -->
+    <div class="details">
+        <h1>CSS计数器详解</h1>
+        <div class="detail-counter-rese">
+            counter-reset   "计数器-重置"<br>
+            使用前先重置,counter-reset还可以设置为none和inherit. 干掉重置以及继承重置
+        </div>
+        <div class="detail-counter-increment">
+            counter-increment "计数器-递增"
+        </div>
+        <div class="detail-counter">
+            counter(name) /* name就是counter-reset的名称 */<br>
+            counter(name,style) /*style参数其支持的关键字值就是list-style-type支持的那些值。作用是，我们递增递减可以不一定是数字，还可以是英文字母，或者罗马文等。*/
+        </div>
+    </div>
+    <strong>我叫王小二，万万没想到，下面要出现的数字是：</strong>
+    <p class="counter-detail"></p>
+    <strong>直接穿越到罗马，这万虐的剧情让我这个客串演员实在承受不住啊！</strong>
+
+    <p class="p1"><strong>counter-reset之 计数器命名</strong></p>
+    <strong>我叫王小二，字如其名，下面要出现的数字是：</strong>
+    <p class="counter1"></p>
+    <strong>我是王小二，我为自己代言，我就是2!!</strong>
+
+    <p class="p2"><strong>counter-reset之 多个计数器同时命名</strong></p>
+    <strong>我叫王小二，万万没想到，会出现另外一个数字：</strong>
+    <p class="counter2"></p>
+    <strong>我是王小二，后面跟了个小三，我不认识他！</strong>
+
+    <!-- MDN 栗子 计数器嵌套-->
+    <p class="p3">计数器嵌套</p>
+    <div>使用 counters() 函数,在不同级别的嵌套计数器之间可以插入字符串</div>
+    <ol>
+        <!-- 前者为默认显示 后者为计数器嵌套-->
+        <li>item</li> <!-- 1.item -->         <!-- 1 item    -->
+        <li>item <!-- 2.item -->              <!-- 2 item    -->
+            <ol>
+                <li>item</li> <!-- 1.item -->      <!-- 2.1 item  -->
+                <li>item</li> <!-- 2.item -->     <!-- 2.2 item  -->
+                <li>item      <!-- 3.item -->           <!-- 2.3 item  -->
+                    <ol>
+                    <li>item</li> <!-- 1.item -->  <!-- 2.3.1 item -->
+                    <li>item</li> <!-- 2.item --> <!-- 2.3.2 item -->
+                    </ol>
+                    <ol>
+                    <li>item</li> <!-- 1.item --> <!-- 2.3.1 item-->
+                    <li>item</li> <!-- 2.item --> <!-- 2.3.2 item-->
+                    <li>item</li> <!-- 3.item --> <!-- 2.3.3 item-->
+                    </ol>
+                </li>
+                <li>item</li> <!-- 4.item -->      <!-- 2.4 item  -->
+            </ol>
+        </li>
+        <li>item</li> <!-- 3.item -->         <!-- 3 item    -->
+        <li>item</li> <!-- 4.item -->         <!-- 4 item    -->
+    </ol>
+
+    <ol>
+        <li>item</li> <!-- 1.item -->         <!-- 1  item   -->
+        <li>item</li> <!-- 2.item -->         <!-- 2  item   -->
+    </ol>
+</body>
+</html>
