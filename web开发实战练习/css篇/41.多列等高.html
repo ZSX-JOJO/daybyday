@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多列等高</title>
+    <style>
+        .web_width{
+            width: 100%;
+            /* 关键所在 */
+            overflow: hidden;
+        }
+        .left{
+            float: left;
+            width: 20%;
+            min-height: 10em;
+            background: #66afe9;
+            /* 关键所在 */
+            padding-bottom: 2000px;
+            /* 关键所在 */
+            margin-bottom: -2000px;
+        }
+        .right{
+            float: right;
+            width: 80%;
+            height: 20em;
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+    <p>1. padding-bottom、margin-bottom之和要等于 0（建议值不要太大，够用就行）
+    2. 代码中子元素单位用em是为了做 gif 效果更明显</p>
+    <div class="web_width">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>

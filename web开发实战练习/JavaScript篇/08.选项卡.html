@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+        .sg-tabs-blocks{
+            -webkit-box-sizing:border-box;
+            box-sizing:border-box;
+        }
+
+        .sg-tabs-body{
+            margin:.3em 0;
+        }
+
+        .sg-button-tabs{
+            position: relative;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flex;
+            display: -webkit-flex;
+            display: flex;
+            /* 此属性指定横向框的水平位置，垂直位置的垂直框 */
+            -webkit-box-pack:center;
+            -webkit-align-items:center;
+            align-items:center;
+            border-bottom:1px solid #d9d9d9;
+        }
+
+        .sg-button-tab{
+            cursor:pointer;
+        }
+
+        .sg-button-tabs:after{
+            position: absolute;
+        }
+
+        .sg-button-tab{
+            position: relative;
+            /*overflow: hidden;*/
+            display: -moz-box;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-box-orient: vertical;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-flex-shrink: 1;
+            flex-shrink: 1;
+            width: 100%;
+            padding: .3rem 0;
+            /*box-shadow: inset 0 -2px 0 0 #eee;*/
+
+        }
+
+        .sg-tabs-nav{
+            position: relative;
+        }
+
+        /* 下划线效果 */
+        .sg-tabs-block .sg-tabs-indicator{
+            position: absolute;
+            bottom:0;
+            left:0;
+            background: #1abc9c;
+            height:.1em;
+            -webkit-transition:left .25s;
+            /* 提前通知浏览器元素将要做什么动画，让浏览器提前准备合适的优化设置 (实验性功能) */
+            transition:left .25s;
+            will-change:left;
+        }
+
+        .sg-tabs .sg-tab{
+            display: none;
+        }
+
+        .sg-tabs .sg-tab.active{
+            display: block;
+        }
+
+        .tab-scale .sg-button-tab:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #1ABC9C;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            -webkit-transition: transform .3s;
+            transition: transform .3s;
+        }
+
+        .tab-scale .sg-button-tab.active:after {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .sg-button-tab.active {
+            color: #1ABC9C;
+        }
+
+        .sg-tab-default .sg-button-tab.active:after{
+            content:"";
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:-1px;
+            -webkit-box-sizing:border-box;
+            border: 1px solid #d9d9d9;
+            border-bottom-color: #fff;
+        }
+
+        /*  */
+        body{
+            font-family: "微软雅黑";
+        }
+        
+        .sg-button-tab{
+            line-height:35px;
+        }
+        .example{
+            width:300px;
+            margin:10px;
+        }
+        .example .sg-tab{
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sg-tabs-block example sg-tabs-line">
+        <!-- tab按钮 -->
+        <div class="sg-tabs-nav">
+            <div class="sg-button-tabs">
+                <a class="sg-button-tab">热门文章</a>
+                <a class="sg-button-tab">最新文章</a>
+                <a class="sg-button-tab">一周热门</a>
+            </div>
+        </div>
+        <!-- 内容区 -->
+        <div class="sg-tabs-body">
+            <div class="sg-tabs">
+                <div class="sg-tab active">热门文章-内容</div>
+                <div class="sg-tab">最新文章-内容</div>
+                <div class="sg-tab">一周热门-内容</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sg-tabs-block example tab-scale">
+        <div class="sg-tabs-nav">
+            <div class="sg-button-tabs">
+                <a class="sg-button-tab">热门文章2</a>
+                <a class="sg-button-tab">最新文章2</a>
+                <a class="sg-button-tab">一周热门2</a>
+            </div>
+        </div>
+        <div class="sg-tabs-body">
+            <div class="sg-tabs">
+                <div class="sg-tab active">热门文章2-内容</div>
+                <div class="sg-tab">最新文章2-内容</div>
+                <div class="sg-tab">一周热门2-内容</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sg-tabs-block example sg-tab-default">
+        <div class="sg-tabs-nav">
+            <div class="sg-button-tabs">
+                <a class="sg-button-tab">热门文章3</a>
+                <a class="sg-button-tab">最新文章3</a>
+                <a class="sg-button-tab">一周热门3</a>
+            </div>
+        </div>
+        <div class="sg-tabs-body">
+            <div class="sg-tabs">
+                <div class="sg-tab active">热门文章3-内容</div>
+                <div class="sg-tab">最新文章3-内容</div>
+                <div class="sg-tab">一周热门3-内容</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    + function() {
+        var tabs = document.querySelectorAll('.sg-tabs-block');
+        var getStyle = function(dom, attr) {
+        return dom.currentStyle ? dom.currentStyle[attr] : getComputedStyle(dom, false)[attr];
+    };
+        for(var i = 0; i < tabs.length; i++) {
+            var tab = tabs[i].querySelectorAll('.sg-button-tab');
+            tab[0].classList.add('active');
+            var classList = tabs[i].classList;
+            /**
+             * contains 方法。如果 A 元素包含 B 元素，则返回 true，否则 false。
+            */
+            if(classList.contains('sg-tabs-line')) {
+                var w = parseInt(getStyle(tabs[i], 'width')) / tab.length;
+                for(var j = 0; j < tab.length; j++) {
+                    tab[j].index = j;
+                    tab[j].width = w;
+                };
+                var indicator = document.createElement('div');
+                indicator.className = 'sg-tabs-indicator';
+                indicator.style.width = w + 'px';
+                tabs[i].querySelector(".sg-tabs-nav").appendChild(indicator);
+            }
+            var items = tabs[i].querySelectorAll('.sg-button-tab');
+            for(var t = 0; t < items.length; t++) {
+                items[t].index = t;
+                items[t].addEventListener('click', function() {
+                    var content = this.parentNode.parentNode;
+                    var tb = content.nextElementSibling.querySelectorAll('.sg-tab');
+                    var tt = this.parentNode.querySelectorAll('.sg-button-tab');
+                    var index = this.index;
+                    for(var j = 0; j < tb.length; j++) {
+                        if(j != index) {
+                            tb[j].classList.remove('active');
+                            tt[j].classList.remove('active');
+                        } else {
+                            tb[j].classList.add('active');
+                            tt[j].classList.add('active');
+                        }
+                    };
+                    if(content.parentNode.classList.contains('sg-tabs-line')) {
+                        var w = this.width;
+                        var indicator = this.parentNode.nextElementSibling;
+                        indicator.style.left = w * index + 'px';
+                    }
+                }, false);
+            }
+        };
+    }();
+</script>
+</html>

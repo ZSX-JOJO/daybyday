@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS 写自适应大小的正方形</title>
+    <style>
+        /* 栗子1 */
+        /* background 写法 */
+        .img{
+            width: 100%;
+            height: 0;
+            /* 关键所在 */
+            padding-bottom: 100%;
+            overflow: hidden;
+            background:url(./image/white.jpg) center/100% 100% no-repeat;
+        }
+        .img img{
+            width: 100%;
+        }
+        
+        /* img 写法 */
+        .img{
+            position: relative;
+            width: 100%;
+            height: 0;
+            /* 关键所在 */
+            padding-bottom: 100%;
+            overflow: hidden;
+        }
+
+        .img img{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* 栗子2 */
+        .img-container {
+            position: relative;
+            padding-bottom: 80%;
+            height: 0;
+            overflow: hidden;
+            background: red;
+        }
+        .img-container img {
+            position: absolute;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <p>栗子1</p>
+    <div class="img"></div>
+
+    <p>栗子2</p>
+    <p>
+        <strong>实现原理：让子元素宽高比例与父元素相同</strong>
+        1、设置父元素div.img-containe的高度为0，设置padding-bottom的值为图片的宽高百分比。
+        2、与子元素img相对父元素绝对定位，然后高度，宽度为百分之百，自然而然图片的实际宽高是padding-bottom的值乘以父元素的实际宽度，从而实现等比缩放响应式图片。
+    </p>
+    <div class="img-container">
+        <img src="./image/02_1.jpg" alt="" />
+    </div>
+</body>
+</html>

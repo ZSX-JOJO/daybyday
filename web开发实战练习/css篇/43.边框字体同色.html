@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>边框字体同色</title>
+    <style>
+        #app{
+            width: 200px;
+            height: 200px;
+            color: #000;
+            font-size: 30px;
+            
+            /*方案一*/
+            /* currentColor 当前颜色 */
+            border: 50px solid currentColor;
+
+            /*方案二*/
+            border: 50px solid;
+                /*或*/
+            border-width: 50px;
+            border-style: solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">123123123</div>
+</body>
+</html>
