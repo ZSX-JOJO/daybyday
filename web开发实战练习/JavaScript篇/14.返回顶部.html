@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>返回顶部</title>
+    <style>
+        body{
+            height:1000px;
+        }
+
+        p{
+            text-align: center;
+        } 
+
+        .scrollTop{
+            position: fixed;
+            width:80px;
+            height:80px;
+            right:20px;
+            bottom:20px;
+            opacity:0;
+            -webkit-transition:opacity .3s;
+            transition:opacity .3s;
+            color:red;
+            background: black;
+        }      
+    </style>
+</head>
+<body>
+    <p>向下滚动</p>
+    <button type="button" class="scrollTop">
+        返回顶部
+    </button>
+</body>
+<script>
+    /**
+     * 
+    FF、 Opera和IE浏览器认为在客户端浏览器展示的页面的内容对应于整个HTML，所以使用
+    document.documentElement来代表，相应的滚动距离则通过
+    document.documentElement.scrollLeft 和 document.documentElement.scrollTop 来获取
+    */
+
+    /**
+     * 
+    Safari和Chrome浏览器则认为页面开始于body部分，从而相应的滚动距离用
+    document.body.scrollLeft 和 document.body.scrollTop 来获取
+    */
+    window.addEventListener('scroll',function(){
+        var top = document.body.scrollTop || document.documentElement.scrollTop;
+        if(top > 0){
+            document.querySelector('.scrollTop').style.opacity = 1;
+        }else{
+            document.querySelector('.scrollTop').style.opacity = 0;
+        }
+    });
+    var scrollTop = document.querySelector('.scrollTop');
+    scrollTop.addEventListener('click',function(){
+        var top = document.body.scrollTop || document.documentElement.scrollTop;
+        var ax = 0;
+        if(top > 0){
+            scrollTop.timer = setInterval(function(){
+                if(top <= 0){
+                    clearInterval(scrollTop.timer);
+                }else{
+                    ax += 20;
+                    top -= ax;
+                    /**
+                     * window.scrollTo(x, y) 把内容滚动到指定坐标
+                    */
+                    window.scrollTo(0,top);
+                }
+            },100);
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上传图片预览</title>
+    <style>
+        .btn{
+            position: relative;
+        }
+
+        .btn>input{
+            opacity:0;
+            width:100%;
+            height:100%;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+
+        .box{
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            line-height:0;
+        }
+
+        .review{
+            float: left;
+            height:150px;
+            width: 200px;
+            padding:5px 0;
+            border:1px solid #d9d9d9;
+        }
+
+        .review img{
+            max-width: 100%;
+            max-height:100%;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <button class="btn">
+        <input type="file" name="" id="file" accept="image/*">选择图片
+    </button>
+</body>
+<script>
+    document.getElementById('file').addEventListener('change',handleFiles);
+    function handleFiles(e){
+        // 一个 FileList 对象通常来自于一个 HTML input 元素的files属性
+        var files = e.target.files;
+        for(var i = 0; i < files.length; i++){
+            var file = files[i];
+            var imageType = /^image\//;
+            if(!imageType.test(file.type)) continue;
+            var review = document.createElement('div');
+            review.className = 'review';
+            var img = document.createElement('img');
+            review.appendChild(img);
+            document.querySelector('.box').appendChild(review);
+            try{
+                var URL = window.URL || window.webkitURL;
+                /**
+                 * 
+                URL.createObjectURL() 方法会根据传入的参数创建一个指向该参数对象的URL. 这个URL的生命仅存在
+                于它被创建的这个文档里. 新的对象URL指向执行的File对象或者是Blob对象
+                */
+                var imgURL = URL.createObjectURL(file);
+                img.src = imgURL;
+            }catch(e){
+                /**
+                FileReader 对象允许 Web 应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容
+                使用 File 或 Blob 对象指定要读取的文件或数据
+                */
+                var reader = new FileReader();
+                reader.onload = function(){
+                    img.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    }
+</script>
+</html>
