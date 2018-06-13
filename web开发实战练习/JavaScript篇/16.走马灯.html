@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>走马灯</title>
+    <style>t
+        .marquee-box,
+        .marquee-box *{
+            margin:0;
+            padding:0;
+            -webkit-box-sizing:border-box;
+            -moz-box-sizing:border-box;
+            box-sizing:border-box;
+        }
+
+        .marquee-box{
+            position: relative;
+            width:200px;
+            height:40px;
+            background: #eee;
+            margin:10px;
+            padding:0 10px;
+            line-height:40px;
+            overflow:hidden;
+        }
+
+        .marquee-inner{
+            position:absolute;
+            top:0;
+            left:0;
+        }
+
+        ul{
+            list-style:none;
+            margin:0;
+        }
+
+        .marquee-box ul li{
+            padding:0 15px;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <div class="marquee-box">
+        <div class="marquee-inner">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+    <a href="https://blog.csdn.net/lulalahappy123/article/details/47972907" target="_blank">关于可视区域的讲解</a>
+</body>
+<script>
+    ; +function() {
+        // 兼容transform
+        var setTransform = function(element, animation) {
+            element.style.webkitTransform = animation;
+            element.style.mozTransform = animation;
+            element.style.oTransform = animation;
+            element.style.msTransform = animation;
+            element.style.transform = animation;
+        };
+        
+        // 动画方法
+        function anim(m, a, b, s, w) {
+            m.timer = setInterval(function() {
+                a.translateX -= s;
+                b.translateX -= s;
+                if(a.translateX <= -w) {
+                    a.translateX = w;
+                };
+                if(b.translateX <= -w) {
+                    b.translateX = w;
+                };
+                setTransform(a, 'translate(' + a.translateX + 'px,0)');
+                setTransform(b, 'translate(' + b.translateX + 'px,0)');
+            }, 80);
+        };
+        var marquee = document.querySelectorAll('.marquee-box');
+        for(var i = 0; i < marquee.length; i++) {
+            var m = marquee[i];
+            var inner = m.querySelector('.marquee-inner');
+            var width = inner.offsetWidth;
+            var bWidth = m.offsetWidth;
+            if(bWidth < width * 2) {
+                /**
+                cloneNode() 拷贝所有属性和值
+                */
+                var clone = inner.cloneNode(true);
+                /**
+                appendChild()方法可以向节点的子节点的列表添加新的子节点
+                */
+                m.appendChild(clone);
+                // 跑动速度
+                var ax = 3;
+                setTransform(clone, 'translate(' + width + 'px,0)');
+                inner.translateX = 0;
+                clone.translateX = width;
+                anim(m, inner, clone, ax, width);
+                m.addEventListener('mouseover', function() {
+                    clearInterval(this.timer);
+                });
+                m.addEventListener('mouseout', function() {
+                    anim(m, inner, clone, ax, width);
+                });
+            }
+        }
+    }();
+</script>
+</html>
