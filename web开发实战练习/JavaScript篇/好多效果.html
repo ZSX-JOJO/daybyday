@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>好多效果</title>
+    <style>
+        p{
+            text-align: center;
+            font-size: 24px;
+            color:red;
+        }
+        /* 蒙版文字 */
+        .box1{
+            margin:5px auto;
+            position:relative;
+            width:300px;
+            height:200px;
+        }
+        .back{
+            background-image: url(./image/21.jpg);
+            width:100%;
+            height:100%;
+        }
+        .modal{
+            position: absolute;
+            width:100%;
+            height:20%;
+            bottom:0;
+            color:white;
+            background: rgba(0,0,0,.5);
+            text-align: center;
+        }
+        /* 毛玻璃蒙版 */
+        .box2{
+            /* margin:5px auto; */
+            position: relative;
+            width:300px;
+            height:200px;
+            background: fixed url(./image/21.jpg);
+        }
+        .blur-modal{
+            position: absolute;
+            width:300px;
+            height:50px;
+            top:150px;
+            background: fixed url(./image/21.jpg);
+            /* 滤镜 blur高斯模糊 */
+            filter:blur(1rem);
+        }
+        .black-modal{
+            position: absolute;
+            width:300px;
+            height:50px;
+            top:150px;
+            background: rgba(0, 0, 0, .2);
+            color:white;
+        }
+        /* 高斯模糊 */
+        .suit{
+            position: relative;
+            margin:5px auto;
+        }
+        .figure{
+            background: url(./image/21.jpg);
+            background-size: 200%;
+            height: 200px; width: 400px;
+            filter: blur(16px)
+        }
+        .modal{
+            position: absolute;
+            height: 200px; width: 400px; top: 0px; left: 0px; 
+            background: rgba(0,0,0,.5);
+            color: white; text-align: center
+        }
+        /* 图片边框 */
+        .content{
+            background: #003366;
+            width: 100%;
+            height:300px;
+        }
+        .back{
+            width:100%;
+            height:180px;
+            background: url(./image/content-frame1.png) no-repeat;
+            background-size: contain;
+            background-position: center;
+            color:white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <p>蒙版文字</p>
+    <div class="box1">
+        <div class="back"></div>
+        <div class="modal">蒙版文字</div>
+    </div>
+    <p>毛玻璃蒙版</p>
+    <div class="box2">
+        <div class="blur-modal"></div>
+        <div class="black-modal"></div>
+    </div>
+    <p>高斯模糊背景图</p>
+    <div class='suit' >
+        <div class='figure'></div>
+        <div class='modal'>
+            功夫熊猫
+        </div>
+    </div>
+    <p>图片边框</p>
+    <div class="content">
+        <div class="back">图片边框</div>
+    </div>
+</body>
+</html>

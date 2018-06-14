@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态旋转边框</title>
+    <style>
+        .box{
+            margin:40px auto;
+            position: relative;
+            width:400px;
+            height:400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box-avatar-outer{
+            width:400px;
+            height:400px;
+            position:absolute;
+            background: url(./image/ring-outer.png) no-repeat;
+            background-size: 100%;
+            background-position: center;
+            animation:anti-clockwise 3s linear infinite;
+        }
+
+        .box-avatar-inner{
+            width:400px;
+            height:400px;
+            position:absolute;
+            background: url(./image/ring-inner.png) no-repeat;
+            background-size: 90%;
+            background-position: center;
+            animation:clockwise 3s linear infinite;
+        }
+
+        .box-avatar{
+            width:300px;
+            height:300px;
+            background: url(./image/6.jpg) no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes clockwise{
+            100%{
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes anti-clockwise{
+            0%{
+                transform: rotate(360deg)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box-avatar-outer"></div>
+        <div class="box-avatar-inner"></div>
+        <div class="box-avatar"></div>
+    </div>
+</body>
+</html>
