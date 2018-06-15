@@ -57,5 +57,73 @@ typeof undefined             // undefined
 typeof null                  // object
 null === undefined           // false
 null == undefined            // true
+
+/**
+instanceof 详解:
+语法:
+object instanceof constructor (constructor构造函数)
+解析:
+object 要检测的对象  constructor 某个构造函数
+[instanceof 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性]
+or
+[instanceof 运算符用来检测 constructor.prototype 是否存在于参数 object 的原型链上] !!!!
+
+*/
 ```
 
+## 3.
+
+## [[3,2,1].reduce(Math.pow), [].reduce(Math.pow) ]
+
+```javascript
+/**
+改写为:
+
+var numbers = [3,2,1];
+function get(total,num){ 
+	return Math.pow(total,num);
+}
+console.log(numbers.reduce(get));
+
+答案：9 error
+解析：
+	语法:
+	array.reduce(function(total, currentValue, currentIndex, arr), initialValue);
+		function(total, currentValue, currentIndex, arr)
+			total:必需.初始值,,或者计算结束后的返回值.
+			currentValue:必需。当前元素.
+			currentIndex:可选.当前元素的索引.
+			arr:可选.当前元素所属的数组对象.
+		initialValue:可选.传递给函数的初始值.
+reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减(具体运算根据函数而定)，最终计算为一个值
+
+Math.pow (x , y)  x 的 y 次幂的值
+如果一个函数不传初始值，数组第一个组默认为初始值.
+[3,2,1].reduce(Math.pow)
+Math.pow(3,2) //9
+Math.pow(9,1) //9
+巩固：[].reduce(Math.pow)       //空数组会报TypeError
+     [1].reduce(Math.pow)      //只有初始值就不会执行回调函数，直接返回1
+     [].reduce(Math.pow,1)     //只有初始值就不会执行回调函数，直接返回1
+     [2].reduce(Math.pow,3)    //传入初始值，执行回调函数，返回9 //初始值3 3^2 == 9
+*/
+```
+
+## 4.
+
+## var val = 'smtg'; console.log('Value is ' + (val === 'smtg') ? 'Something' : 'Nothing'); 
+
+关于运算符优先级
+
+```javascript
+var val = 'smtg';
+console.log('Value is ' + (val === 'smtg') ? 'Something' : 'Nothing');
+/**
+答案：Something
+解析：字符串连接比三元运算有更高的优先级 
+     所以原题等价于 'Value is true' ? 'Somthing' : 'Nonthing' 
+     而不是 'Value   is' + (true ? 'Something' : 'Nonthing')
+*/
+```
+
+运算符优先级详解:[](https://juejin.im/post/5b1f899fe51d4506c60e46ee)
