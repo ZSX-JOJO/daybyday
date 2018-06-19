@@ -1,3 +1,5 @@
+# 44道JavaScript难题
+
 ## 1.
 
 ## ["1", "2", "3"].map(parseInt)
@@ -111,7 +113,9 @@ Math.pow(9,1) //9
 
 ## 4.
 
-## var val = 'smtg'; console.log('Value is ' + (val === 'smtg') ? 'Something' : 'Nothing'); 
+## var  val = 'smtg';  
+
+## console.log('Value is ' + (val === 'smtg') ? 'Something' : 'Nothing'); 
 
 关于运算符优先级
 
