@@ -131,3 +131,272 @@ console.log('Value is ' + (val === 'smtg') ? 'Something' : 'Nothing');
 ```
 
 运算符优先级详解:[](https://juejin.im/post/5b1f899fe51d4506c60e46ee)
+
+## 5.
+
+## 变量提升 && 函数提升
+
+```JavaScript
+/**
+变量提升
+*/
+//栗子1:
+var name = 'World!';
+(function () {
+if (typeof name === 'undefined') {
+    var name = 'Jack';//作用域问题 查看 "自用-收集整理.md" 作用域部分
+    console.log('Goodbye ' + name);
+} else {
+    console.log('Hello ' + name);
+}
+})();
+输出 Goodbye Jack
+
+以上等价于 ==>
+var name = 'World!';
+(function () {
+    var name;//变量提升了。
+    if (typeof name === 'undefined') {// 程序进入到if 而不是else
+        name = 'Jack';
+        console.log('Goodbye ' + name);
+    }else{
+        console.log('Hello ' + name);
+    }
+})();
+/**
+解析:
+1:
+name 变量提升 typeof时 undefined
+2:
+typeof 优先级 高于 ===
+
+变量声明总是会被解释器悄悄地被 “提升” 到方法体的最顶部。
+
+变量提升 仔细查看是否存在 var "关键字" 以及作用域问题
+
+函数提升在变量提升之上!!!!
+*/
+
+//栗子2:
+
+console.log(global); // undefined
+var global = 'global';
+console.log(global); // global
+ 
+function fn () {
+　　console.log(a); // undefined
+　　var a = 'aaa';
+　　console.log(a); // aaa
+}
+fn();
+
+等价于 ==>
+var global; // 变量提升，全局作用域范围内，此时只是声明，并没有赋值
+console.log(global); // undefined
+global = 'global'; // 此时才赋值
+console.log(global); // 打印出global
+ 
+function fn () {
+　　var a; // 变量提升，函数作用域范围内
+　　console.log(a);
+　　a = 'aaa';
+　　console.log(a);
+}
+fn();
+
+//栗子3:
+(function() {
+　　console.log(a);//a 只有声明 未被赋值 undefined
+　　a = 'aaa';//变量没有提升 全局变量
+　　var a = 'bbb'; 
+　　console.log(a);//输出 bbb
+})();
+
+等价于 ==>
+(function() {
+   var a;
+　　console.log(a);//a 只有声明 未被赋值 undefined
+　　a = 'aaa';//变量没有提升 全局变量 此时 a == "aaa"
+　　var a = 'bbb'; //局部变量 a == "bbb"
+　　console.log(a);//输出 bbb
+})();
+
+/**
+函数提升
+*/
+//js 中创建函数有两种方式：函数声明式和函数字面量式。只有函数声明才存在函数提升
+console.log(f1); // function f1() {}   
+console.log(f2); // undefined  
+function f1() {}
+var f2 = function() {}
+等价于 ==>
+function f1() {} // 函数提升，整个代码块提升到文件的最开始　　　　　
+console.log(f1);   
+console.log(f2);   //函数 f2 是函数字面量式 不会提升
+var f2 = function() {}
+/**
+f1() {}
+undefined
+*/
+foo();
+var foo = function(){
+    console.log("aaa");
+}
+相当于 ==>
+var foo;
+//console.log(foo);  //undefined
+foo(); //foo is not a function
+foo = function(){
+    console.log("aaa");
+}
+/**
+报错:foo is not a function
+*/
+
+console.log(foo+"空格"+"1111");
+var foo=10;
+console.log(foo+"空格"+"2222");
+function foo(){
+    console.log(10);
+}
+console.log(foo+"空格"+"3333");
+等价于 ==>
+function foo(){
+    console.log(10);
+}
+var foo;
+console.log(foo+"空格"+"1111");
+foo=10;
+console.log(foo+"空格"+"2222");
+console.log(foo+"空格"+"3333");
+/**
+function foo(){
+    console.log(10);
+}空格1111
+
+10空格2222
+
+10空格3333
+*/
+/**
+函数提升在变量提升上面，第一个 console.log(foo); 为什么会输出函数体呢，
+原因在于 var foo; 并未有赋值只是声明，因此他会调用上面的值
+
+函数提升 在 变量提升 之上
+*/
+
+//栗子1:
+console.log(f1()+"第二个运行"); 
+console.log(f2+"第三个运行");   
+function f1() {console.log('aa'+"最先运行")}
+var f2 = function() {}
+/**
+aa最先运行
+undefined第二个运行
+undefined第三个运行
+*/
+//栗子2:
+foo();
+function foo(){
+    console.log("aaa");
+}
+等价于 ==>
+function foo(){
+    console.log("aaa");
+}
+foo();
+/**
+"aaa"
+*/ 
+    
+```
+
+## 6:
+
+## 跳过
+
+```JavaScript
+
+```
+
+## 7:
+
+## var ary = [0,1,2]; 
+
+## ary[10] = 10; 
+
+## ary.filter(function(x) { return x === undefined;});  
+
+```JavaScript
+/**
+Array的filter()方法
+*/
+var ary = [0,1,2]; 
+
+ary[10] = 10; 
+
+ary.filter(function(x) { return x === undefined;});
+/**
+[]
+
+解析:
+filter() 不会对空数组进行检测。
+filter() 不会改变原始数组。
+*/
+
+```
+
+## 8:
+
+## toFixed()   //跳过
+
+```javascript
+
+```
+
+## 9:
+
+```JavaScript
+
+```
+
+## 10:
+
+## 11:
+
+## %  取余运算
+
+```JavaScript
+function isOdd(num) {
+    return num % 2 == 1;
+}
+function isEven(num) {
+    return num % 2 == 0;
+}
+function isSane(num) {
+    return isEven(num) || isOdd(num);
+}
+var values = [7, 4, '13', -9, Infinity];
+values.map(isSane);
+/**
+[true,true,true,false,false]
+解析:
+%如果不是数值会调用Number（）去转化
+余数的正负号随 第一个操作数
+*/
+```
+
+## 12:
+
+## parseInt ()
+
+```JavaScript
+//parseInt(string, radix)  必需 要被解析的字符串,可选 要解析的数字的基数(介于2-36之间)
+parseInt(3, 8)
+parseInt(3, 2)
+parseInt(3, 0)
+/**
+3 NaN 3
+*/
+```
+
