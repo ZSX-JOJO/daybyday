@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p style="color:red;font-size:20px;text-align: center;"> js瞎鸡巴记录</p>
+</body>
+<script>
+    /* 函数重载 */
+     function addMethod (obj, name, fn) {
+        var old = obj[name];
+        console.log(old);
+        obj[name] = function () {
+            if (fn.length === arguments.length) {
+                return fn.apply(this, arguments)
+            } else if (typeof old === 'function') {
+                return old.apply(this, arguments)
+            }
+        }
+    }
+
+    var person = {userName: 'bear鲍的小小熊'};
+
+    addMethod(person, 'show', function () {
+        console.log(this.userName + '---->' + 'show1');
+    })
+    addMethod(person, 'show', function (str) {
+        console.log(this.userName + '---->' + str);
+    })
+    addMethod(person, 'show', function (a, b) {
+        console.log(this.userName + '---->' + (a + b));
+    })
+    person.show();  
+    person.show('bkl');
+    person.show(10, 20);
+
+    /* 函数调用栈 */
+    /* anonymous 全局匿名调用函数环境 */
+    console.log("断点");
+    function fn1(){
+        console.log('fn1');
+        fn2();
+    };
+    function fn2(){
+        console.log('fn2');
+    };
+    fn1();
+
+    /* 函数作用域 */
+    for(var k = 0;k<10;k++){
+        console.log("%c"+"k="+k,"color:red;font-size:16px");
+    };
+    console.log("%c"+"循环外K="+k,"color:yellow;font-size:20px");//输出10
+
+    /* 作用域链 */
+    let a = 'a';
+    function fn4(){
+    let b = 'b';
+    return a+b;
+    };
+    let c = fn4();
+    console.log("%c"+"循环外C="+c,"color:green;font-size:20px");//输出'ab'
+
+    /* 闭包 */
+    function fn5(){
+    let a = 0;
+    return function(){
+        a++;
+        console.log(a);
+    };
+    };
+    let fn = fn5();
+    fn();
+
+    /* 闭包2 */
+    var getNum;//------------------------1
+    function getCounter() { // ----------2
+        var n = 1; 
+        var inner = function () { 
+            return n++; 
+        }
+        return inner;
+    }
+
+    getNum = getCounter();//------------3
+    console.log(getNum()); //1 ---------4
+    console.log(getNum()); //2 ---------5
+
+    /* 闭包详解 */
+    function fn1() {
+        var name = 'iceman';
+        function fn2() {
+            console.log(name);
+        }
+        fn2();
+    }
+    fn1();
+
+    /* 闭包详解2 */
+    function fnc1() {
+        var name123 = 'iceman';
+        function fnc2() {
+            console.log("%c"+"闭包详解2"+" "+name123,"color:blue;font-size:18px");
+        }
+        return fnc2;
+    }
+    var fnc3 = fnc1();
+    console.log(typeof fnc3);
+    fnc3();
+
+    /* 闭包详解3 */
+    function fn1() {
+        var name3 = 'iceman';
+        function fn2() {
+            console.log("%c"+"闭包详解3"+" "+name3,"color:white;font-size:18px");
+        }
+        fn3(fn2);
+    }
+    function fn3(fn) {
+        fn();
+    }
+    fn1();
+
+    /* 再次解释闭包 */
+    function waitSomeTime(msg, time) {
+        setTimeout(function () {
+            console.log("%c"+"再次解释闭包"+" "+msg,"color:red;font-size:18px")
+        }, time);
+    }
+    waitSomeTime('hello', 3000);
+
+    /* for循环中使用定时器延迟打印 */
+    for (var i = 1; i <= 10; i++) {
+        setTimeout(function () {
+            console.log(i+" "+"输出10次11");
+        }, 1000);
+    }
+
+    /* 在i每次迭代时产生的私有域中保存当前i的值 */
+    for (var i = 1; i <= 10; i++) {
+        (function () {
+            var j = i;
+            setTimeout(function () {
+                console.log(j+" "+"在i每次迭代时产生的私有域中保存当前i的值");
+            }, 1000);
+        })();
+        // +-function () {
+        //     var j = i;
+        //     setTimeout(function () {
+        //         console.log(j+" "+"在i每次迭代时产生的私有域中保存当前i的值");
+        //     }, 1000);
+        // }();
+    }
+
+    /* 优雅的写法 将每次迭代的i 作为实参传递给自执行函数 */
+    for (var i = 1; i <= 10; i++) {
+        (function (j) {
+            setTimeout(function () {
+                console.log(j);
+            }, 1000);
+        })(i);
+    }
+
+    for (var i = 1; i <= 10; i++) {
+        console.log(i+" "+"默认方式输出");
+    }
+
+    /* 闭包的应用 */
+    /* 定义模块 将操作函数暴露给外部 细节隐藏在模块内部 */
+    function module() {
+        var arr = [];
+        function add(val) {
+            if (typeof val == 'number') {
+                arr.push(val);
+            }
+        }
+        function get(index) {
+            if (index < arr.length) {
+                return arr[index]
+            } else {
+                return null;
+            }
+        }
+        return {
+            add: add,
+            get: get
+        }
+    }
+    var mod1 = module();
+    for(var i = 0;i <= 10;i++){
+        mod1.add(i);
+    }
+    console.log("%c"+"闭包的应用"+" "+mod1.get(10),"color:yellow;font-size:22px");
+</script>
+</html>
