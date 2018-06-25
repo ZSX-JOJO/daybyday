@@ -22,3 +22,5 @@ cssÑ¡ÔñÆ÷
 
 
 writing-mode
+
+apply()  call()
