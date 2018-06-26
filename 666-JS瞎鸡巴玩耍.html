@@ -195,5 +195,168 @@
         mod1.add(i);
     }
     console.log("%c"+"闭包的应用"+" "+mod1.get(10),"color:yellow;font-size:22px");
+
+    /* 每次调用函数都会为局部变量创建一个闭包。
+        实际上每次函数声明并不会创建一个单独的闭包，
+        但每次调用函数都会创建一个独立的闭包
+     */
+     function newClosure(someNum, someRef) {
+    // 局部变量最终保存在闭包中
+    var num = someNum;
+    var anArray = [1,2,3];
+    var ref = someRef;
+    return function(x) {
+            num += x;
+            anArray.push(num);
+            console.log('num: ' + num +
+                '\nanArray ' + anArray.toString() +
+                '\nref.someVar ' + ref.someVar);
+        }
+    }
+    obj = {someVar: 4};
+    fn1 = newClosure(4, obj);
+    fn2 = newClosure(5, obj);
+    fn1(1); // num: 5; anArray: 1,2,3,5; ref.someVar: 4;
+    /* fn1(1) ==>
+        newClosure(4,obj)
+        var num = 4; 
+        obj = {someVar: 4}; 
+        var ref = {someVar: 4};
+        num = num + x; ==> 4 + 1 ==>5;
+    */
+    fn2(1); // num: 6; anArray: 1,2,3,6; ref.someVar: 4;
+    /* fn2(1) ==>
+        num = num + x; ==> 5 + 1 ==>6;
+        anArray:1,2,3,6
+     */
+    obj.someVar++; // ==>obg.someVar ==> 5;
+    fn1(2); // num: 7; anArray: 1,2,3,5,7; ref.someVar: 5;
+    /* fn1(2) ==>
+        num = num + x ==> 5 + 2 ==>7;
+
+     */
+    fn2(2); //num: 8; anArray:1,2,3,6,8; ref.someVar: 5;
+
+    /* 遍历对象的全部属性 */
+    var zsx = {
+        name:"zhaoshouxin",
+        age:"18",
+        tel:110
+    };
+    console.log(zsx['name'] + " " + zsx.age +" "+zsx.tel); // zhaoshouxin 18 110
+    for(var i in zsx){
+        console.log(zsx[i]);
+    }
+
+    /* Object.keys()查看对象本身所有属性,并返回一个数组 */
+    var zsx = {
+        name:"zhaoshouxin",
+        age:"18",
+        tel:110
+    };
+    Object.keys(zsx);// ["name", "age", "tel"]
+
+    /* 构造函数 */
+    function Car(){
+        this.color = 'black';
+    }
+    var c = new Car();
+
+    /* 构造函数  传递参数 */
+    function Car(color){
+        this.color = color;
+    }
+    var c = new Car('red');
+
+    /*  */
+    function Car(color,age,height){
+        this.color = color;
+        this.age = age;
+        this.height = height;
+    }
+    var c = new Car('red','18','175');
+    console.log(Object.keys(c));// ["color"]
+    for(var i in c){
+        console.log(c[i]);// red
+    }
+
+    /* call() apply() bind() 究极觉醒
+        改变this的指向
+     */
+    var name = "赵",age = 18,weight = 4;
+
+    var object = {
+        name: "赵4",
+        age: 18,
+        weight:93,
+        myFun:function(){
+            console.log("%c"+this.name+" "+this.age+" "+this.weight,"color:red;font-size:24px");
+        },
+        myFun2:function(from,to){
+            console.log("%c"+this.name+" "+this.age+" "+this.weight+" "+"from"+" "+from+" "+"to"+" "+to,"color:red;font-size:24px");
+        }
+    };
+
+    var newObject = {
+        name:"赵守鑫",
+        age: 28,
+        weight:68
+    };
+
+    object.myFun.call(newObject);//赵守鑫 28 68
+    object.myFun.apply(newObject);//赵守鑫 28 68
+    object.myFun.bind(newObject)();//赵守鑫 28 68
+
+    /* call(obj, arg1, arg2, ...); 
+        第一个参数obj是this要指向的对象
+        也就是想指定的上下文；arg1,arg2..都是要传入的参数
+        如果参数为 空 或 null 或 undefined,则默认传入全局对象
+    */
+    object.myFun2.call(newObject,"heaven","hell");
+
+    /* apply(obj,[arg1,arg2....]);
+        它第二个参数一个数组，里面的值就是要传入的参数
+    */
+    object.myFun2.apply(newObject,["heaven","hell"]);
+
+    /*  bind(obj)();
+        将函数体内的this绑定到某个对象
+        然后返回一个新函数 
+    */
+    object.myFun2.bind(newObject,"heaven","hell")();
+
+    /* 原型 prototype
+        每一个对象都从原型继承属性(null除外,null没有自己的原型对象);
+        通过关键字new和构造函数调用创建的对象的原型就是构造函数的prototype属性的值;
+        没有原型的对象为数不多，Object.prototype就是其中之一，它不继承任何属性(因为null没有任何属性和方法,可以暂且认为null是其原型);
+        所有的内置构造函数都具有一个继承自Object.prototype的原型;
+
+        JavaScript对象具有"自有属性",也有一些属性是从原型对象继承而来.
+        如果对象自身和原型都定义了一个同名属性,则优先读取对象自身的属性--"覆盖"
+
+        对象的 constructor 属性返回创建该对象的函数(构造函数)
+        对象.constructor
+    */
+
+    /* instanceof 表示指定对象是否是某个构造函数的实例 */
+    var c = new Car();
+    /* 检查 右边构造函数 的原型对象,是否在 左边对象 的原型链上 */
+    c instanceof Car;// true
+
+    /* Object.create() */
+    const person = {
+        isHuman: false,
+        printIntroduction: function () {
+            console.log('My name is'+ this.name + 'Am I human?' + this.isHuman);//传统写法
+            console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);//ES6 模版字符串 `` 反撇号(esc之下键)字符
+            /* ES6模版字符串 详解? */
+            console.log(`%c My name is ${this.name}`,`color:red;font-size:14px`);
+        }
+    };
+
+    const me = Object.create(person);
+    me.name = "Matthew"; // "name" is a property set on "me", but not on "person"
+    me.isHuman = true; // inherited properties can be overwritten
+    me.printIntroduction(); // expected output: "My name is Matthew. Am I human? true"
 </script>
 </html>
