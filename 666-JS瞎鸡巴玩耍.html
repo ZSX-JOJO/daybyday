@@ -38,6 +38,20 @@
     person.show('bkl');
     person.show(10, 20);
 
+    /* 栈(stack)内存  堆(heap)内存
+        栈 存放变量
+        堆 存放复杂对象
+    */
+    var a = 20;
+    var b = a;
+    console.log(`b=${b}`);//b存放于栈内存中
+     
+    var m = {a:10};
+    var n = m;//引用类型的一个地址指针 地址指针相同
+    n.a = 15;//尽管栈内存中 变量不同 但是存储的地址相同; 堆内存中的对象是同一个
+    console.log(`m.a=${m.a}`) ;//15
+
+
     /* 函数调用栈 */
     /* anonymous 全局匿名调用函数环境 */
     console.log("断点");
@@ -53,6 +67,7 @@
     /* 函数作用域 */
     for(var k = 0;k<10;k++){
         console.log("%c"+"k="+k,"color:red;font-size:16px");
+        console.log(`%c k= ${k}`,"color:red;font-size:16px");
     };
     console.log("%c"+"循环外K="+k,"color:yellow;font-size:20px");//输出10
 
@@ -358,5 +373,13 @@
     me.name = "Matthew"; // "name" is a property set on "me", but not on "person"
     me.isHuman = true; // inherited properties can be overwritten
     me.printIntroduction(); // expected output: "My name is Matthew. Am I human? true"
+
+    /* async函数 以及其返回的Promise 对象 */
+    // async函数 解决层层嵌套(回调地狱)
+    async function f() {
+        return 'hello world';
+    }
+    f().then(v => console.log(v));
+    f().then((v) =>{console.log(v)});
 </script>
 </html>
