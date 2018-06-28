@@ -374,6 +374,69 @@
     me.isHuman = true; // inherited properties can be overwritten
     me.printIntroduction(); // expected output: "My name is Matthew. Am I human? true"
 
+    /* generator function 生成器函数  封装的一个异步任务 or 异步任务的容器*/
+    /* yield 关键字 暂停生成器函数 直到生成器的 next() 方法被调用。
+        每次调用生成器的next()方法时，生成器都会恢复执行
+    */
+    /* yield关键字实际返回一个IteratorResult对象，
+        它有两个属性，value和done。
+        value属性是对yield表达式求值的结果，
+        而done是false，表示生成器函数尚未完全完成 
+    */
+    function* countAppleSales () {// *用来表示生成器函数和普通函数的区别
+        var saleList = [3, 7, 5];
+        for (var i = 0; i < saleList.length; i++) {
+            yield saleList[i];
+        }
+    }
+
+    /* 构造迭代器 进行使用 */
+    var appleStore = countAppleSales(); // Generator { }
+    console.log(appleStore.next()); // { value: 3, done: false }
+    console.log(appleStore.next()); // { value: 7, done: false }
+    console.log(appleStore.next()); // { value: 5, done: false }
+    console.log(appleStore.next()); // { value: undefined, done: true }
+
+    /* yield* 迭代器委托 */
+    function* stringIter() {
+        var str = "bobsyouruncle";
+        var idx = 0;
+        while(idx < str.length)
+            yield str[idx++];
+    }
+
+    function* strIter() {
+        yield "jo";
+        yield* stringIter();
+    }
+
+    var si2 = strIter();
+
+    console.log(si2.next().value);// jo
+    console.log(si2.next().value);// b 此时已委托到stringIter生成器 
+    console.log(si2.next().value);// o
+    console.log(si2.next().value);// b
+
+    /* next 传递参数 */
+    function* zsx(){
+        var str = "zhaoShouXin";
+        var idx = 0;
+        while(idx < str.length){
+            var modify = yield str[idx++];
+            if(modify == "SB"){
+                idx = 0;
+            }
+        }
+    }
+
+    var str2 = zsx();
+    console.log(str2.next().value);// z
+    console.log(str2.next().value)// h
+    console.log(str2.next().value); // a
+    console.log(str2.next().value); // o
+
+    console.log(str2.next("SB").value);// z
+
     /* async函数 以及其返回的Promise 对象 */
     // async函数 解决层层嵌套(回调地狱)
     async function f() {
@@ -381,5 +444,84 @@
     }
     f().then(v => console.log(v));
     f().then((v) =>{console.log(v)});
+
+    /* 数组 */
+    var arr = [1,2,3,4];
+    arr.push(5);// [1,2,3,4,5]
+    arr.shift();//[2,3,4,5]
+    /* 密集数组 稀疏数组 */
+
+    //稀疏数组
+    var array = new Array(3); 
+    array[2] = "name";
+    for(var a in array) {
+        console.log("index=" + a + ",value=" + array[a]);
+    }
+    // 密集数组
+    var dense = Array.apply(null, Array(3)); 
+    dense[2] = "name";
+    for(var a in dense) {
+        console.log("index=" + a + ",value=" + dense[a]);
+    }
+
+    /* 二维数组 
+        先声明一维 再声明二维
+    */
+    /* 
+        1 a 4
+        2 b 5
+     */
+    var arr = [[1,2],['a','b'],[4,5]];
+    console.log(arr[2][0]); //a 第2列第1行所在的元素
+
+    // 栗子  定义一个二维数组
+    var arr = new Array();//先声明一维
+    for(var i=0;i<5;i++){//一维长度为5
+        arr[i]=new Array(i);//再声明二维
+        for(var j=0;j<5;j++){//二维长度为5          
+            arr[i][j]=i;
+        }
+    }
+    for(var i=0;i<arr.length;i++){
+        for(var j=0;j<arr[i].length;j++){
+            document.write(arr[i][j]);
+        }
+        document.write("<br/>");  
+    }
+
+    /* 遍历数组 */
+    var arr = [1,2,3,4,5];
+    // for循环
+    for(var i =0;i<arr.length;i++){
+        console.log(`${arr[i]}`);
+    }
+    // while
+    var ii = 0;
+    while (ii < arr.length) {
+        console.log(`%c${arr[ii]}`,`color:red`);
+        ii++;
+    }
+    //for..in
+    for (var iii in arr) {
+        console.log(`%c${arr[iii]}`,`color:yellow`);
+    }
+    //forEach
+    arr.forEach(function(iiii){
+        console.log(`%c${iiii}`,`color:blue`);
+    })
+
+    /* 类数组对象 */
+    var obj = {
+        0:"a",
+        1:"b",
+        length:2
+    };
+    /* 
+    slice() 取字符串某个部分,并返回新的字符串
+    arr.slice(); // [0, end]
+    arr.slice(begin);// [begin, end]
+    arr.slice(begin, end);// [begin, end) 不包括最后一位
+     */
+    Array.prototype.slice.call(obj); // ["a","b"]
 </script>
 </html>
