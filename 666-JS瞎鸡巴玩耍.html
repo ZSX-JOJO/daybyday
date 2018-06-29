@@ -486,7 +486,18 @@
         for(var j=0;j<arr[i].length;j++){
             document.write(arr[i][j]);
         }
-        document.write("<br/>");  
+        document.write("<br/>"); 
+    }
+
+    // 定义 第二个二维数组 !!!
+    var myarr=new Array();   
+    for(var i=0;i<3;i++){  
+        myarr[i]=new Array();  
+        for(var j=0;j<6;j++){   
+            myarr[i][j]=i*j;   
+            document.write(myarr[i][j]+"&nbsp");
+        }
+        document.write("<br  />");
     }
 
     /* 遍历数组 */
@@ -523,5 +534,33 @@
     arr.slice(begin, end);// [begin, end) 不包括最后一位
      */
     Array.prototype.slice.call(obj); // ["a","b"]
+
+    /* Date */
+    /* Date.parse() 接收一个表示日期的字符串参数，然后尝试根据这个字符串返回相应日期的毫秒数。 */
+    var time = new Date(Date.parse('2018-6-29'));
+    console.log(time);
+
+    /* Date.now()返回表示调用这个方法时的日期和时间的毫秒数。 */
+    var times = Date.now();
+    console.log(times);
+    console.log(Date.now());
+
+    /* toLocaleString() 会按照与浏览器设置的时区相适应的格式返回日期和时间，包含AM或PM，但不包含时区 */
+    var time2 = new Date();
+    console.log(time2.toLocaleString());
+
+    /* toString() 返回带有时区信息的日期和时间，其中时间一般以军用时间（即小时的范围是0到23） */
+    var time3 = new Date();
+    console.log(time3.toString());
+
+    /* valueOf() 返回Date实例对象本身 */
+    var dateString = new Date();
+    console.log(dateString.valueOf());
+
+    /* DOM */
+    document.getElementById("id");
+    document.getElementsByName('input');
+    document.getElementsByTagName('span');
+    document.querySelectorAll('.div');//querySelector 返回匹配的第一个元素
 </script>
 </html>
