@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01</title>
+</head>
+<body>
+    <!-- 其他瞎写 -->
+	<div id="main0">{{value}}</div>
+    <div id="main00" v-html="value"></div>
+    
+    <!-- 双向数据绑定 实时监控数据变化 -->
+    <div id="main">
+        <input type="text" v-model="content">
+        <div>{{content}}</div>
+    </div>
+
+    <!-- 遍历数组 对象 -->
+    <div id="main2">
+        <ul>
+            <li v-for="item in arr"><!--遍历数组-->
+                {{item}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="item in obj"><!--遍历对象-->
+                {{item}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(value,key) in obj"><!--键值循环，数组也适用，注意key在后面-->
+                {{key}} ---- {{value}}
+            </li>
+        </ul>
+    </div>
+
+    <!-- 绑定事件 -->
+    <div id="main3" style="margin:10px">
+        <button type="button" v-on:click="showHello()">点击显示</button>
+        {{msg}}
+    </div>
+
+    <!-- v-show -->
+    <div id="main4" style="margin:10px">
+        <button type="button" v-on:click="change()">隐藏 v-on:click=""</button>
+        <button type="button" @click="change">隐藏2 @click=""</button>
+        <div style="width:100px;height:100px;background: black" v-show="flag"></div>
+    </div>
+
+    <div id="main5" style="margin:10px">
+    <button type="button" @click="print($event)">点击显示按钮的值</button>
+        {{msg}}
+    </div>
+
+    <div id="example">
+        <p>Original message: "{{ message }}"</p>
+        <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    </div>
+
+    <div id="demo">{{ fullName }}</div>
+
+    <div id="watch-example">
+        <p>
+            Ask a yes/no question:
+            <input v-model="question">
+        </p>
+        <p>{{ answer }}</p>
+    </div>
+</body>
+<script type="text/javascript" src="../script/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/[email protected]/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/[email protected]/lodash.min.js"></script>
+<script type="text/javascript">
+    /* 以下瞎写 */
+	var app1 = new Vue({
+        el:'#main0',
+		data:{
+			value:'<span>我是一个span标签</span>'
+		}
+    });
+
+    var app11 = new Vue({
+        el:'#main00',
+        data:{
+            value:'<span>我是一个span标签</span>'
+        }
+    });
+    
+    var app2 = new Vue({
+        el:'#main',
+        data:{
+            content:''
+        }
+    });
+
+    var app3 = new Vue({
+        el:'#main2',
+        data:{
+            arr:[1,2,3,4,5,6,7],
+            obj:{
+                name:"zsx",
+                age:18,
+                gendar:'man'
+            }
+        }
+    });
+
+    var app3 = new Vue({
+        el:"#main3",
+        data:{
+            msg:''
+        },
+        methods:{
+            showHello(){
+                this.msg = 'hello your mother!!!'
+            }
+        }
+    });
+
+    var app4 = new Vue({
+        el:'#main4',
+        data:{
+            flag:true
+        },
+        methods:{
+            change(){
+                this.flag = !this.flag;
+            }
+        }
+    });
+
+    var app5 = new Vue({
+        el:'#main5',
+        data:{
+            msg:''
+        },
+        methods:{
+            print(e){
+                this.msg = e.target.innerHTML;
+            }
+        }
+    });
+
+
+    /* split()用于把一个字符串分割成字符串数组
+	    reverse()用于颠倒数组中元素的顺序
+        join()用于把数组中的所有元素转换一个字符串
+     */
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            message: 'Hello'
+        },
+        computed: {
+            // 计算属性的 getter
+            reversedMessage: function () {
+            // `this` 指向 vm 实例
+            return this.message.split('').reverse().join('')
+            }
+        }
+    });
+
+    /* 侦听 */
+    // var vm2 = new Vue({
+    //     el:'#demo',
+    //     data:{
+    //         firstName:'Zhao',
+    //         lastName:'ShouXin',
+    //         fullName:'ZhaoShouXin'
+    //     },
+    //     watch:{
+    //         firstName:function(val){
+    //             this.fullName  = val + ' ' + this.lastName;
+    //         },
+    //         lastName:function(val){
+    //             this.fullName  = this.firstName + ' ' + val; 
+    //         }
+    //     }
+    // });
+    /* 上个方法优化 */
+    // var vm = new Vue({
+    //     el: '#demo',
+    //     data: {
+    //         firstName: 'Zhao',
+    //         lastName: 'ShouXin'
+    //     },
+    //     computed: {
+    //         fullName: function () {
+    //         return this.firstName + this.lastName
+    //         }
+    //     }
+    // })
+    /* 计算属性 setter */
+    var vm = new Vue({
+        el:'#demo',
+        data:{
+            firstName: 'Zhao',
+            lastName: 'ShouXin'
+        },
+        computed:{
+            fullName:{
+                get:function(){
+                    return this.firstName + this.lastName 
+                },
+                set: function (newValue) {
+                    var names = newValue.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        }
+    });
+
+    var watchExampleVM = new Vue({
+        el: '#watch-example',
+        data: {
+            question: '',
+            answer: 'I cannot give you an answer until you ask a question!'
+        },
+        watch: {
+            // 如果 `question` 发生改变，这个函数就会运行
+            question: function (newQuestion) {
+            this.answer = 'Waiting for you to stop typing...';
+            this.getAnswer();
+            }
+        },
+        methods: {
+            // `_.debounce` 是一个通过 Lodash 限制操作频率的函数。
+            // 在这个例子中，我们希望限制访问 yesno.wtf/api 的频率
+            // AJAX 请求直到用户输入完毕才会发出。想要了解更多关于
+            // `_.debounce` 函数 (及其近亲 `_.throttle`) 的知识，
+            // 请参考：https://lodash.com/docs#debounce
+            getAnswer: _.debounce(
+            function () {
+                if (this.question.indexOf('?') === -1) {
+                this.answer = 'Questions usually contain a question mark. ;-)';
+                return
+                }
+                this.answer = 'Thinking...';
+                var vm = this;
+                axios.get('https://yesno.wtf/api')
+                .then(function (response) {
+                    vm.answer = _.capitalize(response.data.answer);
+                })
+                .catch(function (error) {
+                    vm.answer = 'Error! Could not reach the API. ' + error;
+                })
+            },
+            // 这是我们为判定用户停止输入等待的毫秒数
+            500
+            )
+        }
+    });
+</script>
+</html>

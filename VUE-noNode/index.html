@@ -10,7 +10,7 @@
     </style>
 </head>
 <body>
-    <div id="app">
+    <div class="app">
   		{{ message }}
 	</div>
 	<!--指令带有前缀 v- -->
@@ -63,7 +63,7 @@
 	 * @type {Vue}
 	 */
 	var app = new Vue({
-		el: '#app',
+		el: '.app',
 		data: {
 		  message: 'Hello Vue!'
 		}
@@ -99,7 +99,7 @@
 	/*
 	split()用于把一个字符串分割成字符串数组
 	reverse()用于颠倒数组中元素的顺序
-	join()用户把数组中的所有元素转换一个字符串
+	join()用于把数组中的所有元素转换一个字符串
 	 */
 	var app5 = new Vue({
 		el:'#app-5',
