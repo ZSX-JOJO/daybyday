@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>智能社vue练习</title>
+</head>
+<body>
+    <!-- v-model 双向数据绑定 -->
+    <div id="box">
+        <input type="text" name="" id="" v-model="msg">
+        {{msg}}<br>
+        <input type="text" name="" id="" v-model="msg2">
+        {{msg2}}<br>
+        {{msg3}}<br>
+        {{arr}}<br>
+        {{json}}
+        <br>
+    </div>
+    <!-- 循环 -->
+</body>
+<script type="text/javascript" src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#box',//选择器
+        data:{
+            msg:'hello vue!',
+            msg2:2018,
+            msg3:true,
+            arr:["zhao","shou","xin"],
+            json:{
+                name:"zhaoshouxin",
+                age:18,
+                sex:"男"
+            }
+        }
+    });
+</script>
+</html>
