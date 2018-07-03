@@ -17,7 +17,7 @@
         {{arr}}<br>
         {{json}}
         <br>
-        <!-- 循环 -->
+        <!-- v-for 循环 -->
         <ul>
             <li v-for="item in arr">{{item}}</li>
         </ul>
@@ -27,12 +27,31 @@
         <ul>
             <li v-for="(item,key,index) in json">{{index}}. {{key}}: {{item}}</li>
         </ul>
+        <!-- 事件  -->
+        <input type="button" value="单击" v-on:click="show()">
+        <input type="button" value="单击+1" v-on:click="add()">
+        <br>
+        <input type="button" value="移出+1" v-on:mouseout="add()">
+        <input type="button" value="移入+1" v-on:mouseover="add()">
+        <br>
+        <input type="button" value="双击+1" v-on:dblclick="add()">
+        <br>
 
+        <button type="button" v-on:click="change()">隐藏 v-on:click="" 关于v-show=""</button>
+        <button type="button" @click="change">隐藏2 @click="" 关于v-show=""</button>
+        <button type="button" @click="flag=false">隐藏3 v-on:click="flag=false" 关于v-show=""</button>
+        <div style="width:100px;height:100px;background: black" v-show="flag"></div>
+
+        <br>
         <div v-bind:class="classObject">2131313</div>
         <div v-bind:class="[activeClass, errorClass]">sdasdsadad</div>
     </div>
 </body>
 <script type="text/javascript" src="../script/vue.js"></script>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script>
     var vm = new Vue({
         el:'#box',//选择器
@@ -50,7 +69,21 @@
             errorClass: 'text-danger',
             /*  */
             isActive: true,
-            error: null
+            error: null,
+            flag: true
+        },
+        methods:{
+            show:function(){
+                alert('2333');
+            },
+            add:function(){
+                this.arr.push('zhaoshouxin');
+                // this.arr.shift('zhaoshouxin');
+                // this.arr.unshift('zhaoshouxin');
+            },
+            change(){
+                this.flag = !this.flag;
+            }
         },
         computed: {
             classObject: function () {
