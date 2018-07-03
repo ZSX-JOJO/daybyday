@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue测试</title>
+    <style>
+        .three{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app"> 
+        <h1>我是直接写在构造器里的模板1</h1> 
+    </div> 
+    
+    <template id="demo3"> 
+        <h1 style="color:red">我是选项模板3</h1> 
+    </template> 
+    <script type="x-template" id="demo4"> 
+        <h1 style="color:red">我是script标签模板4</h1> 
+    </script>
+
+    <ul id="example-1">
+        <!--数组 v-for -->
+        <li v-for="item in items">
+            {{ item.message }}
+        </li>
+        <br>
+        <li v-for="(item,index) in items">
+            {{index}}. {{ item.message }}
+        </li>
+        <br>
+        <!--对象 v-for -->
+        <li v-for="item in json">
+            {{item}}
+        </li>
+        <br>
+        <li v-for="(item,key,index) in json">
+            {{index}}. {{key}}: {{item}}
+        </li>
+    </ul>
+</body>
+<script type="text/javascript" src="../script/vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:"#demo3", 
+        data:{ 
+            message:1 
+        }, 
+        //第2种模板 写在构造器里 
+        //template:`<h1 style="color:red">我是选项模板2</h1>` 
+        
+        //第3种模板 写在<template>标签里 
+        //template:'#demo3' 
+        
+        //第4种模板 写在<script type="x-template">标签里 
+        template:'#demo4' 
+    });
+
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+            items: [
+                { message: 'Foo' },
+                { message: 'Bar' },
+                { message: '233333' }
+            ],
+            json:{
+                name:'zhaoshouxin',
+                age:'18',
+                sex:'男'
+            }
+        }
+    })
+</script>
+</html>

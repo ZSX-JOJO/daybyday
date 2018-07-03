@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>补偿性轮询</title>
+</head>
+<body>
+    <p>补偿性轮询</p>
+</body>
+<script>
+    ;(function($) {
+        $.smartPoller = function(wait, poller) {
+            if ($.isFunction(wait)) {
+                poller = wait
+                wait = 1000
+            }
+
+            (function startPoller() {
+                setTimeout(function() {
+                    poller.call(this, startPoller)
+                }, wait)
+                wait = wait * 1.5
+            })()
+        }
+    })(jQuery);
+</script>
+</html>

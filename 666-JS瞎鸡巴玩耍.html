@@ -374,6 +374,7 @@
     me.isHuman = true; // inherited properties can be overwritten
     me.printIntroduction(); // expected output: "My name is Matthew. Am I human? true"
 
+    /* ES2018新特性 */
     /* generator function 生成器函数  封装的一个异步任务 or 异步任务的容器*/
     /* yield 关键字 暂停生成器函数 直到生成器的 next() 方法被调用。
         每次调用生成器的next()方法时，生成器都会恢复执行
@@ -390,7 +391,7 @@
         }
     }
 
-    /* 构造迭代器 进行使用 */
+    /* 构造迭代器 进行使用   迭代器(iterator)*/
     var appleStore = countAppleSales(); // Generator { }
     console.log(appleStore.next()); // { value: 3, done: false }
     console.log(appleStore.next()); // { value: 7, done: false }
@@ -410,7 +411,7 @@
         yield* stringIter();
     }
 
-    var si2 = strIter();
+    var si2 = strIter();//最先运行 提升
 
     console.log(si2.next().value);// jo
     console.log(si2.next().value);// b 此时已委托到stringIter生成器 

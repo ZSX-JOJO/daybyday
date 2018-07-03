@@ -770,6 +770,52 @@ console.log(zsx3.padEnd(7,"在后面"));
 
 ShareArrayBuffer && Atomics //暂时跳过
 
+ES2018:
 
+rest 
+/**将剩余对象的属性复制到一个新对象中*/
+var {x, y, ...z} = {x: 1, y: 2, a: 3, b: 4};
+console.log(z);	//{a: 3, b: 4}
+
+spread 
+/**将对象的属性快速复制到另一个对象*/
+var {x, y, ...z} = {x: 1, y: 2, a: 3, b: 4};
+var a = {x,y,...z};
+console.log(a);//{x: 1, y: 2, a: 3, b: 4}
+
+generator 函数:
+
+栗子1:
+function* countAppleSales () {// *用来表示生成器函数和普通函数的区别
+    var saleList = [3, 7, 5];
+    for (var i = 0; i < saleList.length; i++) {
+        yield saleList[i];
+    }
+}
+/* 构造迭代器 进行使用 */
+var appleStore = countAppleSales(); // Generator { }
+console.log(appleStore.next()); // { value: 3, done: false }
+console.log(appleStore.next()); // { value: 7, done: false }
+console.log(appleStore.next()); // { value: 5, done: false }
+console.log(appleStore.next()); // { value: undefined, done: true }
+
+栗子2:
+/* yield* 迭代器(iterator)委托 */
+function* stringIter() {
+    var str = "bobsyouruncle";
+    var idx = 0;
+    while(idx < str.length)
+        yield str[idx++];
+}
+function* strIter() {
+    yield "jo";
+    yield* stringIter();
+}
+var si2 = strIter();//最先运行 提升
+
+console.log(si2.next().value);// jo
+console.log(si2.next().value);// b 此时已委托到stringIter生成器 
+console.log(si2.next().value);// o
+console.log(si2.next().value);// b
 ```
 

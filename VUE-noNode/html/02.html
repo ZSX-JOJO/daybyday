@@ -17,8 +17,20 @@
         {{arr}}<br>
         {{json}}
         <br>
+        <!-- 循环 -->
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+        <ul>
+            <li v-for="item in json">{{item}}</li>
+        </ul>
+        <ul>
+            <li v-for="(item,key,index) in json">{{index}}. {{key}}: {{item}}</li>
+        </ul>
+
+        <div v-bind:class="classObject">2131313</div>
+        <div v-bind:class="[activeClass, errorClass]">sdasdsadad</div>
     </div>
-    <!-- 循环 -->
 </body>
 <script type="text/javascript" src="../script/vue.js"></script>
 <script>
@@ -33,6 +45,19 @@
                 name:"zhaoshouxin",
                 age:18,
                 sex:"男"
+            },
+            activeClass: 'active',
+            errorClass: 'text-danger',
+            /*  */
+            isActive: true,
+            error: null
+        },
+        computed: {
+            classObject: function () {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type === 'fatal'
+                }
             }
         }
     });
