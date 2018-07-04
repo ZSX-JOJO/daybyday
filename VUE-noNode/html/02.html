@@ -7,7 +7,7 @@
     <title>智能社vue练习</title>
 </head>
 <body>
-    <!-- v-model 双向数据绑定 -->
+    <!-- v-model 双向数据绑定 在表单控件以外的便签上无任何效果-->
     <div id="box">
         <input type="text" name="" id="" v-model="msg">
         {{msg}}<br>
@@ -27,7 +27,7 @@
         <ul>
             <li v-for="(item,key,index) in json">{{index}}. {{key}}: {{item}}</li>
         </ul>
-        <!-- 事件  -->
+        <!-- v-on 事件  -->
         <input type="button" value="单击" v-on:click="show()">
         <input type="button" value="单击+1" v-on:click="add()">
         <br>
@@ -36,15 +36,62 @@
         <br>
         <input type="button" value="双击+1" v-on:dblclick="add()">
         <br>
-
+        <!-- v-show 显示与隐藏 -->
         <button type="button" v-on:click="change()">隐藏 v-on:click="" 关于v-show=""</button>
         <button type="button" @click="change">隐藏2 @click="" 关于v-show=""</button>
         <button type="button" @click="flag=false">隐藏3 v-on:click="flag=false" 关于v-show=""</button>
         <div style="width:100px;height:100px;background: black" v-show="flag"></div>
 
         <br>
+        <!-- v-bind 绑定属性和数据  动态绑定指令 -->
+        <div id="bind">
+            <!-- <p v-bind:title="title">html属性不能使用双大括号形式绑定，只能使用v-bind指令</p> -->
+            <!-- <p v-bind:title="title1 +' '+title2">html属性不能使用双大括号形式绑定，只能使用v-bind指令</p> -->
+            <!-- <p v-bind:title="get()">asd</p> -->
+            <!-- <p v-bind:title="arr">sdad</p> -->
+            <!-- 多 html 属性值绑定 -->
+            <p v-bind:title="obj">sadad</p>
+            <!-- 上行 输出结果如下 -->
+            <!-- <div id="app">
+                <p title="name: ZhaoShouXin; age: 18; sex: 男; ">content</p>
+            </div> -->
+        </div>
         <div v-bind:class="classObject">2131313</div>
         <div v-bind:class="[activeClass, errorClass]">sdasdsadad</div>
+    </div>
+
+    <!-- 事件对象$event -->
+    <div id="main">
+        <button type="button" v-on:click="print($event)">点击显示按钮值</button>
+            <br>{{msg}}
+    </div>
+
+    <!-- 其他 -->
+    <div id="app" v-text="msg"></div>
+    <div id="filter">
+        {{ message | capitalize }}
+    </div>
+    <div>
+        生命周期8个阶段:<br>
+        beforeCreate(创建前)<br>
+        created(创建后)<br>
+        beforeMount(载入前)<br>
+        mounted(载入后)<br>
+        beforeUpdate(更新前)<br>
+        updated(更新后)<br>
+        beforeDestroy(销毁前)<br>
+        destroyed(销毁后)
+    </div>
+    <div id="lifeCycle">
+        {{a}}
+        <button v-on:click="change()">change</button>
+    </div>
+    <!-- 计算属性 -->
+    <div id="computed">
+        {{num}}----{{addZero}}
+        <br>
+        <button type="button" @click="change">点击改变num</button>
+        <!-- <button type="button" v-on:click="change()">点击改变num</button> -->
     </div>
 </body>
 <script type="text/javascript" src="../script/vue.js"></script>
@@ -77,9 +124,10 @@
                 alert('2333');
             },
             add:function(){
-                this.arr.push('zhaoshouxin');
-                // this.arr.shift('zhaoshouxin');
-                // this.arr.unshift('zhaoshouxin');
+                this.arr.push('zhaoshouxin');//向数组的末尾添加一个或多个元素，并返回新的长度
+                // this.arr.pop()('zhaoshouxin');//删除数组的最后一个元素并返回删除的元素
+                // this.arr.unshift('zhaoshouxin');//向数组的开头添加一个或更多元素，并返回新的长度
+                // this.arr.shift('zhaoshouxin');//把数组的第一个元素从其中删除，并返回第一个元素的值
             },
             change(){
                 this.flag = !this.flag;
@@ -92,6 +140,148 @@
                     'text-danger': this.error && this.error.type === 'fatal'
                 }
             }
+        }
+    });
+
+    var vm2 = new Vue({
+        el:'#main',
+        data:{
+            msg:''
+        },
+        methods:{
+            print(e){
+                this.msg = e.target.innerHTML;
+            }
+        }
+    });
+
+    var obj = {
+        name:"ZhaoShouXin",
+        age:18,
+        sex:"男"
+    };
+    /* for in 循环遍历对象属性 拼接成字符串 */
+    obj.toString = function(){
+        var str = '';
+        for(var i in this){
+            str += i + ': ' + this[i] + '; ';
+        }
+        return str
+    };
+    // 防止 toString 方法自身被遍历出来
+    Object.defineProperty(obj, 'toString', {'enumerable': false});
+    /* Object.defineProperty(obj, prop, descriptor)  对象、属性、描述符 
+        基本描述符:
+            writable  --  是否为可写
+            configurable  --  是否为可配置的
+            enumerable  --  是否为可枚举的
+    */
+    var vm3 = new Vue({
+        el:"#bind",
+        data:{
+            title:'title content',
+            title1:'title1',
+            title2:'title2',
+            arr:['1','2','3'],
+            obj:obj
+        },
+        methods:{
+            get:function(){
+                return "title content";
+            }
+        }
+    });
+
+    var vm4 = new Vue({
+        el:'#app',
+        data: {
+            msg: '等价于 ==> <div id="app">{{msg}}</div>'
+        }
+    });
+
+    /* 以下为过滤器部分 的内容 */
+    var vm5 =  new Vue({
+        el:'#filter',
+        data:{
+            message:"qweqweqweqweqeqwe"
+        },
+        filters: {
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            }
+        }
+    });
+    /* 以下为生命周期 */
+    var vm6 = new Vue({
+        el:'#lifeCycle',
+        data:{
+            a:'关于生命周期'
+        },
+        methods:{
+            change:function(e){
+                this.a = "关于生命周期-更新后";
+            }
+        },
+        beforeCreate: function() { 
+            console.log("创建前");            
+            console.log(this.a);            
+            console.log(this.$el);          
+        },         
+        created: function() {
+            console.log("创建之后");            
+            console.log(this.a);            
+            console.log(this.$el);          
+        },         
+        beforeMount: function() {            
+            console.log("mount 之前");            
+            console.log(this.a);            
+            console.log(this.$el);          
+        },          
+        mounted: function() {            
+            console.log("mount 之后");            
+            console.log(this.a);            
+            console.log(this.$el);          
+        },          
+        beforeUpdate: function() {            
+            console.log("更新前");            
+            console.log(this.a);            
+            console.log(this.$el);          
+        },          
+        updated: function() {            
+            console.log("更新完成");            
+            console.log(this.a);            
+            console.log(this.$el);          
+        },          
+        beforeDestroy: function() {            
+            console.log("销毁前");            
+            console.log(this.a);            
+            console.log(this.$el);            
+            console.log(this.$el);          
+        },          
+        destroyed: function() {           
+            console.log("已销毁");          
+            console.log(this.a);          
+            console.log(this.$el);          
+        }
+    });
+
+    /* 以下为计算属性 */
+    var vm7 = new Vue({
+        el:'#computed',
+        data:{
+            num:8
+        },
+        methods:{
+            change:function(){
+                this.num++;
+            }
+        },
+        computed:{
+            addZero:function(){
+                return this.num >10 ? this.num:'0' + this.num
+            } 
         }
     });
 </script>
