@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <blog-post>
+        <h1 slot="header">
+            About Me
+        </h1>
+        <p>Here's some page content, which will be included in vm.$slots.default, because it's not inside a named slot.</p>
+        <p slot="footer">
+            Copyright 2016 Evan You
+        </p>
+        <p>If I have some content down here, it will also be included in vm.$slots.default.</p>.
+    </blog-post>
+    
+    <!--[v-cloak] { display: none } 一起用时，这个指令可以隐藏未编译的 Mustache 标签-->
+    <div id="app" v-cloak>{{msg}}</div>
+
+    <!-- vm.$set(target,key,value) -->
+    <div id="app2" v-cloak>
+        {{user.name}} <br> {{user.age}} <br>
+        <!-- <button type="button" v-on:click="addAge()">添加属性</button> -->
+        <button type="button"  @click="addAge">添加属性</button>
+    </div>
+</body>
+<script type="text/javascript" src="../script/vue.js"></script>
+<script>
+    /* 实例属性 vm.$data */
+    var data = { a: 1 }
+    // 直接创建一个实例
+    var vm = new Vue({
+    data: data
+    })
+    vm.a // => 1
+    vm.$data === data // => true
+    // Vue.extend() 中 data 必须是函数
+    var Component = Vue.extend({
+        data: function () {
+            return { a: 1 }
+        }
+    });
+
+    /* vm.$slots */
+    Vue.component('blog-post', {
+        render: function (createElement) {
+            var header = this.$slots.header
+            var body   = this.$slots.default
+            var footer = this.$slots.footer
+            return createElement('div', [
+            createElement('header', header),
+            createElement('main', body),
+            createElement('footer', footer)
+            ])
+        }
+    })
+
+    /* vm.$nextTick(callback) */
+    var vm2=new Vue({
+        data:{
+            msg:'Hello vue.js'
+        }
+    }).$mount('#app');
+    
+    //修改数据
+    vm2.msg='foo';
+    
+    // console.log(vm.$refs.title.textContent);  //Hello vue.js   此行报错...
+    vm.$nextTick(function(){
+        console.log(vm.$refs.title.textContent); //foo
+    });
+
+    /* vm.$set(target,key,value) */
+    var vm3 = new Vue({
+        data: {
+            msg: 'Hello vue.js',
+            user: {
+                name: 'hedawei',
+                gender: 'man'
+            }
+        },
+        methods: {
+            addAge() {
+                /* this.user.age = 22; */
+                this.$set(this.user, 'age', 22);
+            }
+        }
+    }).$mount('#app2');
+
+    /* 注册或获取全局指令 */
+    Vue.directive('hello',{
+        bind(){ //常用！！
+            alert('指令第一次绑定到元素上时调用，只调用一次，可执行初始化操作');
+        },
+        inserted(){
+            alert('被绑定元素插入到DOM中时调用');
+        },
+        update(){
+            alert('被绑定元素所在模板更新时调用');
+        },
+        componentUpdated(){
+            alert('被绑定元素所在模板完成一次更新周期时调用');
+        },
+        unbind(){
+            alert('指令与元素解绑时调用，只调用一次');
+        }
+    });
+</script>
+</html>

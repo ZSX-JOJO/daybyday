@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-hello:123.bar="msg">hello vue.js</p>
+    </div>   
+</body>
+<script type="text/javascript" src="../script/vue.js"></script>
+<script>
+    Vue.directive('hello', function (el,binding) {
+        el.style.color = "red";
+        
+        //属性name是指令的名字（不带v-）
+        console.log(`%c${binding.name}`,`color:red`);     //hello
+        //属性value是传递给指令的值
+        console.log(`%c${binding.value}`,`color:yellow`);   //SB!
+        //属性expression是指令值的字符串形式（个人感觉就是类似变量名）
+        console.log(binding.expression);  //msg
+        //属性arg是传递给指令的参数(和传值写在一起容易令初学者困惑，下面分开写  
+        //合在一起写的写法是<p v-hello:123="msg">hello vue.js</p>)
+        //<p v-hello:123>hello vue.js</p>
+        console.log(`%c${binding.arg}`,'color:blue');       //123
+        //属性modifiers是一个包含修饰符的对象。
+        //与传参传值合在一起的写法是 <p v-hello:123.bar="msg">hedawei</p>
+        //<p v-hello.bar>hello vue.js</p>
+        console.log(`%c${binding.modifiers}`,`color:green`);    //{bar:true}
+    });  
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'SB!'
+        }
+    })
+</script>
+</html>

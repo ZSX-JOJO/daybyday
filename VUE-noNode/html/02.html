@@ -93,6 +93,11 @@
         <button type="button" @click="change">点击改变num</button>
         <!-- <button type="button" v-on:click="change()">点击改变num</button> -->
     </div>
+    <!-- 计算属性 get set -->
+    <div id="computed2">
+        {{num}}----{{addZero}}<br>
+        <button type="button" v-on:click="change(5)">点击改变num</button>
+    </div>
 </body>
 <script type="text/javascript" src="../script/vue.js"></script>
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -282,6 +287,35 @@
             addZero:function(){
                 return this.num >10 ? this.num:'0' + this.num
             } 
+        }
+    });
+    /* 以下计算属性 set get */
+    var vm8 = new Vue({
+        el:'#computed2',
+        data:{
+            num:8
+        },
+        methods:{
+            change:function(newNumber){
+                this.addZero = newNumber;
+            }
+        },
+        computed:{
+            addZero:{
+                // get:function(){
+                //     return this.num >10 ? this.num:'0' + this.num
+                // },
+                // set:function(newNum){
+                //     this.num = newNum;
+                // }
+                
+                get(){
+                    return this.num >10 ? this.num:'0' + this.num
+                },
+                set(newNum){
+                    this.num = newNum;
+                }
+            }
         }
     });
 </script>
