@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Docum临时文件nt</title>
+</head>
+<body>
+    <div id="app">
+        <transition name="fade" @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter" @before-leave="beforeLeave" @leave="leave" @after-leave="afterLeave">
+            <p v-show="flag">
+            </p>
+        </transition>
+    </div>
+
+    <!-- 全局API -->
+    <!-- 01 Vue.extend -->
+    <div id="mount-point"></div>
+    <!-- 02 Vue.component 组件-->
+    <!-- 02-01 直接创建组件 -->
+    <div id="example">
+        <my-component></my-component>
+    </div>
+    <!-- 02-01 局部组件 -->
+    <div id="example1">
+        <component1></component1><!--component定义此名字 会警告但不会报错!-->
+    </div>
+    <!-- 02-02 使用构造器创建组件 -->
+    <div id="example2">
+        <my-hello></my-hello>
+    </div>
+
+    <!-- 03 引用模版 -->
+    <div id="template">
+        <zhao-shou-xin></zhao-shou-xin>
+    </div>
+    <template id="wps"><!--使用template标签-->
+        <!-- 在template模板中,所有的元素必须放置在一个根元素中 否则会报错 此处都存在于一个div中 -->
+        <div>
+            <h2>hello {{msg}}</h2>
+            <ul>
+                <li v-for="value in arr">{{value}}</li>
+            </ul>
+        </div>
+    </template>
+
+    <!-- 04 动态组件 -->
+    <div id="ddd">
+        <button type="button" @click="flag='my-a'">显示a组件</button>
+        <button type="button" @click="flag='my-b'">显示b组件</button>
+        <component :is="flag"></component><!--传入flag-->
+    </div>
+
+    <!-- 05 keep-alive组件 -->
+    <keep-alive>
+        <component :is="flag"></component>
+    </keep-alive>
+    <div id="keep_alive">
+        <button type="button" @click="flag='my-x'">x</button>
+        <button type="button" @click="flag='my-y'">y</button>
+        <keep-alive>
+            <component :is="flag"></component>
+        </keep-alive>
+    </div>
+
+    <!-- 06 父子组件 -->
+    <div id="parent_children">
+        <my-a></my-a>
+    </div>
+    <template id="a">
+        <div>
+            <p>{{msg}}</p>
+            <my-b></my-b>
+        </div>        
+    </template>
+    <template id="b">
+        <div>
+            <p>{{mydata}}</p>
+        </div>
+    </template>
+
+    <!-- 06-1 组件间数据传递(通信) -->
+    <!-- 子组件访问父组件的数据
+        步骤:
+            1:调用子组件时，绑定想要获取的父组件中的数据
+            2:在子组件内部，使用 props 选项声明获取的数据，即接收来自父组件的数据
+        父组件访问子组件的数据
+         步骤:
+            1:在子组件中使用 vm.$emit(事件名, 数据) 触发一个自定义事件，将数据发送给父组件，事件名自定义
+            2:父组件在使用子组件的地方监听子组件触发的事件，并在父组件中定义方法，用来获取数据
+     -->
+    <div id="parent_children_connect">
+        <my-a></my-a>
+    </div>
+    <template id="a_connect">
+        <div>
+            <p>{{msg}}</p>
+            <p>这是要传递给子组件的值：{{myname}}</p>
+            <my-b :name="myname"></my-b>   <!-- 绑定子组件想要获取的数据 -->
+        </div>        
+    </template>
+    <template id="b_connect">
+        <div>
+            <p>{{mydata}}</p>
+            <p>这是父组件传递过来的数据:{{name}}</p>
+            <my-b @e-world="getData"></my-b> <!--?????????????-->
+        </div>
+    </template>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+             
+        },
+        methods: {
+            flag:function(){
+                console.log("fuck!!!!!!!!!!!!!!!!")
+            },
+            beforeEnter(el) {
+                alert('动画进入之前');
+            },
+            enter(el) {
+                alert('动画进入');
+            },
+            afterEnter(el) {
+                alert('动画进入之后');
+            },
+            beforeLeave(el) {
+                alert('动画离开之前');
+            },
+            leave(el) {
+                alert('动画离开');
+            },
+            afterLeave(el) {
+                alert('动画离开之后');
+            }
+        }
+    });
+
+    /* 以下为全局API 的内容 */
+    //关于extend
+    //创建构造器
+    var Profile = Vue.extend({
+        template:'<p>{{name}} {{age}} {{sex}}</p>',
+        data:function(){
+            return{
+                name:'zhaoshouxin',
+                age:18,
+                sex:'男'
+            }
+        }
+    });
+    //创建Profile实例,并挂载到一个元素上
+    new Profile().$mount('#mount-point');
+
+    //关于component
+    /* 02-01 直接创建组件 */
+    //注册
+    Vue.component('my-component',{
+        template:'<div>显示的内容</div>'
+    });
+    //创建实例
+    var component = new Vue({
+        el:'#example'
+    });
+
+    //组件-局部组件
+    var Mycomponent = new Vue({
+        el:'#example1',
+        components:{
+            // 自定义标签使用'-'连接的此处要加''.  栗子:'my-component'
+            component1:{
+                template:'<h3>局部组件fuck you!!!!!</h3>'
+            }
+        }
+    });
+
+    /* 02-02 使用构造器创建组件 */
+    //创建构造器
+    var Mycomponent = Vue.extend({
+        template:'<h3>fuck you!!!!</h3>'
+    });
+    // 创建组件 (使用Vue.component()创建的都为全局组件)
+    Vue.component('my-hello',Mycomponent);
+    //创建Mycomponent实例,并且挂载到元素上
+    new Mycomponent().$mount('#example2');
+
+    /* 03 引用模版 */
+    var Mytemplate = new Vue({
+        el:'#template',
+        components:{
+            'zhao-shou-xin':{
+                template:'#wps',
+                data(){//此处data必须为函数
+                    return{
+                        msg:"世界",
+                        arr:['a','b','c','d','e']
+                    }
+                }
+            }
+        }
+    });
+
+    /* 04 动态组件  具体查看vue api 特殊特性 is*/
+    var ddd = new Vue({
+        el:'#ddd',
+        data:{
+            flag:'my-a'
+        },
+        components:{
+            'my-a':{
+                template:'<h1>我是a组件</h1>'
+            },
+            'my-b':{
+                template:'<h1>我是b组件</h1>'
+            }
+        }
+    });
+
+    /* 05 keep-alive */
+    var keep_alive = new Vue({
+        el:'#keep_alive',
+        data:{
+            flag:'my-x'
+        },
+        components:{
+            'my-x':{
+                template:'<h1>{{x}}</h1>',
+                data(){
+                    return{
+                        x:Math.random()
+                    }
+                }
+            },
+            'my-y':{
+                template:'<h1>{{y}}</h1>',
+                data(){
+                    return{
+                        y:Math.random()
+                    }
+                }
+            },
+        }
+    });
+
+    /* 06 父子组件 */
+    var parent_children = new Vue({
+        el:'#parent_children',
+        components:{
+            'my-a':{
+                template:'#a',
+                data(){
+                    return{
+                        msg:'父组件'
+                    }
+                }
+            },
+            components:{
+                'my-b':{
+                    template:'#b',
+                    data(){
+                        return{
+                            mydata:'子组件'
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    /* 06-1 组件间数据传递 */
+    var parent_children_connect = new Vue({
+        el: '#parent_children_connect',
+        data: {},
+        components: {
+            "my-a": {
+                template: "#a_connect",
+                data() {
+                    return {
+                        msg: '我是a组件',
+                        myname: '子组件b你好，我是父组件a'
+                    }
+                },
+                components: {
+                    "my-b": {
+                        template: "#b_connect",
+                        /* methods方法?????/ */
+                        methods:{
+                            send(){//使用$emit()触发一个事件，发送数据，this指当前子组件实例
+                                this.$emit('e-world', this.senddata);         
+                            },
+                            getData(data) {  //参数是子组件传递过来的数据
+                                this.revicedata = data;
+                            }
+                        },
+                        data() {
+                            return {
+                                mydata: "我是b组件"
+                            }
+                        },
+                        props: ["name"] //子组件使用props声明想要获取的数据
+                    }
+                }
+            }
+        }
+    });
+</script>
+</html>

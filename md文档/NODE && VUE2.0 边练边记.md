@@ -118,6 +118,10 @@ git config --global --unset https.proxy
 
 ​			问题？不存在的！依赖问题？挂代理再来一次就好了！其他？百度就好了！
 
+## 5: 调试工具 
+
+​	vue-devtools
+
 # cmder 
 
 ```javascript
