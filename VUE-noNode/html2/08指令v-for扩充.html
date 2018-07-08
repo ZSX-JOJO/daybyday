@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p>指令 v-for</p>
+    <p>v-if 和 v-for 混合使用示例</p>
+    <div>
+        [v-cloak] {
+            display: none;
+        }
+        这个指令可以隐藏未编译的 Mustache 标签
+    </div>
+    <div>
+        for in遍历的是数组的索引（即键名），而for of遍历的是数组元素值<br>
+        但是在vue中需要指定<br>
+        (val, key, index) in object/arr
+    </div>
+    <div id="app" v-cloak>
+        <div v-for="item in items" v-if="item.name == 'zsx'">
+            {{item.name}}
+        </div>
+        <div v-else>否则显示它(为什么显示它?)</div>
+
+        <!-- 华丽分割线 -->
+
+        <div v-for="item in items">
+            <span v-if="item.age == 18">{{item.age}}</span>
+            {{item}}
+        </div>     
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            arr:[7,0,2,5,8,4,3],
+            items:{
+                name:'zsx',
+                age:18,
+                sex:'man'
+            }
+        }
+    });
+</script>
+</html>

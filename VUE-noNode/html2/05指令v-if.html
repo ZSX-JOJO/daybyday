@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p>指令 v-if</p>
+    <p>v-if :<br>
+        1. 是真正的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。<br>
+        2. 是惰性的，只有当条件为 true 时才会渲染，如果条件为 false 则什么都不做<br>
+        3. 有很高的切换开销，适用于条件不太容易改变的时候
+    </p>
+    <div id="app">
+        <span v-if="flag">
+            {{msg}}
+        </span>
+        <br>
+        <button type="button" v-on:click="change()">此处使用v-on v-on:事件名称="方法名称()" 后续会详细介绍</button><br>
+        <button type="button" @click="change">简写形式 @click="方法名称" </button>         
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            flag:true,
+            msg:'如果flag为true则显示,false不显示!'
+        },
+        methods:{
+            change(){
+                this.flag = !this.flag;
+            }
+        }
+    });
+</script>
+</html>

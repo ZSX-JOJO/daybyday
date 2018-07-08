@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p>指令 v-on</p>
+    <p>用于绑定事件</p>
+    <div id="app">
+        <button type="button" v-on:click="show()">点击显示</button><br>
+        {{msg}}<br>
+        <button type="button" v-on:click="change()">显示与隐藏 v-on:click="" 黑框使用了v-show</button>
+        <button type="button" @click="change">显示与隐藏2 @click="" 简写 黑框使用了v-show<</button>
+        <div style="width:100px;height:100px;background: black" v-show="flag"></div>
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            msg:'显示显示',
+            flag:true
+        },
+        methods:{
+            show:function(){
+                this.msg = 'Hello Vue.js';
+            },
+            change:function(){
+                this.flag = !this.flag
+            }
+        }
+    });
+</script>
+</html>

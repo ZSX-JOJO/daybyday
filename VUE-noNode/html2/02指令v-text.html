@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p>指令 v-text</p>
+    <ul>
+        <li>写法1</li>
+        <li>写法2</li>
+        <li>双大括号会将数据解释为普通文本，
+            而非 HTML 代码。为了输出真正的 HTML，
+            需要使用 v-html 指令  03.html可见
+        </li>
+    </ul>
+    <div id="app0" v-text="msg"></div>
+    <div id="app1">{{msg}}</div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm0 = new Vue({
+        el:'#app0',
+        data:{
+            msg:'<div id="app0" v-text="msg"></div>'
+        }
+    });
+    var vm1 = new Vue({
+        el:'#app1',
+        data:{
+            msg:'<div id="app1">{{msg}}</div>'
+        }
+    });
+</script>
+</html>

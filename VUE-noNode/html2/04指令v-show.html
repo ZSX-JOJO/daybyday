@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p>指令 v-show</p>
+    <p>v-show 也是根据条件展示元素的指令。带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 是简单地切换元素的 CSS 属性 display</p>
+    <p>v-show 不支持 template 语法，也不支持 v-else</p>
+    <p>v-show:<br>
+        1. 不管条件是 true 还是 false 都会进行渲染。并且只是简单地基于 CSS 进行切换<br>
+        2. 有很高的初始渲染开销，适用于非常频繁地切换
+    </p>
+    <div id="app">
+        <div style="width:100px;height:100px;background: black" v-show="flag">{{msg}}</div>          
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            flag:true,
+            msg:'v-show'
+        }
+    });
+</script>
+</html>

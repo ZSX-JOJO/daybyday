@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p>指令 v-if扩充1</p>
+    <p>用 key 管理可复用元素</p>
+    <p>此时未使用key:<br>
+        不用 key 管理可复用元素的代码，<br>
+        Vue 会尽可能高效地渲染元素，<br>
+        会复用已有元素而不是从头开始渲染。<br>
+        使 Vue 变得非常快之外，并且在切换 input 时不会清除里面的数据
+    </p>
+    <div id="app">
+        <span v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" >
+        </span>
+        <span v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" >
+        </span>
+        <button v-on:click="test">切换</button>
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            loginType: 'username'
+         },
+        methods:{
+            test:function(){
+                if(this.loginType != 'username'){
+                    return this.loginType = 'username'
+                }
+                return this.loginType = 'email'
+            }
+        }
+    })
+</script>
+</html>

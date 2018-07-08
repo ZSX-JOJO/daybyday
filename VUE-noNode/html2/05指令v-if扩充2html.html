@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p>指令 v-if扩充2</p>
+    <p>用 key 管理可复用元素</p>
+    <p>此时使用key:<br>
+        这两个元素是相互独立，不再复用<br>
+        在切换 input 时里面的数据会被清除
+    </p>
+    <div id="app">
+        <span v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="username-input">
+        </span>
+        <span v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="email-input">
+        </span>
+        <button v-on:click="test">切换</button>
+    </div>
+</body>
+<script type="text/javascript"  src="../script/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                loginType: 'username'
+            },
+            methods:{
+                test:function(){
+                    if(this.loginType != 'username'){
+                        return this.loginType = 'username'
+                    }
+                    return this.loginType = 'email'
+                }
+            }
+        })
+    </script>
+</html>
