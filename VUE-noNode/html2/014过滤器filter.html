@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-过滤器</title>
+    <style>
+        p{
+            color:red;
+        }
+        [ v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p>过滤器 filter</p>
+    <!-- <p>只渲染元素和组件一次。随后的重新渲染，元素 / 组件及其所有的子节点将被视为静态内容并跳过。这可以用于优化更新性能。</p> -->
+    <div id="app" v-cloak>
+        {{ message | capitalize }}
+    </div>
+    
+    <input type="password" placeholder="输入密码" v-model="psw | validate" maxlength = "18">
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message:"zhaoshouxin"
+        },
+        filters: {//局部过滤
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            }
+        }
+    });
+    /* Vue.filter(id, [definition] ) */
+    /* Vue.filter(过滤器ID,过滤器函数) */
+
+    /* 全局过滤 */
+    Vue.filter('',function(val){
+        val = val.toString();
+        reg = /[`~!@#$%^&*()_+<>?:"{},\/;']/im;
+
+        if(reg.test(val)) {
+            $.alert("请勿输入非法字符", "温馨提示");
+            //返回时删除非法字符
+            return val.substr(0, val.length - 1);
+        } else {
+            //原内容返回
+            return val;
+        }
+    });
+</script>
+</html>

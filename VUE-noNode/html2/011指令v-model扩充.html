@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+        [ v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p>指令 v-model</p>
+    <p>双向数据绑定-扩充</p>
+    <div id="app" v-cloak>
+        <div class="line" v-for="(item,index) in dataModel">
+            <input type="text" v-model="dataModel[index].value1" />
+            <span>{{dataModel[index].value1}}</span>
+            <button v-bind:data-index="index" v-on:click="submitClick">提交</button>
+
+            <input type="text" v-model="dataModel[index].value2" />
+            <span>{{dataModel[index].value2}}</span>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/vue.js" ></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            // 创建一个空的数组 
+            dataModel: []
+        },
+        created: function(){
+            // 这里是动态生成v-model,这个可以放在网络请求成功里面;
+            var len = 4;
+            for (var i = 0; i < len; i ++) {
+                var item = {value1: '',value2: ''};
+                this.dataModel.push(item);
+            }
+        },
+        methods: {
+            // 显示v-model里面的数据
+            submitClick: function(event){
+                var tag = event.target;
+                var index = tag.getAttribute('data-index');
+                alert(this.dataModel[index].value1);
+            }
+        }
+    })
+</script>
+</html>

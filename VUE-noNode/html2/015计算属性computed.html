@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-过滤器</title>
+    <style>
+        p{
+            color:red;
+        }
+        [ v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="computed" v-cloak>
+        {{num}}----{{addZero}}
+        <br>
+        <button type="button" v-on:click="change()">点击改变num</button>
+    </div>
+
+    <div id="computed2">
+        {{num}}----{{addZero}}
+        <br>
+        <button type="button" v-on:click="change(5)">点击改变num</button>
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#computed',
+        data:{
+            num:8
+        },
+        methods:{
+            change:function(){
+                this.num++;
+            }
+        },
+        computed:{
+            addZero:function(){
+                return this.num > 10 ? this.num:'0' + this.num;
+            }
+        }
+    });
+
+    var vm2 = new Vue({
+        el:'computed2',
+        data:{
+            num:8
+        },
+        methods:{
+            change:function(newNumber){
+                this.addZero = newNumber;
+            }
+        },
+        computed:{
+            addZero:{
+                get(){
+                    return this.num >10 ? this.num:'0' + this.num
+                },
+                set(newNum){
+                    this.num = newNum;
+                }
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+        [ v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p>指令 v-pre</p>
+    <span v-pre>{{ this will not be compiled }}</span><br>
+    <span v-pre>{{ this will not be compiled }}</span><br>
+    <p>指令 v-cloak</p>
+    <div id="app" v-cloak>
+        <input type="text" name="" id="" v-model="msg">
+            {{msg}}<br>隐藏未编译的 Mustache 标签
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            msg:'fuck!'
+        },
+        methods:{
+        }
+    });
+</script>
+</html>

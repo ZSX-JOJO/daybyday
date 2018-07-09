@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p>指令 v-bind</p>
+    <p>属性绑定</p>
+    <div id="app">
+        <a v-bind:href="src">v-bind:href="src"</a><!--地址绑定-->
+        <div v-bind:style="fuck">
+            v-bind:style="fuck"<br>
+            {{name}}
+        </div><!--样式绑定 class或者style--> <!--数组语法 或者 对象语法-->
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            name:'fuck vue !',
+            fuck:{
+                color:red,
+                'font-size':'20px'// '-'会报错,需要'' 或者  驼峰命名法 fontSize
+            },
+            src:'www.baidu.com'
+        },
+        methods:{
+        }
+    });
+</script>
+</html>
