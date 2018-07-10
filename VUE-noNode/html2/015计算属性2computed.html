@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-过滤器</title>
+    <style>
+        p{
+            color:red;
+        }
+        [ v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app" v-cloak>
+        <input type="button" value="改变" @click="change" />
+        {{ myData }}
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '.app',
+        data:{
+            num: 1
+        },
+        computed: {
+            myData:{
+                /* 页面加载后触发get函数 */
+                get:function(){
+                    alert('get');
+                    return this.num + 2;
+                },
+                /* 点击事件触发此函数 */
+                set:function(val){
+                    alert('set');
+                    return this.num=val;
+                }
+            }
+        },
+        methods: {
+            change() {
+                //vm.myData=10;
+                this.myData=10;//此处虽然设置了myData的值，但是结果是12，因为myData是依赖num的
+            }
+        }
+    });
+</script>
+</html>

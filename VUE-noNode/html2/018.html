@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+        [ v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <template>
+        　　//观察数据为字符串或数组
+        　　 <input v-model="example0"/>
+        　　 <input v-model="example1"/>
+        　　/当单观察数据examples2为对象时，如果键值发生变化，为了监听到数据变化，需要添加deep:true参数
+        　　 <input v-model="example2.inner0"/>
+        </template>
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        data(){
+　　　　　　　　return {
+　　　　　　　　　　example0:"",
+　　　　　　　　　　example1:"",
+　　　　　　　　　　example2:{
+　　　　　　　　　　　　inner0:1,
+　　　　　　　　　　　　innner1:2
+　　　　　　　　　　}
+　　　　　　　　}
+　　　　},
+　　　　　　watch:{
+　　　　　　　　example0(curVal,oldVal){
+　　　　　　　　　　console.log(curVal,oldVal);
+　　　　　　　　},
+　　　　　　　　example1:'a',//值可以为methods的方法名
+　　　　　　　　example2:{
+　　　　　　　　　//注意：当观察的数据为对象或数组时，curVal和oldVal是相等的，因为这两个形参指向的是同一个数据对象
+　　　　　　　　　　handler(curVal,oldVal){
+　　　　　　　　　　　　conosle.log(curVal,oldVal)
+　　　　　　　　　　},
+　　　　　　　　　　deep:true
+　　　　　　　　}
+　　　　　　},
+　　　　　　methods:{
+　　　　　　　　a(curVal,oldVal){
+　　　　　　　　　　conosle.log(curVal,oldVal)
+　　　　　　　　}
+　　　　　　}
+    });
+</script>
+</html>

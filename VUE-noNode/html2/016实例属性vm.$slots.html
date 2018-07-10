@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习</title>
+    <style>
+        p{
+            color:red;
+        }
+        [ v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <child v-bind:level="1">fuck world</child>
+    </div>
+    <!-- 1 -->
+    <script type="text/x-template" id="template">
+        <div>
+          <h1 v-if="level === 1">
+            <slot></slot>
+          </h1>
+          <h2 v-if="level === 2">
+            <slot></slot>
+          </h2>
+          <h3 v-if="level === 3">
+            <slot></slot>
+          </h3>
+          <h4 v-if="level === 4">
+            <slot></slot>
+          </h4>
+          <h5 v-if="level === 5">
+            <slot></slot>
+          </h5>
+          <h6 v-if="level === 6">
+            <slot></slot>
+          </h6>
+        </div>
+    </script>
+    <!-- 2 -->
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    /* 1 */
+    Vue.component('child',{
+        template:'#template',
+        props:{//props 父组件传递给子组件参数 使子组件使用
+            level: {
+                type:Number,
+                required:true
+            }
+        }
+    });
+
+    /* 2 */
+    /* 使用render 函数重写 */
+    Vue.component('child',{
+        render:function(createElement){
+            return createElement(
+                'h' + this.level,
+                this.$slots.default
+            )
+        },
+        props: {
+            level: {
+                type: Number,
+                required: true
+            }
+        }
+    });
+
+    var vm = new Vue({
+        el:'#div1'
+    });
+</script>
+</html>

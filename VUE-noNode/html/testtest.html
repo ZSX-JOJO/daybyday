@@ -97,6 +97,7 @@
         <div>
             <p>{{msg}}</p>
             <p>这是要传递给子组件的值：{{myname}}</p>
+            <!-- v-bind -->
             <my-b :name="myname"></my-b>   <!-- 绑定子组件想要获取的数据 -->
         </div>        
     </template>
@@ -104,6 +105,7 @@
         <div>
             <p>{{mydata}}</p>
             <p>这是父组件传递过来的数据:{{name}}</p>
+            <!-- v-on -->
             <my-b @e-world="getData"></my-b> <!--?????????????-->
         </div>
     </template>

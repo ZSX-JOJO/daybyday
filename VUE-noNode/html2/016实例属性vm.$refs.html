@@ -15,24 +15,19 @@
     </style>
 </head>
 <body>
-    <p>指令 v-once</p>
-    <!-- <p>只渲染元素和组件一次。随后的重新渲染，元素 / 组件及其所有的子节点将被视为静态内容并跳过。这可以用于优化更新性能。</p> -->
-    <div id="app" v-cloak>
-        <p v-once>{{msg}}</p><!--msg不会改变-->
-        <p>{{msg}}</p>
-        <p>
-            <input type="text" v-model = "msg" name="">
-        </p>
+    <div id="app">
+        <input type="text" ref="input1">
+        <button v-on:click="add()">添加</button>
     </div>
 </body>
 <script src="../script/vue.js"></script>
 <script>
     var vm = new Vue({
         el:'#app',
-        data:{
-            msg:'fuck!'
-        },
         methods:{
+            add:function(){
+                this.$refs.input.value = "22";
+            }
         }
     });
 </script>

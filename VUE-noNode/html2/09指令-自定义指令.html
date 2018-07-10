@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习-指令</title>
+    <style>
+        p{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p>指令</p>
+    <p>关于自定义指令</p>
+    <!-- 局部指令 -->
+    <div id="app">
+        <div v-color="colorStatus">2333</div>
+    </div>
+    <!-- 以下还涉及到全局指令 -->
+    <!-- 指令定义对象之钩子函数的参数binding的属性 -->
+    <div id="hook-arguments-example" v-demo:foo.a.b="message"></div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    /* 全局指令 */
+    Vue.directive('demo', {
+        bind: function (el, binding, vnode) {
+            var s = JSON.stringify
+            el.innerHTML =
+            /* name 指令名 不含v- */
+            'name: '       + s(binding.name) + '<br>' +
+            /* value 指令的绑定值 */
+            'value: '      + s(binding.value) + '<br>' +
+            /* expression 字符串形似的指令表达式 */
+            'expression: ' + s(binding.expression) + '<br>' +
+            /* arg 传给指令的参数 */
+            'argument: '   + s(binding.arg) + '<br>' +
+            /* modifiers 包含修饰符的对象 */
+            'modifiers: '  + s(binding.modifiers) + '<br>' +
+            'vnode keys: ' + Object.keys(vnode).join(', ')
+        }
+    });
+
+    var vm = new Vue({
+        el: '#hook-arguments-example',
+        data: {
+            message: 'hello!'
+        }
+    })
+
+    /* 关于局部指令 */
+    document.addEventListener('DOMContentLoaded',function(){
+        var vm2 = new Vue({
+            el:'#app',
+            data:{
+                colorStatus:true
+            },
+            directives:{//directives !!!!!
+                'color':function(el,binding){
+                    el.style.backgroundColor = 'red';
+                }
+            }
+        });
+    });
+</script>
+</html>
