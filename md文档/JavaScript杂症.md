@@ -650,6 +650,20 @@ foo.name = "bar";
 ```javascript
 ES2016:
 
+扩展运算符 ...
+/**
+将数组转换为用逗号分割的函数的参数列表
+*/
+function push(array, ...items) {
+array.push(...items);
+}
+function add(x, y) {
+return x + y;
+}
+var numbers = [4, 38];
+add(...numbers) // 42
+
+
 箭头函数:
 
 function(){
@@ -817,5 +831,52 @@ console.log(si2.next().value);// jo
 console.log(si2.next().value);// b 此时已委托到stringIter生成器 
 console.log(si2.next().value);// o
 console.log(si2.next().value);// b
+```
+
+## JavaScript奇技淫巧
+
+```JavaScript
+/**
+其他
+*/
+var obj3 = { 
+  foo: { bar: [11, 22, 33, 44], baz: { bing: true, boom: 'Hello' } } 
+};
+// 第三个参数为格式化需要的空格数目
+JSON.stringify(obj3,null,4); 
+
+/**
+清空和截短数组
+*/
+const arr = [11, 22, 33, 44, 55, 66];
+
+// 截取
+arr.length = 3;
+console.log(arr); //=> [11, 22, 33];
+
+// 清空
+arr.length = 0;
+console.log(arr); //=> []
+console.log(arr[2]); //=> undefined
+
+/**
+switch 语句中使用 范围
+*/
+function getWaterState(tempInCelsius) {
+  let state;
+  
+  switch (true) {
+    case (tempInCelsius <= 0): 
+      state = 'Solid';
+      break;
+    case (tempInCelsius > 0 && tempInCelsius < 100): 
+      state = 'Liquid';
+      break;
+    default: 
+      state = 'Gas';
+  }
+  return state;
+}
+
 ```
 
