@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定时器</title>
+    <style>
+        p{
+            text-align: center;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p>定时器</p>
+    <div class="content">
+        <div class="item">setTimeout()
+            <p id="show"> 请等三秒钟!</p>  
+        </div>
+        <div class="count">
+            <p>通过setTimeout()不断执行指定函数来实现计数</p>
+            <input type="text" id="displayBox" name="displayBox" value="0">
+        </div>
+        <div class="stop">
+            <p>clearTimeout()用来停止</p>
+            <form name="display1">   
+                <input type="text" id="box1" name="box1" value="0" size="4" />   
+                <input type="button" value=" 停止计时 " onclick="clearTimeout(meter1)" />   
+                <input type="button" value=" 继续计时 " onclick="count1() " />   
+            </form>   
+            <p></p>  
+            <form name="display2">   
+                <input type="text" id="box2" name="box2" value="0" size="4" />   
+                <input type="button" value=" 停止计时 " onclick="clearTimeout(meter2) " />   
+                <input type="button" value=" 继续计时 " onclick="count2( ) " />   
+            </form> 
+        </div>
+        <div class="">
+            <p>setInterval()</p>
+        </div>
+    </div>
+</body>
+<script>
+    var timer = setTimeout(function(){
+        console.log(1);
+    },);
+    console.log(0);
+
+    setTimeout("changeState()",3000 );  
+    function changeState(){  
+        var show=document.getElementById('show');  
+        show.innerHTML="<div style='color:red'> 我是三秒后显示的内容！</div>";  
+    }
+
+    x = 0;
+    function countSecond(){
+        x = x + 1;
+        documnet.getElementById('displayBox').value = x;
+        setTimeout('countSecond()',1000);
+    }
+    countSecond();
+
+    x = 0  
+    y = 0  
+    function count1( ){　
+        x = x+ 1  
+        document.getElementById("box1").value= x  
+        meter1=setTimeout("count1()", 1000)  
+    }
+    function count2( ){　
+        y = y+ 1  
+        document.getElementById("box2").value= y  
+        meter2=setTimeout("count2()", 1000)  
+    }  
+    // 执行函数
+    count1( )  
+    count2( )
+</script>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>盒子模型</title>
+    <style>
+        /* 盒子居中 各种办法*/
+        .div1-father{
+            width:500px;
+            height:500px;
+            background-color: green;
+            border:1px solid yellow;
+        }
+        .div1-children{
+            width:200px;
+            height:200px;
+            background-color: red;
+            border:1px solid black;
+            text-align: center;
+            /* 01 利用margin: 子的margin-left= (father.width-children.width)/2
+                子的margin-top= (father.height-children.height)/2
+            */
+            margin-left:150px;
+            margin-top:150px;
+        }
+
+        .div2-father{
+            position: relative;
+            width:500px;
+            height:500px;
+            background-color: green;
+            border:1px solid yellow;
+        }
+        .div2-children{
+            position: absolute;
+            width:200px;
+            height:200px;
+            background-color: red;
+            border:1px solid black;
+            text-align: center;
+            /* 02 利用position: 父 relative 子 absolute
+                把 子 相对于 父 的 top、left 都设置为 50%
+                然后再用 margin-top 设置为 子 的高度的负一半拉回来
+                用 margin-left 设置为宽度的负一半拉回来
+             */
+            top:50%;
+            left:50%;
+            margin-left:-100px;
+            margin-top:-100px;
+        }
+
+        .div3-father{
+            position: relative;
+            width:500px;
+            height:500px;
+            background-color: green;
+            border:1px solid yellow;
+        }
+        .div3-children{
+            position: absolute;
+            width:200px;
+            height:200px;
+            background-color: red;
+            border:1px solid black;
+            text-align: center;
+            /* 03 利用position: 父 relative 子 absolute
+                margin:auto; top: 0;left: 0;right: 0;bottom: 0;
+             */
+            margin:auto; 
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .div4-father{
+            display: table-cell;
+            vertical-align: middle;
+            width:500px;
+            height:500px;
+            background-color: green;
+            border:1px solid yellow;
+        }
+        .div4-children{
+            width:200px;
+            height:200px;
+            background-color: red;
+            border:1px solid black;
+            text-align: center;
+            /* 04 利用 css3 的新增属性 
+                table-cell, vertical-align:middle;
+             */
+            margin:auto;
+        }
+        .div5-father{
+            /* 05 利用 flex布局
+            */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width:500px;
+            height:500px;
+            background-color: green;
+            border:1px solid yellow;          
+        }
+        .div5-children{
+            width:200px;
+            height:200px;
+            background-color: red;
+            border:1px solid black;
+            text-align: center;
+        }
+        .div6-father{
+            /* 06 利用 transform
+            */
+            position: relative;
+            width:500px;
+            height:500px;
+            background-color: green;
+            border:1px solid yellow;          
+        }
+        .div6-children{
+            width:200px;
+            height:200px;
+            background-color: red;
+            border:1px solid black;
+            text-align: center;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            -o-transform: translate(-50%,-50%);
+            -webkit-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="div1-father">
+        <div class="div1-children">
+            盒子模型demo1
+        </div>
+    </div>
+    <div class="div2-father">
+        <div class="div2-children">
+            盒子模型demo2
+        </div>
+    </div>
+    <div class="div3-father">
+        <div class="div3-children">
+            盒子模型demo3
+        </div>
+    </div>
+    <div class="div4-father">
+        <div class="div4-children">
+            盒子模型demo4
+        </div>
+    </div>
+    <div class="div5-father">
+        <div class="div5-children">
+            123456
+        </div>
+    </div>
+    <div class="div6-father">
+        <div class="div6-children">
+            123456
+        </div>
+    </div>
+</body>
+</html>
