@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>清除浮动和闭合浮动</title>
+    <style>
+        .title{
+            font-size:20px;
+            color:red;
+        }
+        .left{
+            float: left;
+            padding:5px;
+        }
+        .right{
+            float: left;
+            padding:5px;
+        }
+        .empty{
+            clear:both;
+            padding:5px;
+        }
+        .father:after{
+            content:".";/* 或者" " 在元素的后面生成内容为.的块级元素,并将这个块级元素隐藏和清除浮动 */
+            display:block;
+            clear:both;
+            visibility: hidden;
+            height:0;
+        }
+        .children1{
+            float: left;
+        }
+        .children2{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <p>清除浮动</p>
+
+    <p class="title">浮动元素末尾增加空div</p>
+    <div class="end-empty">
+        <div class="left">浮动元素末尾增加空div</div>
+        <div class="right">浮动元素末尾增加空div,真鸡儿难用</div>
+        <div class="empty"></div>
+    </div>
+
+    <p class="title">父元素设置伪元素</p>
+    <div class="father">
+        <div class="children1">大儿子</div>
+        <div class="children2">二儿子</div>
+    </div>
+</body>
+</html>

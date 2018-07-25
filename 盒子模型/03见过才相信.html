@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>眼见为实</title>
+    <style>
+        .not-same1{
+            font-size:14px;/*实际大小 14px*150% = 21px*/
+            line-height:150%;
+            color:red;
+            background-color:black;
+        }
+        .not-same1 h1{
+            font-size:26px;
+            /* line-height:21px;继承父元素计算出来的 line-height ,21px */
+        }
+
+        .not-same1-1{
+            font-size:14px;
+            line-height:150%;
+            color:green;
+            background-color:red;
+            /* h1 字体默认大小 40px */
+        }
+
+        .not-same2{
+            font-size:14px;/*实际大小 14px*150% = 21px*/
+            line-height:1.5;
+            color:red;
+            background-color:black;
+        }
+        .not-same2-2 h1{
+            font-size:26px;
+            /* line-height:39px; 26px*1.5=39px */
+        }
+    </style>
+</head>
+<body>
+    <dl>
+        <dt>计算机</dt>
+        <dd>用来计算的仪器 ... ...</dd>
+        <dt>显示器</dt>
+        <dd>以视觉方式显示信息的装置 ... ...</dd>
+        <dt>详解</dt>
+        <dd>
+            dl 标签：有默认 margin（top,bottom 且相同）值，没有默认 padding 值。
+            在 Chrome,Firefox,Safari,Opera,Maxthon,IE8.0 中：margin:12px 0px;
+            在 IE6.0,7.0 中：margin:19px 0px;
+            dd 标签有默认 margin-left：40px;(在所有上述浏览器中)。
+        </dd>
+     </dl>
+     <pre>关于margin:
+        css3:
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        css2:
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-right: 0px;
+        margin-left: 0px;
+    </pre>
+    <ul>
+        <li>默认margin和padding</li>
+        <li>默认margin和padding</li>
+        <li>
+            ol,ul 标签：有默认 margin-（top,bottom 且相同）值，有默认 padding-left 值
+            在 Chrome,Firefox,Safari,Opera,Maxthon,IE8.0 中：margin:12px 0px;                
+            在 IE6.0,7.0 中：margin:19px 0px;                
+            默认 padding-left 值：在 Chrome,Firefox,Safari,Opera,Maxthon,IE8.0 中都是 padding-left：40px;                
+            在 IE6.0,7.0 中没有默认 padding 值，因为 ol,ul 标签的边框不包含序号。
+        </li>
+    </ul>
+    <ol>
+        <li>默认margin和padding</li>
+        <li>默认margin和padding</li>
+        <li>
+            ol,ul 标签：有默认 margin-（top,bottom 且相同）值，有默认 padding-left 值
+            在 Chrome,Firefox,Safari,Opera,Maxthon,IE8.0 中：margin:12px 0px;                
+            在 IE6.0,7.0 中：margin:19px 0px;                
+            默认 padding-left 值：在 Chrome,Firefox,Safari,Opera,Maxthon,IE8.0 中都是 padding-left：40px;                
+            在 IE6.0,7.0 中没有默认 padding 值，因为 ol,ul 标签的边框不包含序号。
+        </li>
+    </ol>
+    <p>line-height:150% 和 line-height:1.5 的区别是？</p>
+    <div class="not-same1">
+        <h1>line-height:150% 和 line-height:1.5 的区别是？</h1>
+    </div>
+    <div class="not-same1-1">
+        <h1>line-height:150% 和 line-height:1.5 的区别是？</h1>
+    </div>
+    <div class="not-same2">
+        <h1>line-height:150% 和 line-height:1.5 的区别是？</h1>
+    </div>
+    <div class="not-same2-2">
+        <h1>line-height:150% 和 line-height:1.5 的区别是？</h1>
+    </div>
+
+    <div class="float">float 为何会让外部容器高度塌陷？这是 bug？</div>
+</body>
+</html>

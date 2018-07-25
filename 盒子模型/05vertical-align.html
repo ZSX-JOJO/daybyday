@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vertical-align </title>
+    <style>
+        img{
+            width:300px;
+            height:200px
+        }
+        .vertical-align {
+            /* vertical-align :super;与上标对齐 */
+            /* vertical-align :sub;与下标对齐 */
+            /* vertical-align :top;把元素的顶端与行中最高元素的顶端对齐 */
+            vertical-align :text-top;/*把元素的顶端与父元素字体的顶端对齐*/
+            vertical-align :middle;/*此元素防止在父元素的中间*/
+            vertical-align :bottom;/*把元素的顶端与行中最低元素的顶端对齐*/
+            vertical-align :text-bottom;/*把元素的底端与父元素字体的底端对齐*/
+        }
+        p{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        fuck! 
+        <sup>上标</sup>
+        <img src="./img/space.jpg" alt="" class="vertical-align">
+        <sub>下标</sub>
+        fuck!
+    </div>
+
+    <p>关于css文本</p>
+    <div>关于css文本
+        <sup>上标sup</sup>
+        <sub>下标sub</sub>
+        <div>顶线 中线 基线 底线</div>
+        <div>
+            内容区:内容区是指底线和顶线包裹的区域（行内元素 display:inline; 可以通过 background-color 属性显示出来），
+            实际中不一定看得到，但确实存在。内容区的大小依据 font-size 的值和字数进行变化
+        </div>
+        <div>
+            行高:
+            相邻文本间基线的距离
+        </div>
+        <div>
+            行距:
+            指相邻文本间上一个文本行基线和下一个文本行顶线之间的距离.
+            （上文本行行高 - 内容区高度）/2+（下文本行行高 - 内容区高度）/2
+        </div>
+    </div>
+</body>
+</html>

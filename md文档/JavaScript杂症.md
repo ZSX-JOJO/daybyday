@@ -880,3 +880,82 @@ function getWaterState(tempInCelsius) {
 
 ```
 
+## JavaScript奇技淫巧2
+
+```html
+<!-- <pre>标签</pre> 和 <code>标签</code> -->
+可以用*1来转化为数字 (实际上是调用.valueOf方法) 然后使用Number.isNaN来判断是否为NaN，或者使用 a !== a 来判断是否为NaN，因为 NaN !== NaN
+<pre>
+    <code>body{
+        background:#fff;
+          font: 12px/24px 1.66;
+    }</code>
+</pre>
+
+<!--string 强制转换为 数字-->
+<pre>
+'32' * 1            // 32
+'ds' * 1            // NaN
+null * 1            // 0
+undefined * 1    // NaN
+1  * { valueOf: ()=>'3' }        // 3
+</pre>
+<!--或者使用 + 来转化字符串为数字-->
+
+<!-- object 强制转换为 string-->
+可以使用 字符串+Object 的方式来转化对象为字符串 (实际上是调用 .toString() 方法)
+<pre>
+    <code>
+    'the Math object:' + Math                // "the Math object:[object Math]"
+    'the JSON object:' + JSON              // "the JSON object:[object JSON]"
+    </code>
+</pre>
+当然也可以覆盖对象的toString和valueOf方法来自定义对象的类型转换：
+<pre>
+    <code>
+    2  * { valueOf: ()=>'3' }                // 6
+    'J' + { toString: ()=>'S' }                // "JS"
+    </code>
+    当+用在连接字符串时，当一个对象既有toString方法又有valueOf方法时候，JS 通过盲目使用valueOf方法来解	决这种含糊。 对象通过valueOf方法强制转换为数字，通过toString方法强制转换为字符串
+</pre>
+<!--使用 Boolean 过滤数组中的所有假值-->
+<pre>
+    <code>
+    const compact = arr => arr.filter(Boolean)
+    compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34])             // [ 1, 2, 3, 'a', 's', 34 ]
+    </code>
+</pre>
+<!--双位操作符-->
+可以使用双位操作符来替代 Math.floor( )。双否定位操作符的优势在于它执行相同的操作运行速度更快
+<pre>
+Math.floor(4.9) === 4      //true
+// 简写为：
+~~4.9 === 4      //true
+</pre>
+不过要注意，对整数来说 ~~ 运算结果与 Math.floor( ) 运算结果相同，而对于负数来说不相同：
+<pre>
+~~4.5            // 4
+Math.floor(4.5)        // 4
+~~-4.5        // -4
+Math.floor(-4.5)        // -5
+</pre>
+<!--短路运算符-->
+逻辑与&&与逻辑或||是短路运算符，短路运算符就是从左到右的运算中前者满足要求，就不再执行后者了； 可以理解为：
+	&&为取假运算，从左到右依次判断，如果遇到一个假值，就返回假值，以后不再执行，否则返回最后一个真值
+	||为取真运算，从左到右依次判断，如果遇到一个真值，就返回真值，以后不再执行，否则返回最后一个假值
+实例:
+expr1&&expr2 :如果 expr1 能转换成 false 则返回 expr1, 否则返回 expr2. 因此, 在 Boolean 环境中使用时, 两个操作结果都为 true 时返回 true, 否则返回 false
+
+expr1||expr2 :如果 expr1 能转换成 true 则返回 expr1, 否则返回 expr2. 因此, 在 boolean 环境 (在 if 的条件判断中) 中使用时, 二者操作结果中只要有一个为 true, 返回 true; 二者操作结果都为 false 时返回 false
+
+!expr :如果单个表达式能转换为 true 的话返回 false, 否则返回 true
+<!-- 取整运算 -->
+<pre>
+数字 | 0
+</pre>
+<!-- 判断奇偶性 -->
+<pre>
+数字 & 1
+</pre>
+```
+
