@@ -134,6 +134,8 @@
             margin-top:10px;
         }
         /* 多列布局 */
+        /* 左列定宽，右列自适应 */
+         /* 01 float + margin实现 */
         .left-const-left1{
             float: left;
             width:100px;
@@ -147,7 +149,7 @@
         .left-const .right{
             background-color: #fff000;
         }
-        /*  */
+        /* 02 float + margin(fix) 实现 */
         .left-const-left2{
             float: left;
             width:100px;
@@ -162,7 +164,7 @@
             margin-left:100px;
             background-color: #fff000;
         }
-        /* 03 */
+        /* 03 float +　overflow实现*/
         .left-const{
             overflow:hidden;
         }
@@ -179,7 +181,7 @@
             padding-bottom:9999px;
             margin-bottom:-9999px;
         }
-        /* 04 */
+        /* 04 使用table实现*/
         .left-const4{
             display: table;
             table-layout: fixed;
@@ -194,6 +196,24 @@
             display: table-cell;
             background-color: #fff000;
         }
+        /* 05 flex实现 */
+        .left-const5{
+            display:flex;
+        }
+        .left-const-left5{
+            width:100px;
+            background-color: #ff0000;
+        }
+        .left-const-right5{
+            flex:1;
+            background-color: #fff000;
+        }
+        /* 右列定宽，左列自适应 */
+        /* 01 float+margin 实现 */
+        .right-const{
+            
+        }
+        .right-const-left{}
     </style>
 </head>
 <body>
@@ -281,6 +301,18 @@
     <div class="left-const4">
         <div class="left-const-left4 left">左侧4</div>
         <div class="left-const-right4 right">右侧4</div>
+    </div>
+
+    <div class="left-const5">
+        <div class="left-const-left5 left">左侧5</div>
+        <div class="left-const-right5 right">右侧5</div>
+    </div>
+
+    <p class="title-item">右列定宽,左列自适应</p>
+
+    <div class="right-const1">
+        <div class="right-const-left1"><左列自适应/div>
+        <div class="right-const-right1">右列定宽</div>
     </div>
 </body>
 </html>
