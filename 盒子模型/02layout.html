@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常见页面布局</title>
+    <style>
+        .title{
+            text-align: center;
+            font-size:20px;
+            color:red;
+        }
+        .title-item{
+            text-align: center;
+            font-size:10px;
+            color:black;
+        }
+        .father{
+            background-color:#bababa;
+            /* -webkit-padding-after:5px; */
+            margin-bottom:5px;
+        }
+        .children{
+            background-color: #fff;
+            border:1px solid red;
+        }
+        /* 水平居中 */
+        /* 使用 inline-block 和 text-align 实现 */
+        .row1{
+            text-align: center;
+        }
+        .row1-children{
+            display: inline-block;
+        }
+
+        /* 使用 margin:0 auto 来实现 */
+        .row2-children{
+            width:200px;
+            margin:0 auto;
+        }
+
+        /* 使用table实现 */
+        .row3-children{
+            display:table;
+            margin:0 auto;
+        }
+
+        /* 使用定位实现 */
+        .row4{
+            position: relative;
+        }
+        .row4-children{
+            position: absolute;
+            left:50%;
+            transform:translate(-50%);
+            background:red;
+        }
+
+        /* 使用flex */
+        .row5{
+            display:flex;
+            justify-content:center;
+            background:red;
+            margin-top:30px;
+        }
+        .row6{
+            display: flex;
+        }
+        .row6-children{
+            margin:0 auto;
+        }
+
+        /* 垂直居中 */
+        .col-father{
+            background-color:#ff0000;
+        }
+        /* 1 */
+        .col1{
+            display:table-cell;
+            vertical-align:middle;
+            height:30px;
+        }
+        /* 2 */
+        .col2{
+            display:inline-block;
+            vertical-align:middle;
+            /* line-height:30px; */
+        }
+        /* 3 使用定位 */
+        .col3{
+            position:relative;
+            margin-top:10px;
+        }
+        .col3-children{
+            position: absolute;
+            top:50%;
+            /* transform: translate(0,-50%); */
+            transform: translateY(-50%);
+            background-color: green;
+        }
+        /* flex */
+        .col4{
+            display:flex;
+            align-items:center;
+            margin-top:20px;
+        }
+        
+        /* 水平垂直居中 */
+        /* 1 */
+        .row-col1-father{
+            display:table-cell;
+            text-align: center;
+            vertical-align:middle;
+        }
+        .row-col1-children{
+            display:inline-block;
+        }
+        /* 2 */
+        .row-col2-father{
+            position: relative;
+        }
+        .row-col2-children{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+        /* 3 */
+        .row-col3-father{
+            display:flex;
+            justify-content:center;
+            align-items:middle;
+            margin-top:10px;
+        }
+        /* 多列布局 */
+        /* 左列定宽，右列自适应 */
+         /* 01 float + margin实现 */
+        .left-const-left1{
+            float: left;
+            width:100px;
+        }
+        .left-const .left{
+            background-color: #ff0000;
+        }
+        .left-const-right1{
+            margin-left:100px;
+        }
+        .left-const .right{
+            background-color: #fff000;
+        }
+        /* 02 float + margin(fix) 实现 */
+        .left-const-left2{
+            float: left;
+            width:100px;
+            background-color: #ff0000;
+        }
+        .left-const-right2{
+            width:100%;
+            float:right;
+            margin-left:-100px;
+        }
+        .left-const-right2 .right{
+            margin-left:100px;
+            background-color: #fff000;
+        }
+        /* 03 float +　overflow实现*/
+        .left-const{
+            overflow:hidden;
+        }
+        .left-const-left3{
+            float:left;
+            width:100px;
+            background-color: #ff0000;
+        }
+        .left-const-right3{
+            overflow: hidden;
+            background-color: #fff000;
+        }
+        .left-const-left3,.left-const-right3{
+            padding-bottom:9999px;
+            margin-bottom:-9999px;
+        }
+        /* 04 使用table实现*/
+        .left-const4{
+            display: table;
+            table-layout: fixed;
+            width:100%;
+        }
+        .left-const-left4{
+            display: table-cell;
+            width:100px;
+            background-color: #ff0000;
+        }
+        .left-const-right4{
+            display: table-cell;
+            background-color: #fff000;
+        }
+        /* 05 flex实现 */
+        .left-const5{
+            display:flex;
+        }
+        .left-const-left5{
+            width:100px;
+            background-color: #ff0000;
+        }
+        .left-const-right5{
+            flex:1;
+            background-color: #fff000;
+        }
+        /* 右列定宽，左列自适应 */
+        /* 01 float+margin 实现 */
+        .right-const1{
+            /* 没有高度将不显示 任何内容 */
+             height:50px;
+             margin:10px auto;
+             background-color: #ff0000;
+        }
+        .right-const-left1{
+            margin-right:-100px;
+            width:100%;
+            float:left;
+            background:green;
+        }
+        .right-const-right1{
+            /* 右浮动 固定宽度 */
+            float:right;
+            width:100px;
+            background:blue;
+        }
+        /* 02 使用table实现 */
+        .right-const2{
+            display:table;
+            table-layout:fixed;
+            width:100%;
+        }
+        .right-const-left2{
+            display:table-cell;
+            background:green;
+        }
+        .right-const-right2{
+            width:100px;
+            display:table-cell;
+            background:red;
+        }
+        /* 03 felx实现 */
+        .right-const3{
+            display:flex;
+        }
+        .right-const-left3{
+            flex:1;
+            background-color: yellow;
+        }
+        .right-const-right3{
+            width:100px;
+            background-color: blue;
+        }
+        /* 两列定宽 一列自适应 */
+        /* 01  float + margin实现*/
+        .parent1{}
+        .parent-left1{
+            float:left;
+            width:20%;
+            background-color:red;
+        }
+        .parent-center1{
+            float:left;
+            width:20%;
+            background-color:green;
+        }
+        .parent-right1{
+            /* 或者根据定宽的实际px,此处也可以使用px */
+            margin-left:40%;
+            background-color:yellow;
+        }
+        /* 02 float + overflow实现 */
+        .parent2{}
+        .parent-left2{
+            float:left;
+            width:20%;
+            background-color:green;
+        }
+        .parent-center2{
+            float:left;
+            width:20%;
+            background-color:yellow;
+        }
+        .parent-right2{
+            overflow:hidden;
+            background-color:red;
+        }
+        /* 03 table 实现 */
+        .parent3{
+            display: table;
+            table-layout: fixed;
+            width:100%
+        }
+        .parent-left3{
+            display: table-cell;
+            width:20%;
+            background-color:yellow;
+        }
+        .parent-center3{
+            display: table-cell;
+            width:20%;
+            background-color:red;
+        }
+        .parent-right3{
+            display: table-cell;
+            background-color:green;
+        }
+        /* 04 flex 实现 */
+        .parent4{
+            display: flex;
+        }
+        .parent-left4{
+            width:20%;
+            background-color:red;
+        }
+        .parent-center4{
+            width:20%;
+            background-color:green;
+        }
+        .parent-right4{
+            flex:1;
+            background-color:yellow;
+        }
+
+        /* 两列定宽 中间栏自适应 */
+        /* 01 float + margin */
+        .two-const1{}
+        .two-const-left1{
+            width:20%;
+            float:left;
+            background-color:yellow;
+        }
+        .two-const-center1{
+            float:left;
+            width:100%;
+            margin-right:-40%;
+            background-color:green;
+        }
+        .two-const-right1{
+            width:20%;
+            float:right;
+            background-color:pink;
+        }
+        /* 02 table实现 */
+        .two-const2{
+            width:100%;
+            display: table;
+            table-layout:fixed;
+        }
+        .two-const-left2{
+            display: table-cell;
+            width:20%;
+            background-color:pink;
+        }
+        .two-const-center2{
+            display: table-cell;
+            background-color:yellow;
+        }
+        .two-const-right2{
+            display: table-cell;
+            width:20%;
+            background-color:green;
+        }
+        /* 03 flex实现 */
+        .two-const3{
+            width:80%;
+            display: flex;
+        }
+        .two-const-left3{
+            width:20%;
+            background-color:pink;
+        }
+        .two-const-center3{
+            flex:1;
+            background-color:yellow;
+        }
+        .two-const-right3{
+            width:20%;
+            background-color:green;
+        }
+        /* 一列不定宽 一列自适应 */
+        /* 01 float + overflow */
+        .no-const-no-diy1{}
+        .no-const-no-diy-left1{
+            float:left;
+            background-color: #ffff00;
+        }
+        .no-const-no-diy-right1{
+            overflow:hidden;
+            background-color: red;
+        }
+        /* 02 table */
+        .no-const-no-diy2{
+            display:table;
+            table-layout:fixed;
+            width:100%;
+        }
+        .no-const-no-diy-left2{
+            display:table-cell;
+            width:5%;
+            background:green;
+        }
+        .no-const-no-diy-right2{
+            display:table-cell;
+            background:blue;
+        }
+        /* 03 flex */
+        .no-const-no-diy3{
+            display:flex;
+            background:red;
+        }
+        .no-const-no-diy-left3{}
+        .no-const-no-diy-right3{
+            flex:1;
+            background:pink;
+        }
+        /* 多列等分布局 */
+        /* 01 float */
+        .more-lists1{
+            /* margin-left:20px; */
+        }
+        .more-list1{
+            float:left;
+            padding-left:20px;
+            width:25%;
+            /* 指定 两个box接壤 */
+            box-sizing:border-box;
+            background-color: #fff000;
+            border:1px solid red;
+
+        }
+        /* 02 table实现 */
+        .more-list2{
+            margin-left:20px;
+            display: table;
+            table-layout:fixed;
+            width:100%;
+        }
+        .more-list2{
+            display: table-cell;
+            padding-left:20px;
+            margin-top:10px;
+            background-color: #ff0000;
+            border:1px solid black;
+        }
+        /* 03 flex */
+        .more-lists3{
+            display: flex;
+        }
+        .more-list3{
+            margin-top:10px;
+            flex:1;
+            border:1px solid black;
+        }
+        /* A+B 表示 HTML 中紧随 A 的 B 元素：用一个结合符只能选择两个相邻兄弟中的第二个元素 */
+        .more-list3+.more-list3{
+            background-color: #ffff00;
+            margin-left:10px;
+        }
+
+        /* 九宫格布局 */
+        /* 01 table实现 */
+        .grid1{
+            /* 	此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符 */
+            display: table;
+            /* 设置表格布局算法:列宽由表格宽度和列宽度设定 */
+            table-layout:fixed;
+            width:100%;
+        }
+        .grid-row1{
+            /* 此表格作为一个 表格行 显示 */
+            display:table-row;
+        }
+        .grid-row1 .item{
+            /* 此表格作为一个 单元表格 单元格 显示 */
+            display:table-cell;
+            width:33.3%;
+            height:50px;
+            background-color: green;
+            border:1px solid red;
+            text-align: center;
+            vertical-align:middle;
+        }
+        /* 02 flex实现 */
+        .grid{
+            display:flex;
+            flex-direction:column;
+        }
+        .grid-row2{
+            display: flex;
+            height:100px;
+            /* 项目在主轴上的对齐方式 */
+            justify-content:center;
+        }
+        .grid-col2{
+            width:100px;
+            background-color: red;
+            text-align: center;
+            color:yellow;
+            /* 垂直居中在flex下 不起作用??? */
+            /* vertical-align:middle; */
+            line-height:100px;
+        }
+
+        /* 全屏布局 */
+        /* 01 绝对定位 ... */
+        .fullscreen{
+            height:100%;
+            overflow:hidden;
+        }
+        .fullscreen .top{
+            position: absolute;
+            height:100px;
+            top:0;
+            left:0;
+            right:0;
+            background-color:red;
+        }
+        .fullscreen .left{
+            position: absolute;
+            width:200px;
+            top:100px;
+            left:0;
+            bottom:50px;
+            background-color:black;
+        }
+        .fullscreen .right{
+            position: absolute;
+            top:100px;
+            left:200px;
+            right:0;
+            bottom:50px;
+            background-color:black;
+        }
+        .fullscreen .bottom{
+            position: absolute;
+            left:0;
+            right:0;
+            bottom:0;
+            height:50px;
+            background-color:black;
+        }
+        /* 02 flex */
+        .fullscreen2{
+            display: flex;
+            flex-direction: column;
+        }
+        .fullscreen2 .top{
+            height:100px;
+            background-color: green;
+        }
+        .fullscreen2 .bottom{
+            height:100px;
+            background-color: blue;
+        }
+        .fullscreen2 .middle{
+            display: flex;
+            flex:1;
+        }
+        .middle .left{
+            width:200px;
+            background-color:red;
+        }
+        .middle .right{
+            flex:1;
+            overflow: hidden;
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <p class="title">单列布局</p>
+
+    <p class="title-item">01.水平居中</p>
+
+    <div class="row1 father">
+        <div class="row1-children children">水平居中1</div>
+    </div>
+
+    <div class="row2 father">
+        <div class="row2-children children">水平居中2</div>
+    </div>
+
+    <div class="row3 father">
+        <div class="row3-children children">水平居中3</div>
+    </div>
+
+    <div class="row4 father">
+        <div class="row4-children children">水平居中4</div>
+    </div>
+
+    <div class="row5 father">
+        <div class="row5-children children">水平居中5</div>
+    </div>
+
+    <div class="row6 father">
+        <div class="row6-children children">水平居中6</div>
+    </div>
+
+    <p class="title-item">02.垂直居中</p>
+
+    <div class="col1 col-father">
+        <div class="col1-children col-children">垂直居中1</div>
+    </div>
+
+    <div class="col2 col-father">
+        <div class="col2-children col-children">垂直居中2</div>
+    </div>
+
+    <div class="col3 col-father">
+        <div class="col3-children col-children">垂直居中3</div>
+    </div>
+
+    <div class="col4 col-father">
+        <div class="col4-children col-children">垂直居中4</div>
+    </div>
+
+    <p class="title-item">03.水平垂直居中</p>
+
+    <div class="row-col1-father row-col-father">
+        <div class="row-col1-children row-col-children">水平垂直居中1?????</div>
+    </div>
+
+    <div class="row-col2-father row-col-father">
+        <div class="row-col2-children row-col-children">水平垂直居中2</div>
+    </div>
+
+    <div class="row-col3-father row-col-father">
+        <div class="row-col3-children row-col-children">水平垂直居中3</div>
+    </div>
+
+    <p class="title">多列布局</p>
+
+    <p class="title-item">左侧定宽,右侧自适应</p>
+
+    <div class="left-const">
+        <div class="left-const-left1 left">左侧1</div>
+        <div class="left-const-right1 right">右侧1</div>
+    </div>
+
+    <div class="left-const">
+        <div class="left-const-left2">左侧2</div>
+        <div class="left-const-right2">
+            <div class="right">右侧2</div>
+        </div>
+    </div>
+
+    <div class="left-const">
+        <div class="left-const-left3 left">左侧3 ????</div>
+        <div class="left-const-right3 right">右侧3 ????</div>
+    </div>
+
+    <div class="left-const4">
+        <div class="left-const-left4 left">左侧4</div>
+        <div class="left-const-right4 right">右侧4</div>
+    </div>
+
+    <div class="left-const5">
+        <div class="left-const-left5 left">左侧5</div>
+        <div class="left-const-right5 right">右侧5</div>
+    </div>
+
+    <p class="title-item">右列定宽,左列自适应</p>
+
+    <div class="right-const1">
+        <div class="right-const-left1">左列自适应</div>
+        <div class="right-const-right1">右列定宽</div>
+    </div>
+
+    <div class="right-const2">
+        <div class="right-const-left2">左列自适应</div>
+        <div class="right-const-right2">右列定宽</div>
+    </div>
+
+    <div class="right-const3">
+        <div class="right-const-left3">左列自适应</div>
+        <div class="right-const-right3">右列定宽</div>
+    </div>
+
+    <p class="title-item">两列定宽,一列自适应</p>
+
+    <div class="parent1">
+        <div class="parent-left1">定宽</div>
+        <div class="parent-center1">定宽</div>
+        <div class="parent-right1">自适应</div>
+    </div>
+
+    <div class="parent2">
+        <div class="parent-left2">定宽</div>
+        <div class="parent-center2">定宽</div>
+        <div class="parent-right2">自适应</div>
+    </div>
+
+    <div class="parent3">
+        <div class="parent-left3">定宽</div>
+        <div class="parent-center3">定宽</div>
+        <div class="parent-right3">自适应</div>
+    </div>
+
+    <div class="parent4">
+        <div class="parent-left4">定宽</div>
+        <div class="parent-center4">定宽</div>
+        <div class="parent-right4">自适应</div>
+    </div>
+
+    <p class="title-item">两列定宽,中间栏自适应</p>
+
+    <div class="two-const1">
+        <div class="two-const-left1">定宽</div>
+        <div class="two-const-center1">中间栏自适应</div>
+        <div class="two-const-right1">定宽</div>
+    </div>
+
+    <div class="two-const2">
+        <div class="two-const-left2">定宽</div>
+        <div class="two-const-center2">中间栏自适应</div>
+        <div class="two-const-right2">定宽</div>
+    </div>
+
+    <div class="two-const3">
+        <div class="two-const-left3">定宽3</div>
+        <div class="two-const-center3">中间栏自适3</div>
+        <div class="two-const-right3">定宽3</div>
+    </div>
+
+    <p class="title-item">05一列不定宽，一列自适应</p>
+
+    <div class="no-const-no-diy1">
+        <div class="no-const-no-diy-left1">一列不定宽</div>
+        <div class="no-const-no-diy-right1">一列自适应</div>
+    </div>
+
+    <div class="no-const-no-diy2">
+        <div class="no-const-no-diy-left2">一列不定宽</div>
+        <div class="no-const-no-diy-right2">一列自适应</div>
+    </div>
+
+    <div class="no-const-no-diy3">
+        <div class="no-const-no-diy-left3">一列不定宽</div>
+        <div class="no-const-no-diy-right3">一列自适应</div>
+    </div>
+
+    <p class="title-item">06 多列等分布局</p>
+
+    <div class="more-lists1">
+        <div class="more-list1">1</div>
+        <div class="more-list1">1</div>
+        <div class="more-list1">1</div>
+        <div class="more-list1">1</div>
+    </div>
+
+    <div class="more-lists2">
+        <div class="more-list2">2</div>
+        <div class="more-list2">2</div>
+        <div class="more-list2">2</div>
+        <div class="more-list2">2</div>
+    </div>
+
+    <div class="more-lists3">
+        <div class="more-list3">3</div>
+        <div class="more-list3">3</div>
+        <div class="more-list3">3</div>
+        <div class="more-list3">3</div>
+    </div>
+
+    <p class="title-item">九宫格布局</p>
+
+    <div class="grid1">
+        <div class="grid-row1">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+        <div class="grid-row1">
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+        </div>
+        <div class="grid-row1">
+            <div class="item">7</div>
+            <div class="item">8</div>
+            <div class="item">9</div>
+        </div>
+    </div>
+
+    <div class="grid2">
+        <div class="grid-row2">
+            <div class="grid-col2">1</div>
+            <div class="grid-col2">2</div>
+            <div class="grid-col2">3</div>
+        </div>
+        <div class="grid-row2">
+            <div class="grid-col2">4</div>
+            <div class="grid-col2">5</div>
+            <div class="grid-col2">6</div>
+        </div>
+        <div class="grid-row2">
+            <div class="grid-col2">7</div>
+            <div class="grid-col2">8</div>
+            <div class="grid-col2">9</div>
+        </div>
+    </div>
+
+    <p class="title-item">全屏布局</p>
+
+    <!-- <div class="fullscreen">
+        <div class="top">top</div>
+        <div class="left">top</div>
+        <div class="right">right</div>
+        <div class="bottom">bottom</div>
+    </div> -->
+
+    <div class="fullscreen2">
+        <div class="top">top</div>
+        <div class="middle">
+            <div class="left">left</div>
+            <div class="right">right</div>
+        </div>
+        <div class="bottom">bottom</div>
+    </div>
+</body>
+</html>

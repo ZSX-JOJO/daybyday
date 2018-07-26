@@ -210,10 +210,49 @@
         }
         /* 右列定宽，左列自适应 */
         /* 01 float+margin 实现 */
-        .right-const{
-            
+        .right-const1{
+            /* 没有高度将不显示 任何内容 */
+             height:100px;
+             margin:0 auto;
+             background-color: #ff0000;
         }
-        .right-const-left{}
+        .right-const-left1{
+            margin-right:-100px;
+            width:100%;
+            float:left;
+            background:green;
+        }
+        .right-const-right1{
+            /* 右浮动 固定宽度 */
+            float:right;
+            width:100px;
+            background:blue;
+        }
+        /* 02 使用table实现 */
+        .right-const2{
+            display:table;
+            table-layout:fixed;
+            width:100%;
+        }
+        .right-const-left2{
+            display:table-cell;
+            background:green;
+        }
+        .right-const-right2{
+            width:100px;
+            display:table-cell;
+            background:red;
+        }
+        /* 03 felx实现 */
+        .right-const3{
+            display:flex;
+        }
+        .right-const-left3{
+            flex:1;
+        }
+        .right-const-right3{
+            width:100px;
+        }
     </style>
 </head>
 <body>
@@ -311,8 +350,18 @@
     <p class="title-item">右列定宽,左列自适应</p>
 
     <div class="right-const1">
-        <div class="right-const-left1"><左列自适应/div>
+        <div class="right-const-left1">左列自适应</div>
         <div class="right-const-right1">右列定宽</div>
+    </div>
+
+    <div class="right-const2">
+        <div class="right-const-left2">左列自适应</div>
+        <div class="right-const-right2">右列定宽</div>
+    </div>
+
+    <div class="right-const3">
+        <div class="right-const-left3">左列自适应</div>
+        <div class="right-const-right3">右列定宽</div>
     </div>
 </body>
 </html>
