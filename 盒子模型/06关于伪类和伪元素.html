@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06关于伪类和伪元素</title>
+    <style>
+        .tip:after {
+			content:attr(data-title);
+		}
+		::placeholder{
+			color:red;
+		}
+		.faker::first-letter{
+			color:red;
+		}
+        .faker2::first-line{
+            color:blue;
+        }
+        .before:hover::before{
+            color:red;
+            font-weight:bold;
+            font-size:14px;
+            content:"赵守鑫是";
+        }
+        .after:hover::after{
+            color:blue;
+            font-weight:bold;
+            font-size:14px;
+            content:"真的是大傻逼!";
+        }
+        a:after{
+            content:""attr(href)""
+        }
+        .selection{
+            border:1px solid red;
+            outline:green dotted thick;
+        }
+        .selection::selection{
+            color:red;
+            background-color: black;
+            cursor:help;
+            /* outline:green dotted thick; */
+        }
+    </style>
+</head>
+<body>
+    <div data-title="标题" class="tip"></div>
+	username:<input type="text" name="" placeholder="18353627528">
+	passbord:<input type="text" name="" placeholder="123456">
+	<div class="faker">
+		赵守鑫
+    </div>
+    <div class="faker2">
+        12312313131313131313123132131<br>
+        asddadadasdadasdadadad
+    </div>
+    <div class="before">大傻逼!</div>
+    <div class="after">赵守鑫</div>
+    <p><a href="http://www.t66y.com" target="_blank">男人の火车头!</a>女人の加油站!</p>
+
+    <p class="selection">来选中整行的大傻逼!</p>
+</body>
+</html>

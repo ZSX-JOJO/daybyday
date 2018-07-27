@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>css嵌套???</title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		.tip:after {
+			content:attr(data-title);
+		}
+		::placeholder{
+			color:red;
+		}
+		.faker::first-letter{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div data-title="标题" class="tip"></div>
+	username:<input type="text" name="" placeholder="18353627528">
+	passbord:<input type="text" name="" placeholder="123456">
+	<div class="faker">
+		赵守鑫
+	</div>
+</body>
+</html>
