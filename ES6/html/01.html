@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+    <p>
+        ES6 字符串模版 写法:
+        <pre>
+            <code>
+                console.log('My name is'+ this.name + 'Am I human?' + this.isHuman);//传统写法
+                console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);//ES6 模版字符串 `` 反撇号(esc之下键)字符
+                /* ES6模版字符串 详解? */
+                console.log(`%c My name is ${this.name}`,`color:red;font-size:14px`);
+            </code>
+        </pre>
+    </p>
+</body>
+<script src="main.js"></script>
+</html>
