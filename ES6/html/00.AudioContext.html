@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AudioContext</title>
+</head>
+<body>
+    <button id="button">经过我粗声</button>
+</body>
+<script>
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    (function(){
+        if(!window.AudioContext){
+            alert("放弃吧!不支持的!");
+            return;
+        }
+
+        var eleButton = document.getElementById('button');
+        var audioCtx = new AudioContext;
+        var arrFrequency = [196.00, 220.00, 246.94, 261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25, 587.33, 659.25, 698.46, 783.99, 880.00, 987.77, 1046.50];
+        var start = 0,direction = 1;
+    })();
+</script>
+</html>

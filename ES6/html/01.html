@@ -19,6 +19,36 @@
             </code>
         </pre>
     </p>
+    <p>let和const
+        关于 暂时性死区
+    </p>
+    <p>ES6声明变量的方式TMD的有6种?
+        var function let const import class
+    </p>
+    <p>解构
+        <pre>
+            var [a,b,c] = [11,22,33];//a = 11,b = 22 ,c = 33;
+        </pre>
+    </p>
+    <p>生成器函数:
+        <pre>
+            function* fibs() {
+                let a = 0;
+                let b = 1;
+                while (true) {
+                  yield a;
+                  [a, b] = [b, a + b];
+                }
+              }
+              
+              var [first, second, third, fourth, fifth, sixth] = fibs();
+              console.log(first+" "+second+" " + third+" "+fourth + " " + fifth + " "+ sixth);
+              //0 1 1 2 3 5
+        </pre>
+    </p>
+    <p>变量的解构赋值 至此!</p>
 </body>
 <script src="main.js"></script>
+<script>
+</script>
 </html>
