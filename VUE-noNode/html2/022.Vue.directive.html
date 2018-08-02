@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .one,.two{
+            height:100px;
+            width:100px;
+            border:1px solid #000;
+            position: absolute;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: -moz-none;
+            cursor: pointer;
+        }
+        .two{
+            left:200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-focus/>
+    </div>
+
+    <div id="app2">
+        <div class="one" v-drag>拖拽one</div>
+        <div class="two" v-drag>拖拽two</div>
+    </div>   
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    // 注册一个全局自定义指令 v-focus
+    Vue.directive('focus', {
+        // 当绑定元素插入到 DOM 中。
+        inserted: function (el,binding) {
+                // 聚焦元素
+                el.focus();
+        }
+    });   
+    new Vue({
+    　　el:'#app'
+    });
+
+    Vue.directive('drag', {
+        inserted:function(el){
+            el.onmousedown=function(e){
+                let l=e.clientX-el.offsetLeft;
+                let t=e.clientY-el.offsetTop;
+                document.onmousemove=function(e){
+                    el.style.left=e.clientX-l+'px';
+                    el.style.top=e.clientY-t+'px';
+                };
+                el.onmouseup=function(){
+                    document.onmousemove=null;
+                    el.onmouseup=null;
+                }
+            }
+        }
+    })
+    new Vue({
+    　　el:'#app2'
+    });
+</script>
+</html>

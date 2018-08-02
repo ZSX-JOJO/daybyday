@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [ v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p>vm.$set()为对象添加属性</p>
+    <div id="app" v-cloak>
+        {{user.name}}----{{user.weight}}<br>
+        <button type="button" @click="change">死胖子!改变</button>
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        data:{
+            msg:'hello sb!',
+            user:{
+                name:"SB!",
+                gender:'man'
+            }
+        },
+        methods:{
+            change:function(){
+                this.$set(this.user,'weight','65公斤!');
+            }
+        }
+    }).$mount('#app');
+</script>
+</html>

@@ -15,9 +15,15 @@
     </style>
 </head>
 <body>
-    <!-- A to B to C -->
+    <div class="app" v-cloak>{{msg}}-{{msg2}}</div>
 </body>
 <script src="../script/vue.js"></script>
 <script>
+    var vm=new Vue({
+    data:{
+        msg:'Hello vue.js',
+        msg2:"$mount()手动挂载"
+    }
+ }).$mount('.app');
 </script>
 </html>

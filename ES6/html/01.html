@@ -47,6 +47,37 @@
         </pre>
     </p>
     <p>变量的解构赋值 至此!</p>
+    <pre>
+        var x = 233;
+        var y = 332;
+        [x,y] = [y,x];
+        console.log(`%c x=${x} y=${y}`,`color:red`);
+    </pre>
+    <p>从函数返回多个值
+        <pre>
+            function example() {
+                return [1, 2, 3];
+              }
+              var [a, b, c] = example();
+              console.log(`${a} ${b} ${c}`);
+        </pre>
+    </p>
+    <p>for..in 和 for...of ES6新添加
+        <pre>
+            //for...of 遍历取i的值
+            var arr = [9,8,7,6,5];
+            for(var i of arr){
+                console.log(`i=${i}`);//9,8,7,6,5
+            }
+        </pre>
+        <pre>
+            //for...in 遍历取i2的下标
+            var arr2 = [9,8,7,6,5];
+            for(var i2 in arr){
+                console.log(`i2=${i2}`);//0,1,2,3,4
+            }
+        </pre>
+    </p>
 </body>
 <script src="main.js"></script>
 <script>
