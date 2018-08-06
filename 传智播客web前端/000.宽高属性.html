@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>宽高属性</title>
+    <style>
+        body{
+            border: 2px solid #000000;
+        }
+        .one{
+            width: 200px;
+            height: 200px;
+            background: red;
+            border: 1px solid #000000;
+            overflow: auto;
+        }
+        .tree{
+            border:1px solid red;
+            width:100px;
+            height:100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="one">
+        clientWidth 和 clientHeight元素的可视部分宽度和高度,若有滚动条减去滚动条的宽高即为实际高度<br>
+        offsetWidth 和 offsetHeight元素的border+padding+content 的宽度和高度，该属性和其内部的内容是否超出元素大小无关，只和本来设定的 border 以及 width 和 height 有关<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+        javascript高级应用<br>
+    </div>
+    <div class="tree">
+        clientLeft && clientTop 读取border的宽度和高度
+    </div>
+</body>
+<script>
+    window.onload=function(){
+        var oDiv=document.getElementsByTagName('div')[0];
+        console.log(`%c 关于clientWidth && clientHeight clientWidth:${oDiv.clientWidth} clientHeight:${oDiv.clientHeight}`,'color:red');
+        console.log(`%c 关于offsetWidth && offsetHeight offsetWidth:${oDiv.offsetWidth} offsetHeight:${oDiv.offsetHeight}`,'color:yellow');
+        var oDiv3=document.getElementsByClassName('tree')[0];
+        console.log('%c 关于clientLeft && clientTop ${oDiv3.clientLeft} ${oDiv3.clientTop}','gree');
+    }
+</script>
+</html>
