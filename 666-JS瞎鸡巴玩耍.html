@@ -574,5 +574,78 @@
     for (a of arr) {
         console.log(a);//a,b
     }
+
+
+    /* 关于this的理解 */
+
+    /* 栗子① */
+    /* 结论:谁调用,谁负责 */
+    var name = "a";
+    var obj = {
+        name:'b',
+        getName:function(){
+        console.log(`%c${this.name}`,`color:red`);
+    }
+    };
+    /* obj调用 this指向了obj 所以输出b */
+    obj.getName();//红色b
+    var getName = obj.getName;
+    /* 此时调用方法的 不是obj 是全局window 所以输出a*/
+    getName();//红色a
+    var obj2 = (function(){
+        return function(){
+        console.log(`%c${this.name}`,`color:blue`);
+        }
+    })();
+    /* 同理 全局变量window在调用obj()2 所以输出a */
+    obj2();//蓝色a
+
+    /* 栗子② */
+    /* 结论:当使用new时,函数内部的this指向已发生改变,不再指向window */
+    var name = "a";
+    function Test(){
+        console.log(`%c${this.name}`,`color:red`);
+    }
+    /* 红色a */
+    Test();
+    /* 红色undefined */
+    var test = new Test();
+    function Test2(){
+        this.name = 'c';
+    }
+    var test2 = new Test2();
+    /* 蓝色c */
+    console.log(`%c${test2.name}`,`color:blue`);
+    /* 关于new Test2()真正的执行步骤
+        var obj = {};//创建空对象obj
+        obj.__proto__ = Test2.prototype;//将这个空对象的[[Prototype]](__proto__)成员指向了Test2函数对象prototype成员对象
+        Test2.call(obj);//将Test2函数对象的this指针替换成obj
+     */
+
+    /* 栗子③ */
+    /* 结论: 如果 return 的是一个对象 (null 除外)，那么 this 指向的这个对象，否则 this 依旧指向实例对象 */
+    function Test3(){
+        this.name = 'd';
+        return {};
+    }
+    var test3 = new Test3();
+    /* 红色undefined */
+    console.log(`%c${test3.name}`,`color:red`);
+    function Test4(){
+        this.name = 'd';
+        return 1;
+    }
+    var test4 = new Test4();
+    /* 黄色d */
+    console.log(`%c${test4.name}`,`color:yellow`);
+
+    /* 栗子④ */
+    /* 结论: 严格模式下 this全部指向undefined */
+    var name = 'a';
+    function Test5(){
+        "use strict";
+        console.log(this.name);
+    }
+    console.log(Test5());
 </script>
 </html>

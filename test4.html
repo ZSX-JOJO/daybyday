@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8" />
+<title>linear-gradient()_CSS参考手册_web前端开发参考手册系列</title>
+<meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+<style>
+div {
+	width: 200px;
+	height: 100px;
+	margin-top: 10px;
+	border: 1px solid #ddd;
+}
+.test {
+	background: linear-gradient(#fff, #333);
+}
+.test2 {
+	background: linear-gradient(#000, #f00 50%, #090);
+}
+.test3 {
+	background: linear-gradient(0deg, #000 20%, #f00 50%, #090 80%);
+}
+.test4 {
+	background: linear-gradient(45deg, #000, #f00 50%, #090);
+}
+.test5 {
+	background: linear-gradient(to top right, #000, #f00 50%, #090);
+}
+
+.fuck1{
+    text-align: center;
+    /* line-height:100px; */
+    color:#fff;
+    background:linear-gradient(0deg,red,yellow);
+}
+
+.fuck2{
+    color:#fff;
+    background:-webkit-radial-gradient(red 20%,yellow 20%,green 30%,blue 30%);
+    /* background:radial-gradient(red 20%,yellow 20%,green 30%,blue 30%); */
+}
+</style>
+</head>
+<body>
+<p>关于渐变!!!!!!!!!!!!!!!</p>
+<div class="test"></div>
+<div class="test2"></div>
+<div class="test3"></div>
+<div class="test4"></div>
+<div class="test5"></div>
+
+<div class="fuck1">
+    linear-线性渐变<br>
+    0deg:从下往上<br>
+    90deg:从左往右<br>
+    180deg:从上往下<br>
+</div>
+
+<div class="fuck2">
+    语法:background: radial-gradient(center, shape size, start-color, ..., last-color);
+</div>
+
+<div class="fuck3">
+    <a href="" download="">fuck3</a>
+</div>
+
+<div id="myLocation">获取地理位置</div>
+</body>
+<script>
+    var ml=document.getElementById("myLocation");
+    function getUserLocation(){
+        if("geolocation" in navigator){
+            // PositionOptions对象的三个属性
+            var options={
+                // 是否返回更详细准确的结构
+                enableHighAccuracy: true, 
+                // 设定位置缓存时间
+                maximumAge        : 30000,
+                // 设备位置获取操作的超时时间设定 
+                timeout           : 27000
+            };
+            /* 
+            getCurrentPosition(success,error,options)
+            函数获取用户当前定位位置.
+            success:成功获取到位置信息的回调函数,使用Position对象作为唯一参数.
+            error:获取位置信息失败时的回调函数,使用PositionError对象作为唯一参数.
+            options:可选的PositionOptions对象.
+             */
+            navigator.geolocation.getCurrentPosition(success,error,options);
+        }else{
+            ml.innerHTML="您的浏览器不支持定位！";
+        }
+    }
+    function success(position){
+        /* position两个属性
+            position.timestamp获得位置的时间戳
+            position.coords{}
+         */
+        var coords=position.coords;
+        var lat=coords.latitude;
+        var lng=coords.longitude;
+        ml.innerHTML="您当前所在的位置：经度"+lat+";纬度："+lng;
+        //只有firefox支持address属性
+        if(typeof position.address !== "undefined"){
+            var country = position.address.country;  
+            var province = position.address.region;  
+            var city = position.address.city;  
+            ml.innerHTML +="您的地址" + country + province + city;  
+        }  
+    }
+    function error(error){
+        switch(error.code){//返回1 or 2 or 3
+            // 3 超时
+            case error.TIMEOUT:  
+                ml.innerHTML="连接超时，请重试";  
+                break;  
+            // 1 没有权限使用地理定位API
+            case error.PERMISSION_DENIED:  
+                ml.innerHTML="您拒绝了使用位置共享服务，查询已取消";  
+                break;  
+            // 2 无法确定设备的位置
+            case error.POSITION_UNAVAILABLE:  
+                ml.innerHTML="亲，非常抱歉，我们暂时无法为您提供位置服务";  
+                break;  
+        }  
+        ml.style.color="red";
+    }
+    window.onload=function(){
+        getUserLocation();
+    }
+</script>
+</html>
