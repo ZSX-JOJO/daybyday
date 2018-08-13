@@ -647,5 +647,70 @@
         console.log(this.name);
     }
     console.log(Test5());
+
+    /* 
+        关于栈内存(stack)和堆内存(heap) 此文件41行处;
+        栈内存:
+            存放在 栈内存 中的简单数据段。数据大小确定，内存空间大小可以分配。
+            5种基本数据类型有 Undefined、Null、Boolean、Number 和 String,
+            它们是直接按值存放的，所以可以直接访问.
+        堆内存:
+            存放在堆内存中的对象，变量中实际保存的是一个指针，这个指针指向另一个位置。
+            每个空间大小不一样,要根据情况开进行特定的分配。
+            当我们需要访问引用类型（如对象，数组，函数等）的值时,
+            首先从栈中获得该对象的地址指针，然后再从堆内存中取得所需的数据。
+        执行环境(作用域):
+            1. 执行环境决定了变量的生命周期,一些代码可以访问变量的权限。这种机制有助于何时释放内存。
+            2. 分全局执行环境（window）和函数执行环境。
+            3. 函数的局部环境可以访问函作用域的变量,而且有权访问包含（父）环境中的变量
+            4. 全局环境不能访问函数环境中的变量。
+    */
+
+    /* ES6核心 */
+
+    /* ① */
+    /* 
+        let不存在变量提升;
+        let不允许重复声明变量;
+    */
+    /* ② */
+    /* 
+        codePointAt()字符串查询
+        var text = "𠮷";
+        console.log(text.codePointAt(0)); //134071
+     */
+     /* ③ */
+     /* repeat()字符串重复
+        var a = 'four';
+        console.log(a.repeat(3));
+      */
+      /* ④ */
+      /* startWith('str',n) endsWith('str',n)
+        返回布尔值 表示参数字符串是否在原字符串的首部或者尾部,
+        str 表示要判断的值，n 表示从目标字符串的第几个元素开始
+        var str='hello world'
+        console.log(str.startsWith('hello',0)); //true
+        console.log(str.startsWith('world',6)); //true
+        console.log(str.startsWith('world',0)); //false
+      */
+      /* ⑤ */
+      /* padStart()，padEnd()
+        var a='abc'
+        var b='abcd'
+        var c='abcd'
+        console.log(a.padStart('10',0)); 
+        console.log(b.padStart('10',0));
+        console.log(c.padStart('10',0));
+        //0000000abc
+        //000000abcd
+        //00000abcde
+       */
+
+       /* 正则表达式 */
+       /* 
+        var zsx = '1223344qwerqwerqqwweerr';
+        var reg = /^1/g;
+        console.log(reg.test(zsx));
+        */
 </script>
 </html>
