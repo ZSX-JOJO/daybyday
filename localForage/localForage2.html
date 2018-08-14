@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/localforage.js"></script>
+    <title>用于本地存储的类库</title>
+</head>
+<body>
+      <p>用于本地存储的类库,兼容各种浏览器</p>
+</body>
+<script>
+    var localForage = localforage.createInstance({
+        name: "nameHere"
+    });
+
+    //默认的驱动顺序，首选是IndexedDB，其次是WebSQL，最后是Localstorage
+    var DefaultDriverOrder = [
+        DriverType.INDEXEDDB
+        ,DriverType.WEBSQL
+        ,DriverType.LOCALSTORAGE
+    ];
+
+    //对外释放的方法api
+    var LibraryMethods = [
+        'clear'
+        ,'getItem'
+        ,'iterate'
+        ,'key'
+        ,'keys'
+        ,'length'
+        ,'removeItem'
+        ,'setItem'
+    ];
+
+    //默认的配置
+    var DefaultConfig = {
+        description: '',
+        driver: DefaultDriverOrder.slice(),
+        name: 'localforage',//默认数据库名称
+        size: 4980736,//目前只支持WebSQL可以设置大小
+        storeName: 'keyvaluepairs',
+        version: 1.0
+    };
+
+    // 保存用户信息
+    var users = [ {id: 1, fullName: 'Matt'}, {id: 2, fullName: 'Bob'} ];
+
+    localForage.setItem('users', users, function(result) {
+        console.log(result);
+    });
+
+    localforage.getItem('users').then(function(value) {
+        // 当离线仓库中的值被载入时，此处代码运行
+        console.log(value);
+    }).catch(function(err) {
+        // 当出错时，此处代码运行
+        console.log(err);
+    });
+</script>
+</html>

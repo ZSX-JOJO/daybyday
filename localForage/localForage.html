@@ -30,10 +30,10 @@
     // getitem
     localforage.getItem('somekey').then(function(value) {
         // 当离线仓库中的值被载入时，此处代码运行
-        console.log(value);
+        console.log(`%c${value}`,`color:red`);
     }).catch(function(err) {
         // 当出错时，此处代码运行
-        console.log(err);
+        console.log(`%c${err}`,`color:red`);
     });
 
     // 回调版本：
