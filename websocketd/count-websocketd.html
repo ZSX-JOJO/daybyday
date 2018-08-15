@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>WebSocket 服务器之Websocketd</p>
+    <p>脚本为count.sh</p>
+</body>
+<script>
+    var ws = new WebSocket('ws://localhost:4444');
+
+    ws.onopen = function() {
+        console.log('CONNECT');
+    };
+    ws.onclose = function() {
+        console.log('DISCONNECT');
+    };
+    ws.onmessage = function(event) {
+        console.log('Count is: ' + event.data);
+    };
+</script>
+</html>

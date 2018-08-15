@@ -1,0 +1,8 @@
+地址:
+http://websocketd.com/
+
+使其变成可执行文件:
+chmod +x ./count.sh
+
+运行:
+$ websocketd --port=8080 bash ./counter.sh  # 若不加bash可能会出现问题

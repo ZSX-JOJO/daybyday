@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>WebSocket 服务器之Websocketd</p>
+    <p>脚本为chat.sh</p>
+    <pre id="log"></pre>
+</body>
+<script>
+    function log(msg) {
+        document.getElementById('log').textContent += msg + '\n';
+    }
+    
+    var ws = new WebSocket('ws://localhost:4444');
+
+    ws.onopen = function() {
+        log('CONNECT');
+    };
+
+    ws.onclose = function() {
+        log('DISCONNECT');
+    };
+
+    ws.onmessage = function(event){
+        console.log('chat:' + event.data);
+    }
+</script>
+</html>

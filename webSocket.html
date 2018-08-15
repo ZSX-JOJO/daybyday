@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>webSocket</title>
+    <style>
+        p{
+            text-align: center;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p>关于webSocket</p>
+    <input type="file">blob对象
+</body>
+<script>
+    var ws = new WebSocket("wss://echo.websocket.org");
+
+    ws.addEventListener('open',function(event){
+        ws.send('ws.addEventListener open');
+    });
+
+    ws.onopen = function(evt) { 
+        console.log("Connection open ..."); 
+        ws.send("ws.onopen Hello WebSockets!");
+    };
+
+    ws.addEventListener('message', function (event) {
+        console.log('ws.addEventListener Message from server', event.data);
+    });
+
+    ws.onmessage = function(evt) {
+        console.log( "ws.onmessage Received Message: " + evt.data);
+        ws.close();
+    };
+
+    switch (ws.readyState) {
+        case WebSocket.CONNECTING:
+            // do something
+            console.log('ws.readyState CONNECTING');
+            break;
+        case WebSocket.OPEN:
+            // do something
+            console.log('ws.readyState OPEN');
+            break;
+        case WebSocket.CLOSING:
+            // do something
+            console.log('ws.readyState CLOSING');
+            break;
+        case WebSocket.CLOSED:
+            // do something
+            console.log('ws.readyState CLOSED');
+            break;
+        default:
+            // this never happens
+            break;
+    }
+
+    ws.onclose = function(evt) {
+        console.log("ws.onclose ws.readyState Connection closed.");
+    }; 
+</script>
+</html>
