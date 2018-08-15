@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .header{
+            font-size:18px;
+            text-align:center;
+            color:blue;
+            text-shadow: 1px 2px 3px red;
+            border:1px solid red;
+            background:green;
+        }
+        .ByTagName{
+            color:red;
+        }
+        span,div{
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <p class="header">获取元素</p>
+    <section id="getElementById">getElementById
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </section>
+
+    <div class="ByTagName">123</div>
+    <div class="ByTagName">123</div>
+    <div class="ByTagName">123</div>
+    <div class="ByTagName">123</div>
+    <div class="ByTagName">123</div>
+
+    <div class="ByClassName">ByClassName</div>
+</body>
+<script>
+    (function(){
+        // 根据id获取dom元素
+        var _ById = document.getElementById('BygetElementByIdId');
+        console.log(`%c typeof ${_ById}`,`color:red;font-size:18px`);//ES6模版字符串 + chrome控制台格式化
+        var items_length = _ById.getElementsByTagName('*');
+        console.log(`%c ${items_length.length}`,`color:yellow;font-size:18px`);
+        
+        // 根据标签获取dom元素
+        var divDom = document.getElementsByTagName('div');
+        console.log(`%c ${document.getElementsByTagName('div').length}`,`color:green;font-size:18px`);
+        for(var i=0;i<divDom.length;i++){
+            // alert(typeof divDom[i]);
+            divDom[i].innerHTML = 'getElementsByTagName';
+        }
+    })();
+</script>
+</html>
