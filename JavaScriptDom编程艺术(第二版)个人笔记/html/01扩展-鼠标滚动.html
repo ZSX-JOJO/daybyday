@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鼠标滚动</title>
+</head>
+<body>
+    <p>鼠标滚动</p>
+    <h2>浏览器信息:</h2>
+</body>
+<script>
+    /* 检测浏览器 */
+    var browser=navigator.appName
+    var b_version=navigator.appVersion
+    var version=parseFloat(b_version)
+    document.write("Browser name: "+ browser);
+    document.write("<br />");
+    document.write("Browser version: "+ version);
+
+    // ie/chrome 下
+    window.addEventListener("mousewheel",function(event){
+        var wheelDelta=event.wheelDelta;
+    })
+
+    // firefox下
+    window.addEventListener("DOMMouseScroll",function(event){   
+        var wheelDelta=event.detail;  
+    })
+
+    function wheel(elem,scrollUpFn,scrollDownFn){
+        if(typeof elem==='undefined'){
+            element = window;
+        };
+        elem.onmousewheel = scroll;
+        elem.addEventListener && elem.addEventListener('DOMMouseScroll',scroll);
+        function scroll(e){
+            e = e || window.event;
+            if(e.wheelDelta){
+                e.wheelDellta > 0 ? scrollUpFn() : scrollDownFn();
+            }else if(e.detail){
+                e.detail < 0 ? scrollUpFn() : scrollDownFnI();
+            }
+        }
+    };
+</script>
+</html>

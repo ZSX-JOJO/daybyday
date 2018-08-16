@@ -23,6 +23,23 @@
     </style>
 </head>
 <body>
+    <p style="font-weight: bold;text-align:center;font-size:24px">插播emmet栗子</p>
+
+    <section>
+        <i>section>li.item$@3*3 从~3开始 正序 共3个</i>
+        <li class="item3">item3</li>
+        <li class="item4">item4</li>
+        <li class="item5">item5</li>
+    </section>
+
+    <section>
+        <i>section>li.item$@-2*4 以~2结束 倒序 共4个</i>
+        <li class="item5">item5</li>
+        <li class="item4">item4</li>
+        <li class="item3">item3</li>
+        <li class="item2">item2</li>
+    </section>
+
     <p class="header">获取元素</p>
     <section id="getElementById">getElementById
         <li>1</li>
@@ -39,23 +56,71 @@
     <div class="ByTagName">123</div>
     <div class="ByTagName">123</div>
 
-    <div class="ByClassName">ByClassName</div>
+    <footer class="ByClassName">ByClassName</footer>
+    <footer class="ByClassName">ByClassName</footer>
+    <footer class="ByClassName">ByClassName</footer>
+
+    <p class="header">获取和设置属性</p>
+    <section id="attribute">
+        <input type="text" placeholder="getAttribute">返回属性值,是文本字符串<br>
+        <input type="button" value="改变上面的placeholder" onclick="change()">setAttribute()创建或改变某个属性值<br>
+        <input type="number" placeholder="getAttributeNode">返回属性节点,是对象
+    </section>
+
+    <p class="header">JavaScript图片库</p>
+    <ul style="list-style:none">
+        <li><a href="../img/1.jpg" title="1" onclick="showPic(this);return false">1</a></li>
+        <li><a href="../img/2.jpg" title="2" onclick="showPic(this);return false">2</a></li>
+        <li><a href="../img/3.jpg" title="3" onclick="showPic(this);return false">3</a></li>
+        <li><a href="../img/4.jpg" title="4" onclick="showPic(this);return false">4</a></li>
+        <li><a href="../img/5.jpg" title="5" onclick="showPic(this);return false">5</a></li>
+        <li style="text-align:center;color:red">"占位图":降世神通</li>
+        <img src="../img/1234.gif" alt="占位图" id="placeholder">
+    </ul>
 </body>
 <script>
     (function(){
+        // 获取文档body元素的全体子元素
+        // childNodes
+        var _bodyChild = document.getElementsByTagName('body')[0].childNodes;
+        console.log(`%c 子元素共:${_bodyChild.length}`,`color:green;font-szie:26px`);
+
         // 根据id获取dom元素
-        var _ById = document.getElementById('BygetElementByIdId');
+        var _ById = document.getElementById('getElementById');
         console.log(`%c typeof ${_ById}`,`color:red;font-size:18px`);//ES6模版字符串 + chrome控制台格式化
         var items_length = _ById.getElementsByTagName('*');
         console.log(`%c ${items_length.length}`,`color:yellow;font-size:18px`);
         
         // 根据标签获取dom元素
-        var divDom = document.getElementsByTagName('div');
+        var _label = document.getElementsByTagName('div');
         console.log(`%c ${document.getElementsByTagName('div').length}`,`color:green;font-size:18px`);
-        for(var i=0;i<divDom.length;i++){
-            // alert(typeof divDom[i]);
-            divDom[i].innerHTML = 'getElementsByTagName';
+        for(var i=0;i<_label.length;i++){
+            // alert(typeof _label[i]);
+            _label[i].innerHTML = 'getElementsByTagName';
         }
+
+        // 根据类名获取dom元素
+        var className = document.getElementsByClassName('ByClassName');
+        for(var i=0;i<className.length;i++){
+            className[i].style.background = 'red';
+            className[i].style.color = 'blue';
+        }
+
+        // 通过名称获取属性的值
+        var attribute = document.getElementById('attribute');
+        console.log(`%c ${attribute.children[0].getAttribute('type')}`,`color:blue;font-size:20px`);
+        // console.log(attribute.children.lastChild.getAttributeNode('type')); //??? null
     })();
+    
+    function change(){
+        document.getElementById('attribute').children[0].setAttribute('placeholder','getAttribute变了');
+    }
+
+    // JavaScript图片库
+    function showPic(switchPic){
+        var source = switchPic.getAttribute('href');
+        var placeholder = document.getElementById('placeholder');
+        placeholder.setAttribute('src',source);
+    }
 </script>
 </html>
