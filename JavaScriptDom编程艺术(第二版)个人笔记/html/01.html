@@ -76,6 +76,7 @@
         <li><a href="../img/5.jpg" title="5" onclick="showPic(this);return false">5</a></li>
         <li style="text-align:center;color:red">"占位图":降世神通</li>
         <img src="../img/1234.gif" alt="占位图" id="placeholder">
+        <p id="description">图片描述</p>
     </ul>
 </body>
 <script>
@@ -121,6 +122,23 @@
         var source = switchPic.getAttribute('href');
         var placeholder = document.getElementById('placeholder');
         placeholder.setAttribute('src',source);
+
+        var text = switchPic.getAttribute('title');
+        var description = document.getElementById('description');
+        // nodeValue  ***.nodeValue
+        var node_value = description.childNodes[0].nodeValue;//p元素本身的nodeValue值为空,需要的是p包含的文本的值.
+        // var node_value = description.firstchild.nodeValue;//p元素本身的nodeValue值为空,需要的是p包含的文本的值.
+        description.firstChild.nodeValue = '每个图片的title'+' '+text;//firstChild && childNodes[0]
     }
+
+    // JavaScript图片库 优化
+
+    window.onload = fuck;
+    function fuck(){
+    }
+
+    // nodeType   ***.nodeType
+    var placeholder = document.getElementById('placeholder');
+    console.log(placeholder.nodeType);
 </script>
 </html>

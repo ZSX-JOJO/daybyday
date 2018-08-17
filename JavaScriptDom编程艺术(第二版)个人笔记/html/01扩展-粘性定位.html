@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>粘性定位sticky</title>
+    <style>
+        .box- {
+            /* 方便兼容Safari */
+            position: -webkit-sticky;
+            position: sticky;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 50px;
+        }
+
+        .box1 {
+            top: 0;
+            z-index: 1;
+            background: #007bff;
+        }
+
+        .box2 {
+            top: 200px;
+            z-index: 1;
+            background: #ffc107;
+        }
+
+        .box3 {
+            /* 未设置top 所以一直处于相对定位 */
+            background: #f4516c;
+        }
+
+        /* 补充 */
+        .flex {
+            display: flex;
+            width: 300px;
+            height: 100px;
+            border: 1px solid #d9d9d9;
+            float: left;
+            margin-right: 20px;
+            overflow: auto;
+        }
+
+        .box {
+            position: sticky;
+            top: 30px;
+            width: 50%;
+            background: red;
+        }
+
+        .box:last-child {
+            background: blue;
+        }
+
+        .flex-start {
+            align-items: flex-start;
+        }
+
+        .box span {
+            position: absolute;
+            left: 0;
+            color: #fff;
+        }
+
+        .box span:last-child {
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <p>粘性定位sticky   [可理解为relative 和 fixed的集合体]</p>
+    <section>
+        详解:<br>
+        <ul style="list-style: none;">
+            <li><b>相同点:</b> 
+                box1、box2、box3 在滚动之前，它们与相对定位一样
+                当到达某一个位置时，表示与绝对定位一样
+            </li>
+            <li><b>不同点:</b>
+                box1 的top值为0，在靠近页面视口顶部时，固定在页面视口的顶部
+                当 box2 的top值为30px，在离页面视口 30px 的位置，它固定住
+                box3 没有设置top，它的行为一直是相对定位
+            </li>
+            <li>
+                “粘性定位是相对定位和固定定位的混合。
+                元素在跨越特定阈值前为相对定位，之后为固定定位。” 
+                这段话的意思，跨域特定阀值，也就是上面的top值，当然，
+                起作用的还有right、left、bottom值。
+            </li>
+            <li>
+                粘性定位的固定定位并不一定是position:fixed，
+                只有目标元素的任意父元素都没有设置position:relative | absolute | fixed | sticky的情况下，
+                才与position: fixed表现一样。而当其任一父元素设置了position:relative | absolute | fixed | sticky时，
+                目标元素是相对于父元素的固定
+            </li>
+        </ul>
+    </section>
+    <div style="height:600px">滚动试试</div>
+    <div class="box- box1">box1</div>
+    <div class="box- box2">box2粘性定位sticky</div>
+    <div class="box- box3">box3</div>
+    <div style="height:600px">请问我去厄齐尔我</div>
+
+    <footer>
+        <i>补充:</i>
+
+        <div class="flex">
+            <div class="box" style="height:300px">
+                <span>start</span>
+                <span>end</span>
+            </div>
+            <div class="box">
+                <div style="height:30px"></div>
+            </div>
+        </div>
+
+        <div class="flex">
+            <div class="box" style="height: 300px;">
+                <span>start</span>
+                <span>end</span>                
+            </div>
+            <div class="box">
+                <div style="height: 30px;"></div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
