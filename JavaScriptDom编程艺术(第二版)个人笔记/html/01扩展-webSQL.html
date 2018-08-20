@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>webSQL</title>
+</head>
+<body>
+    <P>webSQL 此方案已被废除!!!     indexedDB为准</P>
+    <div id="status"></div>
+    <div id="items"></div>
+</body>
+<script>
+    var db = openDatabase('database_name','1.0','test','2*1024*1024');
+    db.transaction(function(tx){
+        tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+        tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")');
+        tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")');
+    });
+
+    db.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
+            var len = results.rows.length, i;
+            msg = "<p> 查询记录条数: " + len + "</p>";
+            document.querySelector('#status').innerHTML +=  msg;
+            
+            for (i = 0; i < len; i++){
+                // var items = document.getElementById('items');
+                // alert(results.rows.item(i).log );
+                msg = "<p><b>" + results.rows.item(i).log + "</b></p>";
+                document.querySelector('#status').innerHTML +=  msg;
+            }
+            
+        }, null);
+    });
+</script>
+</html>

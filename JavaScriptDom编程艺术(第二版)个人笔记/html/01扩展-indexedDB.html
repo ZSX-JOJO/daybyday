@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IndexedDB</title>
+</head>
+<body>
+    <p>IndexedDB</p>
+    <div onload="init()">
+        <input type="button" value="新增几条数据" onclick=" Tinsert(); "/>  
+        <input type="button" value="查找一条记录" onclick=" Tselect(); "/>  
+        <input type="button" value="删除一条记录" onclick=" Tdelete(); "/>  
+        <input type="button" value="更新一条记录" onclick=" Tupdate(); "/>  
+        <input type="button" value="清除所有表数据" onclick=" Tclear(); "/>  
+        <input type="button" value="查询所有表数据" onclick=" getall(); "/>
+    </div>
+</body>
+<script src="./01indexedDB.js"></script>
+<script>
+    /* input按钮 具体方法如下 */
+    function init(){
+        var dbParams = new Object();  
+        dbParams.db_name = "SISO";  
+        dbParams.db_version = "2";  
+        dbParams.db_store_name = "Test";  
+        dbObject.init(dbParams); 
+    }
+
+    function Tinsert() {  
+        // 填入初始值  (插入三条数据)
+        dbObject.put({ title: "Quarry Memories", author: "Fred", isbn: 123456 }, 1);  
+        dbObject.put({ title: "Water Buffaloes", author: "Fred", isbn: 234567 }, 2);  
+        dbObject.put({ title: "Bedrock Nights", author: "Barney", isbn: 345678 }, 3);  
+    }
+
+    function Tselect() {  
+        dbObject.select(3);  
+    }
+
+    function Tupdate() {  
+        dbObject.put({ title: "Quarry wu", author: "lex", isbn: 1234562131322 }, 1);  
+    }  
+
+    function Tdelete() {  
+        dbObject.delete(3);  
+    }  
+
+    function Tclear() {  
+        dbObject.clear();  
+    }  
+    function getall(){
+        dbObject.getAlldata();
+    }
+</script>
+</html>

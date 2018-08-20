@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Window.localStorage</title>
+</head>
+<body>
+    <p>js可见</p>
+</body>
+<script>
+    localStorage.setItem(`myCat`, `Tom`);
+    var cat = localStorage.getItem(`myCat`);
+    console.log(cat);//Tom
+
+    localStorage.removeItem(`myCat`);
+    console.log(cat);
+
+    localStorage.clear();
+    console.log(cat);
+</script>
+</html>
