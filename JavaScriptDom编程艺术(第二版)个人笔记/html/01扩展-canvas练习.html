@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+    <style>
+        #canvas{
+            /* width:600px; */
+            /* height:600px; */
+            /* border:1px solid red; */
+        }
+    </style>
+</head>
+<body>
+    <p style="text-align:center;color:red;font-size:20px">canvas练习</p>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    var fuck = document.getElementById('canvas');
+    var fuckYou = fuck.getContext('2d');
+    fuckYou.moveTo(0,0);//定义线条开始坐标
+    fuckYou.lineTo(200,100);//定义线条结束坐标  水平线  
+    fuckYou.stroke();//绘制已定义的路径
+
+    fuckYou.beginPath();
+    fuckYou.arc(95,95,40,0,2*Math.PI);//创建弧度或者曲线
+    fuckYou.stroke();
+
+    //绘制文本
+    fuckYou.font = '20px Arial';//文本内容的当前字体属性
+    fuckYou.fillStyle = 'red';//设置或返回用于填充绘画的颜色、渐变或模式
+    fuckYou.fillText('zsx',100,100);//'被填充的'文本  实心文本
+    fuckYou.strokeText('zsx',120,120);//空心文本
+
+    //创建一个渐变(横向)
+    var linearGradient = fuckYou.createLinearGradient(200,200,fuck.width,200);//4个参数 分别为 渐变开始的x y坐标 渐变结束的 x y坐标
+    linearGradient.addColorStop(0,'red');//渐变对象的颜色和停止位置
+    linearGradient.addColorStop(0.5,'green');
+    linearGradient.addColorStop(1,'blue');
+
+    //填充渐变
+    fuckYou.fillStyle = linearGradient;
+    fuckYou.fillText('横线渐变',50,60);
+
+    //创建一个渐变(放射性/环形)
+    var radialGradient = fuckYou.createRadialGradient(200,300,fuck.width,200);
+    radialGradient.addColorStop(0,"red");
+    radialGradient.addColorStop(1,"white");
+
+    //填充渐变
+    radialGradient.fillStyle = radialGradient;
+    radialGradient.fillRect(100,100,150,100);
+</script>
+</html>
