@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas练习2</title>
+</head>
+<body>
+    <canvas id="test2"></canvas>
+</body>
+<script>
+    var text2 = document.getElementById('test2');
+    var fuck = test2.getContext('2d');
+    fuck.beginPath();
+    fuck.moveTo(20,20);
+    fuck.lineTo(20,100);
+    fuck.lineTo(70,100);
+    fuck.closePath();
+    fuck.stroke();
+    fuck.fillStyle = "red";
+    fuck.fill();
+</script>
+</html>

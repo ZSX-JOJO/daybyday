@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Async</title>
+</head>
+<body>
+    <p>Async异步函数</p>
+    <p>类比Generator函数</p>
+</body>
+<script>
+    function resolveAfter2seconds(){
+        return new Promise(resolve =>{
+            setTimeout(()=>{
+                resolve(`%c resolve`,`color:red;font-size:20px`);
+            },2000);
+        });
+    }
+
+    async function asyncCall(){
+        console.log(`%c calling`,`color:blue;font-size:22px;`);
+        var result = await resolveAfter2seconds(); //await会将async函数暂停,直到promise完成.并且await只有在async函数才会不报错.
+        console.log(`%c result`,`color:yellow;font-size:30px;`);
+    }
+
+    asyncCall();
+
+
+    /* 栗子2 */
+    function resolveAfter2Seconds(x) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+            resolve(x);
+            }, 2000);
+        });
+    }
+
+    async function add1(x) { 
+        var a = await resolveAfter2Seconds(20); 
+        var b = await resolveAfter2Seconds(30); 
+        return x + a + b; 
+    }
+    
+    add1(10).then(v => {//再执行
+        console.log(`%c prints 60 after 4 seconds ${v}`,`color:red;font-size:30px`); // prints 60 after 4 seconds. 
+    });
+
+    async function add2(x) {
+        var a = resolveAfter2Seconds(20);
+        var b = resolveAfter2Seconds(30);
+        return x + await a + await b;
+    }
+
+    add2(10).then(v => {//先执行
+        console.log(`%c prints 60 after 2 seconds ${v}`,`color:blue;font-size:20px`);  // prints 60 after 2 seconds.
+    });
+</script>
+</html>

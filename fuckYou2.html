@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // const debounce = (func, wait, ...args) => {
+    //     let timeout;
+    //     return function(){
+    //         const context = this;
+    //         if (timeout) clearTimeout(timeoout);
+    //         timeout = setTimeout(() => {
+    //         func.apply(context, ...args)
+    //         },wait);
+    //     }
+    // }
+
+    // let flag = 0; // 记录当前函数调用次数
+    // // 当用户滚动时被调用的函数
+    // function foo() {
+    //     flag++;
+    //     console.log('Number of calls: %d', flag);
+    // }
+    
+    // // 在 debounce 中包装我们的函数，过 2 秒触发一次
+    // document.body.addEventListener('scroll', debounce(foo, 2000));
+
+
+    // 综合版????
+    /**
+    * @desc 函数防抖
+    * @param func 函数
+    * @param wait 延迟执行毫秒数
+    * @param immediate true 表立即执行，false 表非立即执行
+    */
+    function debounce(func,wait,immediate) {
+        var timeout;
+
+        return function () {
+            var context = this;
+            var args = arguments;
+
+            if (timeout) clearTimeout(timeout);
+            if (immediate) {
+                var callNow = !timeout;
+                timeout = setTimeout(function(){
+                    timeout = null;
+                }, wait)
+                if (callNow) func.apply(context, args)
+            }
+            else {
+                timeout = setTimeout(function(){
+                    func.apply(context, args)
+                }, wait);
+            }
+        }
+    }
+</script>
+</html>
