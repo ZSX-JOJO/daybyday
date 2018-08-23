@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js骚操作</title>
+</head>
+<body>
+    <h2>JSON.stringify()</h2>
+    <h2>数据结构Set</h2>
+</body>
+<script>
+    /* 01 */
+    /* JSON.stringify(value[, replacer [, space]]) */
+
+    //使用函数过滤并序列化对象
+    // 使用“函数”当替代器
+    function replacer(key, value) {
+        // if (typeof value === "string") {
+        //     return undefined;
+        // }
+        return value;
+    }
+
+    var foo = {
+        foundation: "Mozilla", 
+        model: "box", 
+        week: 45, 
+        transport: "car", 
+        month: 7
+    };
+    var jsonString = JSON.stringify(foo, replacer,4);
+    console.log(`%c <pre>${jsonString}</pre>`,`color:red;`);
+
+    // 使用数组过滤并序列化对象
+    // 使用"数组"当替代器
+    var user = {
+        name: 'zollero',
+        nick: 'z',
+        skills: ['JavaScript', 'CSS', 'HTML5']
+    };
+    var fucker = JSON.stringify(user, ['name', 'skills'], 2);
+    console.log(`%c <pre>${fucker}</pre>`,`color:green;`);
+
+    /* 02 */
+    /* 
+        数据结构Set,类似数组,没有重复值,可与数组array转换;
+    */
+    // Set本身是构造函数,用来生成Set数据结构
+    var s = new Set();
+    [2, 3, 5, 4, 5, 2, 2].forEach(x => s.add(x));
+    for(var i of s ) {
+        console.log(i); //2 3 5 4
+    }
+
+    // Set 可以接受一个数组（或者类数组对象）作为参数，用来初始化
+    var set = new Set([1,2,2,2,3,4]);
+    [...set];//1,2,3,4      ...ES6扩展运算符
+
+    /* 属性 */
+    // 01 Set.prototype.constructor 构造函数 默认为Set函数
+    // 02 Set.prototype.size 返回实例的成员总数
+    set.size;//4
+
+
+    /* 操作方法*/
+    // 01 add(value)
+    set.add(666).add(777).add(888);// 链式写法 [1,2,3,4,666,777,888]
+    // 02 delete(value);不可以链式写法
+    // 03 has(value) 判断是否是成员 返回布尔值
+    // 04 clear() 清除所有成员  无返回值
+
+    /* 遍历方法 
+        Set 结构没有键名，只有键值（或者说键名和键值是同一个值），
+        所以 keys 方法和 values 方法的行为完全一致.
+    */
+    var set = new Set(['zhao','shou','xin']);
+    // 01 keys()返回键名的遍历器
+    for(var item of set.keys()){
+        console.log(item);// zhao shou xin
+    }
+    // 02 values() 返回键值的遍历器
+    for(var item of set.values()){
+        console.log(item);// zhao shou xin
+    }
+    // 03 entries() 返回键值对的遍历器
+    for(var item of set.entries()){
+        console.log(item);// ['zhao','zhao'] ['shou','shou'] ['xin','xin']
+    }
+    // 04 forEach() 使用回调函数遍历每个成员
+    var set = new Set([110,120,119]);
+    // set.forEach((value,key) =>console.log(key + ' : ' + value));
+    set.forEach((value,key) =>console.log(`${key}:${key}`));// 110:110 120:120 119:119
+
+    // [...new Set(arr)] 可以用于数组去重
+    var arr = [1,22,22,33,33,2,4,1,7];
+    var fuck = [...new Set(arr)];
+    console.log(fuck);//[1, 22, 33, 2, 4, 7]
+
+    //Array.from()  从一个类似数组或者可迭代对象中创建新的数组实例
+    console.log(Array.from('zsx'));//['z','s','x']
+    console.log(Array.from([1, 2, 3], x => x + x));//[2,4,6]
+
+    /* 03 解构赋值 */
+
+    /* 04 扩展运算符  ... */
+    //合并对象 后面的属性会重写前面相同的属性
+    var zsx = { a: 1, b: 2, c: 3 };
+    var zsx2 = { c: 5, d: 9, e:110 };
+    var zsx3 = { ...zsx, ...zsx2 };
+    console.log(zsx3);//{a: 1, b: 2, c: 5, d: 9, e: 110}
+
+    const obj3 = { a: 1, b: 2 };
+    const obj4 = { c: 3, d: { e: 4, ...obj3 } };
+    console.log(obj4);//{c:3,d:{a:1,b:2,e:4}}
+
+    /* 05 Object.is() 具有===的特性 且更好 更准确 */
+    Object.is('zhao','Zhao');//false
+</script>
+</html>
