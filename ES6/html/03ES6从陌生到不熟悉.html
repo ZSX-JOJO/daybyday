@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>从陌生到熟悉</title>
+</head>
+<body>
+<!--  请注意这里 type=module 才能运行  -->
+<!-- <script type="module">// defer 先渲染后执行 async 先下载后执行
+    import {isEmail} from '../js/03test.js';
+    var e1 = 'dddd';
+    var e2 = 'yexiaochai@qq.com'
+    console.log(isEmail(e1))
+    console.log(isEmail(e2))
+</script> -->
+
+<script type="module">
+    import {Alert, AlertTitle, AlertTitleButton} from '../js/03test.mjs';
+    var v1 = new Alert();
+    v1.show();
+    var v2 = new AlertTitle();
+    v2.show();
+    v2.setTitle('我是标题');
+    var v3 = new AlertTitleButton();
+    v3.show();
+    v3.setTitle('我是标题和按钮的alert');
+</script>
+</body>
+</html>
