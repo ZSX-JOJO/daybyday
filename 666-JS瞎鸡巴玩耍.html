@@ -65,6 +65,15 @@
     fn1();
 
     /* 函数作用域 */
+    var a = [];
+    for (var i = 0; i < 10; i++) {
+        a[i] = function () {
+            console.log(i);
+        };
+    }
+    a[6](); // 10
+    /* 关于上述代码:i在全局范围内有效 所以只会输出10   下同 */
+
     for(var k = 0;k<10;k++){
         console.log("%c"+"k="+k,"color:red;font-size:16px");
         console.log(`%c k= ${k}`,"color:red;font-size:16px");

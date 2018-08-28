@@ -7,6 +7,32 @@
     <title>从陌生到熟悉</title>
 </head>
 <body>
+    <div>Symbol 对象属性的唯一标识符</div>
+    <pre>
+        //Object.assign();
+        var target  = {a : 1}; //目标对象
+        var source1 = {b : 2}; //源对象1
+        var source2 = {c : 3}; //源对象2
+        var source3 = {c : 4}; //源对象3，和source2中的对象有同名属性c
+        Object.assign(target,source1,source2,source3);
+        //结果如下：
+        //{a:1,b:2,c:4}
+    </pre>
+
+    <div>
+        <pre>
+            var smy = Symbol();
+            var info = {
+                smy: 'x',
+                [smy]: 'y'
+            };
+
+            console.log(info.smy);       // 输出'x'
+            console.log(info['smy']);    // 输出'x'
+            console.log(info[smy]);      // 输出'y'
+        </pre>
+    </div>
+</body>
 <!--  请注意这里 type=module 才能运行  -->
 <!-- <script type="module">// defer 先渲染后执行 async 先下载后执行
     import {isEmail} from '../js/03test.js';
@@ -27,5 +53,42 @@
     v3.show();
     v3.setTitle('我是标题和按钮的alert');
 </script>
-</body>
+    
+<script>
+    /* ES6 Proxy */
+    var target = {
+        name: 'obj'
+    };
+    var logHandler = {
+        get: function(target, key) {
+            console.log(`${key} 被读取`);
+            return target[key];
+        },
+        set: function(target, key, value) {
+            console.log(`${key} 被设置为 ${value}`);
+            target[key] = value;
+        }
+    }
+    var targetWithLog = new Proxy(target, logHandler);
+    targetWithLog.name; // 控制台输出：name 被读取
+    targetWithLog.name = 'others'; // 控制台输出：name 被设置为 others
+    console.log(target.name); // 控制台输出: others
+
+
+    /* 遍历 */
+    var myArray = [11,22,33,44,55,66];
+    // myArray.forEach(function (value) {
+    // 	console.log(value);
+    // });
+
+    // for (var index in myArray) { 
+    //   console.log(myArray[index]);
+    // }
+
+    for(var zsx of myArray){
+        console.log(zsx);
+    }
+
+    /* 生成器是迭代器 */
+</script>
 </html>
