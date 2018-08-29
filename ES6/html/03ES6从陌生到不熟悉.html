@@ -90,5 +90,29 @@
     }
 
     /* 生成器是迭代器 */
+
+    /* 
+        高阶函数
+        [可以将函数作为参数的一类函数]
+     */
+
+
+    /* 函数柯里化
+        柯里化 [部分求值]
+     */
+    var concat3Words = function (a, b, c) {
+        return a+b+c;
+    };
+
+    var concat3WordsCurrying = function(a) {
+        return function (b) {
+            return function (c) {
+                return a+b+c;
+            };
+        };
+    };
+    console.log(concat3Words("foo ","bar ","baza"));            // foo bar baza
+    console.log(concat3WordsCurrying("foo "));                  // [Function]
+    console.log(concat3WordsCurrying("foo ")("bar ")("baza"));  // foo bar baza
 </script>
 </html>
