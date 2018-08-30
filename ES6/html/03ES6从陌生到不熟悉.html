@@ -89,8 +89,54 @@
         console.log(zsx);
     }
 
-    /* 生成器是迭代器 */
+    /* 对象解构(深度匹配) */
+    var user2 = {
+        id: 123,
+        name: 'hehe',
+        education: {
+            degree: 'Masters'
+        }
+    };
+    var {education: {degree}} = user2;//也可以将要取出的值,设定为变量  如下方代码
+    console.log(degree); //prints: Masters
 
+    //承接上方
+    function settings() {
+        return { display: { color: 'red' }, keyboard: { layout: 'querty'} };
+    }
+    const { display: { color: displayColor }, keyboard: { layout: keyboardLayout }} = settings();
+    console.log(displayColor, keyboardLayout); // red querty
+
+    /* 解构嵌套对象  */
+    /* 对于数据丢失的情况下的解决办法 */
+    var user3 = {
+        id: 123,
+        name: 'hehe'
+    };
+    //此时education丢失
+    var {
+        education: {
+            degree
+        } = {}
+    } = user3;
+    console.log(`%c${degree}`,`color:red`); //prints: undefined
+
+    const user4 = {
+        id: 123,
+        name: 'hehe'
+    };
+    //此时education以及更深层次的一并丢失
+    const {
+        education: {
+            school: {
+                name
+            }
+        } = {school: {}}
+    } = user4;
+    console.log(name); //prints: undefined
+
+
+    /* 生成器是迭代器 */
     /* 
         高阶函数
         [可以将函数作为参数的一类函数]
