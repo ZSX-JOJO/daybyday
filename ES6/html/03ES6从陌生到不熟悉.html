@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>从陌生到熟悉</title>
+    <style>
+        .fuckfuck{
+            height:300px;
+            width: 300px;
+        }
+
+        .fuckfuck2{
+            height:200px;
+            width: 200px;
+            background-color: blue;
+        }
+    </style>
 </head>
 <body>
     <div>Symbol 对象属性的唯一标识符</div>
@@ -32,7 +44,35 @@
             console.log(info[smy]);      // 输出'y'
         </pre>
     </div>
+
+    <div class="fuckfuck" id="fuckfuck" style="width:400px;height:400px">
+        2123132
+    </div>
+
+    <div id="fuckfuck2">
+        asdasdasdasdas
+    </div>
 </body>
+<script>
+    var fuck = document.getElementById('fuckfuck').style.height;
+    console.log(fuck+' '+'dom.style.width/height   这种方式只能取到 dom 元素内联样式所设置的宽高，也就是说如果该节点的样式是在 style 标签中或外联的 CSS 文件中设置的话，通过这种方法是获取不到 dom 的宽高的');
+
+    var fuck2 = document.getElementById('fuckfuck2').offsetHeight;
+    var fuck3 = document.getElementById('fuckfuck2').clientHeight;
+    var fuck4 = document.getElementById('fuckfuck2').scrollHeight;
+    var fuck5 = document.getElementById('fuckfuck2').scrollTop;
+    console.log(fuck2+'px'+' '+'offestHeight = 上下 border + 上下 padding+content');
+    console.log(fuck3+'px'+' '+'clientHeight = 上下 padding+content');
+    console.log(fuck4+'px'+' '+'scrollHeight = 上下 padding+border+margin');
+    console.log(fuck5+'px'+' '+'scrollTop = scrollHeight-clientHeight');
+
+    var fuck13 = window.screen.height;
+    var fuck14 = window.screen.availHeight;
+    var fuck15 = document.body.scrollTop;
+    console.log('获取屏幕分辨率:'+' '+fuck13);
+    console.log(fuck14);
+    console.log(fuck15);
+</script>
 <!--  请注意这里 type=module 才能运行  -->
 <!-- <script type="module">// defer 先渲染后执行 async 先下载后执行
     import {isEmail} from '../js/03test.js';
