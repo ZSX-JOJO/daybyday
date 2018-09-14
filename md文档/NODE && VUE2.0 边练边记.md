@@ -32,22 +32,26 @@ git config --global --unset https.proxy
 
 ​	   npm install npm@latest -g  				[升级到最新版本]
 
+​	   npm list 包名   [查看某个包的版本号]   npm update  包名  [升级某个包]
+
+​	  1 mkdir app       2 cd  app    3 npm init   4 npm install 
+
 ### 	2.1 设置npm代理 
 
 		npm config set proxy http://地址:端口
-
+	
 		npm config set https-proxy http://地址:端口
 
 ### 	2.2 若代理需要认证
 
 		npm config set proxy http://username:password@server:port
-
+	
 		npm config set https-proxy http://username:pawword@server:port
 
 ### 	2.3 清除npm代理
 
 		npm config delete proxy
-
+	
 		npm config delete https-proxy
 
 ### 	2.4 查看`config`配置
@@ -57,16 +61,16 @@ git config --global --unset https.proxy
 ## 3：3.1   nrm          registry 管理工具[管理 npm 源的工具 ] 
 
 	npm registry 管理工具 能够查看和切换当前使用的 registry
-
+	
 	npm install -g nrm  【全局安装】
-
+	
 	 nrm ls 【列出 可用的registry】
-
+	
 		npm ---- https://registry.npmjs.org/
 ​		cnpm --- http://r.cnpmjs.org/
 
 		taobao - https://registry.npm.taobao.org/
-
+	
 		nj ----- https://registry.nodejitsu.com/
 ​		rednpm - http://registry.mirror.cqupt.edu.cn/
 ​		npmMirror  https://skimdb.npmjs.com/registry/
@@ -79,45 +83,45 @@ git config --global --unset https.proxy
 ### 	4.1
 
 		vue-cli 脚手架构建工具
-
+	
 			npm install -g vue-cli  【全局安装】
-
+	
 			npm update vue-cli   【更新】
-
+	
 			npm view vue-cli   【查看一下当前全局 vue-cli 的版本】
-
+	
 		webpack
-
+	
 			npm install webpack -g 【全局安装】
-
+	
 		vue 路由模块 && 网络请求模块 【】
-
+	
 			npm install vue-router vue-resource --save
 
 ### 	4.2
 
 		用 vue-cli 构建项目
-
+	
 			1：选定目录 存放vue项目
-
+	
 			2：vue init webpack 英文文件夹名称      【初始化一个项目  整个项目基于webpack 构建】
-
+	
 			3：运行初始化命令的时  自定义输入信息
-
+	
 			4：整个项目需要的依赖资源配置 存放于package.json中
-
+	
 			5：定位到  " 英文文件夹名称"  运行 npm install
-
+	
 			6：运行项目 npm run dev   
-
+	
 				【 “run” 对应的是 package.json 文件中，scripts 字段中的 dev，也就是 node build/dev-server.js 	命令的一个快捷方式】
-
+	
 			7：项目运行成功后，浏览器会自动打开 localhost:8080 (or 其他端口)
 
 ### 	4.3
 
 		遇到的问题：
-
+	
 			问题？不存在的！依赖问题？挂代理再来一次就好了！其他？百度就好了！
 
 ## 5: 调试工具 
