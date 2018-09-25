@@ -51,7 +51,7 @@
         }
 
         img {
-            filter:url(#change);
+            /* filter:url(#change); */
         }
     </style>
 </head>
@@ -71,5 +71,20 @@
         </defs>
     </svg>
     <img src="https://note.youdao.com/yws/res/237/WEBRESOURCE7e77df2551fe1a1db1b9d91f4d518917" alt="">   
+
+    <div class="gun" id="gun">
+        <img src="./holder.js/300x200?text=此处请放一张绿色的图片 \n 最好有边框">
+    </div>
 </body>
+<script src="./holder.js"></script>
+<script>
+    Holder.addImage("holder.js/200x100?theme=new", "#gun").run();
+    // Holder.addTheme("dark", {
+    //     bg: "#000", // 背景色
+    //     fg: "#aaa", // 前景色（字符颜色）
+    //     size: 11, // 字符大小
+    //     font: "Monaco", // 字体
+    //     fontweight: "normal" // 字符粗细
+    // });
+</script>
 </html>

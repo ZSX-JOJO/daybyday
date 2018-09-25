@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>z-index生效之道</title>
+    <style>
+        /* 情况③ */
+        .box {   
+            display: flex;   
+        }
+        
+        .back,   
+        .front {   
+            width: 100px;   
+            height: 100px;   
+        }     
+        .back {   
+            background: red;   
+            z-index: 10;   
+            
+            /* 情况① */
+            /* opacity: 0.5;   */
+            /* opacity: 1;   */
+            
+            /* 情况② */
+            /* transform: rotate(10deg); */
+        }     
+        .front {   
+            background: blue;   
+            margin-top: -20px;   
+        }
+    </style>
+</head>
+<body>
+    <p>当 opacity 不为 1 或 0 时，z-index 会生效</p>
+    <p>当transform不为none时，z-index会生效。</p>
+    <div class="box">    
+        <div class="back">back</div>   
+        <div class="front">front</div>   
+    </div>
+
+    <p>
+        让 z-index 生效：<br>
+        设置元素的 position 值为 relative/absolute/fixed<br>
+        当 opacity 不为 1 或 0 时<br>
+        当 transform 不为 none 时<br>
+        当父元素设置 display: flex | inline-flex 时，子元素设置 z-index<br>
+    </p>
+</body>
+</html>
