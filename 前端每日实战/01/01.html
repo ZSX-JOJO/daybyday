@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>按钮文字滑动特性</title>
+    <style>
+        html,body{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .box{
+            height:60px;
+            width:300px;
+            border: 2px solid black;
+            text-align: center;
+            font-size: 30px;
+            line-height: 60px;
+        }
+        
+        /* 将每个文字设置为行内块元素,方便单独设置特效 */
+        .box span{
+            display: inline-block;
+            color: blue;
+        }
+        
+        /* 第奇数个显示到上方 或者2n+1 */
+        .box span:nth-child(odd) {
+            transform: translateY(-100%);
+        }
+        
+        /* 第偶数个显示到下方 或者2n */
+        .box span:nth-child(even) {
+            transform: translateY(100%);
+        }
+
+        /* 使用伪元素为文字增加一个副本 */
+        .box span::before{
+            content:attr(data-text);
+            position:absolute;
+            color:red;
+        }
+
+        /* 伪元素的第奇数个显示到下方 或者2n+1 */
+        .box span:nth-child(odd)::before {
+            transform: translateY(100%);
+        }
+        
+        /* 伪元素第偶数个显示到上方 或者2n */
+        .box span:nth-child(even)::before {
+            transform: translateY(-100%);
+        }
+
+        /* 为按钮增加鼠标划过样式 */
+        .box:hover span{
+            transform:translateY(0);
+        }
+        .box span{
+            transition: 0.5s;
+        }
+
+        /* 变换时隐藏容器外的内容 */
+        .box{
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <p>按钮文字滑动特性</p>
+    <div class="box">
+        <span data-text="赵">赵</span>
+        <span data-text="守">守</span>
+        <span data-text="鑫">鑫</span>
+    </div>
+</body>
+</html>
