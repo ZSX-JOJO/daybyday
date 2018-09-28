@@ -4,9 +4,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>CSS 创作一个矩形旋转 loader 特效</title>
+    <style>
+        html, body {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+        
+        /* 容器尺寸 */
+        .loader{
+            width: 150px;
+            height:150px;
+            position: relative;
+        }
+
+        /* 矩形的边框样式 */
+        .loader span {
+            position: absolute;
+            box-sizing: border-box;
+            border: 10px solid dimgray;
+            border-radius: 2px;
+        }
+
+        /* 矩形的尺寸 */
+        .loader span:nth-child(1) {
+            width: 100%;
+            height: 100%;
+        }
+        .loader span:nth-child(2) {
+            width: 70%;
+            height: 70%;
+            margin: 15%;
+        }
+        .loader span:nth-child(3) {
+            width: 40%;
+            height: 40%;
+            margin: 30%;
+        }
+
+        /* 左上和右下装饰条 */
+        .loader span::before,
+        .loader span::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 50%;
+            background-color: gold;
+        }
+        .loader span::before {
+            top: -10px;
+            left: -10px;
+        }
+        .loader span::after {
+            bottom: -10px;
+            right: -10px;
+        }
+
+        /* 定义动画效果 */
+        @keyframes rotating {
+            from{
+                transform:rotateY(0deg);
+            }
+            to{
+                transform:rotateY(360deg);
+            }
+        }
+        /* 应用动画效果 */
+        /* http://www.runoob.com/cssref/css3-pr-animation.html */
+        .loader span{
+            /* linear动画的速度 匀速; infinite动画是否重复播放  无限次播放 */
+            animation:rotating  linear infinite;
+        }
+        .loader span:nth-child(1){
+            animation-direction: 4s;
+        }
+        .loader span:nth-child(2){
+            animation-direction: 2s;
+        }
+        .loader span:nth-child(3){
+            animation-direction: 1s;
+        }
+
+        /* 设置矩形的堆叠顺序 */
+        .loader span:nth-child(1) {
+            z-index: 3;
+        }
+        .loader span:nth-child(2) {
+            z-index: 2;
+        }
+        .loader span:nth-child(3) {
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </body>
+<script>
+    console.profile('性能分析');
+    console.time('time');
+
+    var zsx = ['赵','守','鑫'];
+    var zsx2 = {
+        name:'赵守鑫',
+        age:18,
+        sex:1
+    };
+    var zsx3 = [
+        {
+            name: '小明',
+            age: 22,
+            likes: ['跳舞', '上网']
+        },
+        {
+            name: '小刚',
+            age: 23,
+            likes: ['撸码', '计算机']
+        }
+    ];
+    var name = 'chinaBerg';
+    var age = 88.88;
+    var money = 12.88;
+    var obj = {
+        status: '很积极'
+    }
+    var css1 = 'font-size: 22px;font-weight: bold';
+    var css2 = 'border: 1px solid green';
+    var css3 = 'color: #fff;background: #f00';
+    console.count();
+    console.log(obj);
+    console.dir(obj);//对于对象或者 json 等，console.log() 和 console.dir() 效果基本一样。但是如果打印的是一个 dom 元素
+    console.dir(document.body);
+    // console.dir(document.getElementByTagName('div'));
+    console.table(zsx);
+    console.table(zsx2);
+    console.table(zsx3);
+
+    console.timeEnd('time');
+    console.profileEnd('性能分析');
+
+    /* 
+    %s 字符串
+    %d 或 %i 整数
+    %f 浮点数
+    %o 对象的链接
+    %c CSS 格式字符串
+     */
+    console.log('我叫%s，%d岁，有%f元，状态：%o', name, age, money, obj.status, '又打印一句话');
+    /* ES6 只支持%c */
+    console.log(`%c我叫${name}，${age}岁`, css3);
+</script>
 </html>
