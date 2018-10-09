@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>牛客网刷题</title>
+</head>
+<body>
+    <div id="button1">sadad</div>
+
+    <ul>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+        <li>click me</li>
+    </ul>
+
+    <div style="width:400px;height:200px;">
+        <span style="float:left;width:auto;height:100%;">
+            <i style="position:absolute;float:left;width:100px;height:50px;">hello</i>
+        </span>
+    </div>
+</body>
+<script>
+    document.getElementById("button1").disabled = true;
+    document.getElementById("button1").setAttribute("disabled","true");
+</script>
+
+<script>
+    /*  */
+    var elements=document.getElementsByTagName('li');
+    var length=elements.length;
+    // console.log(`%c ${length}`,`color:red`);
+        for(var i=0;i<length;i++){
+            elements[i].onclick=function(){
+            console.log(`%c ${i}`,`color:red;font-size:16px`);
+        }
+    }
+
+    /* 作用域 */
+    var color = 'green';
+    var test4399 = {
+        color:'blue',
+        getColor:function(){
+            var color = 'red';
+            console.log(this.color);
+        }
+    };
+
+    var getColor = test4399.getColor;
+    getColor();//指向window
+    test4399.getColor();//指向test4399,其color为blue
+    /*
+    上题解析:
+    this总是指向调用它的对象! this总是指向调用它的对象!! this总是指向调用它的对象!!!
+    1.getColor()  var getColor = test4399.getColor;
+    即 var getColor = function(){var color = "red";alert(this.color);}; 
+    执行 getColor() 函数时 this 指向的 window，因为 window.color 为 green，所以弹出 green
+    2.test4399.getColor(), 此时 this 指向的是 test4399，test4399.color 为 blue，所以弹出 blue 
+     */
+
+    /* event loop 事件循环机制 */
+    function foo(){
+        console.log('1');
+        setTimeout(function(){
+            console.log('2');
+        },5);
+    }
+    for(var i = 0; i < 5; i++){
+        foo();
+    }
+    
+
+    /* 进制转换 */
+
+    //10进制转为16进制
+    (10).toString(16) // =>"a"
+    //8进制转为16进制
+    (012).toString(16) // =>"a"
+    //16进制转为10进制
+    (0x16).toString(10) // =>"22"
+    //16进制转为8进制
+    (0x16).toString(8) // =>"26"
+    //10进制转为2进制 //=>
+    (1111).toString(2) // => "10001010111"
+    //8进制转为2进制 //=>
+    (01111).toString(2) //=>"1001001001"
+    //16进制转为2进制 //=>
+    (0x16).toString(2) // => "10110"
+
+    //2进制到10进制；
+    parseInt(10,2) //=>2
+    //2进制到10进制；
+    parseInt(100,2) //=>4
+    //16进制到10进制
+    parseInt(12, 16) //=>18
+    //8进制到10进制
+    parseInt(12,8); //=>10
+
+    /* 按位异或运算符 (^) [同为 1 或同为 0 取 0，不同取 1] */
+    /* 
+    (10).toString(2) == 1010;
+    (15).toString(2) == 1111;
+            10 ^ 15 ==  0101 == 5
+     */
+    // console.log(10^15);//5
+
+    /* TM的作用域 */
+    var A = {n:4399};
+    var B = function(){this.n = 9999};
+    var C = function(){var n = 8888};
+    B.prototype = A;
+    C.prototype = A;
+    var b = new B();
+    var c = new C();
+    A.n++;
+    console.log(b.n);
+    console.log(c.n);
+
+    /* 求数组中的最大值 */
+    var a = [1,4,5,2,9];
+    Math.max(1,4,5,2,9);//太笨 不可取...
+    Math.max.apply(null,a);//9  call()  apply()  bind()()
+
+    /* call() apply()  bind()() 又他妈的见到了 */
+    function add(c, d){ 
+        return this.a + this.b + c + d; 
+    } 
+    var o = {a:1, b:3}; 
+    // add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
+    // add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
+    add.bind(o,22,33)(); //1 + 3 + 22 + 33 = 59 
+
+    /* 判断一个js对象是否是数组 此为最优答案 */
+    var obj = [1,2,3,4];
+    function isArray(obj) {
+        return Object.prototype.toString.call(obj) === '[object Array]';   
+    }
+    isArray(obj);
+</script>
+</html>
