@@ -138,5 +138,94 @@
         return Object.prototype.toString.call(obj) === '[object Array]';   
     }
     isArray(obj);
+
+
+    /* 扩展运算符... 食用  [ES6阮一峰]  */
+    /* ① 数组内合并数组 */
+    var zsx1 = [1,2,3,4];
+    var zsx2 = [0,...zsx1,5,6,7];
+    console.log(zsx2);
+    /*
+        ② 
+    [push()向 数组末尾 添加,并且返回新的数组de长度]
+    [unshift()向 数组开头 添加,并且返回新的数组de长度]
+    */
+    var arr1 = [1,2,3,4,5,6];
+    var arr2 = [7,8,9];
+    console.log(arr1.push(arr2));//将arr2排到arr1后面 [此时显示7]
+    console.log(arr1.push(...arr2));//此时显示9
+    console.log(arr1.unshift(...arr2));//将arr2排到arr1前面  此时显示12 (9+3)
+
+    /* 关于 script
+    script src="script.js" script
+        没有 defer 或 async，浏览器会立即加载并执行指定的脚本,
+        “立即” 指的是在渲染该 script 标签之下的文档元素之前,
+        也就是说不等待后续载入的文档元素，读到就加载并执行。
+    script async src="script.js" script
+        有 async，加载和渲染后续文档元素的过程将和 script.js 的加载与执行并行进行（异步）。
+    script defer src="myscript.js" script
+        有 defer，加载后续文档元素的过程将和 script.js 的加载并行进行(异步),
+        但是 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。
+    */
+
+    /* 关于自增运算(自减同理) */
+    var x=0;
+    switch(++x){//此时x==1
+        case 0: ++x;
+        case 1: ++x;//此时x==2
+        // 	break;//因为没有break跳出,会一直运行下去
+        case 2: ++x;//此时x==3
+        case 3: x++;//此时x==3
+    }
+
+    /* 又是this !!!! */
+    // var a = 1;
+    var obj ={
+        a:1,
+        b:function () {
+            alert(this.a)
+        }
+    }; 
+    var fun =obj.b; 
+    fun();//此时输出undefined 外部定义a时,输出1
+
+    /*  */
+    for(let i = 0; i < 12; i++){
+        console.log(i);
+    }
+
+    /*  */
+    var x = new Boolean(false);
+    if (x) {
+    alert('hi');//输出
+    }
+    var y = Boolean(0);//Boolean(0) == false  
+    if (y) {
+    alert('hello'); //不输出
+    }
+    var z = new Boolean(0);
+    if(z){//z == Boolean {false}
+        alert('hello2');//输出
+    }
+
+    /* 
+        undefined  number string boolean function  object
+     */
+
+    /* 创建 Array 对象的语法 */
+    var arr=[1,2,3];     
+    var arr=new Array(1,2,3);     
+    var arr=new Array(12);//如果只有一个数，代表数组的 length 是 12 个
+    var arr=new Array(0);//清空数组
+
+    /* 
+    在 JS 中，只有 0，-0，NaN，""，null，undefined 这六个值转布尔值时，结果为 false
+     */
+
+     /* 
+     JavaScript全局函数
+     链接: http://www.runoob.com/jsref/jsref-obj-global.html
+      escape()、eval()、isFinite( )、isNaN( )、parseFloat( )、parseInt( )、unescape( )
+      */
 </script>
 </html>
