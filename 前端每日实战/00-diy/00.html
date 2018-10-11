@@ -7,6 +7,7 @@
     <title>牛客网刷题</title>
 </head>
 <body>
+    <p>去他大爷的this !!!!!!!!!!!!!!!!!!!!!!</p>
     <div id="button1">sadad</div>
 
     <ul>
@@ -21,8 +22,13 @@
             <i style="position:absolute;float:left;width:100px;height:50px;">hello</i>
         </span>
     </div>
+
+    <div id='info' style=”display:block”><p> 请填写 </p></div>
 </body>
 <script>
+    var fuckfuck = document.getElementById('info').innerHTML;
+    console.log(fuckfuck);
+
     document.getElementById("button1").disabled = true;
     document.getElementById("button1").setAttribute("disabled","true");
 </script>
@@ -149,6 +155,8 @@
         ② 
     [push()向 数组末尾 添加,并且返回新的数组de长度]
     [unshift()向 数组开头 添加,并且返回新的数组de长度]
+    [shift() 删除并返回数组的 第一个 元素]
+    [pop()   删除并返回数组的 最后一个 元素]
     */
     var arr1 = [1,2,3,4,5,6];
     var arr2 = [7,8,9];
@@ -227,5 +235,87 @@
      链接: http://www.runoob.com/jsref/jsref-obj-global.html
       escape()、eval()、isFinite( )、isNaN( )、parseFloat( )、parseInt( )、unescape( )
       */
+
+    /*  */
+    console.log(1+'2'+'2');//'122'
+    console.log(1+ +'2'+'2');//'32'
+    console.log('A'-'B'+2);//NaN
+    console.log('A'-'B'+'2');//NaN2
+    console.log('A'+'B'+2);//'AB2'
+
+    /* window方法 open()
+    window.open()方法用于查找一个已经存在或者创建新的浏览器窗口
+    */
+    window.open([URL], [窗口名称], [参数字符串]);
+    window.open("http://www.w3school.com.cn",window233,'_self');
+
+    /* 作用域
+        for语句不形成作用域 与开始定义的msg处于同一个作用域
+     */
+    var msg='hello'; 
+    for (var i=0; i<10; i++){ 
+        var msg='hello'+i*2+i; 
+    }
+    alert(msg); //'hello189'
+
+    /* JavaScript 内部，所有数字都是以 64 位(8Byte)浮点数形式储存，即使整数也是如此 */
+
+    /* 奇有意思 */
+    /* 
+        所谓的'数组'其实是array类型对象的一个特殊的作用
+        [我们可以对它进行一种模式的数据存储,但除此之外,它依然是一个对象]
+     */
+    var arr  = [];
+    arr[0] = 0;
+    arr[1] = 1;
+    arr.foo = 'c';
+    console.log(arr.length);//2
+
+    var arr2 = [0,1,{foo:'c'}];
+    var zsx666 = arr2.length;
+    var zsx6666 = arr2[2].foo;//arr[2] == {foo:'c'}
+    console.log(zsx666,zsx6666);//3,'c'
+
+    /*  */
+    var a,b;
+    (function(){
+        console.log('1'+' '+a);//'1' undefined
+        console.log('2'+' '+b);//'2' undefined
+        var a=b=3;
+        console.log('3'+' '+a);//'3' 3
+        console.log('4'+' '+b);//'4' 3
+    })();
+    console.log('5'+' '+a);//'5' undefined
+    console.log('6'+' '+b);//'6' 3
+
+    /* 关于四舍五入 */
+    Math.ceil(7.8);// 8 执行向上舍入，即它总是将数值向上舍入为最接近的整数
+    Math.floor(7.8);//7 执行向下舍入，即它总是将数值向下舍入为最接近的整数
+    Math.round(7.5);//8 执行标准舍入，即它总是将数值四舍五入为最接近的整数
+
+    /*  */
+    function test(){
+        var n = 4399;
+
+        function add(){
+            n++;
+            console.log(n);
+        }
+
+        return {n:n,add:add}
+    }
+
+    var result = test();
+    var result2 = test();
+
+    /* 
+        一个是可以读取到函数内部的变量，另一个就是让这些变量的值始终保持在内存中
+     */
+    /* test构成了闭包  n一直处于内存中未释放 除非手动释放 */
+    /* result 与 result2 互不干涉 有各自的test作用域 */
+    result.add();//4399+1
+    result.add();//4400+1
+    console.log(result.n);//4399
+    result2.add();//4399+1
 </script>
 </html>
