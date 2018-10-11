@@ -100,7 +100,7 @@
             _label[i].innerHTML = 'getElementsByTagName';
         }
 
-        // 根据类名获取dom元素
+        // 根据类名获取dom元素 多个类名时  在字符串参数中 使用空格分割
         var className = document.getElementsByClassName('ByClassName');
         for(var i=0;i<className.length;i++){
             className[i].style.background = 'red';
