@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float实现浮动</title>
+</head>
+<style>
+    .z1{
+        height: 200px;
+        width: 200px;
+        float: left;
+        text-align: center;
+        line-height: 200px;
+        background: skyblue;
+    }
+    .z11{
+        height: 200px;
+        width: 200px;
+        box-sizing: border-box;
+        position: absolute;
+        text-align: center;
+        background: skyblue;
+        padding-top: 80px;
+        opacity: 0.8;
+    }
+    .fu {
+        width: 400px;
+    }
+</style>
+<body>
+    <p>关于浮动 test1 test2 test3 test4</p>
+    <div class="fu clearfix">
+        <div class="z11">设置了float为left的图片</div>
+        <div class="z2">你看，我没有被浮动哥哥挡住哦，这是一段神奇旅行，一天我遇上了白雪公主</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清除float浮动</title>
+</head>
+<style>
+    .z1{
+        height: 200px;
+        width: 200px;
+        box-sizing: border-box;
+        float: left;
+        text-align: center;
+        background: skyblue;
+        padding-top: 80px;
+        opacity: 0.5;
+    }
+    .z2 {
+        background: yellow
+    }
+    .z3 {
+        background: red;
+    }
+    .z4 {
+        background: green;
+        /* clear: left */
+        clear:both;
+    }
+    .z5 {
+        background: pink;
+    }
+    .z6 {
+        color: #fff;
+        background: black;
+    }
+    .z7 {
+        color: #fff;
+        background: blue;
+    }
+    .fu {
+    }
+    .clearfix:after {
+        display: block;
+        overflow: hidden;
+        content: '伪元素的内容哦';
+        clear: both;
+        /* 子元素不能有高度和内容 不然会影响父元素的布局 */
+        /* height: 0; */
+        background: slateblue;
+    }
+</style>
+<body>
+    <p style="text-align:center;">
+        伪元素清除浮动的核心原理其实是在给父元素增加块级容器，
+        同时对块级容器设置clear属性，使其能够清除自身的浮动，
+        从而正常按照块级容器排列方式那样排列在浮动元素的下面。
+        同时，父元素的同级元素也会正常排列在伪类形成的块级元素后面，而不受浮动影响
+    </p>
+    <p style="text-align:center;">
+        给父元素再加一个块级子容器，
+        当然这个也就是父元素的最后一个块级子容器了。
+        同时给这个块级子容器设置 clear 属性来清除其浮动，
+        这样这个子容器就能排列在浮动元素的后面，同时也把父元素的高度撑起来了。
+        那么父元素的同级元素也能正常排列了。所以这个子容器不能有高度和内容，不然会影响父元素的布局
+    </p>
+    <div class="fu clearfix">
+        <div class="z2">没有设置任何浮动的容器, 背景为黄色</div>
+        <div class="z3">没有设置任何浮动的容器, 背景为红色</div>
+        <div class="z1">设置了浮动的元素, opacity为0.5</div>
+        <div class="z4">没有设置任何浮动的容器, 背景为绿色</div>
+        <div class="z5">没有设置任何浮动的容器, 背景为粉色</div>
+    </div>
+    <div class="z6">和父级元素同级的容器, 没有设置任何浮动, 背景为绿色</div>
+    <div class="z7">和父级元素同级的容器, 没有设置任何浮动, 背景为绿色</div>
+</body>
+</html>

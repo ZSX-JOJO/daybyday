@@ -26,8 +26,8 @@
     <div id='info' style=”display:block”><p> 请填写 </p></div>
 </body>
 <script>
-    var fuckfuck = document.getElementById('info').innerHTML;
-    console.log(fuckfuck);
+    var fuckfuck = document.getElementById('info').innerHTML;// *.innerHTML  前者*类型是object
+    console.log(`%c  ${typeof fuckfuck}`,'color:red');
 
     document.getElementById("button1").disabled = true;
     document.getElementById("button1").setAttribute("disabled","true");
@@ -113,20 +113,34 @@
     // console.log(10^15);//5
 
     /* TM的作用域 */
+    /* 
+    查找属性时,先查找自身对象上有没有属性,再查找原型上的属性
+    [自身有用自身的属性，自身没有才会在原型上找]
+     */
+    /* 
+    new 运算的具体执行过程：
+    1 创建一个空对象
+    2 把这个空对象的__proto__指向构造函数的 prototype
+    3 把这个空对象赋值给 this
+    4 执行构造函数内的代码,注意此时的 this 指向新对象,this.n=9999 等价于 b.n=9999;
+    然后访问 b.n,存在,直接输出 b.n
+    再去访问 c.n,不存在通过原型链__proto__向上寻找,c.__proto__指向 C.prototype 也就是 A,所以就是输出 A.n
+      */
     var A = {n:4399};
     var B = function(){this.n = 9999};
     var C = function(){var n = 8888};
-    B.prototype = A;
-    C.prototype = A;
-    var b = new B();
-    var c = new C();
+    B.prototype = A;//此时都具有属性n   原型属性n:4399
+    C.prototype = A;//此时都具有属性n   原型属性n:4399
+    var b = new B();//实例化  存在实例属性n:9999 不再向上查找
+    var c = new C();//实例化  没有实例属性 向上查找 原型属性n:4399
     A.n++;
-    console.log(b.n);
-    console.log(c.n);
+    console.log(b.n);//9999 this.n <==> b.n
+    console.log(c.n);//4400
 
     /* 求数组中的最大值 */
     var a = [1,4,5,2,9];
     Math.max(1,4,5,2,9);//太笨 不可取...
+    Math.max.call(Math,1,4,5,2,9);
     Math.max.apply(null,a);//9  call()  apply()  bind()()
 
     /* call() apply()  bind()() 又他妈的见到了 */
@@ -134,11 +148,11 @@
         return this.a + this.b + c + d; 
     } 
     var o = {a:1, b:3}; 
-    // add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
-    // add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
-    add.bind(o,22,33)(); //1 + 3 + 22 + 33 = 59 
+    // add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16 call(参数1,参数列表.....)
+    // add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34 apply(参数1,[参数为数组])
+    add.bind(o,22,33)(); //1 + 3 + 22 + 33 = 59 bind(参数1,参数列表...)() 类似call()不过返回的是函数
 
-    /* 判断一个js对象是否是数组 此为最优答案 */
+    /* 判断一个js对象是否是 数组 此为最优答案  or Array.isArray() Array对象自带的方法*/
     var obj = [1,2,3,4];
     function isArray(obj) {
         return Object.prototype.toString.call(obj) === '[object Array]';   
@@ -153,16 +167,22 @@
     console.log(zsx2);
     /*
         ② 
-    [push()向 数组末尾 添加,并且返回新的数组de长度]
     [unshift()向 数组开头 添加,并且返回新的数组de长度]
+    [push()   向 数组末尾 添加,并且返回新的数组de长度]
+
     [shift() 删除并返回数组的 第一个 元素]
     [pop()   删除并返回数组的 最后一个 元素]
+    [splice() 插入 删除 或替换 数组的元素] [arr.splice(i-1,1) 删除数组的第i个元素]
     */
     var arr1 = [1,2,3,4,5,6];
     var arr2 = [7,8,9];
     console.log(arr1.push(arr2));//将arr2排到arr1后面 [此时显示7]
     console.log(arr1.push(...arr2));//此时显示9
     console.log(arr1.unshift(...arr2));//将arr2排到arr1前面  此时显示12 (9+3)
+    var arr3 = [1,2,3,4,5,6,7,8];
+    arr3.splice(2,1,2.1,2.2,2.3);//[1, 2, 2.1, 2.2, 2.3, 4, 5]
+    arr3.splice(2,0,2.1,2.2,2.3);//[1,2,3,4,5,6,7,8]
+    console.log(zsx);
 
     /* 关于 script
     script src="script.js" script
@@ -186,12 +206,14 @@
         case 3: x++;//此时x==3
     }
 
-    /* 又是this !!!! */
+    /* 又是this !!!! 错了3次了  你妈妈...*/
+
     // var a = 1;
     var obj ={
         a:1,
         b:function () {
-            alert(this.a)
+            var a = 2;
+            console.log(this.a);//指向window ????
         }
     }; 
     var fun =obj.b; 
@@ -317,5 +339,54 @@
     result.add();//4400+1
     console.log(result.n);//4399
     result2.add();//4399+1
+
+    /* 
+    在js中  == 会 发生强制类型转换
+    == 先转换类型,再进行比较. 是对两边进行Number()
+     */
+
+    /* forEach() */
+    //语法
+    // array.forEach(callback(currentValue, index, array){
+    //     //do something
+    // }, this);
+    // array.forEach(callback[, thisArg]);
+
+    /* 
+    RegExp 对象方法:
+    compile() //废除
+    exec() //  检索字符串中指定的值。返回找到的值，并确定其位置。
+    test() //   检索字符串中指定的值。返回 true 或 false。
+    toString() //  返回正则表达式的字符串。
+     */
+
+    /* 代码回收规则:
+        1.全局变量不会回收
+        2.局部变量会被回收，也就是函数一旦运行完以后，函数内部的东西都会被销毁.
+        3.只要被另外一个作用域所引用就不会被回收.
+    */
+    /* 
+    下方代码中:都是未被回收的变量
+    全局变量i  
+    全局变量add  
+    add中的i = 0 对应的i (因为局部变量被另一个作用域引用，所以局部变量 i 也不回收)
+     */
+    var i = 1;
+    var i = 2;
+    var add = function(){
+        var i = 0;
+        return function(){
+            i++;
+            console.log(i);
+        }
+    }();
+    add();
+
+    /* 
+    浅拷贝和深度拷贝  concat 和 slice 常用来做深度拷贝
+
+    concat() //连接两个或更多的数组，并返回结果。
+    slice()  //	选取数组的的一部分，并返回一个新数组。
+     */
 </script>
 </html>
