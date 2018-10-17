@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<style type="text/css">
+
+body {
+	background-color: #191919;
+}
+.recharge-top {
+	padding: 2rem 1rem 2.5rem 0.9rem;
+}
+.recharge-top-left img {
+	width: 6.35rem;
+	height: auto;
+}
+.recharge-top-right img {
+	float: right;
+	width: auto;
+	height: 2.75rem;
+}
+.money {
+	padding: 0 0.5rem;
+}
+.money > div {
+	float: left;
+	width: 50%;
+	padding: 0.25rem;
+}
+.recharge-num {
+	height: 4rem;
+	border: 1.5px solid #3686ff;
+	text-align: center;
+	color: #ffffff;
+	padding: 0.75rem 0;
+}
+.on .recharge-num {
+	background-color: #063987;
+}
+.recharge-num-top {
+	padding: 0.15rem 0 0.15rem;
+	font-size: 0.9rem;
+}
+.recharge-num-bottom {
+	font-size: 0.6rem;
+}
+.more-money {
+	display: inline-block;
+	color: #ffffff;
+	font-size: 0.75rem;
+	padding: 0.5rem 0.5rem;
+}
+
+</style>
+</head>
+<body>
+<!-- 左 俊杰泊车logo 右 汉字-->
+<div class="recharge-top aui-flex-col aui-flex-middle aui-flex-between">
+	<div class="recharge-top-left aui-flex-item-6"><img src="../../image/mine/recharge-top.png" alt=""></div>
+	<div class="recharge-top-right aui-flex-item-6 clearfix">
+		<img src="../../image/mine/text.png" alt="">
+	</div>
+</div>
+<!-- 第二部分 -->
+<div id="doT-Html"></div>
+<script type="text/x-dot-template" id="doT-Template">
+<div class="money clearfix">
+	<div class="item on" tapmode onclick="money(this)">
+		<div class="recharge-num">
+			<li class="recharge-num-top">105元</li>
+			<li class="recharge-num-bottom">售价100.00元</li>
+		</div>
+	</div>
+	<div class="item" tapmode onclick="money(this)">
+		<div class="recharge-num">
+			<li class="recharge-num-top">210元</li>
+			<li class="recharge-num-bottom">售价200.00元</li>
+		</div>
+	</div>
+	<div class="item" tapmode onclick="money(this)">
+		<div class="recharge-num">
+			<li class="recharge-num-top">315元</li>
+			<li class="recharge-num-bottom">售价300.00元</li>
+		</div>
+	</div>
+	<div class="item" tapmode onclick="money(this)">
+		<div class="recharge-num">
+			<li class="recharge-num-top">525元</li>
+			<li class="recharge-num-bottom">售价500.00元</li>
+		</div>
+	</div>
+</div>
+
+	<!-- 更多金额 -->
+	<div class="aui-text-right aui-padded-r-15"><div class="more-money" tapmode onclick="openMore();">更多金额</div></div>
+<!-- 确认充值 -->
+<div class="aui-padded-15" style="margin-top: 2.4rem;">
+	<div class="com-btm-btn"  tapmode onclick="confirm()">确认充值</div>
+</div>
+</script>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript">
+	document.querySelector("#doT-Html").innerHTML = doT.template(document.querySelector("#doT-Template").innerHTML)();
+	var userid;
+    apiready = function(){
+    	api.parseTapmode();
+    	userid = $api.getStorage('userid');
+    };
+    function money(n){
+		$$(n).addClass('on').siblings().removeClass('on');
+    }
+	function confirm(){
+		//各种价值 需要后台设置 前端获取 从而传到下一个页面 or暂时存到本地?
+		var price = document.querySelector('.recharge-num-top').textContent;
+		api.openFrame({
+            name: 'full_payment_frm',
+            url: '../order/full_payment_frm.html',
+			bounces: false,
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                h: 'auto'
+            }
+        });
+    }
+	//更多金额
+	function openMore(){
+		api.openFrame({
+            name: 'recharge_number_frm',
+            url: 'recharge_number_frm.html',
+			bounces: false,
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                h: 'auto'
+            }
+        });
+	}
+	//从更多金额返回数据方法
+	function moreMoney(num){
+		var money = num;
+		confirm();
+	}
+</script>
+</html>

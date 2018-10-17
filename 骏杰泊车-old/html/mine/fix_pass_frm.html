@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <script type="text/javascript" src="../../script/dot.min.js"></script>
+    <style type="text/css">
+    	.aui-list-item.aui-list-item-noborder:before,
+		.aui-list-item.aui-list-item-noborder:after {
+		    height: 0;
+		}
+		.aui-list .aui-list-item{
+			padding-right: 0.75rem !important;
+		}
+		.aui-list .aui-list-item-inner{
+			padding-right: 0rem !important;
+		}
+		.aui-margin-t-30{
+			margin-top: 1.5rem;
+		}
+		body{
+			height: 'auto';
+			background: #F6F8FA;
+		}
+	    .aui-list .aui-list-item-inner{
+	        min-height: 2.475rem;
+	    }
+	    .aui-list-item .aui-list-item-inner{
+	    	justify-content: flex-start;
+	    	-webkit-justify-content: flex-start;
+	    }
+	    .inner-header{
+	    	min-width: 4rem;
+	    }
+	    /*重写*/
+	    .sec{
+	    	margin-top:0.3rem;
+	    	padding:0 0.75rem;
+	    	background: #ffffff;
+	    }
+	    .list{
+            height:2.5rem;
+        }
+        .sec .left{
+        	width: 4rem;
+        	font-size:0.75rem;
+        }
+        .sec input{
+        	font-size:0.75rem;
+        }
+    </style>
+</head>
+<body>
+	<div class="content">
+		<div class="sec">
+			<div class="list aui-border-b aui-flex-col aui-flex-middle">
+				<div class="left">原密码</div>
+                <div class="input">
+                	<input type="password" placeholder="请输入原密码" id="old">
+                </div>
+			</div>
+			<div class="list aui-flex-col aui-flex-middle">
+				<div class="left">新密码</div>
+                <div class="input">
+                	<input type="password" placeholder="请输入新密码" id="new">
+                </div>
+			</div>
+		</div>
+		<div class="aui-margin-t-30">
+			<div class="aui-padded-r-15 aui-padded-l-15">
+				<div class="com-btm-btn" tapmode onclick="save()">保存</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+	var userid;
+    apiready = function(){
+    	api.parseTapmode();
+    	userid = $api.getStorage('userid');
+    };
+    // 修改密码
+    function save(){
+    	document.getElementById("old").blur();
+    	document.getElementById("new").blur();
+    	var old_password = document.getElementById("old").value;
+    	var new_password = document.getElementById("new").value;
+    	var postData = {};
+    	postData.userid = userid;
+    	postData.old_password = old_password;
+    	postData.new_password = new_password;
+    	api.ajax({
+    	    url: BASE_URL + 'App/Mine/editPassword',
+    	    method: 'post',
+    	    data: {
+    	        values:postData
+    	    }
+    	}, function(ret, err) {
+    	    if (ret) {
+    	    	//alert(JSON.stringify(ret.msg));
+    	    	if(ret.code == "1"){
+                    // 注册成功 跳转到登录界面
+                    api.toast({
+                        msg: '修改成功',
+                        duration: 1000,
+                        location: 'middle'
+                    });
+                    setTimeout(function(){
+                        api.closeWin();
+                    },1000)
+                }else if(ret.code == "-1"){
+                	alert("原始密码错误");
+                    // 原始密码错误
+                }else if(ret.code == "-2"){
+                	alert("系统错误 修改失败");
+                    //系统错误 修改失败
+                }
+    	    }
+    	});
+    }
+</script>
+</html>

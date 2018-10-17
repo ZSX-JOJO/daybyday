@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<script type="text/javascript" src="../script/dot.min.js"></script>
+<style>
+	.aui-content {
+		background-color: #FFF;
+		padding: 0.75rem;
+	}
+	h2.h2Ttl {
+		margin: 0.75rem 0 1.25rem;
+		padding-left: 0.5rem;
+		color: #083a91;
+		font-size: 1.15rem;
+		line-height: 1;
+		border-left: 3px solid #083a91;
+	}
+	.flowList {
+		padding: 0 0.5rem;
+	}
+	.flowList li {
+		text-align: center;
+		width: 4.2rem;
+		height: 4.5rem;
+		font-size: 0.6rem;
+		line-height: 1.4;
+		color: #333;
+	}
+	.flowList .ico {
+		margin: 0 auto 0.35rem;
+		width: 2.35rem;
+		height: 2.35rem;
+		border-radius: 50%;
+		background-color: #ccc;
+	  	box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+	}
+	.flowList .arrow {
+		width: 4.3rem;
+		height: 2.35rem;
+	}
+	.flowList li.arrow {
+		width: 0.95rem;
+	}
+	.flowList .arrow .arrow-ico {
+		height: 100%;
+		background: url(../../image/common/32.png) no-repeat center center;
+		background-size: 0.95rem auto;
+	}
+	.flowList .arrow .arrow-right {
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+	.flowList .arrow .arrow-down {
+		-webkit-transform: rotate(90deg);
+		transform: rotate(90deg);
+	}
+	.serveList {
+		padding: 1rem 0 0;
+		text-align: center;
+		font-size: 0.65rem;
+		color: #333;
+	}
+	.serveList > div {
+		width: 3.2rem;
+	}
+	.serveList img {
+		margin: 0 auto 0.3rem;
+		width: 1.25rem;
+	}
+
+	@media all and (max-width: 350px) {
+	.flowList {
+		padding: 0;
+	}
+	}
+	.bannerSlider .pos {
+		position: absolute;
+		left: 0.75rem;
+		bottom: 0.75rem;
+		z-index: 1;
+	}
+	.bannerSlider .posImg {
+		margin-right: 0.25rem;
+		width: 1.1rem;
+		height: 0.8rem;
+		background: #FFF url(../../image/index/3.png) no-repeat center center;
+		background-size: 0.55rem 0.6rem;
+		border-radius: 0.1rem;
+	}
+	.bannerSlider .posName {
+		height: 0.8rem;
+		padding: 0 0.5rem;
+		line-height: 0.8rem;
+		color: #333;
+		background-color: rgba(255,255,255,0.85);
+		border-radius: 0.1rem;
+	}
+	.right-arrow:before {
+		right: -0.2rem;
+	}
+</style>
+</head>
+<body class="bg-common">
+	<div class="aui-content">
+		<h2 class="h2Ttl">机场代泊</h2>
+		<div class="font-size-15 text-light aui-margin-b-10">业务流程</div>
+		<div class="flowList">
+			<ul class="aui-flex-col aui-flex-between">
+				<li>
+					<div class="ico"><img src="../../image/index/icon01.png" class="aui-img-round" alt=""></div>
+					<div class="name">预约<br>
+						机场代泊服务</div>
+				</li>
+				<li class="arrow">
+					<div class="arrow-ico arrow-left"></div>
+				</li>
+				<li>
+					<div class="ico"><img src="../../image/index/icon02.png" class="aui-img-round" alt=""></div>
+					<div class="name">开车前往<br>
+						航站楼</div>
+				</li>
+				<li class="arrow">
+					<div class="arrow-ico arrow-left"></div>
+				</li>
+				<li>
+					<div class="ico"><img src="../../image/index/icon03.png" class="aui-img-round" alt=""></div>
+					<div class="name">抵达<br>
+						航站楼交接</div>
+				</li>
+			</ul>
+			<div class="aui-flex-col aui-flex-between">
+				<div></div>
+				<div class="arrow" style="height: 1.7rem;">
+					<div class="arrow-ico arrow-down"></div>
+				</div>
+			</div>
+			<ul class="aui-flex-col aui-flex-between">
+				<li>
+					<div class="ico"><img src="../../image/index/icon04.png" class="aui-img-round" alt=""></div>
+					<div class="name">泊车结束</div>
+				</li>
+				<li class="arrow">
+					<div class="arrow-ico arrow-right"></div>
+				</li>
+				<li>
+					<div class="ico"><img src="../../image/index/icon05.png" class="aui-img-round" alt=""></div>
+					<div class="name">骏杰员工<br>
+						为您停到停车位</div>
+				</li>
+				<li class="arrow">
+					<div class="arrow-ico arrow-right"></div>
+				</li>
+				<li>
+					<div class="ico"><img src="../../image/index/icon06.png" class="aui-img-round" alt=""></div>
+					<div class="name">用户<br>
+						乘坐飞机离开</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="aui-content margin-t-6" id="other-srv-wrap">
+
+	</div>
+	<script type="text/x-dot-tpl" id="other-srv-tpl">
+		<div class="font-size-15 text-light line-height aui-margin-b-10">其他服务</div>
+		<div class="serveList aui-flex-col aui-flex-between">
+			{{for(var i in it){}}
+			<div>
+				<div><img src="{{=SITE_URL}}{{=it[i].item_icon}}" alt=""></div>
+				<div>{{=it[i].item_name}}</div>
+			</div>
+			{{ } }}
+		</div>
+	</script>
+	<div class="aui-content margin-t-6 aui-padded-b-10">
+		<div class="font-size-15 text-light line-height aui-margin-b-5">费用计算</div>
+		<div class="aui-font-size-12 text-dark"><span class="text-common">¥<span id="price">-</span></span>/天（自然日）</div>
+	</div>
+	<div class="aui-content margin-t-6 aui-padded-b-10">
+		<div class="font-size-15 text-light line-height aui-margin-b-5">取消订单规则</div>
+		<div class="aui-font-size-12 text-dark">预计抵达前5个小时可取消订单，<br>
+			回城航班起飞后不可修改回程信息</div>
+	</div>
+	<div class="aui-content margin-t-6 aui-padded-b-10">
+		<div class="font-size-15 text-light line-height aui-margin-b-10">停车场位置</div>
+		<div class="bannerSlider relative" tapmode onClick="openMap();">
+			<div><img src="../../image/test/img01.png" width="100%" alt="" id="park-image"></div>
+			<div class="pos">
+				<div class="aui-flex-col aui-flex-middle aui-font-size-12 text-dark">
+					<div class="posImg"></div>
+					<div class="posName" id="park-name">-</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="aui-content margin-t-6 aui-padded-b-0">
+		<div class="aui-flex-col aui-flex-middle aui-flex-between aui-padded-b-10">
+			<div>
+				<div class="font-size-15 text-light line-height aui-margin-b-10">服务点评</div>
+				<div><span class="com-stars" data-star="3" id="comment-star"></span><span class="color-orange aui-font-size-14 aui-margin-l-10" id="comment-star-count">3</span></div>
+			</div>
+			<div class="right-arrow aui-padded-r-10" tapmode onClick="openWin('airport_eva_win');">
+				<div class="aui-font-size-12 text-light"><span id="comment-count">0</span>点评</div>
+			</div>
+		</div>
+		<div id="comment-wrap">
+		</div>
+	</div>
+	<script type="text/x-dot-tpl" id="comment-tpl">
+		{{for(var i in it) {}}
+		<div class="aui-flex-col aui-padded-t-15 aui-padded-b-10 aui-border-t">
+			<div style="width: 2.1rem;"><img src="{{=SITE_URL}}{{=it[i].user_avatar}}" class="aui-img-round" alt=""></div>
+			<div class="flex-auto aui-padded-l-10">
+				<div class="aui-font-size-14 text-dark aui-margin-b-5">{{=it[i].user_name}}</div>
+				<div class="font-size-11 text-light aui-margin-b-10">{{=it[i].eva_addtime}}</div>
+				<div class="aui-font-size-12 text-dark">{{=it[i].eva_content||''}}</div>
+			</div>
+		</div>
+		{{ } }}
+	</script>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<script type="text/javascript">
+	var aMap;
+	var park_id;
+	var parkData;
+	apiready = function(){
+		api.parseTapmode();
+		aMap = api.require('aMap');
+		park_id = api.pageParam.park_id;
+		// alert(park_id)
+		loadData();
+		// 获取评价
+		loadCommentData();
+	};
+	function loadCommentData(){
+		var postData = {};
+		postData.park_id = park_id;
+		api.ajax({
+		    url: BASE_URL+"App/Parking/evaluation" ,
+		    method: 'post',
+		    data: {
+		        values: postData
+		    }
+		},function(ret, err){
+		    if (ret) {
+		        if(ret.star){
+					document.getElementById("comment-star").setAttribute("data-star",parseInt(ret.star.star?ret.star.star:0));
+					document.getElementById("comment-star-count").textContent = ret.star.star?ret.star.star:0;
+					document.getElementById("comment-count").textContent = ret.count?ret.count:0;
+				}
+				if(ret.data && ret.data.length){
+					var tpl = document.getElementById("comment-tpl").innerHTML;
+					var fn = doT.template(tpl);
+					document.getElementById("comment-wrap").innerHTML = fn(ret.data);
+				}
+		    }
+		});
+
+	}
+	function loadData(){
+		api.readFile({
+		    path: 'fs://parkData/park_'+park_id+".json",
+		}, function(ret, err) {
+		    if (ret.status) {
+		        var data = JSON.parse(ret.data);
+				parkData = data;
+				document.getElementById("park-image").setAttribute("src",SITE_URL+data.park_image);
+				document.getElementById("park-name").textContent = data.park_name;
+				document.getElementById("price").textContent = data.park_srv_amount;
+				comStars();
+				if(data.srv){
+					var srvTpl = document.getElementById("other-srv-tpl").innerHTML;
+					var srvFn = doT.template(srvTpl);
+					document.getElementById("other-srv-wrap").innerHTML = srvFn(data.srv);
+				}
+		    }
+		})
+		var postData = {};
+		postData.park_id = park_id;
+		api.ajax({
+		    url: BASE_URL + 'App/Parking/parkDetail',
+		    method: 'post',
+		    data: {
+		        values: postData
+		    }
+		},function(ret, err){
+		    if (ret) {
+		        if(ret.code == 1 && ret.data){
+					parkData = ret.data;
+					document.getElementById("park-image").setAttribute("src",SITE_URL+ret.data.park_image);
+					document.getElementById("park-name").textContent = ret.data.park_name;
+					document.getElementById("price").textContent = ret.data.park_srv_amount;
+					if(ret.srv){
+						var srvTpl = document.getElementById("other-srv-tpl").innerHTML;
+						var srvFn = doT.template(srvTpl);
+						document.getElementById("other-srv-wrap").innerHTML = srvFn(ret.srv);
+					}
+					api.writeFile({
+						path: 'fs://parkData/park_'+park_id+".json",
+						data: JSON.stringify(ret)
+					}, function(ret, err) {
+					});
+				}
+		    }
+		});
+
+	}
+	comStars();
+	function openAirPortMooring(){
+		api.openWin({
+			name: 'airport_mooring_win',
+			url: 'airport_mooring_win.html',
+			pageParam: {
+				park_id:park_id,
+				parkData:parkData
+			}
+		});
+	}
+	function openMap(){
+		api.openWin({
+		    name: 'self_parkinglot_win',
+		    url: 'self_parkinglot_win.html',
+		    pageParam: {
+		        parkData: parkData
+		    }
+		});
+
+	}
+</script>
+</html>

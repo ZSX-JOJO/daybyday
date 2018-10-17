@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <style>
+        .photo{
+            border-radius: 1rem;
+        }
+        .photo img{
+            border-radius: 0.2rem;
+        }
+        .number{
+            margin-top: 1.6rem;
+            margin-bottom: 0.7rem;
+            font-size:1.65rem;
+        }
+        .aui-list-item-noborder{
+            border-bottom: 0 !important;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <section>
+    <div id="main">
+
+    <div class="popOverlay" tapmode onClick="api.closeFrame();"></div>
+    <div class="popup popBottom aui-padded-15" tapmode onClick="api.closeFrame();">
+             <div class="aui-flex-col aui-flex-middle">
+            <div class="photo" style="width: 5rem;"><img src="http://via.placeholder.com/200x134" alt=""></div>
+            <div class="aui-padded-l-10">
+                <div class="font-size-15 ">机场泊车</div>
+                <div class="font-size-13 text-light">鄂AR9494 黑色 . 奥迪A4</div>
+                <div class="font-size-13 text-light">停车时长：120小时</div>
+            </div>
+        </div>
+        <div class="number aui-text-center">67.00<span class="font-size-13">元</span></div>
+            <div class="aui-cart-list">
+                <div class="aui-info">
+                    <div class="aui-info-item">
+                        <span class="">预付款</span>
+                        </div>
+                    <div class="aui-info-item aui-font-size-14 text-dark">-9.9元</div>
+                </div>
+                <div class="aui-info" tapmode onclick="openWin('../mine/coupons_win')">
+                    <div class="aui-info-item">
+
+                        <span class="font-size-15">优惠劵抵扣</span>
+                        <img src="../../image/common/16.png" style="width: 0.9rem;margin-left:0.35rem" alt="">
+                    </div>
+                    <div class="aui-info-item aui-font-size-14 text-dark">-15.00元</div>
+                </div>
+            </div>
+            <div class="aui-margin-t-10 aui-margin-b-5" tapmode onClick="openWin('full_payment_frm')">
+                <div class="com-btm-btn" style="height: 2.2rem;">去支付</div>
+            </div>
+        </div>
+
+
+    </div>
+    </section>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+
+    };
+</script>
+
+</html>

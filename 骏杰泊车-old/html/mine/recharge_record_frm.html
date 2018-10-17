@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <script type="text/javascript" src="../../script/dot.min.js"></script>
+    <style type="text/css">
+    	body{
+            background-color: #F6F8FA;
+        }
+        .out{
+        	background-color: #FFF;
+            padding: 0 0.75rem;
+        }
+    	.list{
+    		height:3rem;
+    	}
+    	.pay-number{
+    		color:#ff9000;
+    		text-align: right;
+    	}
+    </style>
+</head>
+<body>
+	<div id="doT-Html"></div>
+	<script type="text/x-dot-template" id="doT-Template">
+    <div class="content aui-noborder">
+    	{{for(var i in it){}}
+    	{{?it[i].order_type == 2}}
+    	<div class="out">
+	    	<div class="list aui-border-b aui-flex-col aui-flex-middle aui-flex-between">
+	    		<div class="aui-flex-row">
+	    			<div class="recharge-text font-size-15">充值</div>
+	    			<div class="time text-light aui-font-size-12">
+	    				<div>{{=it[i].order_paytime}}</div>
+	    			</div>
+	    		</div>
+	    		<div class="aui-flex-row">
+	    			<div class="pay-number font-size-15">{{=it[i].order_total_price}}元</div>
+	    			<div class="text-light aui-font-size-12">微信支付</div>
+	    		</div>
+	    	</div>
+    	</div>
+    	{{??it[i].order_type == 3}}
+    	<div class="out">
+	    	<div class="list aui-border-b aui-flex-col aui-flex-middle aui-flex-between">
+	    		<div class="aui-flex-row">
+	    			<div class="recharge-text font-size-15">充值</div>
+	    			<div class="time text-light aui-font-size-12">
+	    				<div>{{=it[i].order_paytime}}</div>
+	    			</div>
+	    		</div>
+	    		<div class="aui-flex-row">
+	    			<div class="pay-number font-size-15">{{=it[i].order_total_price}}元</div>
+	    			<div class="text-light aui-font-size-12">支付宝支付</div>
+	    		</div>
+	    	</div>
+    	</div>
+    	{{??}}
+    	{{?}}
+    	{{}}}
+    </div>
+    </script>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+	var userid;
+    apiready = function(){
+    	api.parseTapmode();
+    	userid = $api.getStorage('userid');
+    	recharge();
+    };
+    function recharge(){
+    	postData = {};
+    	postData.userid = userid;
+    	api.ajax({
+    	    url: BASE_URL + 'App/Mine/account',
+    	    method: 'post',
+    	    data: {
+    	        values:postData
+    	    }
+    	}, function(ret, err) {
+    	    if (ret) {
+    	    	if(ret.code == "1"){
+    	    		// var tpl = document.getElementById("doT-Template").innerHTML;
+                	// var tempFn = doT.template(tpl);
+                	// document.getElementById("doT-Html").innerHTML = tempFn(ret);
+                	document.getElementById("doT-Html").innerHTML = doT.template(document.getElementById("doT-Template").innerHTML)(ret.data);
+    	    	}
+    	    }
+    	});
+    }
+</script>
+</html>

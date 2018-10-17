@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<style>
+	.media img {
+		width: 4.8rem;
+		height: auto;
+		border-radius: 0.1rem;
+	}
+	.comH2 {
+		padding: 0.3rem 0 0.25rem;
+		font-size: 0.6rem;
+		color: #333;
+		text-align: center;
+	}
+	.item {
+		padding: 0 0.75rem;
+		font-size: 0.75rem;
+		color: #333;
+		height: 2.5rem;
+	}
+	.item img {
+		width: 0.75rem;
+		height: auto;
+	}
+	.item .aui-flex-auto {
+		padding-left: 0.4rem;
+	}
+	.item .pay {
+		padding-right: 1.5rem;
+		color: #fe3d3d;
+		background: url(../../image/index/65.png) no-repeat right center;
+		background-size: 0.9rem auto;
+	}
+	.item.on .pay {
+		background: url(../../image/index/64.png) no-repeat right center;
+		background-size: 0.9rem auto;
+	}
+	.comFootBox {
+		height: 2.4rem;
+	}
+	.comFootBar {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		background-color: #FFF;
+		color: #999;
+		font-size: 0.75rem;
+		z-index: 10;
+	}
+	.comFootBar > div {
+		height: 2.4rem;
+	}
+	.comFootBar .aui-flex-auto {
+		padding: 0 0.75rem;
+	}
+	.comFootBar .btn {
+		padding: 0 0.5rem;
+		line-height: 2.4rem;
+		height: 2.4rem;
+		min-width: 5.55rem;
+		background: #083a91;
+		color: #FFF;
+		font-size: 0.8rem;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+	<div class="aui-content">
+		<div class="comSec aui-flex-row aui-flex-middle aui-flex-center">
+			<div class="aui-padded-5"><img src="../../image/index/48.png" style="width: 1.65rem;" /></div>
+			<div class="font-size-15 aui-padded-10 aui-padded-b-0">请支付预付款</div>
+			<p class="aui-font-size-12">航班起飞2小时前可取消</p>
+		</div>
+		<div class="comSec aui-flex-col aui-flex-middle" id="data-wrap">
+
+		</div>
+		<script type="text/x-dot-tpl" id="data-tpl">
+		{{? it.park_image}}<div class="media"><img src="{{=SITE_URL}}{{=it.park_image}}" alt=""></div>{{?}}
+		<div class="flex-auto aui-padded-l-10">
+			<div class="text-common font-size-15 aui-margin-b-5">{{=it.park_name||''}}</div>
+			<p class="aui-font-size-12">{{=it.park_province||''}}{{=it.park_city||''}}{{=it.park_airport}}</p>
+		</div>
+		</script>
+
+		<div class="comH2">选择支付方式</div>
+		<div class="bg-white">
+			<div class="item payment on aui-flex-col aui-flex-middle aui-flex-between aui-border-b" data-value="1">
+				<div><img src="../../image/index/60.png" alt=""></div>
+				<div class="aui-flex-auto">余额</div>
+				<div class="pay"></div>
+			</div>
+			<div class="item payment aui-flex-col aui-flex-middle aui-flex-between aui-border-b" data-value="2">
+				<div><img src="../../image/index/61.png" alt=""></div>
+				<div class="aui-flex-auto">微信支付</div>
+				<div class="pay"></div>
+			</div>
+			<div class="item payment aui-flex-col aui-flex-middle aui-flex-between" data-value="3">
+				<div><img src="../../image/index/62.png" alt=""></div>
+				<div class="aui-flex-auto">支付宝</div>
+				<div class="pay"></div>
+			</div>
+		</div>
+		<div class="aui-text-center aui-padded-10 aui-font-size-12 text-light" tapmode onClick="openWin('sesame_credit_win');">芝麻信用600分以上免预付款，点击授权</div>
+	</div>
+
+	<div class="comFootBox">
+		<div class="comFootBar">
+			<div class="aui-flex-col aui-flex-middle aui-flex-between">
+				<div class="aui-flex-auto">预付款：<span class="text-common">￥<span id="pay-amount">0.00</span></span></div>
+<!--				<div class="aui-flex-auto">芝麻信用已授权免预付款</div>-->
+				<!-- <div class="btn" tapmode onClick="openWin('transaction_confirm_win');">去支付</div> -->
+				<div class="btn" tapmode onclick="transaction_confirm()">去支付</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<script type="text/javascript" src="../../script/aui-tap.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<script type="text/javascript">
+	var pageData;
+	apiready = function() {
+		pageData = api.pageParam;
+		api.parseTapmode();
+		var tpl = document.getElementById("data-tpl").innerHTML;
+		var fn = doT.template(tpl);
+		document.getElementById("data-wrap").innerHTML = fn(pageData.parkData);
+		document.getElementById("pay-amount").textContent = pageData.parkData.park_subsist;
+		var payItems = document.querySelectorAll(".pay");
+		if(payItems.length){
+			for(var i = 0; i < payItems.length;i++){
+				payItems[i].textContent = "￥"+pageData.parkData.park_subsist;
+			}
+		}
+	};
+	$$('.item').on('tap',function(){
+		$$(this).addClass('on').siblings().removeClass('on');
+	});
+	function transaction_confirm(){
+		var userid = $api.getStorage('userid');
+		// 支付方式
+		var adv_payment = document.querySelector(".payment.on").getAttribute("data-value");
+		var postData = {};
+		postData = pageData;
+		postData.userid = userid;
+		postData.adv_payment = adv_payment;
+		postData.type = pageData.parkData.park_srv_type?pageData.parkData.park_srv_type:1;
+		// console.log(JSON.stringify(postData))
+		api.showProgress({
+		    style: 'default',
+		    animationType: 'fade',
+		    title: '',
+		    text: '',
+		    modal: false
+		});
+
+		api.ajax({
+		    url: BASE_URL+'App/Parking/prepayments',
+		    method: 'post',
+		    data: {
+		        values: postData
+		    }
+		},function(ret, err){
+			// console.log(JSON.stringify(ret))
+			// console.log(JSON.stringify(err))
+		    if (ret) {
+		        if(adv_payment == "1"){
+					if(ret.code == 1){
+						api.sendEvent({
+							name: 'actPaySuccessEvent'
+						});
+						setTimeout(function(){
+							api.openWin({
+								name: 'order_detail_win',
+								url: '../order/order_detail_win.html',
+								slidBackType:'edge',
+								pageParam: {
+									orderId: ret.order_id
+								}
+							});
+						},200)
+					}
+				}else if (adv_payment == "2") {
+					var wxPay = api.require('wxPay');
+					wxPay.config({
+						apiKey: 'wx3244516985996933',
+						mchId: '1491244372',
+						partnerKey: 'dianmengkeji0810dianmengkeji0115',
+						notifyUrl: 'http://boche.idianmeng.com/wxpay_notify'
+					}, function(result, err) {
+						if (result.status) {
+							wxPay.pay({
+								description: '商品购买',
+								totalFee: ret.data.parkData.park_subsist*100,
+								tradeNo: ''+ret.order_sn+'',
+								detail: '商品购买',
+								feeType: 'CNY'
+							}, function(ret, err) {
+								if (ret.status) {
+									api.sendEvent({
+										name: 'actPaySuccessEvent'
+									});
+								} else {
+									api.alert({
+										title: '支付消息',
+										msg: err.msg||'支付失败',
+									}, function(ret, err) {
+									});
+								}
+							});
+						} else {
+							// alert(JSON.stringify(err))
+						}
+					});
+				}else if (adv_payment == "3") {//支付宝
+					var aliPayPlus = api.require('aliPayPlus');
+					aliPayPlus.payOrder({
+						orderInfo:ret.data
+					}, function(alipayRet, err) {
+						if(alipayRet){
+							switch (alipayRet.code) {
+								case '9000':
+									api.sendEvent({
+										name: 'actPaySuccessEvent'
+									});
+									setTimeout(function(){
+										api.openWin({
+											name: 'order_detail_win',
+											url: '../order/order_detail_win.html',
+											slidBackType:'edge',
+											pageParam: {
+												orderId: ret.order_id
+											}
+										});
+									},200)
+									break;
+								case '4000':
+									api.toast({
+										msg: '支付失败',
+										duration: 2000,
+										location: 'middle'
+									});
+
+									break;
+								case '6001':
+									api.toast({
+										msg: '取消支付',
+										duration: 2000,
+										location: 'middle'
+									});
+									break;
+								default:
+									api.toast({
+										msg: '支付失败',
+										duration: 2000,
+										location: 'middle'
+									});
+								break;
+							}
+
+						}else{
+							api.alert({
+								title: '支付消息',
+								msg: '支付失败',
+							}, function(ret, err){
+
+							});
+						}
+
+					});
+
+				}
+		    }
+			api.hideProgress();
+
+		});
+		// var sum =parseFloat(document.getElementById("sum").textContent);
+		// api.openWin({
+		//     name: 'transaction_confirm_win',
+		//     url: './transaction_confirm_win.html',
+		//     pageParam: {
+		//         sum: sum
+		//     }
+		// });
+	}
+</script>
+</html>

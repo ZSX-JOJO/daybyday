@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<style>
+.aui-tab-item {
+	font-size: 0.75rem;
+}	
+.aui-tab-item.aui-active {
+	border-bottom: none;
+}
+.aui-tab-item.aui-active:after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 50%;
+	margin-left: -25%;
+	border-bottom: 2px solid #083a91;
+	border-radius: 1px;
+}
+</style>
+</head>
+
+<body>
+<header class="aui-bar aui-bar-nav aui-bar-light" id="header">
+	<div class="aui-pull-left" tapmode onclick="api.closeWin();"> <img src="../../image/index/47.png" class="img-icon" /> </div>
+	<div class="aui-title">车型选择</div>
+</header>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/aui-tab.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        api.parseTapmode();
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header).h;
+		api.openFrame({
+            name: 'car_style_frm',
+            url: 'car_style_frm.html',
+            rect: {
+                w: 'auto',
+                h: api.winHeight - headerH,
+                marginTop:headerH,
+                marginBottom:0
+            },
+            pageParam: {
+                name: 'value'
+            },
+            bounces: true
+        });
+
+
+    };
+	
+</script>
+</html>

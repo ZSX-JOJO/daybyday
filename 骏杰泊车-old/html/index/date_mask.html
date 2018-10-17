@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/shijian.css" />
+<style>
+body {
+	background: none;
+}
+.popup {
+	top: 50%;
+	left: 2.25rem;
+	right: 2.25rem;
+	-webkit-transform: translate(0,-50%);
+	transform: translate(0,-50%);
+}
+.df-main .df-wrap {
+	width: 40%;
+}
+.df-main .df-wrap:first-child {
+	width: 60%;
+}
+.df-wrap table {
+	width: 100%;
+	table-layout: fixed;
+}
+.dateHead {
+	padding: 0 0.75rem;
+	background: #f5f6fa;
+	font-size: 0.6rem;
+	line-height: 1.35rem;
+	text-align: center;
+	color: #999;
+}
+.dateHead li {
+	float: left;
+	width: 20%;
+}
+</style>
+</head>
+<body>
+<div class="popOverlay" tapmode onClick="api.closeFrame();"></div>
+<div class="popup">
+	<div class="popHeader">
+		<div class="close" tapmode onClick="api.closeFrame();"></div>
+		<div class="text-common aui-font-size-16" id="date_txt"></div>
+	</div>
+	<ul class="dateHead clearfix">
+		<li>年</li>
+		<li>月</li>
+		<li>日</li>
+		<li>小时</li>
+		<li>分</li>
+	</ul>
+	<div class="popInner aui-padded-10">
+		<div class="time-box">
+			
+		</div>
+	</div>
+	<div class="popFooter aui-border-t">
+		<div class="saveBtn text-common" tapmode onClick="save();">确定</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery.min.js"></script>
+<script type="text/javascript" src="../../script/jquery-shijian.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        api.parseTapmode();
+    };
+	var todayDate = new Date();
+	function checkTime(i){
+		if (i<10) 
+	  	{i="0" + i}
+	  	return i
+	}
+	$("#date_txt").shijian({
+		width: null,
+		showNowTime: true,
+		height: 37,
+		y: 2,
+		yyyy: todayDate.getFullYear(),
+		mm: todayDate.getMonth()+1,
+		dd: todayDate.getDate(),
+		h: checkTime(todayDate.getHours()),
+		m: checkTime(todayDate.getMinutes()),
+		yearText: "",
+		monthText: "",
+		dayText: '',
+		hourText: '',
+		minuteText: '',
+		secondsText: '',
+		alwaysShow:true,
+		timeElm:$(".time-box"),//sjObj表示当前对象
+	});
+	
+	function save(){
+		var txt = $('#date_txt').text();
+		var jsfun = 'changeData("date_time","'+ txt +'")';
+		api.execScript({
+			name: api.pageParam.wname,
+			frameName: api.pageParam.fname,
+			script: jsfun
+		});
+		api.closeFrame();
+	}
+</script>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/picker.css" />
+<style>
+body {
+	background: none;
+}
+.popup {
+	top: 50%;
+	left: 2.25rem;
+	right: 2.25rem;
+	-webkit-transform: translate(0,-50%);
+	transform: translate(0,-50%);
+}
+.dateHead {
+	display: -ms-flexbox;
+	display: -webkit-box;
+	display: flex;
+	padding: 0 10px;
+	background: #f5f6fa;
+	font-size: 0.6rem;
+	line-height: 1.35rem;
+	text-align: center;
+	color: #999;
+}
+.dateHead li {
+	-ms-flex: 1 1 1e-9px;
+	-webkit-box-flex: 1;
+	flex: 1;
+	flex-basis: 1e-9px;
+	width: 1%;
+}
+#picker_container {
+	padding: 0.75rem 0;
+}
+.dateHead,
+.picker .picker-panel .wheel-wrapper {
+	padding: 0 20px;
+}
+</style>
+</head>
+<body>
+<div class="popOverlay" tapmode onClick="api.closeFrame();"></div>
+<div class="popup">
+	<div class="popHeader">
+		<div class="close" tapmode onClick="api.closeFrame();"></div>
+		<div class="text-common aui-font-size-16" id="date_txt"></div>
+	</div>
+	<ul class="dateHead clearfix">
+		<li>年</li>
+		<li>月</li>
+		<li>日</li>
+	</ul>
+	<div id="picker_container"></div>
+	<div class="popFooter aui-border-t">
+		<div class="saveBtn text-common" tapmode onClick="save();">确定</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript" src="../../script/picker.js"></script>
+<script type="text/javascript">
+var txt;
+var selectYear;
+var selectMon;
+var selectDay;
+apiready = function() {
+    api.parseTapmode();
+	var birthday = api.pageParam.birthday;
+	$$('#date_txt').text(birthday);
+
+	var selectYear = parseInt(birthday.slice(0,4));
+	var selectMon = parseInt(birthday.slice(5,7));
+	var selectDay = parseInt(birthday.slice(8));
+	var ind_y = selectYear-1920;
+	var ind_m = selectMon-1;
+	var ind_d = selectDay-1;
+
+	var today = new Date();
+	var maxYear = today.getFullYear();
+	var obj = {};
+	var year = [];
+	for(var i=1920;i<=maxYear;i++){
+		obj = {
+			text: i,
+			value: i
+		}
+		year.push(obj);
+	}
+	var mon = [];
+	for(var i=1;i<=12;i++){
+		obj = {
+			text: i,
+			value: i
+		}
+		mon.push(obj);
+	}
+	var day = [];
+	for(var i=1;i<=31;i++){
+		obj = {
+			text: i,
+			value: i
+		}
+		day.push(obj);
+	}
+
+
+	var picker = new Picker({
+		data: [year, mon, day],
+		selectedIndex: [ind_y, ind_m, ind_d],
+		title: '',
+		container: 'picker_container'
+	});
+	$$('.wheel-wrapper > .wheel').eq(0).find('.wheel-item').removeClass('text-common').eq(ind_y).addClass('text-common');
+	$$('.wheel-wrapper > .wheel').eq(1).find('.wheel-item').removeClass('text-common').eq(ind_m).addClass('text-common');
+	$$('.wheel-wrapper > .wheel').eq(2).find('.wheel-item').removeClass('text-common').eq(ind_d).addClass('text-common');
+	picker.show();
+
+
+
+	picker.on('picker.select', function (selectedVal, selectedIndex) {
+	//	console.log("select"+selectedVal)
+	//	console.log("select"+selectedIndex)
+		selectYear = year[selectedIndex[0]].text;
+		selectMon = mon[selectedIndex[1]].text;
+		selectDay = day[selectedIndex[2]].text;
+		if(selectMon<10){
+			selectMon = '0'+selectMon;
+		}
+		if(selectDay<10){
+			selectDay = '0'+selectDay;
+		}
+		txt = selectYear + '-' + selectMon + '-' + selectDay;
+		$$('#date_txt').text(txt);
+	})
+
+	picker.on('picker.change', function (index, selectedIndex) {
+	//	console.log("change"+index);
+	//	console.log("change"+selectedIndex);
+		$$('.wheel-wrapper > .wheel').eq(index).find('.wheel-item').removeClass('text-common').eq(selectedIndex).addClass('text-common');
+	});
+
+	picker.on('picker.valuechange', function (selectedVal, selectedIndex) {
+	//	console.log("valuechange"+selectedVal);
+	//	console.log("valuechange"+selectedIndex);
+	});
+
+
+};//apiready 结束
+function save(){
+	$$('.picker-choose .confirm').trigger('click');
+	setTimeout(function(){
+		var jsfun = 'changeData("birthday","'+ txt +'")';
+		api.execScript({
+			name: api.pageParam.wname,
+			frameName: api.pageParam.fname,
+			script: jsfun
+		});
+		api.closeFrame();
+	},10);
+
+}
+</script>
+</html>

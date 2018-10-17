@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<style>
+.aui-tab-item {
+	font-size: 0.75rem;
+}
+.aui-tab-item.aui-active {
+	border-bottom: none;
+}
+.aui-tab-item.aui-active:after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 50%;
+	margin-left: -25%;
+	border-bottom: 2px solid #083a91;
+	border-radius: 1px;
+}
+</style>
+</head>
+
+<body>
+<header class="aui-bar aui-bar-nav aui-bar-light" id="header">
+	<div class="aui-pull-left" tapmode onclick="api.closeWin();"> <img src="../../image/index/47.png" class="img-icon" /> </div>
+	<div class="aui-title">请选择目的机场</div>
+</header>
+<div class="aui-tab" id="order-tab">
+	<div class="aui-tab-item aui-active">国内</div>
+	<div class="aui-tab-item">国际</div>
+</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/aui-tab.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        api.parseTapmode();
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header).h;
+		var tabH = $api.offset($api.byId('order-tab')).h;
+		var pageParam = api.pageParam;
+		pageParam.headerH = headerH;
+        api.openFrameGroup ({
+            name: 'destination_airport_group',
+            background: '#fff',
+            scrollEnabled: false,
+            rect: {
+                 x: 0,
+                 y: headerH+tabH,
+                 w: 'auto',
+                 h: 'auto'
+            },
+            index: 0,
+            frames: [{
+                name: 'destination_airport_frm_1',
+                url: 'destination_airport_frm_1.html',
+                bounces:false,
+				pageParam: pageParam
+            },{
+                name: 'destination_airport_frm_2',
+                url: 'destination_airport_frm_2.html',
+                bounces:false,
+				pageParam: pageParam
+            }]
+        }, function(ret, err){
+            // if( ret ){
+            //      alert( JSON.stringify( ret ) );
+            // }else{
+            //      alert( JSON.stringify( err ) );
+            // }
+        });
+
+
+    };
+
+	var orderTab = new auiTab({
+        element:document.getElementById("order-tab"),
+    },function(ret){
+        if(ret && ret.index){
+            api.setFrameGroupIndex({
+                name: 'destination_airport_group',
+                index: ret.index-1
+            });
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/picker.css" />
+<style>
+body {
+	background: none;
+}
+.popup {
+	top: 50%;
+	left: 2.25rem;
+	right: 2.25rem;
+	-webkit-transform: translate(0,-50%);
+	transform: translate(0,-50%);
+}
+.dateHead {
+	display: -ms-flexbox;
+	display: -webkit-box;
+	display: flex;
+	padding: 0 10px;
+	background: #f5f6fa;
+	font-size: 0.6rem;
+	line-height: 1.35rem;
+	text-align: center;
+	color: #999;
+}
+.dateHead li {
+	-ms-flex: 1 1 1e-9px;
+	-webkit-box-flex: 1;
+	flex: 1;
+	flex-basis: 1e-9px;
+	width: 1%;
+}
+#picker_container {
+	padding: 0.75rem 0;
+}
+.dateHead,
+.picker .picker-panel .wheel-wrapper {
+	padding: 0 5px;
+}
+</style>
+</head>
+<body>
+<div class="popOverlay" tapmode onClick="api.closeFrame();"></div>
+<div class="popup">
+	<div class="popHeader">
+		<div class="close" tapmode onClick="api.closeFrame();"></div>
+		<div class="text-dark aui-font-size-16" id="txt">按行程开票</div>
+	</div>
+	<ul class="dateHead clearfix">
+		<li>城市</li>
+		<li>街道</li>
+		<li>小区</li>
+	</ul>
+	<div id="picker_container"></div>
+	<div class="popFooter aui-border-t">
+		<div class="saveBtn text-common" tapmode onClick="save();">确定</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript" src="../../script/city.js"></script>
+<script type="text/javascript" src="../../script/picker.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        api.parseTapmode();
+    };
+var txt;
+var first = []; /* 省，直辖市 */
+var second = []; /* 市 */
+var third = []; /* 镇 */
+
+var selectedIndex = [2, 2, 2]; /* 默认选中的地区 */
+
+var checked = [0, 0, 0]; /* 已选选项 */
+
+function creatList(obj, list){
+  obj.forEach(function(item, index, arr){
+  var temp = new Object();
+  temp.text = item.name;
+  temp.value = index;
+  list.push(temp);
+  })
+}
+
+creatList(city, first);
+
+if (city[selectedIndex[0]].hasOwnProperty('sub')) {
+  creatList(city[selectedIndex[0]].sub, second);
+} else {
+  second = [{text: '', value: 0}];
+}
+
+if (city[selectedIndex[0]].sub[selectedIndex[1]].hasOwnProperty('sub')) {
+  creatList(city[selectedIndex[0]].sub[selectedIndex[1]].sub, third);
+} else {
+  third = [{text: '', value: 0}];
+}
+
+var picker = new Picker({
+	data: [first, second, third],
+  	selectedIndex: selectedIndex,
+	title: '',
+	container: 'picker_container'
+});
+$$('.wheel-wrapper > .wheel').each(function(){
+	$$(this).find('.wheel-item').removeClass('text-common').eq(2).addClass('text-common');
+})
+picker.show();
+picker.on('picker.select', function (selectedVal, selectedIndex) {
+  var text1 = first[selectedIndex[0]].text;
+  var text2 = second[selectedIndex[1]].text;
+  var text3 = third[selectedIndex[2]] ? third[selectedIndex[2]].text : '';
+	txt = text1 + ' ' + text2 + ' ' + text3;
+});
+
+picker.on('picker.change', function (index, selectedIndex) {
+  if (index === 0){
+    firstChange();
+	  $$('.wheel-wrapper > .wheel').eq(0).find('.wheel-item').removeClass('text-common').eq(selectedIndex).addClass('text-common');
+	  $$('.wheel-wrapper > .wheel').eq(1).find('.wheel-item').removeClass('text-common').eq(0).addClass('text-common');  
+	  $$('.wheel-wrapper > .wheel').eq(2).find('.wheel-item').removeClass('text-common').eq(0).addClass('text-common');  
+  } else if (index === 1) {
+    secondChange();
+	  $$('.wheel-wrapper > .wheel').eq(1).find('.wheel-item').removeClass('text-common').eq(selectedIndex).addClass('text-common');
+	  $$('.wheel-wrapper > .wheel').eq(2).find('.wheel-item').removeClass('text-common').eq(0).addClass('text-common');  
+  }else{
+	$$('.wheel-wrapper > .wheel').eq(2).find('.wheel-item').removeClass('text-common').eq(selectedIndex).addClass('text-common');  
+  }
+
+  function firstChange() {
+    second = [];
+    third = [];
+    checked[0] = selectedIndex;
+    var firstCity = city[selectedIndex];
+    if (firstCity.hasOwnProperty('sub')) {
+      creatList(firstCity.sub, second);
+
+      var secondCity = city[selectedIndex].sub[0]
+      if (secondCity.hasOwnProperty('sub')) {
+        creatList(secondCity.sub, third);
+      } else {
+        third = [{text: '', value: 0}];
+        checked[2] = 0;
+      }
+    } else {
+      second = [{text: '', value: 0}];
+      third = [{text: '', value: 0}];
+      checked[1] = 0;
+      checked[2] = 0;
+    }
+
+    picker.refillColumn(1, second);
+    picker.refillColumn(2, third);
+    picker.scrollColumn(1, 0)
+    picker.scrollColumn(2, 0)
+  }
+
+  function secondChange() {
+    third = [];
+    checked[1] = selectedIndex;
+    var first_index = checked[0];
+    if (city[first_index].sub[selectedIndex].hasOwnProperty('sub')) {
+      var secondCity = city[first_index].sub[selectedIndex];
+      creatList(secondCity.sub, third);
+      picker.refillColumn(2, third);
+      picker.scrollColumn(2, 0)
+    } else {
+      third = [{text: '', value: 0}];
+      checked[2] = 0;
+      picker.refillColumn(2, third);
+      picker.scrollColumn(2, 0)
+    }
+  }
+
+});
+	
+function save(){
+	$$('.picker-choose .confirm').trigger('click');
+	//$$('#txt').text(txt)
+	setTimeout(function(){
+		var jsfun = 'changeData("prov","'+ txt +'")';
+		api.execScript({
+			name: api.pageParam.wname,
+			frameName: api.pageParam.fname,
+			script: jsfun
+		});
+		api.closeFrame();
+	},10);
+	
+}
+	
+
+</script>
+</html>

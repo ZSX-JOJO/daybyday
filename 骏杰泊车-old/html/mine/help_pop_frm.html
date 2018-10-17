@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <style type="text/css">
+    	body{
+    		background:transparent;
+    	}
+    .popCenter{
+      padding:1.25rem 0;
+    }
+		.help{
+			font-size: 0.7rem;
+			color:#999999;
+			text-align: center;
+		}
+		.phone{
+			font-family: PingFang-Regular;
+			font-size: 0.85rem;
+			color:#093a91;
+			text-align: center;
+		}
+    .popfooter{
+      height:2.25rem;
+      line-height: 2.25rem;
+      text-align: center;
+    }
+    </style>
+</head>
+<body>
+  <div class="popOverlay" tapmode onClick="api.closeFrame();"></div>
+  <div class="popup popMiddle" style="width: 12.5rem;">
+  	<div class="popHeader aui-border-b">
+  		<div class="close" tapmode onClick="api.closeFrame();"></div>
+  		<div class="aui-ellipsis-1">客服电话</div>
+  	</div>
+    <div class="popCenter aui-border-b">
+			<div class="help">确认拨打客服电话</div>
+			<div class="phone" id="phone" tapmode onclick="">18353627528</div>
+		</div>
+    <div class="popfooter">
+			<div class="text-common font-size-15" tapmode onclick="call()">确认</div>
+		</div>
+  </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+    };
+    var mt = -($$('.popMiddle').outerHeight()/2);
+  	$$('.popMiddle').css('margin-top', mt+'px');
+    function call(){
+    	var number = document.getElementById('phone').innerHTML;
+    	api.call({
+		    type: 'tel_prompt',
+		    number: number
+		});
+    }
+</script>
+</html>

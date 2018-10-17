@@ -1,0 +1,84 @@
+body{
+  background: transparent!important;
+}
+.popup {
+	top: 2.75rem;
+	left: 2rem;
+	right: 2rem;
+}
+.carNumBox {
+	height: 6.75rem;
+	padding-bottom: 0.75rem;
+}
+.carNumBox .num {
+	position: relative;
+	width: 1.65rem;
+	height: 2rem;
+	line-height: 2rem;
+	color: #333;
+	font-size: 1.15rem; 
+	text-align: center;
+}
+.carNumBox .num.line:before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 1.3rem;
+	height: 0.15rem;
+	background: #000;
+	border-radius: 5px;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+.carNumBox .num.first.line:before {
+	background: #083A91;
+}
+.keyboard {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: #CFD4DA;
+	z-index: 100;
+	overflow: hidden;
+}
+.keyboard .handle {
+	padding: 0 0.75rem;
+	font-size: 0.75rem;
+	line-height: 1.6rem;
+	color: #50c0e5;
+	background: #EEEEEE;
+}
+.keyboard .board {
+	padding: 0.25rem 0.15rem 0rem;
+}
+.keyboard .keyList li {
+	float: left;
+	width: 10%;
+	padding: 0.25rem 0.125rem;
+}
+.keyboard .keyList .key {
+	height: 2rem;
+	color: #000;
+	line-height: 1.8rem;
+	background: #FFF;
+	text-align: center;
+	border-bottom: 1px solid #999;
+	border-radius: 0.3rem;
+}
+.keyboard .keyList .key:active {
+	background: #50c0e5;
+}
+.keyboard .keyList .quxiao {
+	height: 2rem;
+	background: #A8B1BC url(../image/mine/quxiao.png) no-repeat center center;
+	background-size: auto 1.05rem;
+	border-radius: 0.3rem;
+}
+
+
+
+
+
+

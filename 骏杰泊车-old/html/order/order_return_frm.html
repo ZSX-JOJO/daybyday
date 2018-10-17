@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <style>
+        body {
+            background: #f6f8fa;
+        }
+
+        .info {
+            background: #fff;
+            padding: 0 0.75rem;
+        }
+
+        .airport-info img.img-arrow {
+            margin-top: 1.2rem;
+            display: inline-block !important;
+            width: 1.05rem !important;
+            height: auto !important;
+        }
+
+        .aui-info {
+            height: 2.5rem;
+        }
+
+        .info .aui-info-item img.arrowRight {
+            height: 0.5rem;
+            display: block;
+        }
+
+        .aui-card-list-footer {
+            height: 2.5rem;
+            line-height: 2.5rem;
+            padding-top: 0;
+            padding-bottom: 0;
+            background: #fff;
+        }
+
+        .aui-card-list-footer img.img-icon {
+            display: inline-block !important;
+            width: auto !important;
+            height: 0.8rem !important;
+            position: relative;
+            top: 2px;
+            margin-right: 0.2rem;
+        }
+        .aui-grid .aui-grid-label{
+            font-size:0.85rem !important;
+         }
+
+        .info .aui-info-item img.data-icon {
+            margin-right: 0.4rem !important;
+            height: 0.65rem !important;
+        }
+
+        .info .aui-info-item img.airport-icon {
+            height: 0.6rem;
+            margin-left: 0.5rem;
+            width: 0.75rem;
+            display: block;
+        }
+
+        .padding-t-b {
+            padding-top: 0.75rem;
+            padding-bottom: 0.45rem;
+        }
+        .aui-card-list {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="aui-content">
+        <div>
+            <div class="aui-font-size-12 aui-text-center padding-t-b">回程/目的机场</div>
+            <div class="aui-card-list">
+                <div class="aui-card-list-content aui-grid airport-info">
+                    <div class="aui-row">
+                        <div class="aui-col-xs-6" tapmode onClick="selectItem('destination_airport_win')">
+                            <p class="font-size-13 margin-t-6">回程机场</p>
+                            <div class="aui-grid-label text-common font-size-17"  id="dest_name">武汉天河国际机场</div>
+                        </div>
+                        <div class="aui-col-xs-1 arrow-wrap">
+                            <img src="../../image/index/56.png" class="img-arrow" />
+                        </div>
+                        <div class="aui-col-xs-5" tapmode onClick="selectItem('destination_airport_win');">
+                            <p class="font-size-13 margin-t-6">目的机场</p>
+                            <div class="aui-grid-label font-size-17 text-common">沈阳仙桃机场</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="aui-font-size-12 aui-text-center padding-t-b">返回日期</div>
+            <div class="aui-info info text-dark" >
+                <div class="aui-info-item font-size-15">请选择返回日期</div>
+                <div class="aui-info-item aui-padded-r-15 right-arrow" tapmode onclick="selectItem('reserve_date_win');">
+                    <p class=""><img src="../../image/index/57.png" alt="" class="data-icon"></p>
+                    <p id="depart_date"></p>
+                </div>
+            </div>
+        </div>
+        <div>
+      		<div class="aui-font-size-12 aui-text-center padding-t-b">选择航班</div>
+      		<div class="aui-info info text-dark" tapmode onclick="selectItem('select_flight_win');">
+      			<div class="aui-info-item font-size-15">
+      				<div>请选择航班</div>
+      				<div><img src="../../image/index/58.png" alt="" class="airport-icon"></div>
+      			</div>
+      			<div class="aui-info-item aui-padded-r-15 right-arrow">
+      				<p id="flight_name"></p>
+      			</div>
+      		</div>
+      	</div>
+         <div>
+            <div class="aui-font-size-12 aui-text-center padding-t-b">选择接车时间</div>
+            <div class="aui-info info text-dark" tapmode onClick="selectDate()">
+                <div class="aui-info-item font-size-15">请选择接车时间</div>
+                <div class="aui-info-item aui-padded-r-15 right-arrow" >
+                  <p id="date_time"></p>
+                </div>
+            </div>
+        </div>
+        <div class="aui-font-size-12 aui-text-center aui-margin-t-10 text-light">回程航班起飞后无法修改</div>
+        <div class="aui-padded-15" style="margin-top: 1.1rem;" tapmode onClick="openWin('finish_parking_win')">
+            <div class="com-btm-btn submitBtn">提交回程信息</div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+    function selectDate(){
+  		api.openFrame({
+  			name: '../index/date_mask',
+  			url: '../index/date_mask.html',
+  			rect: {
+  				x: 0,
+  				y: 0,
+  				w: 'auto',
+  				h: 'auto'
+  			},
+  			pageParam: {
+  				wname: api.winName,
+  				fname: api.frameName
+  			}
+  		});
+  	}
+    function selectItem(url){
+  		api.openWin({
+  			name: url,
+  			url: '../index/'+url + '.html',
+  			slidBackEnabled:false,
+  			pageParam: {
+  				wname: api.winName,
+  				fname: api.frameName
+  			}
+  		});
+	}
+  function changeData(domId,name){
+		$$('#'+ domId).text(name);
+	}
+</script>
+
+</html>

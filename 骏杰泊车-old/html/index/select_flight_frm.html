@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<style>
+	body {
+		background: #f6f8fa;
+	}
+	.aui-list-box {
+		padding: 0 0.7rem !important;
+		background: #fff;
+	}
+	.color3 {
+		color: #333333;
+	}
+	.color9 {
+		color: #999;
+	}
+	.list-height {
+		height: 2.5rem;
+		line-height: 2.5rem;
+		border-bottom: 1px solid #e8e8e8;
+	}
+	.aui-list-box .aui-list-item-inner {
+		padding: 0 !important;
+	}
+	.aui-list .list-height:last-child {
+		border-bottom: none !important;
+	}
+</style>
+</head>
+
+<body>
+<section>
+	<div class="aui-list-box">
+		<ul class="aui-list aui-list-in" id="data-wrap">
+		</ul>
+	</div>
+	<script type="text/x-dot-tpl" id="data-tpl">
+		{{for(var i in it){}}
+		<li class="list-height" tapmode onClick="depart(this);" data-FlightCompany="{{=it[i].FlightCompany}}" data-FlightNo="{{=it[i].FlightNo}}" data-FlightDeptimePlanDate="{{=it[i].FlightDeptimePlanDate}}" data-FlightArrtimePlanDate="{{=it[i].FlightArrtimePlanDate}}" data-FlightDepAirport="{{=it[i].FlightDepAirport}}" data-FlightArrAirport="{{=it[i].FlightArrAirport}}">
+			<div class="aui-list-item-inner">
+				<div class="aui-list-item-title"> <span class="font-size-15 color3 aui-ellipsis name">{{=it[i].FlightCompany}}{{=it[i].FlightNo}}</span> </div>
+				<div>
+					<p class="aui-font-size-12 aui-ellipsis">({{=it[i].FlightDepAirport}} - {{=it[i].FlightArrAirport}})</p>
+				</div>
+			</div>
+		</li>
+		{{ } }}
+	</script>
+</section>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+		loadData(api.pageParam);
+    };
+	function loadData(postData){
+		api.ajax({
+		    url: BASE_URL+'App/Parking/flightInfo',
+		    method: 'post',
+		    data: {
+		        values: postData
+		    }
+		},function(ret, err){
+		    if (ret) {
+		        if(ret.length){
+					var tpl = document.getElementById("data-tpl").innerHTML;
+					var fn = doT.template(tpl);
+					document.getElementById("data-wrap").innerHTML = fn(ret);
+				}else{
+					document.getElementById("data-wrap").innerHTML = '<p class="aui-text-center aui-paded-t-10 aui-padded-b-10">暂无航班信息</p>';
+				}
+		    }
+		});
+	}
+	function depart(n){
+		var FlightCompany = n.getAttribute("data-FlightCompany");
+		var FlightNo = n.getAttribute("data-FlightNo");
+		var FlightDeptimePlanDate = n.getAttribute("data-FlightDeptimePlanDate");
+		var FlightArrtimePlanDate = n.getAttribute("data-FlightArrtimePlanDate");
+
+		var FlightDepAirport = n.getAttribute("data-FlightDepAirport");
+		var FlightArrAirport = n.getAttribute("data-FlightArrAirport");
+		var jsfun = 'changeFlightData("'+ FlightCompany +'","'+ FlightNo +'","'+ FlightDeptimePlanDate +'","'+ FlightArrtimePlanDate +'","'+ FlightDepAirport +'","'+ FlightArrAirport +'")';
+		api.execScript({
+			name: api.pageParam.wname,
+			frameName: api.pageParam.fname,
+			script: jsfun
+		});
+		api.closeWin();
+	}
+</script>
+</html>

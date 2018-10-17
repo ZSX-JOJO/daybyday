@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/login.css" />
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<style>
+	/*获取验证码*/
+	.loginItem .getCode {
+		position: absolute;
+		right: 1.25rem;
+		top: 0;
+		color: #999;
+		font-size: 0.6rem;
+		line-height: 2.4rem;
+		z-index: 10;
+	}
+	/*倒计时*/
+	.loginItem span {
+		position: absolute;
+		right: 0;
+		top: 0;
+		color: #999;
+		font-size: 0.6rem;
+		line-height: 2.4rem;
+		z-index: 10;
+	}
+</style>
+</head>
+<body>
+	<script type="text/x-dot-template" id="doT-Template">
+	<div class="aui-content">
+		<div class="close" tapmode onclick="api.closeWin();"><img src="../../image/close.png" alt=""></div>
+		<div class="topInfo aui-flex-col aui-flex-middle aui-flex-between">
+			<div>注册</div>
+			<div><img src="../../image/logo.png" alt="" style="width: 4.05rem;"></div>
+		</div>
+		<div class="loginForm">
+			<div class="loginItem aui-flex-col aui-flex-middle">
+				<div><img src="../../image/login/6.png" alt=""></div>
+				<div class="flex-auto"><input type="text" placeholder="请输入手机号" maxlength="11" id="mobile"></div>
+			</div>
+			<div class="loginItem aui-flex-col aui-flex-middle">
+				<div><img src="../../image/login/7.png" alt=""></div>
+				<div class="flex-auto relative"><input type="text" placeholder="请输入验证码" id="code"><div class="getCode" id="getCode" tapmode onclick="code()">获取验证码</div><span id="count"></span></div>
+			</div>
+			<div class="loginItem aui-flex-col aui-flex-middle">
+				<div><img src="../../image/login/8.png" alt=""></div>
+				<div class="flex-auto"><input type="password" placeholder="请输入密码" id="password"></div>
+			</div>
+			<div class="loginItem aui-flex-col aui-flex-middle">
+				<div><img src="../../image/login/9.png" alt=""></div>
+				<div class="flex-auto"><input type="text" placeholder="请输入邀请码（选填）" id="yaoqing"></div>
+			</div>
+		</div>
+		<div class="com-btm-btn" tapmode onclick="confirm()">确定</div>
+		<div class="thirdTtl" style="margin-top: 3rem;"><span>第三方登录</span></div>
+		<ul class="snsUl aui-flex-col aui-flex-center">
+			<li tapmode onclick="wx_login()"><img src="../../image/login/10.png" alt=""></li>
+			<li tapmode onclick="aliPayPlus_login()"><img src="../../image/login/11.png" alt=""></li>
+		</ul>
+	</div>
+	</script>
+	<div id="doT-Html"></div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+	document.querySelector('#doT-Html').innerHTML = doT.template(document.querySelector('#doT-Template').innerHTML)();
+	var aliPayPlus,wx;
+	apiready = function(){
+		api.parseTapmode();
+		var aliPayPlus = api.require('aliPayPlus');
+		var wx = api.require('wx');
+	};
+	// 重新发送验证码
+	var wait = 60;
+	function time(){
+		if(wait == 0){
+			document.getElementById("count").innerHTML = "";
+			document.getElementById("getCode").innerHTML = "获取验证码";
+			wait = 60;
+		}else{
+			document.getElementById("getCode").innerHTML = "重新获取验证码";
+			document.getElementById("count").innerHTML = "(" + wait + ")";
+			wait--;
+			setTimeout(function(){
+				time();
+			},1000);
+		}
+	}
+	// 检查手机号
+	function checkMobile(){
+		var mobile = document.getElementById("mobile").value;
+		var phoneRule = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+		if(mobile.length == 0){
+			api.toast({
+			    msg: '手机号不能为空',
+			    location:'middle'
+			});
+			return false;
+		}else if(!phoneRule.test(mobile)){
+			api.toast({
+			    msg: '手机号不合法!',
+			    location:'middle'
+			});
+			return false;
+		}
+		return mobile;
+	}
+	// 获取验证码
+	function code(){
+		document.getElementById("mobile").blur();
+		document.getElementById("code").blur();
+		if(wait == 60 && checkMobile()){
+			time();
+			var mobile = document.getElementById("mobile").value;
+			var code = document.getElementById("code").value;
+			var postData = {};
+			postData.mobile = mobile;
+			postData.code = code;
+			api.ajax({
+			    url: BASE_URL +'App/Login/userCode',
+			    method: 'post',
+			    headers: {
+		            'DM-APPKEY': '123456'
+		        },
+			    data: {
+			        values:postData
+			    }
+			}, function(ret, err) {
+			    if (ret) {
+			    	if(ret.code == "1"){
+			    		// alert(JSON.stringify(ret));
+			    	}
+			    }else{
+			    	// alert(JSON.stringify(err));
+			    }
+			});
+		}
+	}
+	//密码
+	function checkPassword(){
+		document.getElementById("password").blur();
+		var password = document.getElementById("password").value;
+		var passwordRule =  /^[\d]{6,16}$/;//6-16位数字
+		if(password.length == 0){
+			api.toast({
+			    msg: '密码不能为空!',
+			    location:'middle'
+			});
+			return false;
+		}else if(!passwordRule.test(password)){
+			api.toast({
+			    msg: '密码为6-16位数字格式!',
+			    location:'middle',
+			    duration:10000
+			});
+			return false;
+		}
+		return password;
+	}
+	// 注册
+	function confirm(){
+		document.getElementById("password").blur();
+		document.getElementById("yaoqing").blur();
+		// var mobile = document.getElementById("mobile").value;
+		var code = document.getElementById("code").value;
+		// var password = document.getElementById("password").value;
+		var yaoqing = document.getElementById("yaoqing").value;
+		var postData = {};
+		postData.mobile = checkMobile();
+		postData.code = code;
+		postData.password = checkPassword();
+		postData.spread_no = yaoqing;
+		if(checkMobile()){
+			if(!(postData.code && postData.mobile)){
+				api.toast({
+				    msg: '请输入验证码',
+				    location:'middle'
+				});
+				return;
+			}else if(checkPassword()){
+				if(!(postData.password)){
+					api.toast({
+					    msg: '请输入密码',
+					    location:'middle'
+					});
+					return;
+				}
+			}
+			api.ajax({
+		    url: BASE_URL + 'App/Login/userRegister',
+		    method: 'post',
+		    headers: {
+	            'DM-APPKEY': '123456'
+	        },
+		    data: {
+		        values:postData
+		    }
+		}, function(ret, err) {
+		    if (ret) {
+				alert(JSON.stringify(ret))
+		    	// var tpl = document.getElementById("doT-Template").innerHTML;
+                // var tempFn = doT.template(tpl);
+                // document.getElementById("doT-Html").innerHTML = tempFn(ret);
+		    	if(ret.code == "1"){
+					$api.setStorage('userid', ret.data.userid);
+		    		// 注册成功 跳转到登录界面
+		    		api.toast({
+		    		    msg: '注册成功',
+		    		    location:'middle'
+		    		});
+		    		setTimeout(function(){
+		    			api.closeToWin({
+		    			    name: 'root'
+		    			});
+		    		},300)
+		    	}else if(ret.code == "-1"){
+		    		// 验证码错误
+		    		api.toast({
+		    		    msg: '验证码错误',
+		    		    location:'middle'
+		    		});
+		    	}else if(ret.code == "-2"){
+		    		//验证码超时
+		    		api.toast({
+		    		    msg: '验证码超时',
+		    		    location:'middle'
+		    		});
+		    	}else if(ret.code == "-3"){
+		    		//此号码已被注册
+		    		api.toast({
+		    		    msg: '此号码已被注册',
+		    		    location:'middle'
+		    		});
+		    	}else if(ret.code == "-4"){
+		    		//系统错误 注册失败
+		    		api.toast({
+		    		    msg: '系统错误,注册失败',
+		    		    location:'middle'
+		    		});
+		    	}
+		    }
+		});
+		}
+	}
+	// 第三方登录 微信
+	function wx_login(){
+		wx.isInstalled(function(ret, err) {
+		    if (ret.installed) {
+		        alert("当前设备已安装微信客户端");
+		    } else {
+		        alert('当前设备未安装微信客户端');
+		    }
+		});
+	}
+	// 第三方登录 支付宝
+	function aliPayPlus_login(){
+		// aliPayPlus.authDirect({
+		//     authInfoStr: '*****'
+		// }, function(ret) {
+		//     alert(JSON.stringify(ret));
+		// });
+		aliPayPlus.auth({
+		    appId: '2017110709782441',
+		    partner: '2088821543389669',
+		    targetId: 'kkkkk091125',
+		    rsa2: false,
+		    authType:'LOGIN'
+		}, function(ret) {
+			if(ret){
+				alert(JSON.stringify(ret));
+			}else{
+				alert(JSON.stringify(err));
+			}
+		});
+	}
+
+
+</script>
+</html>

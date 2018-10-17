@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <style type="text/css">
+        body{
+            background-color: #F6F8FA;
+        }
+        .aui-bar-nav .aui-title{
+            left:3.5rem;
+            right:3.5rem;
+            width: 11rem;
+        }
+        .aui-bar-nav.aui-bar-light.aui-font-size-14{
+            background-color: #000000;
+            color:#F9F9F9 !important;
+        }
+        .aui-bar-nav.aui-bar-light .aui-iconfont{
+            color: #fff;
+        }
+        .main{
+            position: relative;
+        }
+        .bg-header{
+            position:absolute;
+            /*background-color: #3a64da;*/
+            width: 100%;
+            height:9.75rem;
+        }
+        .header{
+            width: 2.3rem;
+            margin:1rem auto;
+        }
+        .text-all{
+            text-align: center;
+            font-family: PingFang-Regular;
+            font-size:0.7rem;
+            color:#333333;
+        }
+        .text-middle{
+            margin-top:1rem;
+        }
+        .private{
+            width: 100%;
+            position: absolute;
+            margin:7.55rem auto;
+        }
+        .private-top{
+            font-family: PingFang-Regular;
+            font-size: 0.7rem;
+            color:#999999;
+            text-align: center;
+            margin-top:3px;
+        }
+        .private-top-t{
+            font-family: PingFang-Regular;
+            font-size: 1.35rem;
+            color:#333333;
+            text-align: center;
+            margin-top:-8px;
+        }
+        .private-bottom{
+            font-family: PingFang-Regular;
+            font-size: 0.6rem;
+            color:#083a91;
+            text-align: center;
+            margin-top:42px;
+        }
+        .private-bottom-b{
+            font-family: PingFang-Regular;
+            font-size: 3.6rem;
+            color:#30302e;
+            text-align: center;
+            margin-top:-5px;
+        }
+        .private-bottom-b-text{
+            font-family: PingFang-Semiblod;
+            font-size: 1.1rem;
+            color:#30302e;
+            text-align: center;
+            margin-top:-5px;
+        }
+        .share-guy{
+            position: absolute;
+            width: 9.1rem;
+            margin-top:20rem;
+            margin-left:24.7%;
+        }
+        .com-btm-btn {
+            font-family: PingFang-Regular;
+            font-size: 0.8rem;
+            color: #FFF;
+            text-align: center;
+            line-height: 2.25rem;
+            height: 2.25rem;
+            background: #083A91;
+            border-radius: 1.25rem;
+            /*box-shadow: 0 0.2rem 0.2rem rgba(0,0,0,0.15);*/
+        }
+        .footer{
+            width: 100%;
+            position: fixed;
+            bottom: 0px;
+            height: 58.5px;
+            line-height: 58.5px;
+            background-color: #ffffff;
+        }
+        .footer .footerLeft {
+            width: 50%;
+            float: left;
+            background: #fff;
+            margin-left:15px;
+            padding-top: 9.75px;
+        }
+        .footerLeft img{
+            width: 98px;
+            height: 39px;
+        }
+        .footer .footerRight {
+            width: 50%;
+            float: right;
+            background-repeat: repeat-y;
+            background-size: 100%;
+            color: #fff;
+            font-size: 17px;
+            text-align: center;
+            margin-top: -35px;
+            margin-right:15px;
+        }
+        .com-btm-btn.footer-btn{
+            font-family: PingFang-Regular;
+            font-size: 0.625rem;
+            color: #FFF;
+            text-align: center;
+            line-height: 1.75rem;
+            height: 1.75rem;
+            background: #3F74E9;
+            border-radius: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="aui-bar aui-bar-nav aui-bar-light aui-font-size-14" id="header">
+    	<a class="aui-pull-left" tapmode onclick="api.closeWin()">
+    		<span class="aui-iconfont aui-icon-left"></span>
+    	</a>
+    	<div class="aui-title">领钱啦~骏杰泊车百万豪礼等你瓜分</div>
+    </header>
+    <div class="main">
+        <!-- 第一部分  高度暂定9.75rem-->
+        <div class="bg-header">
+            <div class="header"><img src="../../image/order/head.png"></div>
+            <div class="text-all">
+                <div class="text-middle">成功邀请一位朋友注册,均可获</div>
+                <div class="text-bottom">得120元待泊券</div>
+            </div>
+        </div>
+        <!-- 第二部分 专属邀请码 -->
+        <div class="private">
+            <div class="private-top">邀请码</div>
+            <div class="private-top-t">4444444</div>
+            <div class="private-bottom">先领券再预约车位</div>
+            <div class="private-bottom-b">
+                120<span class="private-bottom-b-text">元</span>
+            </div>
+        </div>
+        <!-- 第三部分 分享好友-->
+        <div class="share-guy">
+            <div class="com-btm-btn">点击领取</div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footerLeft">
+            <img src="../../image/mine/share-bottom.png">
+        </div>
+        <div class="footerRight">
+            <div class="com-btm-btn footer-btn">下载骏杰泊车APP</div>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        api.parseTapmode();
+        var headerDom = $api.byId('header');
+        $api.fixStatusBar(headerDom);
+    };
+</script>
+</html>

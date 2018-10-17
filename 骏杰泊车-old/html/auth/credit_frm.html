@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+    <style>
+    body{
+        background: #ffffff;
+    }
+        .credit-top{
+            margin:1.55rem 0 1.75rem 0;
+        }
+        .credit-bot{
+            padding: 0 1rem;
+        }
+        .credit-bot .l-h{
+            line-height: 1.75;
+        }
+        .map{
+            position: relative;
+            height: 10.8rem;
+            width: 100%;
+            background: #fff;
+        }
+        .map .inner-map img.pic{
+            height:10.8rem;
+            margin:0 auto;
+        }
+        .map .icon{
+            position: relative;
+            top: -50%;
+            left: 60%;
+            /*-webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);*/
+            width: 1.5rem;
+            z-index: 10;
+
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+       <div class="credit-top aui-text-center">
+            <div class="aui-font-size-18" style="color:#53bda1;">有信用，免押金</div>
+            <div class="font-size-13 text-dark aui-padded-t-10">授权芝麻信用，满600分</div>
+            <div class="font-size-13 text-dark aui-padded-t-5">可享受免订金预定车位</div>
+       </div>
+       <div class="map">
+            <div class="inner-map"><img src="../../image/auth/map.png" class="pic" alt=""></div>
+               <div class="icon"><img src="../../image/auth/icon_03.png" alt=""></div>
+       </div>
+
+       <div class="text-common font-size-13 aui-text-center" style="margin:0.9rem 0 1.75rem 0">骏杰泊车 您的机场泊车服务管家</div>
+       <div class="credit-bot aui-margin-b-5">
+            <div class="tit aui-flex-col aui-flex-middle">
+                <div class="imgleft aui-margin-r-5"><img src="../../image/auth/1.png" style="height:0.85rem" alt=""></div>
+                <p class="text-dark font-size-15">什么是芝麻分</p>
+            </div>
+            <div class="aui-margin-l-15 aui-padded-l-5 aui-font-size-12 text-light l-h">
+                由芝麻信用提供，它是面向社会的信用服务体系，提供方
+                方面面的信用状况，运用大数据及云计算客观呈现个人的
+                信用状况，通过连接各种服务，让每个人都能体验信用带
+                来的价值。<span class="text-common aui-font-size-12">了解详情></span>
+            </div>
+       </div>
+       <div class="aui-padded-15">
+            <div class="com-btm-btn" tapmode onclick="openWin('agree_win');">立即授权</div>
+       </div>
+    </section>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+
+    };
+</script>
+
+</html>

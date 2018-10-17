@@ -1,0 +1,136 @@
+body {
+	background: #FFF url(../image/common/bg.png) no-repeat center top;
+	background-size: 100% auto;
+}
+.aui-content {
+	padding: 1.6rem 0.75rem 2rem;
+}
+.close {
+	padding: 0.5rem;
+	width: 0.65rem;
+	box-sizing: content-box;
+}
+.topInfo {
+	margin-bottom: 1.25rem;
+	padding: 0.9rem 0.5rem;
+}
+.topInfo .title {
+	font-size: 1.05rem;
+	line-height: 1.7;
+}
+.topInfo .text {
+	font-size: 0.6rem;
+	color: #999;
+	line-height: 1.8;
+}
+#tabUl {
+	padding: 0.25rem 1.5rem 0.9rem;
+}
+#tabUl li {
+	font-size: 0.75rem;
+	color: #999;
+	min-width: 4.7rem;
+	padding: 0.5rem 0.5rem 0.35rem;
+	text-align: center;
+	border-bottom: 0.15rem solid #FFF;
+}
+#tabUl li.aui-active {
+	color: #083a91;
+	font-weight: bold;
+	border-color: #083a91;
+}
+.loginForm {
+	padding: 0 0.5rem 0.65rem;
+}
+.loginItem {
+	height: 2.4rem;
+}
+.loginItem img {
+	height: 0.8rem;
+	width: 0.8rem;
+}
+.loginItem input {
+	font-size: 0.7rem;
+	padding-left: 0.5rem;
+}
+.loginItem .getCode {
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: #999;
+	font-size: 0.6rem;
+	line-height: 2.4rem;
+	z-index: 10;
+}
+.com-btm-btn {
+	height: 2rem;
+	line-height: 2rem;
+}
+.thirdTtl {
+	margin: 0 auto 1.5rem;
+	width: 7.1rem;
+	font-size: 0.6rem;
+	color: #999;
+	position: relative;
+	text-align: center;
+}
+.thirdTtl:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 45%;
+	width: 100%;
+	height: 1px; 
+	background: #999;
+}
+.thirdTtl span {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	background: #FFF;
+	padding: 0 0.5rem;
+}
+.snsUl li {
+	margin: 0 1.875rem;
+	width: 2.25rem;
+}
+
+/*认证*/
+.certBox {
+	margin-bottom: 0.35rem;
+	padding: 0.35rem 0.5rem 1rem;
+}
+.h2Ttl {
+	padding: 0 0.55rem;
+	font-size: 0.8rem;
+	color: #333;
+	background: url(../image/login/2.png) no-repeat left center;
+	background-size: 0.2rem auto;
+}
+.addBtn {
+	margin: 0 auto;
+	width: 3.25rem;
+	height: 3.25rem;
+	background: #FAFAFA;
+	font-size: 0.55rem;
+	color: #ccc;
+	text-align: center;
+	border: 1px solid #D7D7D7;
+	border-radius: 0.2rem;
+}
+.addBtn .ico {
+	margin: 0.1rem auto 0.4rem;
+	width: 1.35rem;
+}
+.picture {
+	margin: 0 auto;
+	width: 8.5rem;
+	border: 1px solid #e8e8e8;
+	border-radius: 0.2rem;
+	box-shadow: 0 0.15rem 0.3rem rgba(0,0,0,0.12);
+}
+.picture img {
+	width: 100%;
+	height: auto;
+}
+

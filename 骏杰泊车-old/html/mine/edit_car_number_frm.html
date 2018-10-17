@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/car-num.css" />
+</head>
+<body>
+	<div class="popOverlay"></div>
+	<div class="popup">
+		<div class="popHeader aui-border-b">
+			<div class="close" tapmode onClick="api.closeFrame();"></div>
+			<div class="aui-ellipsis-1">输入车牌号</div>
+		</div>
+		<div class="popInner">
+			<div class="carNumBox aui-flex-col aui-flex-center aui-flex-middle">
+				<div class="num line first"></div>
+				<div class="num line"></div>
+				<div class="num line"></div>
+				<div class="num line"></div>
+				<div class="num line"></div>
+				<div class="num line"></div>
+				<div class="num line"></div>
+			</div>
+		</div>
+	</div>
+	<div class="keyboard">
+		<div class="handle clearfix">
+			<div class="aui-pull-right" tapmode onClick="confirm();">完成</div>
+		</div>
+		<div class="board board-pro">
+			<ul class="keyList clearfix">
+				<li><div class="key">京</div></li>
+				<li><div class="key">津</div></li>
+				<li><div class="key">渝</div></li>
+				<li><div class="key">沪</div></li>
+				<li><div class="key">冀</div></li>
+				<li><div class="key">晋</div></li>
+				<li><div class="key">辽</div></li>
+				<li><div class="key">吉</div></li>
+				<li><div class="key">黑</div></li>
+				<li><div class="key">苏</div></li>
+				<li><div class="key">浙</div></li>
+				<li><div class="key">皖</div></li>
+				<li><div class="key">闽</div></li>
+				<li><div class="key">赣</div></li>
+				<li><div class="key">鲁</div></li>
+				<li><div class="key">豫</div></li>
+				<li><div class="key">鄂</div></li>
+				<li><div class="key">湘</div></li>
+				<li><div class="key">粤</div></li>
+				<li><div class="key">琼</div></li>
+				<li><div class="key">川</div></li>
+				<li><div class="key">贵</div></li>
+				<li><div class="key">云</div></li>
+				<li><div class="key">陕</div></li>
+				<li><div class="key">甘</div></li>
+				<li><div class="key">青</div></li>
+				<li><div class="key">蒙</div></li>
+				<li><div class="key">桂</div></li>
+				<li><div class="key">宁</div></li>
+				<li><div class="key">新</div></li>
+				<li><div class="key">藏</div></li>
+				<li><div class="key">使</div></li>
+				<li><div class="key">领</div></li>
+				<li><div class="key">警</div></li>
+				<li><div class="key">学</div></li>
+				<li><div class="key">港</div></li>
+				<li><div class="key">澳</div></li>
+				<li class="aui-pull-right" style="width: 30%;"><div class="quxiao"></div></li>
+			</ul>
+		</div>
+		<div class="board board-en aui-hide">
+			<ul class="keyList clearfix numList aui-hide">
+				<li><div class="key">1</div></li>
+				<li><div class="key">2</div></li>
+				<li><div class="key">3</div></li>
+				<li><div class="key">4</div></li>
+				<li><div class="key">5</div></li>
+				<li><div class="key">6</div></li>
+				<li><div class="key">7</div></li>
+				<li><div class="key">8</div></li>
+				<li><div class="key">9</div></li>
+				<li><div class="key">0</div></li>
+			</ul>
+			<ul class="keyList clearfix">
+				<li><div class="key">Q</div></li>
+				<li><div class="key">W</div></li>
+				<li><div class="key">E</div></li>
+				<li><div class="key">R</div></li>
+				<li><div class="key">T</div></li>
+				<li><div class="key">Y</div></li>
+				<li><div class="key">U</div></li>
+				<li><div class="key">I</div></li>
+				<li><div class="key">O</div></li>
+				<li><div class="key">P</div></li>
+				<li><div class="key">A</div></li>
+				<li><div class="key">S</div></li>
+				<li><div class="key">D</div></li>
+				<li><div class="key">F</div></li>
+				<li><div class="key">G</div></li>
+				<li><div class="key">H</div></li>
+				<li><div class="key">J</div></li>
+				<li><div class="key">K</div></li>
+				<li><div class="key">L</div></li>
+				<li><div class="key">Z</div></li>
+				<li><div class="key">X</div></li>
+				<li><div class="key">C</div></li>
+				<li><div class="key">V</div></li>
+				<li><div class="key">B</div></li>
+				<li><div class="key">N</div></li>
+				<li><div class="key">M</div></li>
+				<li class="aui-pull-right" style="width: 40%;"><div class="quxiao"></div></li>
+			</ul>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/aui-tap.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+		
+    };
+	var current = 0;
+	function setBoard(){
+		if(current == 0){
+			$$('.board-pro').removeClass('aui-hide');
+			$$('.board-en').addClass('aui-hide');
+		}else{
+			$$('.board-pro').addClass('aui-hide');
+			$$('.board-en').removeClass('aui-hide');
+		}
+		if(current>1){
+			$$('.numList').removeClass('aui-hide');
+		}else{
+			$$('.numList').addClass('aui-hide');
+		}
+	}
+	$$('.keyList').on('tap','.key', function(e) {
+		var txt = $$(this).text();
+		$$('.carNumBox .num').eq(current).removeClass('line').text(txt);
+		if(current<7){
+			current++;
+			setBoard();
+		}
+	});
+	$$('.quxiao').on('tap', function(e) {
+		if(current>0){
+			current--;
+			setBoard();
+		}
+		$$('.carNumBox .num').eq(current).addClass('line').text('');
+	});
+	function confirm(){
+		var isError = false;
+		var carnum = '';
+		$$('.carNumBox .num').each(function(){
+			var txt = $$(this).text();
+			if(txt){
+				carnum+=txt;
+			}else{
+				isError = true;
+				api.toast({
+                    msg: '请输入完整的车牌号码',
+                    location:'middle'
+                });
+			}
+		});
+		if(!isError){
+			var jsfun = 'changeData("carNum","'+ carnum +'")';
+			api.execScript({
+				frameName: 'edit_car_info_frm',
+				script: jsfun
+			});
+			api.closeFrame();
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,140 @@
+/*
+ * =========================================================================
+ * APIClud - AUI UI 框架    流浪男  QQ：343757327  http://www.auicss.com
+ * 日历样式表
+ * Verson 0.0.2
+ * =========================================================================
+ */
+.aui-calendar table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+}
+.aui-calendar td,
+.aui-calendar th {
+    padding: 0;
+    font-weight: 400;
+    display: table-cell;
+    vertical-align: inherit;
+}
+.aui-calendar tr {
+    height: 2.2rem;
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.aui-calendar {
+    background: #ffffff;
+    color: #999999;
+}
+.aui-calendar th {
+    padding: 5px 0;
+}
+.aui-calendar .aui-calendar-body td {
+    padding: 10px 0;
+    position: relative;
+}
+.aui-calendar td p {
+    font-size: 10px;
+    color: #999;
+}
+.aui-calendar .aui-calendar-header {
+    position: relative;
+    border-bottom: 1px solid #eeeeee;
+}
+.aui-calendar .aui-calendar-header tr {
+    height: 2rem;
+}
+.aui-calendar .aui-calendar-header > tr:first-child {
+    font-size: 1.2em;
+}
+
+.aui-calendar .bandge {
+    width: 6px;
+    height: 6px;
+    background: #ff9900;
+    border-radius: 50%;
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.aui-calendar .before-day,
+.aui-calendar .before-day p {
+    color: #ccc !important;
+    /*background: #fafafa;*/
+}
+.aui-calendar .before-day .today {
+    border-color: #ffcc00 !important;
+}
+.aui-calendar-title {
+    color: #00bcd4;
+}
+.aui-calendar-btn {
+    width: 1.3rem;
+    height: 1.3rem;
+    line-height: 1.25rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: #00bcd4;
+    text-align: center;
+}
+.aui-calendar-btn .aui-iconfont {
+    font-size: 0.7rem;
+    color: #ffffff;
+}
+.aui-calendar-day {
+    color: #00bcd4;
+}
+.aui-calendar-week {
+    color: #e51c23;
+}
+.aui-calendar-day-item {
+    position: relative;
+    z-index: 2;
+}
+.aui-calendar .today,
+.aui-calendar .active {
+    position: absolute;
+    border-radius: 50%;
+    width: 1.6rem;
+    padding-bottom: 1.6rem;
+    height: 0;
+    left: 50%;
+    top: 50%;
+    margin-left: -0.8rem;
+    margin-top: -0.8rem;
+    z-index: 0;
+}
+.aui-calendar .today {
+    background-color: #f0f0f0;
+}
+.aui-calendar .active {
+    background-color: #00bcd4;
+    color: #fff;
+}
+.aui-calendar .active.date-start {
+    background-color: #03a9f4;
+}
+.aui-calendar .active.date-end {
+    background-color: #e51c23;
+}
+.aui-calendar .active.date-between {
+    background-color: rgba(241,196,15,0.2);
+}
+.aui-calendar .aui-calendar-lunar .today,
+.aui-calendar .aui-calendar-lunar .active{
+    width: 90%;
+    padding-bottom: 90%;
+    margin-left: -45%;
+    margin-top: -45%;
+}
+.aui-calendar .aui-calendar-week.aui-active,
+.aui-calendar .aui-calendar-day.aui-active,
+.aui-calendar .aui-calendar-week.aui-active p,
+.aui-calendar .aui-calendar-day.aui-active p {
+    color: #fff !important;
+}

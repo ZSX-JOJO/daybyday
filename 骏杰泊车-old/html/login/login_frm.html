@@ -1,0 +1,275 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/login.css" />
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<style>
+</style>
+</head>
+<body>
+	<script type="text/x-dot-template" id="doT-Template">
+	<div class="aui-content">
+		<div class="close" tapmode onclick="api.closeWin();"><img src="../../image/close.png" alt=""></div>
+		<div class="topInfo aui-flex-col aui-flex-middle aui-flex-between">
+			<div class="aui-flex-item-7">
+				<div class="title">注册/登录</div>
+				<div class="text">请输入您的手机号码，<br>登录或注册您的骏杰泊车账号</div>
+			</div>
+			<div><img src="../../image/logo.png" alt="" style="width: 4.05rem;"></div>
+		</div>
+		<ul id="tabUl" class="aui-flex-col aui-flex-between aui-flex-middle">
+			<!-- <li class="loginGroup aui-active" id="login-0" tapmode onclick="setGroup('loginGroup',0);">账号登录</li> -->
+			<li class="loginGroup aui-active" id="login-0">账号登录</li>
+			<li class="loginGroup" id="login-1" tapmode onclick="toQuick();">快速登录</li>
+		</ul>
+		<div class="loginForm" id="loginForm-0">
+			<div class="loginItem aui-flex-col aui-flex-middle">
+				<div><img src="../../image/login/6.png" alt=""></div>
+				<div class="flex-auto"><input type="text" placeholder="请输入手机号" id="mobile" maxlength="11"></div>
+			</div>
+			<div class="loginItem aui-flex-col aui-flex-middle">
+				<div><img src="../../image/login/8.png" alt=""></div>
+				<div class="flex-auto"><input type="password" placeholder="请输入密码" id="password"></div>
+			</div>
+		</div>
+		<!-- <div class="loginForm aui-hide" id="loginForm-1">
+			<div class="loginItem aui-flex-col aui-flex-middle">
+				<div><img src="../../image/login/6.png" alt=""></div>
+				<div class="flex-auto"><input type="text" placeholder="请输入手机号" maxlength="11" id="quick-mobile"></div>
+			</div>
+			<div class="loginItem aui-flex-col aui-flex-middle">
+				<div><img src="../../image/login/7.png" alt=""></div>
+				<div class="flex-auto relative"><input type="text" placeholder="请输入验证码" id="code"><div class="getCode" id="getCode" tapmode onclick="code()">获取验证码</div></div>
+			</div>
+			<div class="loginItem aui-flex-col aui-flex-middle">
+				<div><img src="../../image/login/9.png" alt=""></div>
+				<div class="flex-auto"><input type="text" placeholder="请输入邀请码（选填）" id="yaoqing"></div>
+			</div>
+		</div> -->
+		<div class="com-btm-btn" tapmode onclick="login()">确定</div>
+		<div class="aui-text-center text-common font-size-15" style="margin: 1.65rem 0 1.2rem;">
+			<!-- <span class="aui-padded-5 inline" tapmode onclick="setGroup('loginGroup',2);">注册账号</span> -->
+			<span class="aui-padded-5 inline" tapmode onclick="register();">注册账号</span>
+		</div>
+		<div class="thirdTtl"><span>第三方登录</span></div>
+		<ul class="snsUl aui-flex-col aui-flex-center">
+			<li tapmode onclick="wx_login()"><img src="../../image/login/10.png" alt=""></li>
+			<li tapmode onclick="aliPayPlus_login()"><img src="../../image/login/11.png" alt=""></li>
+		</ul>
+	</div>
+	</script>
+	<div id="doT-Html"></div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/aui-tpl.js"></script>
+<script type="text/javascript">
+	document.querySelector('#doT-Html').innerHTML = doT.template(document.querySelector('#doT-Template').innerHTML)();
+	// var tpl = document.getElementById("doT-Template").innerHTML;
+    // var tempFn = doT.template(tpl);
+    // document.getElementById("doT-Html").innerHTML = tempFn(ret);
+    var aliPayPlus,wx;
+	apiready = function(){
+		api.parseTapmode();
+		aliPayPlus = api.require('aliPayPlus');
+		wx = api.require('wx');
+	};
+	//跳转到快速登录
+	function toQuick(){
+		api.openFrame({
+		    name: 'login_quick_frm',
+		    url: './login_quick_frm.html',
+		    rect: {
+		        x: 0,
+		        y: 0,
+		        w: 'auto',
+		        h: 'auto'
+		    },
+		    pageParam: {
+		        name: 'value'
+		    },
+		    bounces: false
+		});
+	}
+	// 登录方式切换
+	// function setGroup(loginGroup,num){
+	// 	if(document.querySelector(".loginGroup.aui-active")){
+ //            document.querySelector(".loginGroup.aui-active").classList.remove("aui-active");
+ //            document.getElementById("login-"+num).classList.add("aui-active");
+ //            // 两种登录
+ //            document.querySelector(".loginForm.aui-hide").classList.remove("aui-hide");
+ //            if(num == 0){
+ //            	document.getElementById("loginForm-1").classList.add("aui-hide");
+ //        	}else if(num == 1){
+ //        		document.getElementById("loginForm-0").classList.add("aui-hide");
+ //        	}
+ //        }
+	// }
+	// 检查手机号
+	function checkMobile(){
+		var mobile_check = document.getElementById("mobile").value;
+		var phoneRule = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+		if(mobile_check.length == 0){
+			api.toast({
+                msg: '请输入手机号码',
+                location: 'middle'
+            });
+            return false;
+		}else if(!(phoneRule.test(mobile_check))){
+			api.toast({
+                msg: '请输入正确的手机号码',
+                location: 'middle'
+            });
+            return false;
+		}
+		return mobile_check;
+	}
+	// 登录
+	function login(){
+		document.getElementById("mobile").blur();
+		document.getElementById("password").blur();
+		// var mobile = document.getElementById("mobile").value;
+		var password = document.getElementById("password").value;
+		var postData = {};
+		postData.mobile = checkMobile();
+		postData.password = password;
+		if(checkMobile()){
+			if(!(postData.password)){
+				api.toast({
+				    msg: '请输入密码',
+				    location:'middle'
+				});
+				return;
+			}
+			api.ajax({
+		    url: BASE_URL + "App/Login/userLogin",
+		    method: 'post',
+		    headers: {
+	            'DM-APPKEY': '123456'
+	        },
+		    data: {
+		        values:postData
+		    }
+		}, function(ret, err) {
+		    if (ret) {
+		    	if(ret.code == "1"){
+		    		$api.setStorage('userid', ret.data.userid);
+		    		api.sendEvent({
+                        name: 'loginSuccessEvent'
+                    });
+		    		api.toast({
+			    	    msg: '登录成功',
+			    	    location:'middle'
+			    	});
+			    	// 登录成功 跳转到首页
+			    	setTimeout(function(){
+			    		api.closeToWin({
+				    	    name: 'root'
+				    	});
+			    	},300);
+		    	}else if(ret.code = "-1"){
+		    		// alert(JSON.stringify(ret.msg));
+		    		api.toast({
+			    	    msg: '手机号不存在或密码错误',
+			    	    location:'middle'
+			    	});
+		    	}
+		    }else{
+		    	// alert(JSON.stringify(err));
+		    }
+		});
+		}
+	}
+	function quick_login(){
+	}
+	function register(){
+		api.openFrame({
+		    name: 'register_frm',
+		    url: 'register_frm.html',
+		    rect: {
+		        x: 0,
+		        y: 0,
+		        w: 'auto',
+		        h: 'auto'
+		    },
+		    pageParam: {
+		        name: 'value'
+		    },
+		    bounces: false
+		});
+	}
+	// 第三方登录 微信
+	function wx_login(){
+		wx.auth({
+            apiKey: ''
+        }, function(ret, err) {
+            if (ret.status) {
+                alert(JSON.stringify(ret));
+            } else {
+                alert(err.code);
+            }
+        });
+		// wx.auth({
+		//     // apiKey: ''
+		// }, function(ret, err) {
+		//     if (ret.status) {
+		//     	alert(ret);
+		//     	wx.getToken({
+		// 	    apiKey: 'wx3244516985996933',
+		// 	    apiSecret: '764a727c7ec1985c88f3702c9de5f914',
+		// 	    code:ret.code
+		// 	}, function(ret, err) {
+		// 	    if (ret.status) {
+		// 	        alert(JSON.stringify(ret));
+		// 	        wx.getUserInfo({
+  //                       accessToken: ret.accessToken,
+  //                       openId: ret.openId
+  //                   }, function(result, err) {
+  //                       if (result.status) {
+  //                           var data = {
+  //                               "wechat_openid":ret.openId,
+  //                               'nickname' : result.nickname,
+  //                               "avatar":result.headimgurl,
+  //                               "sex":result.sex
+  //                               // "province":result.info.province,
+  //                               // "city":result.info.city
+  //                           }
+  //                           // login(data);
+  //                       } else {
+  //                           // alert(err.code);
+  //                       }
+  //                   });
+		// 	    } else {
+		// 	        alert(err.code);
+		// 	    }
+		// 	});
+		//     } else {
+		//         alert(err.code);
+		//     }
+		// });
+	}
+	// 第三方登录 支付宝
+	function aliPayPlus_login(){
+		// alert("支付鸨");
+		aliPayPlus.auth({
+		    appId: '2017110709782441',
+		    partner: '2088821543389669',
+		    targetId: 'kkkkk091125',
+		    rsa2: false,
+		    authType:'LOGIN'
+		}, function(ret) {
+			if(ret){
+				alert(JSON.stringify(ret));
+			}else{
+				alert(JSON.stringify(err));
+			}
+		});
+	}
+</script>
+</html>

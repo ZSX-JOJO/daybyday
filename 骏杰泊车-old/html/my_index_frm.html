@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../css/index.css" />
+<script type="text/javascript" src="../script/dot.min.js"></script>
+<style type="text/css">
+body {
+	background-color: #FFF;
+}
+.mineHeader {
+	margin-bottom: 0.5rem;
+	position: relative;
+}
+.bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 8.85rem;
+	overflow: hidden;
+	z-index: 0;
+	background: url(../image/order/banner_03.png) no-repeat center center;
+	background-size: cover;
+}
+.bg:before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: -0rem;
+	width: 150vw;
+	height: 17.7rem;
+	border: 300px solid #FFF;
+	border-radius: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	z-index: 1;
+}
+.hBox {
+	position: relative;
+	padding: 4.3rem 1.7rem 0;
+	z-index: 2;
+}
+.setting {
+	position: absolute;
+	right: 0.75rem;
+	top: 1.55rem;
+	padding: 0.5rem;
+	z-index: 3;
+}
+.setting img {
+	width: 0.8rem;
+}
+
+.user {
+	position: relative;
+	padding: 2rem 1.5rem 0;
+	height: 5.25rem;
+	text-align: center;
+	border-radius: 0.4rem;
+	z-index: 3;
+	background: #FFF url(../image/mine/user_bg.png) no-repeat center bottom;
+	background-size: 100% 2rem;
+	box-shadow: 0px 0.35rem 0.5rem 0px rgba(0, 0, 0, 0.1);
+}
+.user .name {
+	font-size: 0.9rem;
+	color: #000000;
+}
+.user .avatar {
+	position: absolute;
+	left: 50%;
+	top: 3px;
+	width: 3rem;
+	height: 3rem;
+	padding: 0.1rem;
+	border: 1px solid #FFF;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}
+.subAvatar {
+	width: 100%;
+	height: 100%;
+	background: #FFF;
+	border-radius: 50%;
+	box-shadow: 0px 0.35rem 0.5rem 0px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+}
+.user .avatar img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.discount {
+	position: absolute;
+	height: 20px;
+	width: 33px;
+	background: url('../image/mine/discount.png') no-repeat;
+	background-position: center;
+	background-size: 100%;
+	color: #ffffff;
+	text-align: center;
+	line-height: 20px;
+	right: 0.25rem;
+	top: 0;
+	font-size: 0.6rem;
+}
+</style>
+</head>
+<body>
+<div id="doT-Html"></div>
+<script type="text/x-dot-template" id="doT-Template">
+<div class="mineHeader">
+	<div class="bg"></div>
+	<div class="hBox">
+		<div class="setting" tapmode onclick="openMine('setting_win');"><img src="../image/mine/setting.png" alt=""></div>
+		<div class="user">
+			{{?(it.code == "-1")}}
+			<div class="avatar" tapmode onclick="toLogin()">
+				<div class="subAvatar"><img src="../image/auth/ava.png" alt=""></div>
+			</div>
+			{{??}}
+			{{?it.data.user_avatar !== null}}
+			<div class="avatar" tapmode onclick="toLogin()">
+				<div class="subAvatar"><img src="{{=SITE_URL}}/{{=it.data.user_avatar}}" alt=""></div>
+			</div>
+			{{??}}
+			<div class="avatar" tapmode onclick="toLogin()">
+				<div class="subAvatar"><img src="../image/auth/ava.png" alt=""></div>
+			</div>
+			{{?}}
+			{{?}}
+			{{?it.data.user_name !== null}}
+			<div class="name">{{=it.data.user_name}}</div>
+			{{??}}
+			<div class="name">骏杰泊车</div>
+			{{?}}
+		</div>
+	</div>
+</div>
+<div class="btnList aui-flex-col aui-flex-middle aui-flex-between">
+	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('share_discount_win')">
+		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/9.png" alt="">
+			<div class="note">120</div>
+		</div>
+		<div class="text-dark font-size-13">分享优惠</div>
+		<div class="font-size-11 text-light">代金券多邀多得</div>
+	</div>
+	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('mine_account_win')">
+		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/11.png" alt=""></div>
+		<div class="text-dark font-size-13">我的账户</div>
+		<div class="font-size-11 text-light">代金券多邀多得</div>
+	</div>
+	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('coupons_win')">
+		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/12.png" alt=""></div>
+		<div class="text-dark font-size-13">我的卡券</div>
+		<div class="font-size-11 text-light">代金券多邀多得</div>
+	</div>
+	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('recharge_win')">
+		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/13.png" alt=""></div>
+		<div class="text-dark font-size-13">充值优惠</div>
+		<div class="font-size-11 text-light">代金券多邀多得</div>
+	</div>
+	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('car_travel_win')">
+		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/14.png" alt=""></div>
+		<div class="text-dark font-size-13">车辆行程</div>
+		<div class="font-size-11 text-light">代金券多邀多得</div>
+	</div>
+	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('common_car_win')">
+		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/15.png" alt=""></div>
+		<div class="text-dark font-size-13">常用车辆</div>
+		<div class="font-size-11 text-light">代金券多邀多得</div>
+	</div>
+</div>
+<div><img src="../image/index/banner.jpg" alt=""></div>
+<div class="btnList aui-flex-col aui-flex-middle aui-flex-between">
+	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('evaluation_list_win')">
+		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/17.png" alt="">
+			<div class="dot"></div>
+		</div>
+		<div class="text-dark font-size-13">评价</div>
+		<div class="font-size-11 text-light">代金券多邀多得</div>
+	</div>
+	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center">
+		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/18.png" alt=""></div>
+		<div class="text-dark font-size-13">商务合作</div>
+		<div class="font-size-11 text-light">代金券多邀多得</div>
+	</div>
+	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openHelp()">
+		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/19.png" alt=""></div>
+		<div class="text-dark font-size-13">联系客服</div>
+		<div class="font-size-11 text-light">代金券多邀多得</div>
+	</div>
+</div>
+<div class="aui-padded-15 aui-padded-t-0 aui-margin-b-10">
+	<div class="com-btm-btn">司机招募</div>
+</div>
+</script>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	var userid;
+	var login = false;
+    apiready = function(){
+    	api.parseTapmode();
+    	userid = $api.getStorage('userid');
+    	if($api.getStorage('userid')){
+    		login = true;
+    		myIndex();//我的
+    	}else{
+    		tourist()//游客登录
+    	}
+    	api.addEventListener({//登录成功
+			name: 'loginSuccessEvent'
+		}, function(ret, err){
+			if( ret ){
+				login = true;
+				userid = $api.getStorage('userid');
+				myIndex();
+			}
+		});
+		api.addEventListener({//退出成功
+			name: 'logoutSuccessEvent'
+		}, function(ret, err){
+			if( ret ){
+				login = false;
+				userid = undefined;
+				myIndex();
+				tourist();
+			}
+		});
+		api.addEventListener({//个人信息修改后 重新获取此页面数据
+		    name: 'userEditSucess'
+		}, function(ret, err) {
+		    if (ret) {
+		    	myIndex()
+		    }
+		});
+    };
+    function openMine(url){
+    	if(!userid){
+            api.openWin({
+                name: 'login_win',
+                url: '../html/login/login_win.html',
+                pageParam: {
+                    name: 'value'
+                }
+            });
+            return;
+        }
+        api.openWin({
+            name: url,
+            url: 'mine/'+ url + '.html'
+        });
+    }
+    function openHelp(){
+        api.openFrame({
+            name: 'help_pop_frm',
+            url: 'mine/help_pop_frm.html',
+            rect: {
+                x: 0,
+                y: 0,
+                w: api.winWidth,
+                h: api.winHeight
+            },
+            pageParam: {
+                name: 'value'
+            },
+            bounces: false
+        });
+    }
+    //我的页面 登录后
+    function myIndex(){
+  //   	if(!$api.getStorage('user_id')){
+		// 	return;
+		// }
+    	postData = {};
+    	postData.userid = userid;
+    	api.ajax({
+    	    url: BASE_URL + 'App/Mine/userInfo',
+    	    method: 'post',
+    	    data: {
+    	        values:postData
+    	    }
+    	}, function(ret, err) {
+    	    if (ret) {
+    	    	// alert(JSON.stringify(ret));
+    	    	if(ret.code == "1"){
+    	    		document.getElementById("doT-Html").innerHTML = doT.template(document.getElementById("doT-Template").innerHTML)(ret);
+    	    	}
+    	    }else{
+    	    	// alert(JSON.stringify(err));
+    	    }
+    	});
+    }
+    // 我的页面 未登录
+    function tourist(){
+    	var info = {};
+    	info['code']='-1';
+    	info['data'] = {};
+    	info['data']['user_avatar'] = "../image/auth/ava.png";
+    	info['data']['user_name'] = "未登录";
+    	document.getElementById("doT-Html").innerHTML = doT.template(document.getElementById("doT-Template").innerHTML)(info);
+    	// document.querySelector("#doT-Html").innerHTML = doT.template(document.querySelector("#doT-Template").innerHTML)()
+    }
+    // 点击头像 登录
+    function toLogin(){
+    	if(!userid){
+    		api.openWin({
+			    name: 'login_win',
+			    url: '../html/login/login_win.html',
+			    pageParam: {
+			        name: 'value'
+			    }
+			});
+    	}
+    }
+</script>
+</html>

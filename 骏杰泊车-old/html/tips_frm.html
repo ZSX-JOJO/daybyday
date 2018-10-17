@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <style type="text/css">
+    	body{
+            z-index:44;
+            opacity: 0.5;
+            background-color: rgba(0,0,0,0.5);
+        }
+        #tips{
+            width:100%;
+            /*margin:0.75rem auto;*/
+        }
+    </style>
+</head>
+<body>
+    <div class="aui-tips" id="tips">
+        <i></i>
+        <div class="aui-tips-title aui-ellipsis-1" id="info">
+        	尚未完成身份认证
+        </div>
+        <i class="" tapmode onclick="renzheng()">认证</i>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	// var tipsInfo;
+	var userid;
+    apiready = function(){
+        api.parseTapmode();
+        userid = $api.getStorage('userid');
+        api.addEventListener({
+            name: 'loginSuccessEvent'
+        }, function(ret, err) {
+            if (ret) {
+                userid = $api.getStorage('userid');
+            }
+        });
+     //    var info = {"shenfen1":"尚未完成身份认证1","shenfen2":"尚未完成身份认证2","shenfen3":"尚未完成身份认证3","shenfen4":"尚未完成身份认证4"};
+     //    tipsInfo = document.getElementById("info").textContent;
+     //    api.addEventListener({
+    	//     name: 'showTips'
+    	// }, function(ret, err) {
+    	//     if (ret) {
+    	//     	tipsInfo = info.shenfen1;
+    	//     }
+    	// });
+    };
+    function renzheng(){
+    	if(!userid){
+    		api.openWin({
+    		    name: 'login_win',
+    		    url: './login/login_win.html',
+    		    pageParam: {
+    		        name: 'value'
+    		    }
+    		});
+            return;
+    	}
+    	api.openFrame({
+    	    name: 'certification_person_frm',
+    	    url: '../html/login/certification_person_frm.html',
+    	    rect: {
+    	        x: 0,
+    	        y: 0,
+    	        w: 'auto',
+    	        h: 'auto'
+    	    },
+    	    pageParam: {
+    	        name: 'value'
+    	    },
+    	    bounces: false
+    	});
+    }
+</script>
+</html>

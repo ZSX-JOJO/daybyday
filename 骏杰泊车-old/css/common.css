@@ -1,0 +1,355 @@
+html {
+  font-family: "PingFang SC", Helvetica, sans-serif;
+}
+.text-bold {
+    font-weight: 700 !important;
+}
+.text-common {
+    color: #083a91 !important;
+}
+.text-dark,
+.aui-bar-nav.aui-bar-light {
+    color: #333 !important;
+}
+/*  */
+.aui-bar-nav.aui-bar-light .aui-iconfont {
+    color: #333;
+}
+.aui-list .aui-list-item-arrow:before{
+    content: '';
+    width: 0.35rem;
+    height: 0.35rem;
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    margin-top: -0.2rem;
+    background: transparent;
+
+    border: 1px solid #9f9f9f;
+
+    border-top: none;
+    border-right: none;
+    z-index: 2;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+.aui-list .aui-list-item-inner.diy{
+    height:50px;
+}
+.aui-list .aui-list-item-title{
+    font-size:0.75rem;
+}
+.aui-list .aui-list-item-right{
+    margin-right:10px;
+}
+.space {
+	height: 0.3rem;
+	background-color:#F6F8FA;
+}
+/*  */
+
+.text-light,
+p {
+    color: #999 !important;
+}
+.line-height {
+	line-height: 1;
+}
+.line-height-m {
+	line-height: 1.5;
+}
+.inline {
+	display: inline-block;
+}
+.bg-common {
+	background-color: #f6f8fa;
+}
+.bg-white {
+	background-color: #FFF;
+}
+.bg-none {
+	background: none !important;
+}
+.color-orange {
+	color: #ffb33c;
+}
+.font-size-17 {
+    font-size: 0.85rem !important;
+}
+.font-size-15 {
+    font-size: 0.75rem !important;
+}
+.font-size-13 {
+    font-size: 0.65rem !important;
+}
+.font-size-12 {
+  font-size: 0.6rem !important;
+}
+.font-size-11 {
+	font-size: 0.55rem!important;
+}
+.font-size-10 {
+	font-size: 0.5rem!important;
+}
+.margin-t-6 {
+    margin-top: 0.3rem !important;
+}
+.aui-card-list {
+    margin-bottom: 0.6rem;
+}
+.aui-bar-nav .aui-pull-left,
+.aui-bar-nav .aui-pull-right {
+    height: 2.2rem;
+    padding: 0 0.75rem;
+}
+.aui-bar-nav img.img-icon {
+    display: inline-block;
+    /*margin-top: 0.6rem;*/
+    line-height: 2.2rem !important;
+    height: 0.8rem !important;
+}
+.aui-tab .aui-tab-item {
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+.aui-tab .aui-tab-item {
+    color: #333;
+}
+.aui-tab-item.aui-active,
+.aui-bar-tab-item.aui-active {
+    color: #083a91;
+}
+.aui-list .aui-list-item:active {
+	background-color: inherit;
+}
+/* 按钮 */
+.btn-round {
+    font-size: 0.75rem;
+    line-height: 2.25rem;
+    height: 2.25rem;
+    background: #083A91;
+    color: #FFF !important;
+    border-radius: 2rem;
+}
+.mine-top{
+    /* color:red; */
+    font-weight: bold;
+}
+.mine-bottom{}
+.margin-top-40{
+    margin-top:2rem;
+}
+.aui-dot.dot{
+    right:30%;
+    top: 0.75rem;
+}
+/* 第三方字体 */
+@font-face {
+    font-family:PingFang-Medium;
+    src: url("../font/PingFang_Medium.ttf");
+    font-weight: normal;
+    font-style: normal;
+ }
+ @font-face {
+    font-family:PingFang-Regular;
+    src: url("../font/PingFang_Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+ }
+ @font-face {
+    font-family:PingFang-Semiblod;
+    src: url("../font/PingFang_Semiblod.ttf");
+    font-weight: normal;
+    font-style: normal;
+ }
+
+/*通用阴影*/
+.com-shadow {
+  box-shadow: 0 0.1rem 0.2rem rgba(0,0,0,0.15);
+}
+/*圆角4px*/
+.radius-4 {
+	border-radius: 0.2rem;
+}
+/*底部蓝色按钮*/
+.com-btm-btn {
+	font-size: 0.8rem;
+	color: #FFF;
+	text-align: center;
+	line-height: 2.25rem;
+	height: 2.25rem;
+	background: #083A91;
+	border-radius: 1.25rem;
+	box-shadow: 0 0.2rem 0.2rem rgba(0,0,0,0.15);
+}
+/*.com-btm-btn:active{
+    color: #212121;
+    background-color: #bdbdbd;
+}*/
+
+.aui-flex-between:before,
+.aui-flex-between:after {
+	display: none;
+}
+.flex-auto {
+	-webkit-flex: 1;
+	flex: 1;
+}
+.clearfix:after {
+	height: 0;
+	visibility: hidden;
+	content: ".";
+	display: block;
+	clear: both;
+}
+.relative {
+	position: relative;
+}
+.comSec {
+	background-color: #FFF;
+	padding: 0.75rem;
+	margin-bottom: 0.3rem;
+}
+.outline {
+	position: relative;
+}
+.outline:before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 200%;
+	height: 200%;
+	border: 1px solid #FFF;
+	border-radius: 0.2rem;
+	-webkit-transform: translate(-50%,-50%) scale(0.5);
+	transform: translate(-50%,-50%) scale(0.5);
+	display: block !important;
+}
+/* 右边箭头	*/
+.right-arrow {
+	position: relative;
+}
+.right-arrow:before {
+	display: block;
+	content: '';
+	width: 0.3rem;
+	height: 0.3rem;
+	position: absolute;
+	top: 50%;
+	right: 0.1rem;
+	margin-top: -0.15rem;
+	background: transparent;
+	border: 1px solid #999;
+	border-top: none;
+	border-right: none;
+	z-index: 2;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	-webkit-transform: rotate(-135deg);
+	transform: rotate(-135deg);
+}
+.firstNoBorder > *:first-child {
+	border: none;
+	background: none;
+}
+.lastNoBorder > *:last-child {
+	border: none;
+	background: none;
+}
+/*星星*/
+.com-stars {
+	line-height: 1;
+	vertical-align: middle;
+}
+.com-stars i {
+	margin-left: 0.25rem;
+	display: inline-block;
+	line-height: 1;
+	width: 0.8rem;
+	height: 0.8rem;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100% 100%;
+	background-image: url(../image/index/36.png);
+}
+.com-stars i:first-child {
+	margin-left: 0;
+}
+.com-stars .on {
+	background-image: url(../image/index/35.png);
+}
+.com-stars-b i {
+	width: 1.35rem;
+	height: 1.35rem;
+	background-image: url(../image/index/71.png);
+}
+.com-stars-b .on {
+	background-image: url(../image/index/70.png);
+}
+
+/*弹窗*/
+.popOverlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: rgba(0,0,0,0.5);
+}
+.popup {
+	position: fixed;
+	z-index: 15;
+	max-height: 90%;
+	background-color: #FFF;
+	border-radius: 0.2rem;
+}
+.popup.popMiddle {
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%,0);
+	transform: translate(-50%,0);
+}
+.popup.popBottom {
+	left: 0.75rem;
+	right: 0.75rem;
+	bottom: 0.75rem;
+}
+.popup .close {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 2.15rem;
+	height: 100%;
+	background: url(../image/common/1.png) no-repeat center center;
+	background-size: 0.65rem auto;
+}
+.popup .popHeader {
+	position: relative;
+	padding: 0 2.15rem;
+	height: 2.25rem;
+	line-height: 2.25rem;
+	font-size: 0.75rem;
+	color: #333;
+	text-align: center;
+}
+.popup .popFooter .saveBtn {
+	height: 2.3rem;
+	line-height: 2.3rem;
+	text-align: center;
+	font-size: 0.8rem;
+}
+.popup .popInner {
+}
+
+body.bglogo {
+	background: #FFF url(../image/common/bg.png) no-repeat center top;
+	background-size: 100% auto;
+}
+body.bglogo #header {
+	border: none;
+	background: none;
+}

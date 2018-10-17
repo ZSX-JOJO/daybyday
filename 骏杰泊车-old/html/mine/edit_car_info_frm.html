@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<style type="text/css">
+.aui-list {
+	padding: 0 0.75rem;
+}
+.aui-list .aui-list-item {
+	height: 2.5rem;
+	padding-left: 0 !important;
+}
+.aui-list-item-title.text-left {
+	font-size: 0.75rem;
+	color: #333333;
+	width: 3.5rem;
+	padding-right: 0.5rem;
+}
+.car-pro {
+	margin-right: 0.25rem;
+	background: url(../../image/common/10.png) no-repeat right 0.5rem center;
+	background-size: 0.5rem auto;
+	padding-right: 1.5rem;
+}
+.car-prefix {
+	width: 1.25rem;
+	height: 1.5rem;
+	background-color: #3F74E9;
+	font-family: PingFang-Regular;
+	text-align: center;
+	color: #ffffff;
+	line-height: 1.5rem;
+	font-size: 0.75rem;
+}
+.card input {
+	height: 1.5rem;
+	padding-left: 0.75rem;
+}
+input[type="text"] {
+	font-size: 0.7rem;
+	width: 100%;
+}
+</style>
+</head>
+<body>
+<div class="aui-content">
+	<ul class="aui-list aui-list-noborder margin-t-6">
+		<li class="aui-list-item" tapmode onclick="carNum()">
+			<div class="aui-list-item-inner right-arrow">
+				<div class="aui-list-item-title text-left">车牌号</div>
+				<div class="aui-list-item-right text-light aui-font-size-14 aui-margin-0 carNum" id="carNum">请填写车牌号</div>
+			</div>
+		</li>
+		<li class="aui-list-item" tapmode onclick="openColor()">
+			<div class="aui-list-item-inner right-arrow">
+				<div class="aui-list-item-title text-left">颜色</div>
+				<div class="aui-list-item-right text-light aui-font-size-14 aui-margin-0" id="carColor">请填写颜色</div>
+			</div>
+		</li>
+		<li class="aui-list-item" tapmode onclick="selectType()">
+			<div class="aui-list-item-inner right-arrow">
+				<div class="aui-list-item-title text-left">车型</div>
+				<div class="aui-list-item-right text-light aui-font-size-14 aui-margin-0">
+					<span id="brand"></span><span id="model"></span>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<div class="text-common aui-font-size-12 aui-text-center aui-margin-t-15">温馨提示:请填写真实信息,避免影响司机与您交接</div>
+</div>
+<div class="aui-padded-15" style="margin-top: 4.75rem;" tapmode onclick="addCar();">
+	<div class="com-btm-btn" id="btn">确认添加</div>
+</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/aui-actionsheet.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript">
+	var userid;
+	var carid;
+    apiready = function(){
+    	userid = $api.getStorage('userid');
+		carid = api.pageParam.carId;
+		if(carid){
+			getCarInfo(carid);
+			$$('#btn').text('确认修改');
+		}else{
+			$$('#btn').text('确认添加');
+		}
+		api.addEventListener({
+		    name: 'editCarBrand'
+		}, function(ret, err) {
+			$$('#brand').text(ret.value.brand);
+			$$('#model').text(ret.value.model);
+		});
+    };
+	function getCarInfo(n){
+		var postData={};
+		postData.car_id = n;
+		api.ajax({
+			url: BASE_URL + 'App/Mine/carDetail',
+			method: 'post',
+			data: {
+				values:postData
+			}
+		}, function(ret, err) {
+			if (ret) {
+				if(ret.code == "1"){
+					$$('#carNum').text(ret.data.car_number_plate);
+					$$('#carColor').text(ret.data.car_color);
+					$$('#brand').text(ret.data.car_brand);
+					$$('#model').text(ret.data.car_model);
+				}
+			}
+		});
+	}
+    // 选择车型
+    function selectType(){
+        api.openWin({
+            name: 'car_style_win',
+            url: 'car_style_win.html',
+            pageParam: {
+                name: 'value'
+            }
+        });
+    }
+	//车牌号
+	function carNum(){
+		api.openFrame({
+			name: 'edit_car_number_frm',
+			url: 'edit_car_number_frm.html',
+			rect: {
+				x: 0,
+				y: 0,
+				w: 'auto',
+				h: 'auto'
+			},
+			pageParam: {
+				wname: api.winName,
+				fname: api.frameName
+			}
+		});
+	}
+	//车型返回值
+	function changeData(domId,name){
+		$$('#'+domId).text(name);
+	}
+
+
+
+	var colordata=[
+		{'name':'黑色'},
+		{'name':'白色'},
+		{'name':'银灰色'},
+		{'name':'深灰色'},
+		{'name':'红色'},
+		{'name':'蓝色'},
+		{'name':'绿色'},
+		{'name':'黄色'},
+		{'name':'香槟色'},
+		{'name':'紫色'},
+		{'name':'橙色'},
+		{'name':'棕色'},
+		{'name':'其他'},
+	]
+	function openColor(){
+		var UIActionSelector = api.require('UIActionSelector');
+		UIActionSelector.open({
+		    datas: colordata,
+		    layout: {
+		        row: 5,
+		        col: 1,
+		        height: 36,
+		        size: 14,
+		        sizeActive: 14,
+		        rowSpacing: 5,
+		        colSpacing: 10,
+		        maskBg: 'rgba(0,0,0,0.5)',
+		        bg: '#fff',
+		        color: '#888',
+		        colorActive: '#083a91',
+		        colorSelected: '#083a91'
+		    },
+		    animation: true,
+		    cancel: {
+		        text: '取消',
+		        size: 12,
+		        w: 90,
+		        h: 35,
+		        bg: '#fff',
+		        bgActive: '#ccc',
+		        color: '#888',
+		        colorActive: '#fff'
+		    },
+		    ok: {
+		        text: '确定',
+		        size: 12,
+		        w: 90,
+		        h: 35,
+		        bg: '#fff',
+		        bgActive: '#ccc',
+		        color: '#888',
+		        colorActive: '#fff'
+		    },
+		    title: {
+		        text: '',
+		        size: 12,
+		        h: 44,
+		        bg: '#eee',
+		        color: '#888'
+		    }
+		}, function(ret, err) {
+		    if (ret) {
+				if(ret.eventType == 'ok'){
+					$$('#carColor').text(ret.level1);
+				}
+				//console.log(JSON.stringify(ret));
+		    } else {
+		        //alert(JSON.stringify(err));
+		    }
+		});
+	}
+
+	//添加车型
+	function addCar(){
+		var postData = {};
+		var carNum = document.getElementById("carNum").textContent;//车牌
+		var carColor = document.getElementById("carColor").innerText;//颜色
+		var carBrand = document.getElementById("brand").innerText;//品牌
+		var carModel = document.getElementById("model").innerText;//品牌
+		if(carNum && carColor && carBrand && carModel){
+			if(carid){
+				postData.car_id = carid;
+				var ajaxUrl = BASE_URL + 'App/Mine/editCarInfo';
+				var successMsg = "修改成功";
+			}else{
+				postData.userid = userid;
+				var ajaxUrl = BASE_URL + 'App/Mine/addCar';
+				var successMsg = "添加成功";
+			}
+			postData.number = carNum;
+			postData.color = carColor;
+			postData.brand = carBrand;
+			postData.model = carModel;
+			api.ajax({
+			    url: ajaxUrl,
+			    method: 'post',
+			    data: {
+			        values:postData
+			    }
+			}, function(ret, err) {
+			    if (ret) {
+			    	if(ret.code == "1"){
+			    		api.sendEvent({//添加成功 发送到常用车辆
+			    		    name: 'addSuccess'
+			    		});
+			    		api.toast({
+							msg: successMsg,
+							duration: 1000,
+							location: 'middle'
+						});
+						 setTimeout(function(){
+						 	api.closeWin();
+						 },1000);
+			    	}
+			    }
+			});
+		}else{
+			api.toast({
+			    msg: '请完整填写车辆信息',
+			    duration: 1000,
+			    location: 'middle'
+			});
+		}
+
+	}
+</script>
+</html>

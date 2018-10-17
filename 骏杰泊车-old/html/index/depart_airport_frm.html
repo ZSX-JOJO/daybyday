@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<style>
+body {
+	background: #f6f8fa;
+}
+.aui-info .aui-info-item img.ico {
+	display: block;
+	width: 0.6rem;
+	height: auto;
+}
+.aui-info-item span.font-color {
+	color: #083a91;
+	font-size: 0.8rem;
+	margin-left: 0.375rem;
+}
+.aui-info {
+	background: #fff;
+	height: 2.5rem;
+	padding: 0 0.75rem;
+}
+.list-height {
+	height: 2.5rem;
+	line-height: 2.5rem;
+}
+.aui-list-out {
+	line-height: 2.5rem;
+	padding: 0 0.75rem;
+}
+.auiFont {
+	font-size: 0.75rem !important;
+	color: #000;
+}
+.Prompt {
+	background-color: #3f74e9;
+	font-size: 0.55rem;
+	border-radius: 0.1rem;
+	padding: 0 0.15rem;
+	margin-left: 0.25rem;
+}
+.aui-list {
+	padding: 0 0.75rem;
+}
+.aui-list .aui-list-item {
+	padding-left: 0 !important;
+}
+</style>
+</head>
+<body>
+<section class="aui-content">
+	<div class="aui-info list-height">
+		<div class="aui-info-item"> <img src="../../image/index/69.png" class="ico" /><span class="font-color" id="address">正在获取位置</span> </div>
+	</div>
+	<div class="aui-card-list list-height" style="margin-top:0.4rem">
+		<div class="aui-list-out auiFont" tapmode onclick="depart(this);" id="now-airport-wrap">
+			<span class="name" id="now-airport"></span>
+		</div>
+	</div>
+	<div class="aui-card-list-content-padded aui-padded-b-0 aui-hide" id="all-airport">
+		<div class="aui-font-size-12" style="padding:0.1rem 0.75rem 0.2rem 0.75rem;">全部机场</div>
+		<ul class="aui-list aui-list-noborder" id="airport-wrap">
+		</ul>
+	</div>
+</section>
+<script type="x-dot-tpl" id="airport-tpl">
+	{{for(var i in it){ }}
+
+	<li class="aui-list-item list-height" tapmode onClick="depart(this);" data-CityCode="{{=it[i].CityCode}}" data-AirportCode="{{=it[i].AirportCode}}">
+		<div class="aui-list-item-inner">
+			<div class="aui-list-item-title font-size-15">
+				<span class="name">{{=it[i].AirportCname}}</span>
+				<!--<span class="aui-label aui-label-info Prompt">已满</span>-->
+			</div>
+		</div>
+	</li>
+
+	{{ } }}
+</script>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<script type="text/javascript">
+// <<<<<<< HEAD
+	// document.getElementById("doT-Html").innerHTML = doT.template(document.getElementById("doT-Template").innerHTML)();
+// 	var aMap,_lon,_lat,_address,_city;
+// 	var postData = {};
+//     apiready = function(){
+//     	aMap = api.require('aMap');
+//     	api.parseTapmode();
+//     	userLocation()//获取当前位置
+// =======
+	var aMapLBS;
+    apiready = function(){
+		api.parseTapmode();
+		aMapLBS = api.require('aMapLBS');
+		aMapLBS.configManager({
+		    accuracy: 'hundredMeters',
+		    filter: 1
+		}, function(ret, err) {
+		    if (ret.status) {
+				getUserCity();
+		    }
+		});
+    };
+	// 获取用户当前所在城市
+	function getUserCity(){
+		aMapLBS.singleAddress({
+		    timeout: 10
+		}, function(ret, err) {
+		    if (ret.status) {
+		        // alert(JSON.stringify(ret));
+				// 获取当前机场
+				document.getElementById("address").textContent = "您在"+ret.address.city;
+				loadAirport(ret.address.city);
+
+		    }
+		});
+	}
+	function loadAirport(city){
+		api.readFile({
+		    path: 'fs://parkData/'+city+".json",
+		}, function(ret, err) {
+		    if (ret.status) {
+		        var data = JSON.parse(ret.data);
+				// console.log(JSON.stringify(ret.data))
+				document.getElementById("now-airport").textContent = data[0].AirportCname;
+				document.getElementById("now-airport-wrap").setAttribute("data-AirportCode",data[0].AirportCode);
+				document.getElementById("now-airport-wrap").setAttribute("data-CityCode",data[0].CityCode);
+				var tpl = document.getElementById("airport-tpl").innerHTML;
+				var tempFn = doT.template(tpl);
+				// document.getElementById("airport-wrap").insertAdjacentHTML('beforeend', tempFn(ret.data));
+				document.getElementById("airport-wrap").innerHTML = tempFn(data);
+		    }
+		});
+		var postData = {};
+		postData.name = city.replace("市",'');
+		api.ajax({
+		    url: BASE_URL+"App/Parking/departure",
+		    method: 'post',
+		    data: {
+		        values: postData
+		    }
+		},function(ret, err){
+		    if (ret) {
+		        if(ret.data){
+					document.getElementById("all-airport").classList.remove("aui-hide");
+					api.writeFile({
+						path: 'fs://parkData/'+city+".json",
+						data: JSON.stringify(ret.data)
+					}, function(ret, err) {
+					});
+					document.getElementById("now-airport").textContent = ret.data[0].AirportCname;
+					document.getElementById("now-airport").setAttribute("data-AirportCode",ret.data[0].AirportCode);
+					document.getElementById("now-airport").setAttribute("data-CityCode",ret.data[0].CityCode);
+
+					var tpl = document.getElementById("airport-tpl").innerHTML;
+                    var tempFn = doT.template(tpl);
+                    // document.getElementById("airport-wrap").insertAdjacentHTML('beforeend', tempFn(ret.data));
+					document.getElementById("airport-wrap").innerHTML = tempFn(ret.data);
+				}
+		    }
+		});
+
+	}
+	function depart(n){
+		var name = $$(n).find('.name').text();
+		var AirportCode = n.getAttribute("data-AirportCode");
+		var CityCode = n.getAttribute("data-CityCode");
+		var jsfun = 'changeAirPortData("depart_name","'+ name +'","'+CityCode+'","'+AirportCode+'")';
+		api.execScript({
+			name: api.pageParam.wname,
+			frameName: api.pageParam.fname,
+			script: jsfun
+		});
+		api.closeWin();
+	}
+	function userLocation(){//获取当前位置
+		aMap.getLocation(function(ret, err) {
+		    if (ret) {
+		    	_lon = ret.lon;
+		    	_lat = ret.lat;
+		    	aMap.getNameFromCoords({
+				    lon: _lon,
+				    lat: _lat
+				}, function(ret, err) {
+				    if (ret) {
+				    	alert(JSON.stringify(ret));
+				    	// _address = ret._address;
+				    	_city = ret.city;
+				    	searchPark()//查询附近机场
+				    	// document.getElementById("address").innerText = _address;
+				    	// document.getElementsByTagName("span")[0].textContent = _address;
+				    }
+				});
+		    }
+		});
+	}
+
+	function searchPark(){
+		// postData.
+	}
+</script>
+</html>

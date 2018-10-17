@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<style type="text/css">
+	body {
+		background: #F8f8f8;
+	}
+.bg-header {
+	margin-bottom: 1.75rem;
+	background: #083A91 url(../../image/index/80.png) repeat-x center bottom;
+	background-size: 100% 2.5rem;
+	width: 100%;
+	padding-bottom: 3.5rem;
+}
+.text-all {
+	text-align: center;
+	color: #ffffff;
+}
+.text-middle {
+	font-size: 0.6rem;
+	padding-top: 1rem;
+}
+.text-bottom {
+	font-size: 1.5rem;
+	padding-top: 0.25rem;
+}
+.item {
+	background-color: #FFF;
+	padding: 0 0.75rem;
+	height: 2.5rem;
+	font-size: 0.75rem;
+	color: #333;
+}
+</style>
+</head>
+<body>
+<!-- 第一部分  背静+图片 -->
+<div class="bg-header">
+	<div class="text-all">
+		<div class="text-middle">234435345456456457657678678</div>
+		<div class="text-bottom">￥<span id="price">0.001</span></div>
+	</div>
+</div>
+<div class="item aui-flex-col aui-flex-middle aui-flex-between">
+	<div>收款方</div>
+	<div class="aui-flex-col aui-flex-middle aui-flex-right">
+		<div style="width: 1.25rem; margin-right: 0.25rem;"><img class="aui-img-round" src="../../image/demo3.png" alt=""></div>
+		<div class="aui-font-size-12 text-common">骏杰泊车</div>
+	</div>
+</div>
+<div class="aui-padded-15" style="margin-top: 3.75rem;" tapmode onclick="pay()">
+	<div class="com-btm-btn">立即支付</div>
+</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+	var userid,driver_id,car_id,park_id,price,type,adv_payment;
+	var aliPayPlus;
+	var postData = {};
+    apiready = function(){
+    	api.parseTapmode();
+    	userid = $api.getStorage('userid');
+    	var sum = api.pageParam.sum;
+    	aliPayPlus  = api.require('aliPayPlus');
+    };
+    function pay(){
+    	// price = parseFloat(document.getElementById("price").textContent);
+    	price = 0.01;
+    	postData.userid = userid;
+    	postData.driver_id = 1;//
+    	postData.car_id = 1;//
+    	postData.park_id = 1;//
+    	postData.price = price;//
+    	postData.type = 1;//
+    	postData.adv_payment = 3;//
+    	api.ajax({
+    	    url: BASE_URL + 'App/Parking/prepayments',
+    	    method: 'post',
+    	    data: {
+    	        values:postData
+    	    }
+    	}, function(ret, err) {
+    	    if (ret) {
+    	    	alert(JSON.stringify(ret.data))
+    	    	if(ret.code == 1){
+    	    		aliPayPlus.payOrder({
+					    orderInfo:ret.data
+					}, function(ret, err) {
+						alert(ret.data);
+						alert(JSON.stringify(ret.code));
+					});
+    	    	}
+    	    }
+    	});
+    }
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/steed-calendar.css" />
+<style>
+body {
+	background: #232323;
+	color: #FFF;
+}
+</style>
+</head>
+<body>
+	 <div id="calendar" class="aui-content aui-calendar"></div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/steed-calendar.js"></script>
+<script type="text/javascript">
+apiready = function(){
+	api.parseTapmode();
+};
+
+//调用aui日历
+var todayDate = new Date();
+var startDate = todayDate.getFullYear()+'-'+(todayDate.getMonth()+1)+'-'+todayDate.getDate();
+//要显示n个月  最后30*n
+var endDate = new Date(todayDate.getTime()+1000*60*60*24*30*1);
+	endDate = endDate.getFullYear()+'-'+(endDate.getMonth()+1);
+
+var auiCalendar = new auiHotelDatePicker({
+	element:document.getElementById("calendar"),
+	startDate:startDate,
+	endDate: endDate,
+	beforeStartDateClick:false
+},function(ret){
+	var jsfun = 'getDate("'+ ret.selectDate +'")';
+    api.execScript({
+        name: api.pageParam.wname,
+        frameName: api.pageParam.fname,
+        script: jsfun
+    });
+    setTimeout(function(){
+        api.closeWin()
+    },200)
+
+});
+
+
+
+</script>
+</html>

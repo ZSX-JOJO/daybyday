@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<style>
+body {
+	background: #fff;
+}
+.evaTtl {
+	width: 29%;
+}
+textarea {
+	padding: 0.75rem;
+	width: 100%;
+	height: 6.25rem;
+	border: 1px solid #e8e8e8;
+	border-radius: 0.25rem;
+	font-size: 0.6rem;
+	color: #999;
+	overflow: auto;
+}
+.fontNum {
+	position: absolute;
+	right: 0.75rem;
+	bottom: 0.3rem;
+	color: #999;
+	font-size: 0.65rem;
+}
+.uploadList {
+	margin: 1.75rem 0rem 0 0;
+}
+.uploadList li {
+	float: left;
+	margin: 0 0.6rem 0.6rem 0;
+	width: calc( (100vw - 1.5rem)/4 - 0.6rem);
+	height: calc( (100vw - 1.5rem)/4 - 0.6rem);
+/*
+	width: 3.2rem;
+	height: 3.2rem;
+*/
+	border-radius: 0.25rem;
+	overflow: hidden;
+}
+.uploadList li.addBtn {
+	background: #F0F0F0;
+	font-size: 0.55rem;
+	color: #999;
+	text-align: center;
+}
+.uploadList li.addBtn .ico {
+	margin: 0.1rem auto 0.4rem;
+	width: 1.05rem;
+}
+</style>
+</head>
+
+<body>
+<section>
+	<div class="comSec aui-padded-t-5 aui-padded-b-5">
+		<div class="evaItem aui-flex-col aui-flex-middle aui-padded-t-10 aui-padded-b-10 aui-padded-l-10">
+			<div class="text-light font-size-13 evaTtl">机场代泊评价</div>
+			<div>
+				<div class="com-stars com-stars-b" data-star="4"></div>
+			</div>
+			<div class="score font-size-15 color-orange aui-padded-l-15">4.6</div>
+		</div>
+		<div class="evaItem aui-flex-col aui-flex-middle aui-padded-t-10 aui-padded-b-10 aui-padded-l-10">
+			<div class="text-light font-size-13 evaTtl">机场代泊评价</div>
+			<div>
+				<div class="com-stars com-stars-b" data-star="4"></div>
+			</div>
+			<div class="score font-size-15 color-orange aui-padded-l-15">4.6</div>
+		</div>
+		<div class="evaItem aui-flex-col aui-flex-middle aui-padded-t-10 aui-padded-b-10 aui-padded-l-10">
+			<div class="text-light font-size-13 evaTtl">机场代泊评价</div>
+			<div>
+				<div class="com-stars com-stars-b" data-star="4"></div>
+			</div>
+			<div class="score font-size-15 color-orange aui-padded-l-15">4.6</div>
+		</div>
+		<div class="evaItem aui-flex-col aui-flex-middle aui-padded-t-10 aui-padded-b-10 aui-padded-l-10">
+			<div class="text-light font-size-13 evaTtl">机场代泊评价</div>
+			<div>
+				<div class="com-stars com-stars-b" data-star="4"></div>
+			</div>
+			<div class="score font-size-15 color-orange aui-padded-l-15">4.6</div>
+		</div>
+	</div>
+	<div class="comSec aui-padded-b-10">
+		<div class="relative aui-margin-b-15">
+			<textarea name="" class="com-textarea" data-maxLen="150" placeholder="其他想说的（将匿名延迟告知司机）"></textarea>
+			<div class="fontNum">0/150</div>
+		</div>
+		<ul class="uploadList clearfix">
+			<li class="addBtn aui-flex-row aui-flex-middle" tapmode onClick="uploadImg();"><img class="ico" src="../../image/index/73.png" alt="">
+				<div>上传照片</div>
+			</li>
+<!--			<li><img src="http://via.placeholder.com/130x130" alt=""></li>-->
+		</ul>
+	</div>
+	<div class="aui-padded-15">
+		<div class="com-btm-btn" tapmode onclick="evaFinish();">匿名提交</div>
+	</div>
+</section>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/aui-tap.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+    };
+	//星星
+    comStars();
+	$$('.com-stars > i').on('tap',function(){
+		var ind = $$(this).index();
+		var score = parseFloat(ind+1).toFixed(1);
+		$$(this).addClass('on');
+		$$(this).prevAll().addClass('on');
+		$$(this).nextAll().removeClass('on');
+		$$(this).parents('.evaItem').find('.score').text(score);
+	});
+	//textarea字数
+	$$('textarea[data-maxLen]').on('keyup',function(){
+		var len = parseInt($$(this).attr('data-maxLen'));
+		var str = $$(this).val();
+		var myLen = getStrleng(str,len);
+		if (myLen > len * 2) {
+			 $$(this).val(str.substring(0, len));
+		}else{
+			$$(this).next('.fontNum').text( Math.floor(myLen / 2) + '/'+len);
+		}
+	});
+	//提交评价
+	function evaFinish(){
+		api.openFrame({
+            name: 'evaluation_ok_frm',
+            url: 'evaluation_ok_frm.html',
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: api.pageParam,
+            bounces: false,
+			animation:{
+				type: 'fade'
+			}
+        });
+	}
+	//上传图片
+function uploadImg(){
+	var certUpload = $$('.uploadList');
+	var sourceType = '';
+	api.actionSheet({
+		//title: '性别',
+		buttons: ['使用相机拍照', '使用相册选图']
+	}, function(ret, err) {
+		if(ret){
+			var index = ret.buttonIndex;
+			switch (index) {
+				case 1:
+					sourceType = 'camera';
+					break;
+				case 2:
+					sourceType = 'library';
+					break;
+				default:
+					break;
+			}
+			if(sourceType){
+				api.getPicture({
+					sourceType: sourceType,
+					encodingType: 'jpg',
+					mediaValue: 'pic',
+					destinationType: 'url',
+					allowEdit: true,
+					quality: 100,
+					targetWidth: 150,
+					targetHeight: 150,
+					saveToPhotoAlbum: false
+				}, function(ret, err) {
+					if (ret) {
+						//alert(JSON.stringify(ret.data));
+						certUpload.append('<li><img src="'+ ret.data +'" alt=""></li>');
+					} else {
+						//alert(JSON.stringify(err));
+					}
+				});
+			}
+		}
+	});
+
+}
+</script>
+</html>

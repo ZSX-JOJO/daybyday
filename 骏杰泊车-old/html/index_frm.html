@@ -1,0 +1,548 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../css/swiper.css" />
+<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../css/index.css" />
+<script type="text/javascript" src="../script/dot.min.js"></script>
+<style>
+
+</style>
+</head>
+<body>
+<div id="doT-Html-TopSlide"></div><!--顶部轮播图-->
+<script type="text/x-dot-template" id="doT-Template-TopSlide">
+<!--
+	<div class="mainVisual com-shadow"> <img src="http://via.placeholder.com/720x670" alt="">
+		<div class="info">
+			<div class="playBtn" tapmode onClick=""><img src="../image/index/1.png" alt=""></div>
+			<div class="title">骏杰泊车 享受美好生活</div>
+			<div class="aui-font-size-12">30:25</div>
+		</div>
+	</div>
+-->
+	<div class="mainVisual com-shadow">
+		<div class="swiper-container" id="mainImg">
+			<div class="swiper-wrapper">
+                {{for(var i in it){}}
+				<div class="swiper-slide">
+                    {{?it[i].ad_image == null}}
+                    <img src="../image/test/img01.png" width="100%" alt="">
+                    {{??}}
+                    <img src="{{=SITE_URL}}/{{=it[i].ad_image}}" width="100%" alt="">
+                    {{?}}
+                </div>
+                {{}}}
+			</div>
+		</div>
+	</div>
+</script>
+    <div id="doT-Html-List"></div><!--代泊or自助停车-->
+    <script type="text/x-dot-template" id="doT-Template-List">
+    {{for(var i in it){}}
+	{{? it[i].park_srv_type == "1"}}
+	<div class="com-shadow aui-margin-b-10" tapmode onclick="openIndexWin('airport_parking_win','{{=it[i].park_id}}');">
+	{{?? it[i].park_srv_type == "2"}}
+	<div class="com-shadow aui-margin-b-10 aui-padded-t-10" tapmode onClick="openIndexWin('self_parking_win','{{=it[i].park_id}}');">
+	{{?}}
+        <div class="innerHeader aui-flex-col aui-flex-middle">
+			{{? it[i].park_srv_type == "1"}}
+        	<div style="width: 1.75rem;"><img src="../image/index/2.png" alt=""></div>
+			{{?? it[i].park_srv_type == "2"}}
+			<div style="width: 1.75rem;"><img src="../image/index/4.png" alt=""></div>
+			{{?}}
+			<div class="aui-padded-l-10">
+				<div class="aui-font-size-16 text-common">
+					{{? it[i].park_srv_type == "1"}}机场代泊
+					{{?? it[i].park_srv_type == "2"}}机场自助停车
+					{{?}}
+				</div>
+				<div class="addr aui-font-size-12" style="color: #3f74e9;">{{=it[i].park_name || ''}}</div>
+			</div>
+        	<div class="sliderPages" id="slider_1_pages">
+        		<div class="active">1</div>
+        		<div>2</div>
+        		<div>3</div>
+        		<div>4</div>
+        		<div>5</div>
+        	</div>
+        </div>
+        <div class="bannerSlider">
+        	<div class="swiper-container" id="slider_1">
+				<div class="swiper-wrapper">
+                    {{?it[i].park_image == null}}
+					<div class="swiper-slide"><img src="../image/test/img01.png" width="100%" alt=""></div>
+					<div class="swiper-slide"><img src="../image/test/img01.png" width="100%" alt=""></div>
+                    {{??}}
+                    <div class="swiper-slide"><img src="{{=SITE_URL}}/{{=it[i].park_image}}" width="100%" alt=""></div>
+                    <div class="swiper-slide"><img src="{{=SITE_URL}}/{{=it[i].park_image}}" width="100%" alt=""></div>
+                    {{?}}
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+			<div class="price aui-flex-row aui-flex-middle aui-flex-center">
+				<div class="text-light">{{? it[i].park_srv_type == 1}}每天{{??}}每小时{{?}}</div>
+				<div class="text-common font-size-15">¥{{=it[i].park_srv_amount}}</div>
+			</div>
+			<div class="pos">
+				<div class="aui-flex-col aui-flex-middle aui-font-size-12 text-dark">
+					<div class="posImg"></div>
+					<div class="posName">{{=it[i].park_airport}}</div>
+				</div>
+			</div>
+		</div>
+    </div>
+    {{}}}
+    <!-- <div class="com-shadow aui-margin-b-10 aui-padded-t-10" tapmode onClick="openIndexWin('self_parking_win');">
+        <div class="innerHeader aui-flex-col aui-flex-middle">
+        	<div style="width: 1.75rem;"><img src="../image/index/4.png" alt=""></div>
+			<div class="aui-padded-l-10">
+				<div class="aui-font-size-16 text-common">机场自助停车</div>
+				<div class="addr aui-font-size-12" style="color: #3f74e9;">自助停车+摆渡</div>
+			</div>
+        	<div class="sliderPages" id="slider_3_pages">
+        		<div class="active">1</div>
+        		<div>2</div>
+        		<div>3</div>
+        		<div>4</div>
+        		<div>5</div>
+        	</div>
+        </div>
+        <div class="bannerSlider">
+        	<div class="swiper-container" id="slider_3">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide"><img src="../image/test/img01.png" width="100%" alt=""></div>
+					<div class="swiper-slide"><img src="../image/test/img01.png" width="100%" alt=""></div>
+					<div class="swiper-slide"><img src="../image/test/img01.png" width="100%" alt=""></div>
+					<div class="swiper-slide"><img src="../image/test/img01.png" width="100%" alt=""></div>
+					<div class="swiper-slide"><img src="../image/test/img01.png" width="100%" alt=""></div>
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+			<div class="price aui-flex-row aui-flex-middle aui-flex-center">
+				<div class="text-light">每天</div>
+				<div class="text-common font-size-15">¥20</div>
+			</div>
+			<div class="pos">
+				<div class="aui-flex-col aui-flex-middle aui-font-size-12 text-dark">
+					<div class="posImg"></div>
+					<div class="posName">自助停车+摆渡</div>
+				</div>
+			</div>
+		</div>
+    </div> -->
+    </script>
+    <div id="doT-Html-Act"></div><!--活动 广告-->
+    <script type="text/x-dot-template" id="doT-Template-Act"><!--活动 广告-->
+    {{for(var i in it){}}
+    {{?it[i].act_image == null}}
+    <div class="banner aui-flex-col aui-flex-middle aui-flex-between" style="background-image: url(../image/index/banner.jpg);">
+    	<div class="aui-text-white">{{=it[i].act_title || ''}}</div>
+    	<div class="btn" tapmode onClick="">点击进入</div>
+    </div>
+    {{??}}
+    <div class="banner aui-flex-col aui-flex-middle aui-flex-between" style="background-image: url({{=SITE_URL}}/{{=it[i].act_image}});">
+        <div class="aui-text-white">{{=it[i].act_title || ''}}</div>
+        <div class="btn" tapmode onClick="">点击进入</div>
+    </div>
+    {{?}}
+    {{}}}
+    </script>
+    <ul class="linkList">
+    	<li class="aui-border-b" tapmode onClick="openMine('activities_win');">
+    		<div class="ico"><img src="../image/index/5.png" alt=""></div>
+    		<div class="font-size-15 text-dark">优惠活动</div>
+    		<div class="aui-font-size-12 text-light">给个文案会好看一点</div>
+    	</li>
+    	<li class="aui-border-b" tapmode onClick="">
+    		<div class="ico"><img src="../image/index/6.png" alt=""></div>
+    		<div class="font-size-15 text-dark">阳光保险</div>
+    		<div class="aui-font-size-12 text-light">给个文案会好看一点</div>
+    	</li>
+    	<li class="aui-border-b" tapmode onClick="">
+    		<div class="ico"><img src="../image/index/81.png" alt=""></div>
+    		<div class="font-size-15 text-dark">特来电</div>
+    		<div class="aui-font-size-12 text-light">客户追加</div>
+    	</li>
+    	<li class="aui-border-b" tapmode onClick="">
+    		<div class="ico"><img src="../image/index/7.png" alt=""></div>
+    		<div class="font-size-15 text-dark">随时修</div>
+    		<div class="aui-font-size-12 text-light">给个文案会好看一点</div>
+    	</li>
+    	<li tapmode onClick="openAuth('credit_win');">
+    		<div class="ico"><img src="../image/index/8.png" alt=""></div>
+    		<div class="font-size-15 text-dark">芝麻信用</div>
+    		<div class="aui-font-size-12 text-light">给个文案会好看一点</div>
+    	</li>
+    </ul>
+    <div id="doT-Html-Act2"></div><!--活动 广告-->
+    <script type="text/x-dot-template" id="doT-Template-Act2"><!--活动 广告-->
+    {{for(var i in it){}}
+    <div class="aui-margin-b-15 banner aui-flex-col aui-flex-middle aui-flex-between">
+        {{?it[i].act_image == null}}
+        <img src="../image/index/banner.jpg" width="100%" alt="">
+        {{??}}
+        <img src="{{=SITE_URL}}/{{=it[i].act_image}}" width="100%" alt="">
+        {{?}}
+    </div>
+    {{}}}
+    </script>
+    <div class="btnList aui-flex-col aui-flex-middle aui-flex-between">
+    	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('share_discount_win')">
+    		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/9.png" alt=""><div class="note">120</div></div>
+    		<div class="text-dark font-size-13">分享优惠</div>
+    		<div class="font-size-11 text-light">代金券多邀多得</div>
+    	</div>
+    	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('mine_account_win')">
+    		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/11.png" alt=""></div>
+    		<div class="text-dark font-size-13">我的账户</div>
+    		<div class="font-size-11 text-light">代金券多邀多得</div>
+    	</div>
+    	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('coupons_win')">
+    		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/12.png" alt=""></div>
+    		<div class="text-dark font-size-13">我的卡券</div>
+    		<div class="font-size-11 text-light">代金券多邀多得</div>
+    	</div>
+    	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('recharge_win')">
+    		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/13.png" alt=""></div>
+    		<div class="text-dark font-size-13">充值优惠</div>
+    		<div class="font-size-11 text-light">代金券多邀多得</div>
+    	</div>
+    	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('car_travel_win')">
+    		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/14.png" alt=""></div>
+    		<div class="text-dark font-size-13">车辆行程</div>
+    		<div class="font-size-11 text-light">代金券多邀多得</div>
+    	</div>
+    	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('common_car_win')">
+    		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/15.png" alt=""></div>
+    		<div class="text-dark font-size-13">常用车辆</div>
+    		<div class="font-size-11 text-light">代金券多邀多得</div>
+    	</div>
+    </div>
+    <div id="doT-Html-Act3"></div><!--活动 广告-->
+    <script type="text/x-dot-template" id="doT-Template-Act3"><!--活动 广告-->
+    {{for(var i in it){}}
+    <div class="aui-margin-b-15 banner aui-flex-col aui-flex-middle aui-flex-between">
+        {{?it[i].act_image == null}}
+        <img src="../image/index/banner.jpg" width="100%" alt="" class="banner aui-flex-col aui-flex-middle aui-flex-between">
+        {{??}}
+        <img src="{{=SITE_URL}}/{{=it[i].act_image}}" width="100%" alt="">
+        {{?}}
+    </div>
+    {{}}}
+    </script>
+    <div class="btnList aui-flex-col aui-flex-middle aui-flex-between">
+    	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openMine('evaluation_list_win')">
+    		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/17.png" alt=""><div class="dot"></div></div>
+    		<div class="text-dark font-size-13">评价</div>
+    		<div class="font-size-11 text-light">代金券多邀多得</div>
+    	</div>
+    	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="">
+    		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/18.png" alt=""></div>
+    		<div class="text-dark font-size-13">商务合作</div>
+    		<div class="font-size-11 text-light">代金券多邀多得</div>
+    	</div>
+    	<div class="aui-flex-item-4 aui-flex-row aui-flex-middle aui-flex-center" tapmode onclick="openHelp()">
+    		<div class="icon aui-flex-col aui-flex-middle aui-flex-center"><img src="../image/index/19.png" alt=""></div>
+    		<div class="text-dark font-size-13">联系客服</div>
+    		<div class="font-size-11 text-light">代金券多邀多得</div>
+    	</div>
+    </div>
+    <div class="aui-padded-15 aui-padded-t-0 aui-margin-b-10">
+    	<div class="com-btm-btn">司机招募</div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/swiper.min.js"></script>
+<script type="text/javascript" src="../script/dom7.js"></script>
+<script type="text/javascript">
+    // document.querySelector("#doT-Html-TopSlide").innerHTML = doT.template(document.querySelector("#doT-Template-TopSlide").innerHTML)();
+    var userid;
+    postData = {};
+    apiready = function(){
+    	api.parseTapmode();
+        userid = $api.getStorage('userid');
+        slede();//顶部轮播图
+        List();//代泊or自助停车
+        act();//活动
+        yanzheng()//检测是否完成身份验证
+        car_yanzheng()//检测是否完成车辆验证
+        api.addEventListener({//登录成功
+            name: 'loginSuccessEvent'
+        }, function(ret, err){
+            if( ret ){
+                userid = $api.getStorage('user_id');
+            }
+        });
+        api.addEventListener({//退出成功
+            name: 'logoutSuccessEvent'
+        }, function(ret, err){
+            if( ret ){
+				userid = null;
+            }
+        });
+        api.addEventListener({//身份未验证 显示顶部小页面
+            name: 'showTips'
+        }, function(ret, err) {
+            if (ret) {
+                showTips();
+            }
+        });
+        api.addEventListener({//身份已验证 隐藏顶部小页面
+            name: 'hideTips'
+        }, function(ret, err) {
+            if (ret) {
+                hideTips();//身份虽已验证 还需验证车辆
+            }
+        });
+    };
+    //轮播
+    // var mainImg = $$('#mainImg');
+    // var mySwiper = new Swiper( mainImg , {
+		// autoplay: 5000,
+		// speed: 600,
+    	// spaceBetween: 0
+    // });
+    //滑动
+    $$('.bannerSlider').each(function(){
+    	var slider = $$(this).find('.swiper-container');
+    	var pages = $$(this).prev('.innerHeader').find('.sliderPages');
+    	var mySwiper = new Swiper( slider , {
+			autoplay: 5000,
+			speed: 600,
+    		spaceBetween: 0,
+    		onSlideChangeStart: function(swiper){
+    			pages.children('div').removeClass('active').eq(swiper.activeIndex).addClass('active');
+    		}
+    	});
+    });
+    // 顶部轮播图
+    function slede(){
+        api.ajax({
+            url: BASE_URL + 'App/Index/carousel',
+            method: 'post',
+            data: {
+                values:postData
+            }
+        }, function(ret, err) {
+            if (ret) {
+                if(ret.code == "1"){
+                    document.getElementById("doT-Html-TopSlide").innerHTML = doT.template(document.getElementById("doT-Template-TopSlide").innerHTML)(ret.data);
+                    // 先获取数据 才可以轮播
+                    var mainImg = $$('#mainImg');
+                    var mySwiper = new Swiper( mainImg , {
+                        autoplay: 5000,
+                        speed: 600,
+                        spaceBetween: 0
+                    });
+                }
+            }
+        });
+    }
+    // 代泊or自助停车
+    function List(){//此处暂时 先跳过...
+        //此接口 目前 图片不对 应轮播
+        api.ajax({
+            url: BASE_URL + 'App/Index/index',
+            method: 'post',
+            data: {
+                values:postData
+            }
+        }, function(ret, err) {
+            if (ret) {
+                if(ret.code == "1"){
+                    document.getElementById("doT-Html-List").innerHTML = doT.template(document.getElementById("doT-Template-List").innerHTML)(ret.data);
+					if(ret.data){
+						for(var i = 0; i<ret.data.length;i++){
+							api.writeFile({
+							    path: 'fs://parkData/park_'+ret.data[i].park_id+".json",
+							    data: JSON.stringify(ret.data[i])
+							}, function(ret, err) {
+							});
+						}
+					}
+					api.parseTapmode();
+                    var mainImg = $$('#mainImg');
+                    var mySwiper = new Swiper( mainImg , {
+                        autoplay: 5000,
+                        speed: 600,
+                        spaceBetween: 0
+                    });
+                }
+            }
+        });
+    }
+    // 活动
+    function act(){
+        api.ajax({
+            url: BASE_URL + 'App/Index/activity',
+            method: 'post',
+            data: {
+                values:postData
+            }
+        }, function(ret, err) {
+            if (ret) {
+                if(ret.code == "1"){
+                    // 暂时 先这样吧...
+                    document.getElementById("doT-Html-Act").innerHTML = doT.template(document.getElementById("doT-Template-Act").innerHTML)(ret.data);
+                    document.getElementById("doT-Html-Act2").innerHTML = doT.template(document.getElementById("doT-Template-Act2").innerHTML)(ret.data);
+                    document.getElementById("doT-Html-Act3").innerHTML = doT.template(document.getElementById("doT-Template-Act3").innerHTML)(ret.data);
+                }
+            }
+        });
+    }
+    //
+	function openIndexWin(url,park_id){
+		var userid = $api.getStorage('userid');
+        if(!userid){
+            api.openWin({
+                name: 'login_win',
+                url: '../html/login/login_win.html',
+                pageParam: {
+                    name: 'value'
+                }
+            });
+            return;
+        }
+		api.openWin({
+			name: url,
+			url: 'index/'+url + '.html',
+            pageParam: {
+                park_id: park_id
+            }
+		});
+	}
+	function openMine(url){
+        if(!userid){
+            api.openWin({
+                name: 'login_win',
+                url: '../html/login/login_win.html',
+                pageParam: {
+                    name: 'value'
+                }
+            });
+            return;
+        }
+        api.openWin({
+            name: url,
+            url: 'mine/'+ url + '.html'
+        });
+    }
+	function openAuth(url){
+        if(!userid){
+            api.openWin({
+                name: 'login_win',
+                url: '../html/login/login_win.html',
+                pageParam: {
+                    name: 'value'
+                }
+            });
+            return;
+        }
+        api.openWin({
+            name: url,
+            url: 'auth/'+ url + '.html'
+        });
+    }
+	function openHelp(){
+        if(!userid){
+            api.openWin({
+                name: 'login_win',
+                url: '../html/login/login_win.html',
+                pageParam: {
+                    name: 'value'
+                }
+            });
+            return;
+        }
+        api.openFrame({
+            name: 'help_pop_frm',
+            url: 'mine/help_pop_frm.html',
+            rect: {
+                x: 0,
+                y: 0,
+                w: api.winWidth,
+                h: api.winHeight
+            },
+            pageParam: {
+                name: 'value'
+            },
+            bounces: false
+        });
+    }
+    // 测是否完成身份验证
+    function yanzheng(){
+        postData.userid = userid;
+        api.ajax({
+            url: BASE_URL + 'App/Prompt/certification',
+            method: 'post',
+            data: {
+                values:postData
+            }
+        }, function(ret, err) {
+            if (ret) {
+                if(ret.code == 1){
+                    // alert("身份已验证");
+                    api.sendEvent({
+                        name: 'hideTips'
+                    });
+                }else{
+                    // alert("身份未验证");
+                    api.sendEvent({
+                        name: 'showTips'
+                    });
+                }
+            }
+        });
+    }
+    // 检测是否完成车辆认证
+    function car_yanzheng(){
+        //
+    }
+    // 显示顶部 身份验证页面
+    function showTips(){
+        api.openFrame({
+            name: 'tips_frm',
+            url: './tips_frm.html',
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                h: 40
+            },
+            pageParam: {
+                name: 'value'
+            },
+            bounces: false
+        });
+    }
+    //隐藏顶部 身份验证页面
+    function hideTips(){
+        api.closeFrame({
+            name: 'tips_frm'
+        });
+        //此处分步验证?先身份验证后车辆验证?出现两个提示消息?
+        //从身份验证到车辆验证一步之遥?只出现身份验证提示消息?
+        // api.openFrame({
+        //     name: 'tips_car_frm',
+        //     url: './tips_car_frm',
+        //     rect: {
+        //         x: 0,
+        //         y: 0,
+        //         w: 'auto',
+        //         h: 40
+        //     },
+        //     pageParam: {
+        //         name: 'value'
+        //     },
+        //     bounces: false
+        // });
+    }
+</script>
+</html>

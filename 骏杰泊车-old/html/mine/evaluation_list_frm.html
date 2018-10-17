@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <script type="text/javascript" src="../../script/dot.min.js"></script>
+    <style type="text/css">
+    	/* 列表高度 */
+    	.aui-list .aui-list-item{
+    		height: 6.75rem;
+    	}
+    	/* 头像距离 顶部高度 */
+    	.aui-media-list .aui-list-item-media img{
+    		margin-top:5px;
+    	}
+    	/*右侧信息 距离顶部*/
+    	.aui-media-list .aui-list-item-inner{
+    		/*padding-top: 22px;*/
+            margin-top:12px;
+    		left: -10px;
+    	}
+    	.aui-media-list .aui-list-item-media{
+    		width: 3rem;
+    	}
+    	.aui-list-item-title.name{
+    		font-family: PingFang-Regular;
+    		font-size: 14px;
+    		color:#333333;
+    	}
+    	.aui-list-item-text.time{
+    		font-family: PingFang-Regular;
+    		font-size: 11px;
+    		color:#999999;
+            top:2px;
+    	}
+    	.aui-list-item-text.info{
+    		font-family: PingFang-Regular;
+    		font-size: 12px;
+    		color:#333333;
+            top:5px;
+    	}
+        .aui-content{
+            padding: 0 0.75rem;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="doT-Html"></div>
+    <script type="text/x-dot-template" id="doT-Template">
+    {{for(var i in it){}}
+    <div class="aui-content">
+        <div class="aui-flex-col aui-padded-t-15 aui-padded-b-10 aui-border-b"  tapmode onclick="openDatail({{=it[i].eva_id}})">
+            <div style="width: 2.1rem;"><img src="../../image/logo.png" class="aui-img-round" alt=""></div>
+            <div class="flex-auto aui-padded-l-10">
+                <div class="aui-font-size-14 text-dark aui-margin-b-5">{{=it[i].user_name}}</div>
+                <div class="font-size-11 text-light aui-margin-b-10">{{=it[i].user_addtime.substr(0,10)}}</div>
+                <div class="aui-font-size-12 text-dark">{{=it[i].eva_content}}</div>
+            </div>
+        </div>
+    </div>
+    {{}}}
+    </script>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    // document.querySelector("#doT-Html").innerHTML = doT.template(document.querySelector("#doT-Template").innerHTML)();
+    var userid;
+    apiready = function(){
+        api.parseTapmode();
+        userid = $api.getStorage('userid');
+        evaluation();
+    };
+    function openDatail(eva_id){
+    	api.openWin({
+    	    name: 'evaluation_detail_win',
+    	    url: 'evaluation_detail_win.html',
+    	    pageParam: {
+    	        name: eva_id
+    	    }
+    	});
+    }
+
+    function evaluation(){
+        postData = {};
+        postData.userid = userid;
+        api.ajax({
+            url: BASE_URL + 'App/Mine/evaluationList',
+            method: 'post',
+            data: {
+                values:postData
+            }
+        }, function(ret, err) {
+            if (ret) {
+                if(ret.code == "1"){
+                    // alert(JSON.stringify(ret));
+                    document.getElementById("doT-Html").innerHTML = doT.template(document.getElementById("doT-Template").innerHTML)(ret.data);
+                }
+            }
+        });
+    }
+</script>
+</html>

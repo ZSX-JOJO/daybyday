@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<style>
+body {
+	background: #ffffff;
+}
+.scoreBox {
+	position: relative;
+	height: 10.25rem;
+	background: linear-gradient(#2286f4, #3da9f4);
+	background: -moz-linear-gradient(#2286f4, #3da9f4);
+	background: -webkit-linear-gradient(#2286f4, #3da9f4);
+	background: -ms-linear-gradient(#2286f4, #3da9f4);
+	margin-bottom: 0.9rem;
+	overflow: hidden;
+}
+#canvas {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%,-45%) scale(0.6);
+	transform: translate(-50%,-45%) scale(0.6);
+}
+</style>
+</head>
+
+<body>
+<section>
+	<div class="scoreBox"><canvas id="canvas" width="320" height="320" data-score="651"></canvas></div>
+	<div class="score-content aui-text-center">
+		<div class="aui-font-size-16" style="color:#59c589">已授权芝麻信用，分数满600</div>
+		<div class="aui-font-size-12 text-dark" style="margin-top:0.4rem">可在骏杰泊车预定车位</div>
+	</div>
+</section>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/zhima_credit.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+
+    };
+</script>
+</html>

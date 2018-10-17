@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<style type="text/css">
+	body {
+		background: #F8f8f8;
+	}
+	.comSec {
+		margin-bottom: 0.5rem;
+		padding: 0;
+		border-radius: 0.2rem;
+		box-shadow: 0 0.1rem 0.2rem -0.1rem rgba(0,0,0,0.15);
+	}
+	.innerTop {
+		padding: 1rem 1rem 0.6rem;
+	}
+	.media img {
+		width: 3.1rem;
+		height: auto;
+	}
+	.price {
+		margin-top: auto;
+		font-size: 0.65rem;
+	}
+	.money {
+		font-size: 1.15rem;
+	}
+	.line {
+		height: 0.5rem;
+		background: url(../../image/mine/line.png) no-repeat;
+		background-size: 100% 0.5rem;
+	}
+	.innerBtm {
+		padding: 0.25rem 1rem 0.3rem;
+	}
+	.link {
+		color: #3f74e9;
+	}
+	.timeout {
+		background: #FFF url(../../image/mine/expired.png) no-repeat right top;
+		background-size: 3rem auto;
+	}
+	.used {
+		background: #FFF url(../../image/mine/used.png) no-repeat right top;
+		background-size: 3rem auto;
+	}
+	.title {
+		font-weight: bold;
+		font-size: 0.9rem;
+	}
+	@media all and (max-width: 350px){
+		.innerBtm,
+		.innerTop {
+			padding-left: 0.75rem;
+			padding-right: 0.5rem;
+		}
+		.title {
+			font-size: 0.75rem;
+		}
+	}
+</style>
+</head>
+<body>
+<div id="doT-Html"></div>
+<script type="text/x-dot-template" id="doT-Template">
+{{for(var i in it){}}
+<div class="aui-content-padded text-dark">
+    {{?it[i].coupon_type == 1}}
+	<div class="comSec">
+		<div class="innerTop aui-flex-col aui-flex-middle aui-flex-between">
+			<div class="media"><img src="../../image/mine/avatar01.png" alt=""></div>
+			<div class="flex-auto aui-padded-l-10 aui-flex-col aui-flex-between aui-flex-bottom">
+				<div class="flex-auto">
+					<div class="title">自助停车金券</div>
+					<div class="font-size-13">有效期至{{=it[i].coupon_over_time.substr(0,10)}}</div>
+				</div>
+				<div class="price color-orange">¥ <span class="money line-height">{{=it[i].coupon_amount}}</span></div>
+			</div>
+		</div>
+		<div class="line"></div>
+		<div class="innerBtm aui-flex-col aui-flex-middle aui-flex-between aui-font-size-12">
+			<div class="text-light">来自联通App积分兑换</div>
+			<div class="link" tapmode onClick="explain();">卡券说明</div>
+		</div>
+	</div>
+    {{??it[i].coupon_type == 2}}
+	<div class="comSec timeout">
+		<div class="innerTop aui-flex-col aui-flex-middle aui-flex-between">
+			<div class="media"><img src="../../image/mine/avatar02.png" alt=""></div>
+			<div class="flex-auto aui-padded-l-10 aui-flex-col aui-flex-between aui-flex-bottom">
+				<div class="flex-auto">
+					<div class="title">机场代泊金券</div>
+					<div class="font-size-13">有效期至{{=it[i].coupon_over_time.substr(0,10)}}</div>
+				</div>
+				<div class="price color-orange">¥ <span class="money line-height">{{=it[i].coupon_amount}}</span></div>
+			</div>
+		</div>
+		<div class="line"></div>
+		<div class="innerBtm aui-flex-col aui-flex-middle aui-flex-between aui-font-size-12">
+			<div class="text-light">来自联通App积分兑换</div>
+			<div class="link" tapmode onClick="explain();">卡券说明</div>
+		</div>
+	</div>
+    {{??it[i].coupon_type == 3}}
+	<div class="comSec used">
+		<div class="innerTop aui-flex-col aui-flex-middle aui-flex-between">
+			<div class="media"><img src="../../image/mine/avatar03.png" alt=""></div>
+			<div class="flex-auto aui-padded-l-10 aui-flex-col aui-flex-between aui-flex-bottom">
+				<div class="flex-auto">
+					<div class="title">通用金券</div>
+					<div class="font-size-13">有效期至{{=it[i].coupon_over_time.substr(0,10)}}</div>
+				</div>
+				<div class="price color-orange">¥ <span class="money line-height">{{=it[i].coupon_amount}}</span></div>
+			</div>
+		</div>
+		<div class="line"></div>
+		<div class="innerBtm aui-flex-col aui-flex-middle aui-flex-between aui-font-size-12">
+			<div class="text-light">来自联通App积分兑换</div>
+			<div class="link" tapmode onClick="explain();">卡券说明</div>
+		</div>
+	</div>
+    {{?}}
+</div>
+{{}}}
+</script>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    var userid;
+    apiready = function() {
+        api.parseTapmode();
+        userid = $api.getStorage('userid');
+        coupons();
+    };
+    function coupons(){
+        postData = {};
+        postData.userid = 33;//目前登录的账户 userid为39
+        api.ajax({
+            url: BASE_URL + 'App/Mine/coupon',
+            method: 'post',
+            data: {
+                values: postData
+            }
+        }, function(ret, err) {
+            if (ret) {
+                if(ret.code == "1"){
+                    // alert(JSON.stringify(ret));
+                    document.getElementById("doT-Html").innerHTML = doT.template(document.getElementById("doT-Template").innerHTML)(ret.data);
+                }
+            }else{
+                alert(JSON.stringify(err));
+            }
+        });
+    }
+</script>
+</html>

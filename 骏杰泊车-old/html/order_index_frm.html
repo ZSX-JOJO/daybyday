@@ -1,0 +1,316 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script type="text/javascript" src="../script/dot.min.js"></script>
+    <style>
+        .order-list {
+            margin-top: 0.3rem;
+            margin-bottom: 0;
+        }
+        .order-list .aui-card-list-header {
+            height: 2.25rem;
+            line-height: 2.25rem;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .order-list p {
+            margin-bottom: 0.25rem;
+            font-size:0.65rem;
+        }
+        .order-list p img.img-icon {
+            position: relative;
+            top: 2px;
+            height: 0.65rem !important;
+            width: auto !important;
+            display: inline-block !important;
+            margin-right: 0.25rem;
+        }
+        .order-content {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+        }
+        .order-content .order-left {
+            width: auto;
+        }
+        .order-content .order-right {
+            margin-top: 4px;
+            width: 75px;
+            height: 52px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <section class="aui-content" id="data-wrap">
+
+    </section>
+    <script type="text/x-dot-tpl" id="data-tpl-1">
+        {{for(var i in it){}}
+        {{?it[i].order_type == 1}}
+        <div class="aui-card-list aui-margin-b-0 order-list" tapmode onclick="openOrderDetail('order_detail_win',{{=it[i].order_id}})">
+            <div class="aui-card-list-header aui-font-size-14 aui-border-b">
+                <div>{{=it[i].park_airport}}-{{=it[i].park_name}}</div>
+                <div class="text-common">机场代泊</div>
+            </div>
+            <div class="aui-card-list-content-padded aui-padded-b-5">
+                <p>
+                    <img src="../image/order/car.png" class="img-icon" />
+                    <span>车辆信息：</span>
+                    <span class="text-dark">{{=it[i].car_number_plate || ''}} {{=it[i].car_color || ''}}·{{=it[i].car_brand || ''}}{{=it[i].car_model || ''}}</span>
+                </p>
+                <p>
+                    <img src="../image/order/time.png" class="img-icon" />
+                    <span>出发日期：</span>
+                    <span class="text-dark">{{=it[i].data_departure_time || ''}}</span>
+                </p>
+                <p>
+                    <img src="../image/order/cont.png" class="img-icon" />
+                    <span>联&nbsp;&nbsp;系&nbsp;&nbsp;人：</span>
+                    <span class="text-dark">{{=it[i].user_name||''}} / {{=it[i].user_mobile||''}}</span>
+                </p>
+            </div>
+        </div>
+        {{??}}
+        <div class="aui-card-list aui-margin-b-0 order-list" tapmode onclick="openOrderDetail('self_parking_win',{{=it[i].order_id}})">
+            <div class="aui-card-list-header aui-font-size-14 aui-border-b">
+                <div>{{=it[i].park_airport}}-{{=it[i].park_name}}</div>
+                <div class="text-common">自助停车</div>
+            </div>
+            <div class="aui-card-list-content-padded aui-padded-b-5">
+                <p>
+                    <img src="../image/order/car.png" class="img-icon" />
+                    <span>车辆信息：</span>
+                    <span class="text-dark">{{=it[i].car_number_plate || ''}} {{=it[i].car_color || ''}}·{{=it[i].car_brand || ''}}{{=it[i].car_model || ''}}</span>
+                </p>
+                <p>
+                    <img src="../image/order/time.png" class="img-icon" />
+                    <span>出发日期：</span>
+                    <span class="text-dark">{{=it[i].data_departure_time || ''}}</span>
+                </p>
+                <p>
+                    <img src="../image/order/cont.png" class="img-icon" />
+                    <span>联&nbsp;&nbsp;系&nbsp;&nbsp;人：</span>
+                    <span class="text-dark">{{=it[i].user_name}} / {{=it[i].user_mobile}}</span>
+                </p>
+            </div>
+        </div>
+        {{?}}
+        {{}}}
+    </script>
+    <script type="text/x-dot-tpl" id="data-tpl-2">
+        {{for(var i in it){}}
+        <div class="aui-card-list order-list" tapmode onclick="openOrderDetail('evaluation_win',{{=it[i].order_id}})">
+            <div class="aui-card-list-header aui-font-size-14 aui-border-b">
+                <div>{{=it[i].park_airport}}-{{=it[i].park_name}}</div>
+                <div class="text-common">{{= it[i].order_type == 1?'机场代泊':'自助停车'}}</div>
+            </div>
+            <div class="aui-card-list-content-padded aui-padded-b-5 order-content">
+                <div class="order-left">
+                    <p>
+                        <img src="../image/order/car.png" class="img-icon" />
+                        <span>车辆信息：</span>
+                        <span class="text-dark">{{=it[i].car_number_plate || ''}} {{=it[i].car_color || ''}}·{{=it[i].car_brand || ''}}{{=it[i].car_model || ''}}</span>
+                    </p>
+                    <p>
+                        <img src="../image/order/time.png" class="img-icon" />
+                        <span>出发日期：</span>
+                        <span class="text-dark">{{=it[i].data_departure_time || ''}}</span>
+                    </p>
+                    <p>
+                        <img src="../image/order/cont.png" class="img-icon" />
+                        <span>联&nbsp;&nbsp;系&nbsp;&nbsp;人：</span>
+                        <span class="text-dark">{{=it[i].user_name || ''}} / {{=it[i].user_mobile || ''}}</span>
+                    </p>
+                </div>
+                {{?it[i].park_image !=null}}
+                <div class="order-right">
+                    <img src="{{=SITE_URL}}/{{=it[i].park_image}}" />
+                </div>
+                {{??}}
+                <div class="order-right">
+                    <img src="../image/demo2.png" />
+                </div>
+                {{?}}
+            </div>
+        </div>
+        {{}}}
+    </script>
+    <script type="text/x-dot-tpl" id="data-tpl-3">
+        {{for(var i in it){}}
+        {{?it[i].order_type == 1}}
+       <div class="aui-card-list order-list" tapmode onclick="openOrderDetail('order_complete_win',{{=it[i].order_id}})">
+            <div class="aui-card-list-header aui-font-size-14 aui-border-b">
+                <div>{{=it[i].park_airport}}-{{=it[i].park_name}}</div>
+                <div class="text-common">机场代泊</div>
+            </div>
+            <div class="aui-card-list-content-padded aui-padded-b-5 order-content">
+                <div class="order-left">
+                    <p>
+                        <img src="../image/order/car.png" class="img-icon" />
+                        <span>车辆信息：</span>
+                        <span class="text-dark">{{=it[i].car_number_plate || ''}} {{=it[i].car_color || ''}}·{{=it[i].car_brand || ''}}{{=it[i].car_model || ''}}</span>
+                    </p>
+                    <p>
+                        <img src="../image/order/time.png" class="img-icon" />
+                        <span>出发日期：</span>
+                        <span class="text-dark">{{=it[i].data_departure_time || ''}}</span>
+                    </p>
+                    <p>
+                        <img src="../image/order/cont.png" class="img-icon" />
+                        <span>联&nbsp;&nbsp;系&nbsp;&nbsp;人：</span>
+                        <span class="text-dark">{{=it[i].user_name || ''}} / {{=it[i].user_mobile || ''}}</span>
+                    </p>
+                </div>
+                {{?it[i].park_image !=null}}
+                <div class="order-right">
+                    <img src="{{=SITE_URL}}/{{=it[i].park_image}}" />
+                </div>
+                {{??}}
+                <div class="order-right">
+                    <img src="../image/demo2.png" />
+                </div>
+                {{?}}
+            </div>
+        </div>
+        {{??}}
+        <div class="aui-card-list order-list" tapmode onclick="openOrderDetail('parking_complete_win',{{=it[i].order_id}})">
+            <div class="aui-card-list-header aui-font-size-14 aui-border-b">
+                <div>{{=it[i].park_airport}}-{{=it[i].park_name}}</div>
+                <div class="text-common">自助停车</div>
+            </div>
+            <div class="aui-card-list-content-padded aui-padded-b-5 order-content">
+                <div class="order-left">
+                    <p>
+                        <img src="../image/order/car.png" class="img-icon" />
+                        <span>车辆信息：</span>
+                        <span class="text-dark">{{=it[i].car_number_plate || ''}} {{=it[i].car_color || ''}}·{{=it[i].car_brand || ''}}{{=it[i].car_model || ''}}</span>
+                    </p>
+                    <p>
+                        <img src="../image/order/time.png" class="img-icon" />
+                        <span>出发日期：</span>
+                        <span class="text-dark">{{=it[i].data_departure_time || ''}}</span>
+                    </p>
+                    <p>
+                        <img src="../image/order/cont.png" class="img-icon" />
+                        <span>联&nbsp;&nbsp;系&nbsp;&nbsp;人：</span>
+                        <span class="text-dark">{{=it[i].user_name || ''}} / {{=it[i].user_mobile || ''}}</span>
+                    </p>
+                </div>
+                {{?it[i].park_image !=null}}
+                <div class="order-right">
+                    <img src="{{=SITE_URL}}/{{=it[i].park_image}}" />
+                </div>
+                {{??}}
+                <div class="order-right">
+                    <img src="../image/demo2.png" />
+                </div>
+                {{?}}
+            </div>
+        </div>
+        {{?}}
+        {{}}}
+    </script>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/dot.min.js"></script>
+<script type="text/javascript">
+    var orderStatus,userid,status;
+    var postData = {};
+    apiready = function(){
+        api.parseTapmode();
+        userid = $api.getStorage('userid');
+        orderStatus = api.pageParam.orderStatus;
+        loadData();
+        // api.addEventListener({//登录成功
+        //     name: 'loginSuccessEvent'
+        // }, function(ret, err){
+        //     if( ret ){
+        //         userid = $api.getStorage('user_id');
+        //         loadData();
+        //     }
+        // });
+        api.addEventListener({//退出成功
+            name: 'logoutSuccessEvent'
+        }, function(ret, err){
+            if( ret ){
+                $api.rmStorage('userid');
+            }
+        });
+    };
+    function loadData(){
+        // ajax获取到数据后根据订单分类调用模板加载数据
+        if(userid){
+            var tpl = document.getElementById("data-tpl-"+orderStatus).innerHTML;
+            var fn = doT.template(tpl);
+            // document.getElementById("data-wrap").innerHTML = fn();
+            api.parseTapmode();
+            postData.userid = userid;
+            switch (orderStatus) {
+                case 1://进行中
+                    postData.status = 2;
+                    break;
+                case 2://待评价
+                    postData.status = 4;
+                    break;
+                case 3://已完成
+                    postData.status = 5;
+                    break;
+            }
+            api.ajax({
+                url: BASE_URL + 'App/Order/orderList',
+                method: 'post',
+                data: {
+                    values:postData
+                }
+            }, function(ret, err) {
+                if (ret) {
+                    if(ret.code == 1){
+                        // alert(JSON.stringify(ret));
+                        document.getElementById("data-wrap").innerHTML = fn(ret.data);
+                    }
+                }
+            });
+        }else{
+            api.openWin({
+                name: 'login_win',
+                url: '../html/login/login_win.html',
+                pageParam: {
+                    name: 'value'
+                },
+                slidBackEnabled: true
+            });
+        }
+    }
+    // 打开订单详情
+      function openOrderDetail(url,id){
+        if(!userid){
+            api.openWin({
+                name: 'login_win',
+                url: '../html/login/login_win.html'
+            });
+            return;
+        }
+        api.openWin({
+          name: url,
+          url: 'order/'+url + '.html',
+          pageParam: {
+              id: id
+          }
+        });
+      }
+</script>
+</html>

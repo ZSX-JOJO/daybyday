@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<style type="text/css">
+	body {
+		background: #FFF;
+	}
+.box {
+	padding: 1.2rem 1.4rem;
+}
+ul {
+	margin-right: -0.75rem;
+}
+.style {
+	margin: 0 0.75rem 0.75rem 0;
+	float: left;
+	padding: 0 0.75rem;
+	height: 1.75rem;
+	line-height: 1.75rem;
+	background-color: #d3d3d3;
+	border-radius: 0.2rem;
+	font-size: 0.7rem;
+	color: #fffefe;
+}
+.click {
+	background-color: #083a91;
+}
+</style>
+</head>
+<body>
+<div class="box">
+	<ul class="clearfix">
+		<li class="style click" tapmode onclick="select(this)">法拉利vs5</li>
+		<li class="style" tapmode onclick="select(this)">奥迪A4L</li>
+		<li class="style" tapmode onclick="select(this)">奥迪A4L</li>
+		<li class="style" tapmode onclick="select(this)">2法拉利VS5</li>
+		<li class="style" tapmode onclick="select(this)">2奥迪A4L</li>
+		<li class="style" tapmode onclick="select(this)">2奥迪A4L</li>
+	</ul>
+</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript">
+	var brand;
+    apiready = function(){
+    	api.parseTapmode();
+		brand = api.pageParam.brand;
+    };
+    function select(n){
+		var model = $$(n).text();
+		$$(n).addClass('click').siblings().removeClass('click');
+		api.sendEvent({
+			name: 'editCarBrand',
+			extra: {
+		        brand: brand,
+		        model: model
+		    }
+		});
+    }
+</script>
+</html>

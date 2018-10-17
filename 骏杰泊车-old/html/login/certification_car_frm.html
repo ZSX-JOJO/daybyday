@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui-flex.css" />
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/login.css" />
+<style>
+	.certUpload {
+		width: 48%;
+		max-width: 7.1rem;
+	}
+	.picture {
+		width: 100%;
+	}
+</style>
+</head>
+<body>
+	<div class="aui-content">
+		<!-- <div class="close" tapmode onClick="closeWin('','fade');"><img src="../../image/close.png" alt=""></div> -->
+		<div class="close" tapmode onclick="closeFrame();"><img src="../../image/close.png" alt=""></div>
+		<div class="topInfo aui-flex-col aui-flex-middle aui-flex-between">
+			<div class="aui-flex-item-7">
+				<div class="title">车辆认证</div>
+				<div class="text">请上传您的驾驶证、交强险照片，我们会验证您的行驶证有误年审，是否有交强险，并且在有效期内。</div>
+			</div>
+			<div><img src="../../image/logo.png" alt="" style="width: 4.05rem;"></div>
+		</div>
+		<div class="certBox aui-border-b">
+			<h2 class="h2Ttl aui-margin-b-15">驾驶证</h2>
+			<div class="aui-flex-col aui-flex-between aui-flex-middle">
+				<div class="certUpload certUpload_spec">
+					<div class="addBtn aui-flex-row aui-flex-middle" tapmode onClick="uploadImg(this);"><img class="ico" src="../../image/login/3.png" alt=""><div>上传照片</div></div>
+					<div class="picture aui-hide" tapmode onClick="uploadImg(this);"><img src="" alt=""></div>
+				</div>
+				<div class="certUpload certUpload_spec">
+					<div class="addBtn aui-flex-row aui-flex-middle" tapmode onClick="uploadImg(this);"><img class="ico" src="../../image/login/3.png" alt=""><div>上传照片</div></div>
+					<div class="picture aui-hide" tapmode onClick="uploadImg(this);"><img src="" alt=""></div>
+				</div>
+			</div>
+		</div>
+		<div class="certBox">
+			<div class="aui-flex-col aui-flex-between aui-flex-middle aui-margin-b-15">
+				<h2 class="h2Ttl">强险</h2>
+				<div class="aui-font-size-12 text-light">请拍摄车头或保单</div>
+			</div>
+			<div class="certUpload" style="margin: 0 auto;">
+				<div class="addBtn aui-flex-row aui-flex-middle" tapmode onClick="uploadImg(this);"><img class="ico" src="../../image/login/3.png" alt=""><div>上传照片</div></div>
+				<div class="picture aui-hide" tapmode onClick="uploadImg(this);"><img src="" alt=""></div>
+			</div>
+		</div>
+		<div class="aui-font-size-12 text-light aui-text-center" style="margin: 0 0 0.5rem;">我们会在3个工作日内给您回复审核结果</div>
+		<div class="com-btm-btn" tapmode onclick="uploadInfo()">确认上传</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript">
+    var userid;
+    var imgURL;
+    var postData = {};
+	apiready = function(){
+		api.parseTapmode();
+		userid = $api.getStorage('userid');
+	};
+	function quick_login(){
+
+	}
+	function uploadImg(n){
+		var certUpload = $$(n).parents('.certUpload');
+		var sourceType = '';
+		api.actionSheet({
+			//title: '性别',
+			buttons: ['使用相机拍照', '使用相册选图']
+		}, function(ret, err) {
+			if(ret){
+				var index = ret.buttonIndex;
+				switch (index) {
+					case 1:
+						sourceType = 'camera';
+						break;
+					case 2:
+						sourceType = 'library';
+						break;
+					default:
+						break;
+				}
+				if(sourceType){
+					api.getPicture({
+						sourceType: sourceType,
+						encodingType: 'jpg',
+						mediaValue: 'pic',
+						destinationType: 'url',
+						allowEdit: false,
+						quality: 100,
+	//					targetWidth: 340,
+	//					targetHeight: 210,
+						saveToPhotoAlbum: false
+					}, function(ret, err) {
+						if (ret) {
+							//alert(JSON.stringify(ret.data));
+							certUpload.find('.picture').removeClass('aui-hide');
+							certUpload.find('.picture img').attr('src',ret.data);
+							certUpload.find('.addBtn').addClass('aui-hide');
+							api.ajax({
+							    url: BASE_URL + 'Attachment/Index/upload',
+							    method: 'post',
+							    data: {
+							    	files: {
+                                        file:ret.data
+                                    }
+							    }
+							}, function(ret, err) {
+							    if (ret) {
+							    	imgURL = ret.path;
+							    }
+							});
+						} else {
+							//alert(JSON.stringify(err));
+							certUpload.find('.picture').addClass('aui-hide');
+							certUpload.find('.picture img').attr('src','');
+							certUpload.find('.addBtn').removeClass('aui-hide');
+						}
+					});
+				}
+			}
+		});
+
+	}
+	function uploadInfo(){
+		postData.userid = userid;
+		postData.auth_driver_photo_1 = imgURL;
+		postData.auth_driver_photo_2 = imgURL;
+		postData.auth_car_ins_photo = imgURL;
+		api.ajax({
+		    url: BASE_URL + 'App/Prompt/uploadInfo',
+		    method: 'post',
+		    data: {
+		        values:postData
+		    }
+		}, function(ret, err) {
+		    if (ret) {
+		    	if(ret.code == 1){
+		    		//上传成功
+		    		api.toast({
+		    		    msg: '图片上传成功',
+		    		    location:'middle'
+		    		});
+		    		api.closeToWin({
+		    		    name: 'root'
+		    		});
+		    	}
+		    }
+		});
+	}
+	function closeFrame(){
+		// api.closeFrame({
+		//     name: 'certification_car_frm'
+		// });
+		api.closeToWin({
+		    name: 'root'
+		});
+	}
+</script>
+</html>

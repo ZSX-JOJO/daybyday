@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+</head>
+<body>
+    <div class="aui-content">
+        <ul class="aui-list aui-list-in" id="data-wrap"></ul>
+    </div>
+    <script type="text/x-dot-tpl" id="data-tpl">
+        {{for(var i in it){}}
+        <li class="aui-list-item" data-CityCode="{{=it[i].CityCode}}" data-AirportCode="{{=it[i].AirportCode}}" data-AirportCname="{{=it[i].AirportCname}}" tapmode onclick="select(this)">
+            <div class="aui-list-item-inner">{{=it[i].AirportCname}}
+        </li>
+        {{ } }}
+    </script>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript" src="../../script/dot.min.js"></script>
+<script type="text/javascript">
+    var cityName;
+
+    apiready = function(){
+        api.parseTapmode();
+        cityName = api.pageParam.cityName;
+
+        loadAirport();
+    }
+    function select(n){
+        // alert(api.pageParam.wname)
+        var AirportCname = n.getAttribute("data-AirportCname");
+        var AirportCode = n.getAttribute("data-AirportCode");
+        var CityCode = n.getAttribute("data-CityCode");
+
+        var jsfun = 'changeAirPortData("'+api.pageParam.domId+'","'+ AirportCname +'","'+ CityCode +'","'+ AirportCode +'")';
+		api.execScript({
+			name: api.pageParam.wname,
+			frameName: api.pageParam.fname,
+			script: jsfun
+		});
+		api.closeWin();
+    }
+    function loadAirport(){
+        var postData = {};
+        postData.name = cityName.replace("市",'');
+        api.ajax({
+		    url: BASE_URL+"App/Parking/departure",
+		    method: 'post',
+		    data: {
+		        values: postData
+		    }
+		},function(ret, err){
+		    if (ret) {
+		        if(ret.data){
+					var tpl = document.getElementById("data-tpl").innerHTML;
+                    var tempFn = doT.template(tpl);
+					document.getElementById("data-wrap").innerHTML = tempFn(ret.data);
+                    api.parseTapmode();
+
+				}
+		    }
+		});
+
+    }
+</script>
+</html>

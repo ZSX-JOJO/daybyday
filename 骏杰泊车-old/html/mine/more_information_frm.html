@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <style type="text/css">
+    	body{
+    		background-color: #F6F8FA;
+    	}
+        .aui-list{
+            padding: 0 0.75rem !important;
+        }
+        .aui-list .aui-list-item{
+            height: 2.5rem;
+            padding-left: 0;
+        }
+        .aui-list .aui-list-item-inner{
+            padding-right: 0;
+        }
+        .aui-list .aui-list-item-right{
+            margin-right:0;
+        }
+    	.font-size-15{
+    		color:#333333 !important;
+    	}
+    	.more-cass{
+            float: right;
+            font-family: PingFang-Regular;
+            color:#093a91;
+            font-size: 0.75rem;
+            padding-top:0.75rem;
+            padding-right:0.75rem;
+        }
+        .aui-list .aui-list-item-right{
+          max-width:70%;
+        }
+    </style>
+</head>
+<body>
+    <div class="aui-content">
+    	<ul class="aui-list aui-list-noborder aui-margin-t-10">
+    		<li class="aui-list-item" tapmode onClick="prompt(this);">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title font-size-15">备注说明</div>
+                    <div class="aui-list-item-right text-light aui-font-size-14">填写备注说明</div>
+                </div>
+            </li>
+            <li class="aui-list-item" tapmode onClick="prompt(this);">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title font-size-15">地址/电话</div>
+                    <div class="aui-list-item-right text-light aui-font-size-14">填写注册地址/ 注册电话</div>
+                </div>
+            </li>
+            <li class="aui-list-item" tapmode onClick="prompt(this);">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title font-size-15">开户行及行号</div>
+                    <div class="aui-list-item-right text-light aui-font-size-14">填写开户行及银行账号</div>
+                </div>
+            </li>
+    	</ul>
+    	<div class="more-cass">查看示例</div>
+    	<div class="aui-padded-15" style="margin-top: 3.7rem">
+        	<div class="com-btm-btn">确认</div>
+    	</div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/dom7.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+
+    };
+    // 填写弹框
+    function prompt(n){
+        var _this = $$(n);
+        var title = _this.find('.aui-list-item-title').text();
+        var text = _this.find('.aui-list-item-right').text();
+        api.prompt({
+            title: title,
+            msg: '',
+            text: "",
+            buttons: ['确定', '取消']
+        }, function(ret, err) {
+            var index = ret.buttonIndex;
+            var text_new = ret.text;
+            if(index == 1){
+                _this.find('.aui-list-item-right').text(text_new);
+            }
+        });
+    }
+</script>
+</html>
