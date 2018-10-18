@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container{
+            position: relative;
+            height: 100px;
+        }
+        .l, .m, .r {
+            height: 100px;
+            position: absolute;
+        }
+
+        .l {
+            background: #f00;
+            width: 100px;
+        }
+
+        .m {
+            background: #0f0;
+            width: calc(100% - 150px);
+            margin: 0 50px 0 100px;
+        }
+
+        .r {
+            background: #00f;
+            width: 50px;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">  
+        <div class="m">中间</div>
+        <div class="l">左边</div>
+        <div class="r">右边</div>
+    </div> 
+    
+    <p>JavaScript隐式转换</p>
+</body>
+<script>
+    /* 一 */
+
+    /* 1 ToString */
+    String(null) // 'null'
+    String(undefined) // 'undefined'
+    String(true) // 'true'
+    String(10) // '10'
+    String(1e21) // '1e+21'
+    String([1,2,3]) // '1,2,3'
+    String([]) // ''
+    String([null]) // ''
+    String([1, undefined, 3]) // '1,,3'
+    String({}) // '[object Objecr]'
+
+    /* 2 ToNumber */
+    Number(null) // 0
+    Number(undefined) // NaN
+    Number('10') // 10
+    Number('10a') // NaN
+    Number('') // 0 
+    Number(true) // 1
+    Number(false) // 0
+    Number([]) // 0
+    Number(![])// 0
+    Number(['1']) // 1
+    Number({}) // NaN
+
+    /* 3 ToBoolean */
+    Boolean(null) // false
+    Boolean(undefined) // false
+    Boolean('') // flase
+    Boolean(NaN) // flase
+    Boolean(0) // flase
+    Boolean([]) // true
+    Boolean({}) // true
+    Boolean(Infinity) // true
+
+    /* 4 ToPrimitive指对象类型类型（如：对象、数组）转换为原始类型的操作 */
+    Number([]) // 0
+    Number(['10']) //10
+
+    var obj1 = {
+        valueOf () {
+        return 100
+        },
+        toString () {
+        return 101
+        }
+    }
+    Number(obj1) // 100
+
+    var obj2 = {
+        toString () {
+        return 102
+        }
+    }
+    Number(obj2) // 102
+
+    var obj3 = {
+        toString () {
+        return {}
+        }
+    }
+    Number(obj3) // TypeError
+
+    /* 二 关于 '=='*/
+    //宽松相等 ==   严格相等 ===   前者在比较时会进行隐式类型转换
+    /* 只要布尔类型参与比较,布尔类型会首先转换为数字类型 */
+    false == 0 // true
+    true == 1 // true
+    true == 2 // false
+    /* 当数字类型和字符串做比较,字符串类型会被转换为数字类型 */
+    0 == '' // true
+    1 == '1' // true
+    1e21 == '1e21' // true
+    Infinity == 'Infinity' // true
+    true == '1' // true
+    false == '0' // true
+    false == '' // true
+    /* 对象类型和原始类型的相等比较,对象类型会根据ToPrimitive规则优先转换为原始类型 */
+    '[object Object]' == {} // true
+    '1,2,3' == [1, 2, 3] // true
+
+    var a = {
+        // 定义一个属性来做累加
+        i: 1,
+        valueOf () {
+        // toString (){
+            return this.i++
+        }
+    }
+    a == 1 && a == 2 && a == 3 // true
+
+    /* null undefined和其他类型的比较 */
+    /* 
+    null和undefined之间互相宽松相等（==），
+    并且也与其自身相等，但和其他所有的值都不宽松相等（==）
+     */
+    null == false // false
+    undefined == false // false
+
+</script>
+</html>

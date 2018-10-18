@@ -16,33 +16,61 @@
         
         /* 容器尺寸 */
         .loader{
-            width: 150px;
+            /* width: 150px;
             height:150px;
-            position: relative;
+            position: relative; */
+            /* 更改后 */
+            width:150px;
+            height:150px;
+            position:relative;
+            display: flex;
+            /* 项目在交叉轴上的对齐方式 */
+            align-items: center;
+            /* 项目在主轴上的交叉方式 */
+            justify-content: center;
         }
 
         /* 矩形的边框样式 */
         .loader span {
+            /* position: absolute;
+            box-sizing: border-box;
+            border: 10px solid dimgray;
+            border-radius: 2px; */
+            /* 更改后 */
             position: absolute;
+            /* ???? */
+            --diameter: calc(40% + (var(--n) - 1) * 30%);
+            width: var(--diameter);
+            height: var(--diameter);
             box-sizing: border-box;
             border: 10px solid dimgray;
             border-radius: 2px;
+            animation: rotating linear infinite;
         }
 
         /* 矩形的尺寸 */
         .loader span:nth-child(1) {
-            width: 100%;
-            height: 100%;
+            /* width: 100%;
+            height: 100%; */
+            /* 更改后 */
+            --n: 1;
+	        animation-duration: 1s;
         }
         .loader span:nth-child(2) {
-            width: 70%;
+            /* width: 70%;
             height: 70%;
-            margin: 15%;
+            margin: 15%; */
+            /* 更改后 */
+            --n: 2;
+	        animation-duration: 2s;
         }
         .loader span:nth-child(3) {
-            width: 40%;
+            /* width: 40%;
             height: 40%;
-            margin: 30%;
+            margin: 30%; */
+            /* 更改后 */
+            --n: 3;
+	        animation-duration: 4s;
         }
 
         /* 左上和右下装饰条 */
@@ -65,20 +93,26 @@
 
         /* 定义动画效果 */
         @keyframes rotating {
-            from{
+            /* from{
                 transform:rotateY(0deg);
             }
             to{
                 transform:rotateY(360deg);
+            } */
+            /* 更改后 */
+            to{
+                transform:rotateY(1turn);
             }
         }
+
+        /* 更改后  后面全部废除!!!! */
         /* 应用动画效果 */
         /* http://www.runoob.com/cssref/css3-pr-animation.html */
-        .loader span{
+        /* .loader span{ */
             /* linear动画的速度 匀速; infinite动画是否重复播放  无限次播放 */
-            animation:rotating  linear infinite;
-        }
-        .loader span:nth-child(1){
+            /* animation:rotating  linear infinite; */
+        /* } */
+        /* .loader span:nth-child(1){
             animation-direction: 4s;
         }
         .loader span:nth-child(2){
@@ -86,10 +120,10 @@
         }
         .loader span:nth-child(3){
             animation-direction: 1s;
-        }
+        } */
 
         /* 设置矩形的堆叠顺序 */
-        .loader span:nth-child(1) {
+        /* .loader span:nth-child(1) {
             z-index: 3;
         }
         .loader span:nth-child(2) {
@@ -97,8 +131,9 @@
         }
         .loader span:nth-child(3) {
             z-index: 1;
-        }
+        } */
     </style>
+    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
     <div class="loader">

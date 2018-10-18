@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table id="producttable">
+    <thead>
+        <tr>
+        <td>UPC_Code</td>
+        <td>Product_Name</td>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- 现有数据可以可选地包括在这里 -->
+    </tbody>
+    </table>
+      
+    <template id="productrow">
+    <tr>
+        <td class="record"></td>
+        <td></td>
+    </tr>
+    </template>
+
+    <!-- 关于 importNode()-->
+    <div id="test" style="margin-top:20px">
+        <div>233</div>
+        <div>123123
+            <div>qwewqeqewqeqweqeqew</div>
+        </div>
+    </div>
+    <div id="test1"></div>
+
+    <!-- 关于appendChild() -->
+    <ul id="myList">
+        <li>Coffee</li>
+        <li>Tea</li>
+    </ul>
+    <p id="demo">单击按钮将项目添加到列表中</p>
+    <button onclick="myFunction()">点我</button>
+
+    <ul id="myList1">
+        <li>Coffee</li>
+        <li>Tea</li>
+    </ul>
+    <ul id="myList2">
+        <li>Water</li>
+        <li>Milk</li>
+    </ul>
+    <p id="demo2">单击按钮将项目从一个列表移动到另一个列表中</p>
+    <button onclick="myFunction2()">点我</button>
+</body>
+<script>
+    // 通过检查来测试浏览器是否支持HTML模板元素 
+    // 用于保存模板元素的内容属性。
+    if ('content' in document.createElement('template')) {
+
+    // 使用现有的HTML tbody实例化表和该行与模板
+    var t = document.querySelector('#productrow'),
+    td = t.content.querySelectorAll("td");
+    td[0].textContent = "1235646565";
+    td[1].textContent = "Stuff";
+
+    // 克隆新行并将其插入表中
+    var tb = document.getElementsByTagName("tbody");
+    var clone = document.importNode(t.content, true);
+    tb[0].appendChild(clone);
+
+    // 创建一个新行
+    td[0].textContent = "0384928528";
+    td[1].textContent = "Acme Kidney Beans";
+
+    // 克隆新行并将其插入表中
+    var clone2 = document.importNode(t.content, true);
+    tb[0].appendChild(clone2);
+
+    } else {
+    // 找到另一种方法来添加行到表，因为不支持HTML模板元素。
+    }
+
+
+    /* 关于importNode()方法 && appendChild()方法*/
+    /* 
+    document.importNode(node,deep); 关于deep  如果为 true，还要递归复制 importedNode 节点的所有子孙节点
+     */
+    
+    /* 
+    appendChild() 方法可向节点的子节点列表的末尾添加新的子节点
+     */
+    var fuck = document.getElementById('test');
+    var x = document.importNode(fuck,true);
+    document.getElementById('test1').appendChild(x);
+
+
+    function myFunction(){
+        var node=document.createElement("LI");
+        var textnode=document.createTextNode("Water");
+        node.appendChild(textnode);
+        document.getElementById("myList").appendChild(node);
+    }
+
+    function myFunction2(){
+        var node=document.getElementById("myList2").lastChild;
+        document.getElementById("myList1").appendChild(node);
+    }
+
+    /* 原生 HTML 组件 */
+</script>
+</html>
