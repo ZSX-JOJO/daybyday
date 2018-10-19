@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css实现镂空效果</title>
+    <style>
+        p{
+            text-align: center;
+            color:red;
+            font-size:22px;
+        }
+
+        #title {
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            width: fit-content;
+        }
+
+
+        /* 1 mask-image */
+        .mask-image{
+            /* width:250px;
+            height:187.5px; */
+            /* 遮罩使用图片资源 */
+            /* -webkit-mask-image:url(./img/loading_blue.png);
+            mask-image:url(./img/loading_blue.png); */
+
+            /* -webkit-mask-image:url(./img/star.svg);
+            mask-image:url(./img/star.svg); */
+
+            /* image-set()不同密度的屏幕设备加载不同的图片资源 */
+            /* -webkit-mask-image: -webkit-image-set(url(./img/loading_blue.png) 1x, url(./img/star.svg) 2x);
+            mask-image: image-set(url(./img/loading_blue.png) 1x, url(./img/star.svg) 2x); */
+
+            /* cross-fade() 图片透明叠加功效符 */
+            /* -webkit-mask-image:-webkit-cross-fade(url(./img/loading_blue.png), url(./img/star.svg), 50%);
+            mask-image:-webkit-cross-fade(url(./img/loading_blue.png), url(./img/star.svg), 50%); */
+
+            /* element()可以将页面上的dom元素作为图片使用   只有firefox浏览器自持 */
+            /* -webkit-mask-image: -webkit-element(#title);
+            mask-image:-moz-element(#title);
+            mask-image: element(#title); */
+
+            /* gradient()渐变色 */
+            /* 重复线性渐变 */
+            /* -webkit-mask-image: repeating-linear-gradient(rgba(0,0,0,0) 4px, rgba(0,0,0,1) 10px, rgba(0,0,0,1) 12px);
+            mask-image: repeating-linear-gradient(rgba(0,0,0,0) 4px, rgba(0,0,0,1) 10px, rgba(0,0,0,1) 12px); */
+
+            /* 重复径向渐变 */
+            /* -webkit-mask-image: repeating-radial-gradient(rgba(0,0,0,0) 4px, rgba(0,0,0,1) 10px, rgba(0,0,0,1) 12px);
+            mask-image: repeating-radial-gradient(rgba(0,0,0,0) 4px, rgba(0,0,0,1) 10px, rgba(0,0,0,1) 12px); */conic
+
+            /* 锥形渐变 (if浏览器支持) */
+            /* -webkit-mask-image:conic-gradient(rgba(0,0,0,0) 4px, rgba(0,0,0,1) 10px, rgba(0,0,0,1) 12px);
+            mask-image:conic-gradient(rgba(0,0,0,0) 4px, rgba(0,0,0,1) 10px, rgba(0,0,0,1) 12px); */
+        }
+
+        /* 2 mask-mode 仅仅firefox浏览器支持*/
+        .mask-image{
+            /* width:250px; */
+            /* height:187.5px; */
+            /* 遮罩使用图片资源 */
+            /* -webkit-mask-image:url(./img/loading_blue.png); */
+            /* mask-image:url(./img/loading_blue.png); */
+            /* -webkit-mask-mode: luminance; */
+            /* mask-mode: luminance; */
+        }
+
+        /* 3 mask-repeat 
+        支持:
+        mask-repeat: repeat-x;
+        mask-repeat: repeat-y;
+        mask-repeat: repeat;
+        mask-repeat: no-repeat;
+        mask-repeat: space;
+        mask-repeat: round;
+        */
+        /* .mask-image{
+            width:250px;
+            height:187.5px;
+            -webkit-mask-image:url(./img/loading_blue.png);
+            mask-image:url(./img/loading_blue.png);
+            -webkit-mask-repeat:repeat-x;
+            mask-repeat:repeat-x;
+        } */
+
+        /* 4 mask-position
+        支持单个关键字 缺省值为center
+        mask-position: top;
+        mask-position: bottom;
+        mask-position: left;
+        mask-position: right;
+        mask-position: center;
+         */
+        /* .mask-image{
+            width:250px;
+            height:187.5px;
+            -webkit-mask-image:url(./img/loading_blue.png);
+            mask-image:url(./img/loading_blue.png);
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: top;
+            mask-position: top;
+        } */
+
+        /* 5 mask-clip
+        类似background-clip
+        mask-clip:content-box;
+        mask-clip:padding-box;
+        mask-clip:border-box;
+        mask-clip:fill-box;
+        mask-clip:stroke-box;
+        mask-clip:view-box;
+        mask-clip:no-clip;
+         */
+         /* .mask-image {
+            width: 250px; height: 187.5px;
+            -webkit-mask-image: url(./img/loading_blue.png);
+            mask-image: url(./img/loading_blue.png);
+            border: 20px solid #34538b;
+            padding: 20px;
+            margin: 20px;
+        } */
+
+        /* 6 mask-origin
+        mask-origin: content-box;
+        mask-origin: padding-box;
+        mask-origin: border-box;
+        mask-origin: fill-box;
+        mask-origin: stroke-box;
+        mask-origin: view-box;
+         */
+        .mask-image{
+            width: 250px; height: 187.5px;
+            -webkit-mask-image: url(./img/loading_blue.png);
+            mask-image: url(./img/loading_blue.png); 
+        }
+    </style>
+</head>
+<body>
+    <p> <a href="https://www.zhangxinxu.com/wordpress/2017/11/css-css3-mask-masks/">具体请访问此</a></p>
+    <p>CSS 遮罩 CSS3 mask/masks 详细介绍</p>
+    <!-- mask-image -->
+    <h4 id="title">作为图片的标题文字</h4>
+    <h5>mask-image </h5>
+    <img src="./img/ps1.jpg" class="mask-image">
+
+
+    <!--  -->
+    <!-- <svg width="50" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="25" cy="25" rx="20" ry="10" fill="#000000" stroke="none"></ellipse>
+        <rect x="15" y="5" width="20" height="40" rx="5" ry="5" fill="#000000" stroke="none"></rect>
+    </svg> -->
+
+    <!-- mask-mode -->
+    <h5>mask-mode</h5>
+    <img src="./img/ps1.jpg" class="mask-image">
+
+    <!-- mask-position -->
+    <h5>mask-position</h5>
+    <div>请选择mask-position：
+        <select id="maskPosition">
+            <option value="top">top</option>
+            <option value="right">right</option>
+            <option value="bottom">bottom</option>
+            <option value="left">left</option>
+            <option value="center">center</option>
+            <option value="left top" selected>left top</option>
+            <option value="right top">right top</option>
+            <option value="right bottom">right bottom</option>
+            <option value="left bottom">left bottom</option>
+        </select>
+    </div>
+
+    <!-- mask-clip -->
+    <h5>mask-clip</h5>
+    <div>请选择mask-clip
+        <select id="maskClip">
+            <option value="content-box" selected>content-box</option>
+            <option value="padding-box">padding-box</option>
+            <option value="border-box">border-box</option>
+            <option value="fill-box">fill-box</option>
+            <option value="stroke-box">stroke-box</option>
+            <option value="view-box">view-box</option>
+            <option value="no-clicp">no-clicp</option>
+        </select>
+    </div>
+
+    <!-- mask-origin -->
+    <h5>mask-origin</h5>
+</body>
+<script>
+    /* 关于mask-position */
+    var eleSel = document.getElementById('maskPosition');
+    var eleImg = document.querySelector('.mask-image');
+    if (eleSel && eleImg) {
+        eleSel.addEventListener('change', function () {
+            eleImg.style.webkitMaskPosition = this.value;
+            eleImg.style.maskPosition = this.value;
+        });    
+    }
+
+    /* 关于mask-clip */
+    var eleClip = document.getElementById('maskClip');
+    var eleImg = document.querySelector('.mask-image');
+    if (eleClip && eleImg) {
+        eleClip.addEventListener('change', function () {
+            eleImg.style.webkitMaskClip = this.value;
+            eleImg.style.maskClip = this.value;
+        });    
+    }
+</script>
+</html>

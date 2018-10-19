@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>容器厚条纹边框特效</title>
+    <style>
+        html,body{
+            height:100%;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+        }
+
+        /* 条纹背景 */
+        .box{
+            width:300px;
+            height:300px;
+            background:linear-gradient(
+                -45deg,
+                white 0%,
+                white 25%,
+                hotpink 25%,
+                hotpink 50%,
+                white 50%,
+                white 75%,
+                hotpink 75%,
+                hotpink 100%
+            );
+            background-size: 10%;
+        }
+        
+        /* box容器留出厚边框 将content容器镶嵌其中 */
+        .box .content{
+            height:100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box{
+            box-sizing: border-box;
+            padding:15px;
+        }
+        .box .content{
+            background-color:white;
+        }
+
+        /* 设置厚边框的立体的效果 */
+        .box,
+        .box .content {
+            box-shadow: 0 0 2px deeppink,
+                        0 0 5px rgba(0, 0, 0, 1),
+                        inset 0 0 5px rgba(0, 0, 0, 1);
+            border-radius: 10px;
+        }
+
+        /* 内容布局 */
+        .box .content{
+            flex-direction: column;
+            box-sizing:border-box;
+            padding:30px;
+            text-align:center;
+            font-family:sans-serif;
+        }
+
+        .box .content h1,h3{
+            color:deeppink;
+        }
+
+        .box .content p{
+            color:blue;
+        }
+
+        /* 定义动画效果 */
+        @keyframes animate{
+            /* from{
+                background-position: 0;
+            }
+            to{
+                background-position: 10%;
+            } */
+
+            0%{background-position: 0}
+            25%{background-position: 2.5%}
+            50%{background-position: 5%}
+            100%{background-position: 10%}
+        }
+
+        @-webkit-keyframes animate{
+            /* from{
+                background-position: 0;
+            }
+            to{
+                background-position: 10%;
+            } */
+
+            0%{background-position: 0}
+            25%{background-position: 2.5%}
+            50%{background-position: 5%}
+            100%{background-position: 10%}
+        }
+
+        /* 将动画效果应用到容器上 */
+        .box{
+            animation:animate 3s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="content">
+            <h1>2333</h1>
+            <h3>qwer</h3>
+            <p>zsxSB</p>
+        </div>
+    </div>
+</body>
+</html>
