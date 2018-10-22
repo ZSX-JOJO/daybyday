@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>金属光泽3D按钮</title>
+    <style>
+        html, body{
+            height:100%;
+            display: flex;
+            justify-content:center;
+            align-content:center;
+            background-color:brown;
+        }
+        .btn{
+            background: linear-gradient(to right, gold, darkorange);
+            color: white;
+            /* css变量(局部变量 和 全局变量 全局变量使用 伪类 :root{}定义) */
+            --width: 250px;
+            /* 使用calc时  运算符前后需要添加空格 */
+            --height: calc(var(--width) / 3);
+            width: var(--width);
+            height: var(--height);
+            text-align: center;
+            line-height: var(--height);
+            font-size: calc(var(--height) / 2.5);
+            font-family: sans-serif;
+            letter-spacing: 0.2em;
+            border: 1px solid darkgoldenrod;
+            border-radius: 2em;
+        }
+
+        .btn {
+            /* transition 渐变 transform 变换 animation 动画 */
+            /* 为3D转换元素定义透视图   perspective也是一个单独属性*/
+            transform: perspective(500px) rotateY(-15deg);
+            /* 文字阴影 */
+            text-shadow: 6px 3px 2px rgba(0, 0, 0, 0.2);
+            /* 设置一个或多个下拉阴影的框 */
+            box-shadow: 2px 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 鼠标划过动画效果 */
+        .btn:hover{
+            transform:perspective(500px) rotateY(15deg);
+            text-shadow:-6px 3px 2px rgba(0,0,0,0.2);
+            box-shadow:-2px 0 0 5px rgba(0,0,0,0.2);
+        }
+        .btn{
+            transition:0.5s;
+        }
+
+        /* 伪元素增加光泽 */
+        .btn {
+            position: relative;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, white, transparent);
+            left: 0;
+        }
+
+        /* 定义光泽动画效果 */
+        .btn::before {
+            left: -100%;
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* 隐藏容器之外的内容 */
+        .btn{
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn">3D按钮</div>
+</body>
+</html>
