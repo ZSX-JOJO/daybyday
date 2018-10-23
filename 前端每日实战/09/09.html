@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我瞄准你了</title>
+    <style>
+        html,
+        body{
+            height:100%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            background-color: black;
+            color:silver;
+        }
+
+        .box{
+            width:9em;
+            height:3em;
+            font-size:32px;
+            line-height:3em;
+            text-align: center;
+            /* 字符间距 */
+            letter-spacing: 0.2em;
+            font-family: sans-serif;
+
+            position: relative;
+            filter:blur(2px);
+            transition:0.5s;
+        }
+
+        .box:hover{
+            filter:blur(0.2px);
+        }
+
+        .box::after{
+            content:'';
+            position: absolute;
+            width:3em;
+            height:3em;
+            left:3em;
+            border:1px solid red;
+            border-radius:50%;
+            filter: opacity(0);
+        }
+
+        .box span:not(:first-child){
+            position: absolute;
+            background-color: red;
+            filter: opacity(0);
+        }
+
+        .box span.top,
+        .box span.bottom{
+            width:1px;
+            height:3em;
+            left:50%;
+        }
+
+        .box span.top{
+            top:-3em;
+        }
+
+        .box span.bottom{
+            top:-3em;
+        }
+
+        .box span.left,
+        .box span.right{
+            width:3em;
+            height:1px;
+            top:50%;
+        }
+
+        .box span.left{
+            left:0;
+        }
+
+        .box span.right {
+            right: 0;
+        }
+
+        @keyframes aim{
+            from{
+                filter:opacity(0.2);
+            }
+
+            to{
+                filter:opacity(0.8);
+            }
+        }
+
+        @-webkit-keyframes aim{
+            from{
+                filter:opacity(0.2);
+            }
+
+            to{
+                filter:opacity(0.8);
+            }
+        }
+
+        .box:hover::after,
+        .box:hover span:not(:first-child) {
+            animation: aim 1s linear infinite alternate;
+        }
+        
+        
+        /* 其他 */
+        li+li{
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span>button</span>
+        <span class="top"></span>
+        <span class="bottom"></span>
+        <span class="left"></span>
+        <span class="right"></span>
+    </div>
+
+    <ul>
+        <li>123</li>
+        <li>1234</li>
+        <li>12345</li>
+        <li>123456</li>
+    </ul>
+</body>
+</html>
