@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>同心圆弧旋转特效</title>
+    <style>
+        html,
+        body,
+        .circle{
+            display: flex;
+            height:100%;
+            justify-content: center;
+            align-content: center;
+            background-color: black;
+        }
+
+        .circle{
+            position: relative;
+            width:200px;
+            height:200px;
+            border-radius:50%;
+            border-style:solid;
+            border-width:10px;
+            border-color:red transparent blue transparent;
+        }
+
+        .circle::before {
+            content: '';
+            position: absolute;
+            width: 75%;
+            height: 75%;
+            border-width: 0.4em;
+            border-style: solid;
+            border-radius: 50%;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-top-color: orange;
+            border-bottom-color: cyan;
+        }
+
+        .circle::after {
+            content: '';
+            position: absolute;
+            width: 75%;
+            height: 75%;
+            border-width: 0.4em;
+            border-style: solid;
+            border-radius: 50%;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-top-color: yellow;
+            border-bottom-color: limegreen;
+        }
+
+        @keyframes animate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(1440deg);
+            }
+        }
+
+        .circle {
+            animation: animate 4s ease-in-out infinite alternate;
+        }
+
+        .circle::before {
+            animation: animate 8s ease-in-out infinite alternate;
+        }
+
+        .circle::after {
+            animation: animate 16s ease-in-out infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle"></div>
+</body>
+</html>

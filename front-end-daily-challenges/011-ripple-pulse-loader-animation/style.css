@@ -8,20 +8,26 @@ body,
 	background-color: black;
 }
 
+/* CSS变量 */
 :root {
 	--innerRadius: 2em;
 }
 
 .circle {
+	/* 中间实心圆 */
 	width: calc(var(--innerRadius) * 2);
 	height: calc(var(--innerRadius) * 2);
 	background-color: lime;
 	border-radius: 50%;
+
+	/* 圆环 */
 	box-shadow: 0 0 0 calc(var(--innerRadius) - 0.4em) black,
 				0 0 0 var(--innerRadius) lime;
 	position: relative;
 }
 
+
+/* 动画用到的圆环 */
 .circle::before,
 .circle::after {
 	content: '';
@@ -39,6 +45,7 @@ body,
 
 @keyframes pulse {
 	from {
+		/* transform变换 scale缩放转换  */
 		transform: scale(1);
 		filter: opacity(0.9);
 	}

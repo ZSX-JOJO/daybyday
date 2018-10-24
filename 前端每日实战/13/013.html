@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冒热汽的咖啡杯</title>
+    <style>
+        html, body{
+            height:100%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            background-color:fuchsia;
+        }
+        
+        /* 杯子主体 */
+        .coffee .cup {
+            position: relative;
+            width: 10em;
+            height: 9em;
+            top:4em;
+            background-color: white;
+            border-bottom-left-radius: 1.5em;
+            border-bottom-right-radius: 1.5em;
+        }
+        /* 伪元素实现杯口 */
+        .coffee .cup::before{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2em;
+            background-color: chocolate;
+            border: 0.5em solid white;
+            box-sizing: border-box;
+            border-radius: 50%;
+            top: -1em;
+            box-shadow:inset 0 0 1em rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="coffee">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="cup"></div>
+        <div class="plate"></div>
+    </div>
+</body>
+</html>
