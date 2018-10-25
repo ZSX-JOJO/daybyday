@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clip-path</title>
+    <style>
+        .clip[style] {
+            opacity: 0;
+        }
+        .active .clip:not([style]) {
+            opacity: 0;
+            animation: fadeIn .1s .4s both;
+        }
+        .active .clip[style] {
+            will-change: transform;
+            animation: noTransform .5s both;
+        }
+
+        @keyframes noTransform {
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) rotate(0);
+            }
+        }
+        @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+        }
+
+        .box { height: 190px; }
+        .text { position: absolute; width: 300px; }
+        .image { position: absolute; }
+    </style>
+</head>
+<body>
+    <strong>1. 普通带文本的元素</strong>
+    <div class="box active">
+        <p id="text" class="text clip">魔兽要上映了，由于我从来没有玩过《魔兽世界》，所以无感。但是，有一点我是知道的：不管是联盟狗还是部落猪，最后都是为了艾泽拉斯！</p>
+    </div>
+    <p><button id="playText">重复播放</button></p>
+    
+    <strong>2. 替换元素如图片</strong>
+    <div class="box active">
+        <img id="image" class="image clip" src="./mm1.jpg">
+    </div>
+    <p><button id="playImage">重复播放</button></p>
+</body>
+<script>
+    /**@preserve
+    * @description 任意元素碎片化，配合CSS可以有碎片拼接特效
+        更多内容参见 http://www.zhangxinxu.com/wordpress/?p=5426
+    * @author zhangxinxu(.com)
+    * @license MIT [保留原作署名]
+    * @param {object} [ele] [dom元素]
+    */
+    var clipPath=function(t){
+        if(!t){
+            return false
+        }
+        t.removeAttribute("id");
+        var r={
+            height:t.clientHeight,width:t.clientWidth,distance:60,html:t.outerHTML
+        };
+        if(window.getComputedStyle(document.body).webkitClipPath){
+            var a=r.distance,n=r.width,e=r.height;
+            var o="";
+            for(var i=0;i<n;i+=a){
+                for(var h=0;h<e;h+=a){
+                    var d=[i,h],u=[i,h+a],l=[i+a,h+a],v=[i+a,h];var c=[i+a/2,h+a/2];
+                    var m=[[d,c,v],[d,u,c],[c,u,l],[v,c,l]];
+                    m.forEach(function(t,a){
+                        var n=t.map(function(t){return t.map(function(t){return t+"px"}).join(" ")}).join();
+                        var e="-webkit-clip-path: polygon("+n+");";
+                        var i=Math.random();var h=i<.5?-1:1;
+                        var d=[[h*(200+Math.round(500*i)),-1*(500+Math.round(300*i))],[h*(100+Math.round(500*i)),-1*(400+Math.round(600*i))],[h*(50+Math.round(500*i)),-1*(500+Math.round(300*i))],[h*(100+Math.round(400*i)),1*(500+Math.round(700*i))]];
+                        var u=[600*(.5-Math.random()),600*(.5-Math.random())];
+                        var l="translate("+u.map(function(t){return t+"px"}).join()+") rotate("+Math.round(h*360*Math.random())+"deg)";
+                        var v="-webkit-transform:"+l+";transform:"+l+";";
+                        o=o+r.html.replace('">','" style="'+e+v+'">')
+                    });
+                }
+            }
+            t.parentNode.innerHTML=r.html+o;
+            return true
+        }else{
+            t.className+=" no-clipath";
+            return false
+        }
+    };
+
+    var eleText = document.getElementById('text'),
+        eleImage = document.getElementById('image');
+        
+    // 父级元素
+    var eleParentText = eleText.parentNode,
+        eleParentImage = eleImage.parentNode;
+        
+    var eleBtnText = document.getElementById('playText'),
+        eleBtnImage = document.getElementById('playImage');
+
+    var isSupport = 
+    // 碎片特效初始化
+    clipPath(eleText);
+    clipPath(eleImage);
+
+    // 点击播放
+    if (isSupport) {
+        eleBtnText.onclick = function() {
+            eleParentText.classList.remove('active');	
+            eleParentText.offsetHeight;
+            eleParentText.classList.add('active');
+        };	
+        eleBtnImage.onclick = function() {
+            eleParentImage.classList.remove('active');	
+            eleParentImage.offsetHeight;
+            eleParentImage.classList.add('active');
+        };	
+    }
+</script>
+</html>
