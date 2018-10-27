@@ -1,5 +1,6 @@
 .has-left-bar {
-  transform: translateX(-80%);
+  -webkit-transform: translateX(-80%);
+          transform: translateX(-80%);
   position: fixed;
 }
 /*# sourceMappingURL=style.css.map */
