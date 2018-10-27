@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>关于数组的骚操作</title>
+</head>
+<body>
+    <p>1:已知数组[1,2,3,4],3</p>
+    <p>如果数组中存在 item，则返回元素在数组中的位置，否则返回 -1</p>
+
+    <p>2:计算数组中元素的总和[1,2,3,4]</p>
+
+    <p>3:移除数组 arr 中的所有值与 item 相等的元素。不要直接修改数组 arr，结果返回新的数组</p>
+
+    <p>4:移除数组 arr 中的所有值与 item 相等的元素，直接在给定的 arr 数组上进行操作，并将结果返回</p>
+
+    <p>5:在数组 arr 末尾添加元素 item。不要直接修改数组 arr，结果返回新的数组</p>
+
+    <p>6:删除数组 arr 最后一个元素。不要直接修改数组 arr，结果返回新的数组</p>
+
+    <p>7:在数组 arr 开头添加元素 item。不要直接修改数组 arr，结果返回新的数组</p>
+</body>
+<script>
+    /* 
+    如果数组中存在 item，则返回元素在数组中的位置，否则返回 -1
+    */
+
+    /* Ⅰ 查找位置 */
+    var arr = [1,2,3,4];
+    function indexOf(arr,item){
+        if(Array.prototype.indexOf){
+            return arr.indexOf(item);//lastIndexOf()查找指定的字符串最后出现的位置
+        }else{
+            for(var i = 0;i < arr.length;i++){
+                if(arr[i] === item){
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+    indexOf(arr,3);
+
+    /* Ⅰ plus版  即使数组中包含对象数组*/
+    var arr = [{name:'zsx',sex:'男'},'18',3,5,8,[1219]];
+    
+     function indexOfPlus(arr,item){
+         if(!arr || !arr.length){
+             return -1;
+         }else{
+             for(var i = 0;i < arr.length;i++){
+                 if(JSON.stringify(arr[i]) === JSON.stringify(item)){
+                     return i;
+                 };
+             }
+         }
+     }
+
+     indexOfPlus(arr,8);
+
+
+     /* 
+    计算数组中元素的总和[1,2,3,4]
+    */
+
+    /* Ⅱ  计算数组中元素的总和 */
+     var arr2 = [1,2,3,4];
+     function sum(arr){
+         if(!arr || !arr.length){
+             return -1;
+         }else{
+             var sum = 0;
+             for(var i = 0;i < arr.length;i++){
+                 sum = sum + arr[i];
+             }
+             return sum;
+         }
+     }
+     sum(arr2);
+
+    /* Ⅱ plus版 */
+    var arr2 = [1,2,3,4];
+    function sumPlus(arr){
+        var len = arr.length;
+        if(len == 0){
+            return 0;
+        }else if(len == 1){
+            return arr[0];
+        }else{
+            return arr[0] + sumPlus(arr.slice(1));
+        }
+    }
+
+    sumPlus(arr2);
+
+    /* Ⅱ 函数式编程 */
+    var arr2 = [1,2,3,4];
+    function sum(arr) {
+        return arr.reduce(function(prev, curr, idx, arr){
+            return prev + curr;
+        });
+    }
+    sum(arr2);
+
+    /* Ⅱ forEach() */
+    var arr2 = [1,2,3,4];
+    function sum(arr) {
+        var s = 0;
+        arr.forEach(function(val, idx, arr) {
+            s += val;
+        }, 0);
+    
+        return s;
+    };
+    sum(arr2);
+
+    /* Ⅱ eval 和join() */
+    var arr2 = [1,2,3,4];
+    function sum(arr) {
+        return eval(arr.join("+"));
+    };
+    sum(arr2);
+
+    /*  
+    移除数组 arr 中的所有值与 item 相等的元素。不要直接修改数组 arr，结果返回新的数组
+    */
+
+    /* Ⅲ 
+    slice() 用于添加 或 删除 或替换 数组的元素
+    */
+    var arr3 = [1,2,3,4,5,6];
+    function remove(arr,item){
+        var newarr = arr.slice(0);
+        for(var i = 0; i < newarr.length; i++){
+            if(newarr[i] == item){
+                newarr.slice(i,1);
+                i--;
+            }
+        }
+        return newarr;
+    }
+    remove(arr3,6);
+
+    /* Ⅲ 
+    push()向数组的末尾添加一个或多个元素，并返回新的长度
+     */
+    var arr3 = [1,2,3,4,5,6];
+    function remove(arr,item){
+        var newarr = [];
+        for(var i=0;i<arr.length;i++){
+            if(arr[i] != item){
+                newarr.push(arr[i]);
+            }
+        }
+        return newarr;
+    }
+    remove(arr3,6);
+
+    var arr3 = [1,2,3,4,5,6];
+    function remove(arr,item){
+        var newarr = [];
+        for(var i = 0; i < arr.length;i++){
+            if(arr[i] == item)continue;
+            newarr.push(arr[i]);
+        }
+        return newarr;
+    }
+    remove(arr3,5);
+
+    /* Ⅲ Array.prototype.filter() */
+    var arr3 = [1,2,3,4,5,6];
+    function remove(arr,item){
+        return arr.filter(function(ele){
+            return ele != item;
+        })
+    }
+    remove(arr3);
+
+    /*  
+    移除数组 arr 中的所有值与 item 相等的元素，直接在给定的 arr 数组上进行操作，并将结果返回
+    */
+
+    /* Ⅳ splice() 会改变原始数组*/
+    /*  
+    题目要求在原数组上面直接修改，
+    删除数组元素，可以用 splice 方法，
+    给其传递两个参数，第一个参数表示起始位置，
+    第二个参数表示删除元素的个数。
+    因此，循环遍历数组 arr，
+    如果 arr[i] == item，就将 i 作为第一个参数，1 作为第二个参数（只删除一个元素）传给 splice 方法。
+    需要注意的是，splice 方法会改变数组的长度，因此在每次删除之后，都需要执行 i-- 以确保数组长度正确
+    */
+    var arr4 = [1,2,3,4,5];
+    function removeWithoutCopy(arr,item){
+        for(var i = 0; i < arr.length;i++){
+            if(item == arr[i]){
+                arr.splice(i,1);
+                i--;
+            }
+        }
+        return arr;
+    }
+    removeWithoutCopy(arr4,4);
+
+    /* 倒着进行 */
+    var arr4 = [1,2,3,4,5];
+    function removeWithoutCopy(arr, item) {
+        for(i=arr.length-1;i>=0;i--){
+            if(arr[i]==item){
+                arr.splice(i,1);
+            }
+        }
+        return arr;
+    }
+    removeWithoutCopy(arr,4);
+
+    /*  */
+    var arr4 = [1,2,3,4,5];
+    function removeWithoutCopy(arr, item) {
+        for(var i in arr){
+            while(arr[i]==item){
+                arr.splice(i,1);
+            }
+        }
+        return arr;
+    }
+    removeWithoutCopy(arr4,5);
+
+    /* Ⅳ push()  + shift() 骚操作 */
+    var arr4 = [1,2,3,4,5];
+    function removeWithoutCopy(arr,item){
+        var n = arr.length;
+        for(var i=0;i<n;i++){
+            if(arr[0] != item){
+                return arr.push(arr[0]);
+                // console.log(`%c${arr}`,`color:red`);
+            }else{
+                return arr.shift();
+                // console.log(`%c${arr}`,`color:blue`);
+            }
+        }
+        return arr;
+    }
+    removeWithoutCopy(arr,4);
+
+    /* Ⅳ indexOf() 存在性能以及兼容性问题*/
+    var arr4 = [1,2,3,4,5];
+    function removeWithoutCopy(arr,item){
+        var fuck = indexOf(item);
+        while(fuck != item){
+            arr.splice(fuck,1); 
+        }
+        return arr;
+    }
+    removeWithoutCopy(arr4,4);
+
+    /* Ⅳ Set()方法(ES6) 以及 Array.from()方法
+    Set()方法用于去重 Array.from()用于将set结构转为数组
+    var set2 = new Set([1, 2, 3, 4, 5,5,5]);
+    console.log(Array.from(set2));//[1,2,3,4,5]
+    */
+    var arr4 = [1,2,3,4,5];
+    function removeWithoutCopy(arr, item) {
+        arr=Array.from(new Set(arr));
+        // console.log(`%c${arr}`,`color:red`);
+        var a=arr.indexOf(item);
+        arr.splice(a,1);
+        // console.log(`%c${arr}`,`color:yellow`);
+        return arr;
+        // console.log(`%c${arr}`,`color:green`);
+    }
+    removeWithoutCopy(arr4,3);
+
+    /* 在数组 arr 末尾添加元素 item。不要直接修改数组 arr，结果返回新的数组 */
+    /* Ⅴ */
+    /* 普通迭代浅拷贝 */
+    var arr5 = [1,2,3,4,5,];//6
+    function append(arr,item){
+        var len = arr.length;
+        var newArr = [];
+        for(var i = 0; i < len; i++){
+            newArr.push(arr[i]);
+        }
+        newArr.push(item);
+        return newArr;
+    }
+    append(arr5,6);
+
+    /* slice()浅拷贝 + push()搭配 
+    slice(start,end)// 'slice[start,end)'
+    */
+    var arr5 = [1,2,3,4,5,];//6
+    function append(arr,item){
+        var newArr =arr.slice(0);
+        newArr.push(item);
+        return newArr;
+    }
+    append(arr5,6);
+
+    /* concat() 不会改变原数组  只是产生原数组的一个副本*/
+    var arr6 = [1,2,3,4];
+    function append(arr, item) {
+        return arr.concat(item);
+    }
+    append(arr,6);
+
+    /* Ⅵ
+    删除数组 arr 最后一个元素。不要直接修改数组 arr，结果返回新的数组
+    */
+
+    /* push() + pop()组合 
+    创建新的空数组 使用push()向数组末尾添加元素 通过for循环将原数组复制到新数组中,再使用pop()删除最后的元素
+    */
+    var arr6 = [1,2,3,4,5];
+    function truncate(arr) {
+        var len = arr.length;
+        var newArr = [];
+        for(var i =0;i<len;i++){
+            newArr.push(arr[i]);
+        }
+        newArr.pop();
+        return newArr;
+    }
+    truncate(arr);
+
+    /* slice() 提取字符串
+    */
+    var arr6 = [1,2,3,4,5];
+    function truncate(arr){
+        // return arr.slice(-5,-1);//局限性太大
+        return arr.slice(0,-1);//截取到最后一个元素但是不包含最后一个元素
+    }
+
+    /* filter() */
+    var arr6 = [1,2,3,4,5];
+    function truncate(arr){
+        return arr.filter(function(currentValue,index,arr){
+            return index != arr.length;
+        });
+    }
+    truncate(arr6);
+
+    /* push.apply() + pop() */
+    var arr6 = [1,2,3,4,5];
+    function truncate(arr){
+        var newArr = [];
+        [].push.apply(newArr,arr);//newArr.push.apply(newArr,arr);
+        newArr.pop();
+        return newArr;
+    }
+    truncate(arr6);
+
+    /* join() + split() + pop() */
+    var arr6 = [1,2,3,4,5];
+    function truncate(arr){
+        var newArr = arr.join().split(',');
+        newArr.pop();
+        return newArr;
+    }
+    truncate(arr6);//['1','2','3','4']但是会变成字符串
+
+    /* concat() + pop() */
+    var arr6 = [1,2,3,4,5];
+    function truncate(arr){
+        var newArr = arr.concat();
+        newArr.pop();
+        return newArr;
+    }
+    truncate(arr6);
+
+    /* 最接地气的方法... (即最普通的迭代拷贝)*/
+    var arr6 = [1,2,3,4,5];
+    function truncate(arr){
+        var newArr = [];
+        for(var i = 0; i < arr.length - 1;i++){
+            newArr.push(arr[i]);
+        }
+        return newArr;
+    }
+    truncate(arr6);
+
+    /* Ⅶ 
+    在数组 arr 开头添加元素 item。不要直接修改数组 arr，结果返回新的数组
+    */
+    /* push() + unshift() */
+    var arr7 = [1,2,3,4,5,6];
+    function prepend(arr, item) {
+        var newArr = [];
+        for(var i =0;i<arr.length;i++){
+            newArr.push(arr[i]);//不断向数组尾部添加新的元素 从而构建新的数组
+        }
+        newArr.unshift(item);//在新数组头部添加新的元素item
+        return newArr;
+    }
+    prepend(arr7,0);
+
+    /* concat() */
+    function prepend(arr, item){
+        return [item].concat(arr);//[item]作为一个匿名数组返回,concat()不会改变原数组
+    }
+    prepend(arr7,0);
+</script>
+</html>
