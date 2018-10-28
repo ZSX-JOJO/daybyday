@@ -6,21 +6,120 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>css第一天</title>
     <style>
+        div p{
+            color:red;
+            font-size:28px;
+        }
     </style>
 </head>
 <body>
-    <p>只能存放文本 图片 表单 元素(此三者为流元素)</p>
+    <p>p 只能存放文本 图片 表单 元素(此三者为流元素)</p>
+    <pre>
+        img src="路径" alt="替代文本，当图片不能显示的时候，显示这里的文字"
+    </pre>
     <img src="路径" alt="替代文本，当图片不能显示的时候，显示这里的文字" /><br>
+    <pre>
+            a href="网址" title="悬停文本" target="_blank">超级链接文字，a是英语anchor锚的意思
+    </pre>
     <a href="网址" title="悬停文本" target="_blank">超级链接文字，a是英语anchor锚的意思</a><br>
+    <pre>
+        href="" name="test" id="test" style="height:300px">页面锚点，用name属性或者id属性
+    </pre>
     <a href="" name="test" id="test" style="height:300px">页面锚点，用name属性或者id属性</a><br>
-    <div>
-        <p>列表--无序列表</p>
+
+    <div title="关于列表">
+        <p>列表</p>
+        <span>列表--无序列表</span>
         <ul>
             <li>ul unordered list 无序列表</li>
             <li>li list item 列表项</li>
             <li>此为组标签，要么不写，写就要写一组</li>
             <li>li不能单独存在，必须包裹在ul或者ol中</li>
+            <li>ul或者ol的儿子只可以是li</li>
+            <li>li是一个 容器级 标签，li里面什么都能放,可以继续放置ul或者ol</li>
+            <li></li>
         </ul>
+
+        <span>列表--有序列表</span>
+        <ol>
+            <li>ol ordered list 有序列表</li>
+            <li>其他与ul类似</li>
+        </ol>
+
+        <span>列表--定义列表</span>
+        <dl> dl  definition list 定义列表
+            <dt>dt definition title 定义标题</dt>
+            <dd>dd definition description 定义表述词 dd 用来描述dt</dd>
+            <dd>dt、dd只能在dl里面；dl里面只能有dt、dd</dd>
+            <dd>一个dt可以配置很多dd</dd>
+            <dd>dt、dd都是容器级标签，想放什么都可以</dd>
+        </dl>
+    </div>
+
+    <div title="关于div和span">
+        <p>div和span</p>
+        <dl>
+            <dd>div的语义是division“分割”； span的语义就是span“范围、跨度”</dd>
+            <dd>div标签是一个容器级标签，里面什么都能放，甚至可以放div自己</dd>
+            <dd>span也是表达“小区域、小跨度”的标签，但是是一个“文本级”的标签</dd>
+            <dd>span里面只能放置文字、图片、表单元素。 span里面不能放p、h、ul、dl、ol、div</dd>
+            <dd></dd>
+        </dl>
+    </div>
+
+    <div title="关于表单">
+        <p>表单</p>
+        <dl>
+            <dt>form表单</dt>
+            <dd>action属性就是表示，表单将提交到哪里。 method属性表示用什么HTTP方法提交，有get、post两种</dd>
+        </dl>
+        <dl>
+            <dt>文本框</dt>
+            <dd> input type="text"</dd>
+
+            <dt>密码框</dt>
+            <dd>input type="password"</dd>
+
+            <dt>单选按钮</dt>
+            <dd>input type="radio" name="***"</dd>
+            <dd>单选按钮，天生是不能互斥的，如果想互斥，必须要有相同的name属性。name就是“名字”</dd>
+            <dd>默认被选择，就应该书写checked=”checked” 或者</dd>
+
+            <dt>复选框</dt>
+            <dd>input标签 type是checkbox</dd>
+            <dd>input type="checkbox" name="***"</dd>
+            <dd>复选框，最好也是有相同的name（虽然他不需要互斥，但是也要有相同的name）</dd>
+        </dl>
+
+        <dl>
+            <dt>下拉列表</dt>
+            <dd>
+                <dd>select就是“选择”，option“选项”,select标签和ul、ol、dl一样，都是组标签</dd>
+                <pre>
+                    <select>
+                		<option>北京</option>
+                		<option>河北</option>
+                		<option>河南</option>
+                		<option>山东</option>
+                		<option>山西</option>
+                		<option>湖北</option>
+                		<option>安徽</option>
+                	</select>
+                </pre>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt>多行文本框(文本域)</dt>
+            <dd>
+                <pre>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </pre>
+            </dd>
+            <dd>rows 行 columns 列</dd>
+        </dl>
+
+        <p>已到CSS第5天</p>
     </div>
     <a href="#test">跳转到锚点</a>
 </body>
