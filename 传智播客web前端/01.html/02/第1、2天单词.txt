@@ -1,0 +1,42 @@
+style	样式
+
+color	字体颜色
+background-color	背景颜色
+font-size	字号
+font-weight	字体粗细
+font-family	字体
+font-style	字型
+text-align	文字对齐
+text-decoration	文字修饰
+
+underline	下划线
+none	无
+italic	斜体
+normal	正常
+
+red	红色
+blue	蓝色
+green	绿色
+yellow	黄色
+pink	粉色
+orange	橙色
+black	黑色
+white	白色
+gray	灰色	
+====================================================
+第二天的：
+
+top	上
+bottom 下
+left	左
+right 右
+center	中
+
+width	宽度
+height	高度
+padding	内边距
+margin	外边距
+border	边框
+solid	实线
+dashed	虚线
+line-height	行高

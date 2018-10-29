@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01-css绘制百度熊</title>
+    <link rel="stylesheet" href="../css/01.css">
+    <style>
+        .orign{
+            width:100%;
+            height:200px;
+            border:1px dashed black;
+        }
+        img{
+            margin:0 auto;
+            width:200%;
+            height:300px;
+            line-height: 300px;
+        }
+        p{
+            text-align: center;
+            color:red;
+        }
+
+        /* 居中显示 */
+        .bgc{
+            position:relative;
+            width:400px;
+            top:50%;
+            left:50%;
+            /*  */
+            transform: translate(-50%,-50%);
+            background-color: #fff;
+        }
+
+        /* 头部 */
+        .bac .header{
+            position: relative;
+            width:300px;
+            top:200px;
+            border-radius:50% 50% 50% 50%/ 70% 60% 40% 40%;
+            border:3px solid #a57662;
+            z-index:233;
+        }
+        
+        /* 左耳朵 */
+        .header .ear-left{
+            position:absolute;
+            top:10px;
+            left:12px;
+            width:70px;
+            height:50px;
+            transform:rotate(-49deg);
+            border-radius:200px 200px 100px 100px;
+            border:3px solid #a57662;
+        }
+
+        /* 右耳朵 */
+        .header .ear-right{
+            position:absolute;
+            top:10px;
+            left:0px;
+            width:70px;
+            height:50px;
+            transform:rotate(40deg);
+            border-radius:200px 200px 100px 100px;
+            border:3px solid #a57662;
+        }
+
+        /* 狗熊脸 */
+        .header .face{
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <p>需要实现的效果--原图</p>
+    <div class="orign">
+        <img src="../img/01.bear.jpg" alt="">
+    </div>
+    
+    <!-- 此为正文 -->
+    <div class="bac">
+        <!-- 头部 -->
+        <div class="header">
+            <!-- 左右耳朵 -->
+            <div class="ear-left"></div>
+            <div class="ear-right"></div>
+            <!-- 脸 -->
+            <div class="face"></div>
+        </div>
+        <!-- 身体 -->
+        <div class="body">
+            <!-- 左右胳膊 -->
+            <div class="arm-left"></div>
+            <div class="arm-right"></div>
+            <!-- 肚子 -->
+            <div class="belly"></div>
+            <!-- 左右腿 -->
+            <div class="leg-left"></div>
+            <div class="leg-right"></div>
+        </div>
+        <!-- 最下方阴影 -->
+        <div class="shadow"></div>
+    </div>
+</body>
+<script></script>
+</html>
