@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			/*默认字体，这个属性能够继承，所以写给body*/
+			font-family: "Microsoft YaHei","SimSun";
+		}
+		.header{
+			/*这里没有width，因为这个盒子要通栏*/
+			/*在标准流里面，div是一个块级元素，没有width相当于撑满父亲 */
+			height: 58px;
+			background-color: #191D3A;
+		}
+		.header .inner_c{
+			width: 1000px;
+			height: 58px;
+			margin: 0 auto;
+		}
+		.header .inner_c h1{
+			padding-left: 15px;
+			width: 170px;
+			height: 58px;
+			float: left;
+			padding-right: 40px;
+		}
+		.header .inner_c .nav{
+			width: 607px;
+			height: 58px;
+			float: left;
+		}
+		.header .inner_c .nav ul{
+			/*去掉小圆点*/
+			list-style: none;
+		}
+		.header .inner_c .nav ul li{
+			float: left;
+			width: 100px;
+			height: 58px;
+			border-left: 1px solid #252947;
+			text-align: center;
+			line-height: 58px;
+		}
+		.header .inner_c .nav ul li.last{
+			border-right:1px solid #252947;
+		}
+		.header .inner_c .nav ul li a{
+			display: block;
+			width: 100px;
+			height: 58px;
+			text-decoration: none;
+			color:white;
+			font-size: 14px;
+		}
+		.header .inner_c .nav ul li a:hover{
+			background-color: #252947;
+		}
+		.header .inner_c .jrwm{
+			float: left;
+			width: 100px;
+			height: 34px;
+			background-color: #38B774;
+			margin-left: 48px;
+			position: relative;
+			top: 12px;
+			left: 0;
+			text-align: center;
+			line-height: 34px;
+			color:white;
+			text-decoration: none;
+			font-size: 12px;
+			/*圆角边框：*/
+			border-radius: 4px;
+		}
+		.header .inner_c a.jrwm:hover{
+			background-color: orange;
+		}
+		.cl{
+			clear: both;
+		}
+		.banner{
+			/*这个banner没有宽度，是因为要撑满父亲*/
+			height: 463px;
+			background:url(images/banner.jpg) no-repeat center top;
+			position: relative;
+		}
+		.banner .circles{
+			width: 120px;
+			height: 16px;
+			position: absolute;
+			bottom: 18px;
+			left: 50%;
+			margin-left: -60px;
+		}
+		.banner .circles ol{
+			padding-top: 3px;
+			list-style: none;
+		}
+		.banner .circles ol li{
+			float: left;
+			width: 12px;
+			height: 12px;
+			_font-size:0;
+			background:url(images/dian1.png) no-repeat;
+			margin-right: 15px;
+			/*让鼠标变为小手的形状*/
+			cursor: pointer;
+		}
+		.banner .circles ol li.current{
+			background:url(images/dian2.png) no-repeat;
+		}
+		.banner .circles ol li.last{
+			margin-right: 0;
+		}
+		.content{
+			/*这个content没有宽度，是因为要撑满父亲*/
+			height: 700px;
+			background:url(images/indexmainbg.jpg) no-repeat center bottom;
+		}
+		.content .inner_c{
+			width: 1000px;
+			height: 700px;
+			margin: 0 auto;
+			padding-top: 50px;
+		}
+		/*218+43+218+43+218+43+217*/
+
+		.content .inner_c .product{
+			height: 229px;
+			border-bottom: 1px solid gray;
+			position: relative;
+		}
+		.content .inner_c .product ul{
+			list-style: none;
+		}
+		.content .inner_c .product ul li{
+			float: left;
+			width: 218px;
+			height: 229px;
+			margin-right: 43px;
+		}
+		.content .inner_c .product ul li.last{
+			margin-right: 0;
+			width: 217px;
+		}
+		.content .inner_c .product ul li img{
+			width: 100%;
+			height: 130px;
+		}
+		.content .inner_c .product ul li h3{
+			line-height: 38px;
+			font-size: 14px;
+			text-align: center;
+			font-weight: bold;
+		}
+		.content .inner_c .product ul li .djbf{
+			/*文本居中，一定是加给盒子的，不能直接加给a*/
+			/*让我内部的文本居中*/
+			text-align: center;
+		}
+		.content .inner_c .product ul li .djbf a{
+			line-height: 12px;
+			font-size: 12px;
+			color:green;
+			text-decoration: none;
+			padding-right: 10px;
+			background: url(images/sanjiaoxing.png) no-repeat right center;
+		}
+		.content .inner_c .product .circles{
+			width: 117px;
+			height: 12px;
+			background-color: white;
+			position: absolute;
+			bottom: -6px;
+			left: 50%;
+			margin-left: -59px;
+		}
+		.content .inner_c .product .circles ol{
+			list-style: none;
+			padding-left: 14px;
+		}
+		.content .inner_c .product .circles ol li{
+			float: left;
+			width: 12px;
+			height: 12px;
+			margin-right: 14px;
+			background: url(images/dian1.png) no-repeat;
+		}
+		.content .inner_c .product .circles ol li.last{
+			margin-right: 0;
+		}
+		.content .inner_c .product .circles ol li.current{
+			background: url(images/dian2.png) no-repeat;
+		}
+		.content .inner_c .info{
+			padding-top: 53px;
+		}
+		.content .inner_c .info .news{
+			position: relative;
+			float: left;
+			width: 500px;
+			background:url(images/bynewsbg.jpg) no-repeat;
+			padding-top: 109px;
+		}
+		.content .inner_c .info .news ul{
+			list-style: none;
+			padding: 0 20px;
+		}
+		.content .inner_c .info .news ul li{
+			line-height: 50px;
+			border-bottom: 1px solid #E0E1E5;
+		}
+		.content .inner_c .info .news ul li span{
+			font-size: 12px;
+			color:#AFCCE4;
+			margin-right: 22px;
+		}
+		.content .inner_c .info .news ul li a{
+			color:#444866;
+			text-decoration: none;
+			font-size: 14px;
+		}
+		.content .inner_c .info .jobs{
+			float: left;
+			width: 500px;
+			height: 313px;
+			background:url(images/byhrbg3.jpg) no-repeat;
+		}
+		.content .inner_c .info .news .more{
+			position: absolute;
+			width: 66px;
+			height: 28px;
+			background: url(images/icons.png) no-repeat -7px -9px;
+			text-indent: -999em;
+			top: 39px;
+			left: 218px;
+		}
+		.footer{
+			height: 91px;
+			background-color: #191D3A;
+		}
+		.footer .inner_c{
+			width: 1000px;
+			margin: 0 auto;
+		}
+		.footer .inner_c .left_part{
+			float: left;
+			width: 300px;
+			height: 91px;
+			line-height: 91px;
+		}
+		.footer .inner_c .left_part a{
+			text-decoration: none;
+			color:gray;
+			font-size: 12px;
+			line-height: 91px;
+		}
+		.footer .inner_c .right_part{
+			float: left;
+			width: 700px;
+			height: 91px;
+			text-align: right;
+			color:gray;
+			font-size: 12px;
+		}
+		.footer .inner_c .right_part .jinghui{
+			width: 40px;
+			position: relative;
+			top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		
+		
+		<div class="inner_c">
+			<h1><img src="images/logo.png" /></h1>
+			<div class="nav">
+				<ul>
+					<li><a href="#">网页栏目</a></li>
+					<li><a href="#">网页栏目</a></li>
+					<li><a href="#">网页栏目</a></li>
+					<li><a href="#">网页栏目</a></li>
+					<li><a href="#">网页栏目</a></li>
+					<li class="last"><a href="#">网页栏目</a></li>
+				</ul>
+			</div>
+			<a href="#" class="jrwm">加入我们</a>
+		</div>
+	</div>
+
+	<div class="cl"></div>
+
+	<div class="banner">
+
+		<div class="circles">
+			<ol>
+				<li class="current"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li class="last"></li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="inner_c">
+			<div class="product">
+				<ul>
+					<li>
+						<p>
+							<img src="images/gamepic1.jpg" alt="" />
+						</p>
+						<h3>BPT宣传片</h3>
+						<p class="djbf">
+							<a href="">点击播放</a>
+						</p>
+					</li>
+					<li>
+						<p>
+							<img src="images/gamepic1.jpg" alt="" />
+						</p>
+						<h3>BPT宣传片</h3>
+						<p class="djbf">
+							<a href="">点击播放</a>
+						</p>
+					</li>
+					<li>
+						<p>
+							<img src="images/gamepic1.jpg" alt="" />
+						</p>
+						<h3>BPT宣传片</h3>
+						<p class="djbf">
+							<a href="">点击播放</a>
+						</p>
+					</li>
+					<li class="last">
+						<p>
+							<img src="images/gamepic1.jpg" alt="" />
+						</p>
+						<h3>BPT宣传片</h3>
+						<p class="djbf">
+							<a href="">点击播放</a>
+						</p>
+					</li>
+				</ul>
+				<div class="circles">
+					<ol>
+						<li class="current"></li>
+						<li></li>
+						<li></li>
+						<li class="last"></li>
+					</ol>
+				</div>
+			</div>
+			<div class="info">
+				<div class="news">
+					<ul>
+
+						<li>
+							<span>09 / 28</span>
+							<a href="#">新闻内容新闻内容新闻内容新闻内容</a>
+						</li>
+						<li>
+							<span>09 / 28</span>
+							<a href="#">新闻内容新闻内容新闻内容新闻内容</a>
+						</li>
+						<li>
+							<span>09 / 28</span>
+							<a href="#">新闻内容新闻内容新闻内容新闻内容</a>
+						</li>
+						<li>
+							<span>09 / 28</span>
+							<a href="#">新闻内容新闻内容新闻内容新闻内容</a>
+						</li>
+					</ul>
+					<a href="#" class="more">MORE</a>
+				</div>
+				<div class="jobs"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="cl"></div>
+
+	<div class="footer">
+		<div class="inner_c">
+			<div class="left_part">
+				<a href="#">网站地图</a>
+				<span>|</span>
+				<a href="#">免责声明</a>
+			</div>
+			<div class="right_part">
+				明天上课啊，别不来啊，明天不休息啊。JS第一天好好听课。CSS先放放，别激动。
+				<img src="images/govIcon.gif" class="jinghui"/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

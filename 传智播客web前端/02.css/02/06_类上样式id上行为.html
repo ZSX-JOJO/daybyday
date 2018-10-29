@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		p{
+			width: 60px;
+			height: 60px;
+			background-color: orange;
+		}
+		.kuang{
+			border: 10px solid green;
+		}
+	</style>
+</head>
+<body>
+	<h1>一般来说，css层面不用id属性。id属性是给js用的。</h1>
+
+	<p>段落1</p>
+	<p class="kuang" id="hezi">段落2</p>
+	<p>段落3</p>
+
+	
+	<script type="text/javascript">
+		var box = document.getElementById("hezi");
+
+		var a = 0;
+		setInterval(function(){
+			a+=10;
+			box.style.marginLeft = a + "px";
+		},30)
+	</script>
+</body>
+</html>

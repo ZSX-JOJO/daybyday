@@ -1,0 +1,522 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>博雅互动</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		font-family: "微软雅黑" "宋体";
+		/*height: 11111px;*/
+	}
+	.top{
+		height: 58px;
+		background-color: #191D3A;
+	}
+	.top .banxin{
+		width: 1000px;
+		height: 58px;
+		/*background-color: #fff;*/
+		margin: 0 auto;
+	}
+	.top .banxin .logo{
+		float: left;
+		width: 185px;
+		height: 58px;
+		background-image: url(images/logo.png);
+		background-repeat: no-repeat;
+		padding-right: 40px;
+	}
+	.top .banxin ul{
+		list-style: none;
+	}
+	.top .banxin ul li{
+		float: left;
+		width: 100px;
+		height: 58px;
+		line-height: 58px;
+		text-align: center;
+		border-left: 1px solid #252947;
+	}
+	.top .banxin ul li a{
+		display: block;
+		text-decoration: none;
+		width: 100px;
+		height: 58px;
+		color: #818496;
+	}
+	.top .banxin ul li a:hover{
+		width: 100px;
+		height: 58px;
+		color: #E2E4ED;
+		background-color: #252947;
+	}
+	.top .banxin ul li.yi a{
+		color: #E2E4ED;
+		background-color: #252947;
+	}
+	.top .banxin ul li.hou{
+		border-right: 1px solid #252947;
+	}
+	.top .banxin .jrwm{
+		float: left;
+		width: 100px;
+		padding-left: 48px;
+		padding-top: 12px;
+	}
+	.banner{
+		height: 465px;
+		background-image: url(images/banner.jpg);
+		background-repeat: no-repeat;
+		background-position: center top;
+		position: relative;
+	}
+	.banner .dian{
+		width: 120px;
+		height: 12px;
+		position: absolute;
+		top: 430px;
+		left: 50%;
+		margin-left: -60px;
+		/*background-color: red;*/
+		background-position: center bottom;
+
+	}
+	.banner .dian ol{
+		list-style: none;
+	}
+	.banner .dian ol li{
+		float: left;
+		width: 12px;
+		height: 12px;
+		padding-right: 15px;
+		background: url(images/dian1.fw.png) no-repeat;
+		cursor: pointer;
+
+	}
+	.banner .dian ol li.li1{
+
+		background: url(images/dian2.fw.png) no-repeat;
+	}
+	.banner .dian ol li.li5{
+		padding-right: 0;
+	}
+	.news{
+		width: 1000px;
+		margin: 0 auto;
+		/*border: 1px solid #000;*/
+	}
+	.news .chanpin{
+		width: 1000px;
+		height: 229px;
+		border-bottom: 1px solid #DBE1E7;
+		padding-top: 50px;
+		position: relative;
+	}
+	.news .chanpin .dian2{
+		width: 118px;
+		height: 12px;
+		position: absolute;
+		bottom: -6px;
+		left: 50%;
+		background-color: #fff;
+		margin-left: -59px;
+	}
+	.news .chanpin .dian2 ol{
+		list-style: none;
+		padding-left: 13px;
+	}
+	.news .chanpin .dian2 ol li{
+		float: left;
+		width: 12px;
+		height: 12px;
+		padding-right: 14px;
+		background: url(images/dian4.fw.png) no-repeat;
+		cursor: pointer;
+	}
+	.news .chanpin .dian2 ol li.li1{
+		background: url(images/dian3.fw.png) no-repeat;
+		
+	}
+	.news .chanpin ul{
+		list-style: none;
+	}
+	.news .chanpin ul li{
+		float: left;
+		/*width: 218px; */
+		padding-right: 43px;
+	}
+	.news .chanpin ul li.you{
+		width: 217px;
+		padding-right: 0;
+	}
+	.news .chanpin ul li img{
+		width: 218px;
+		height: 130px;
+	}
+	.news .chanpin ul li h3{
+		padding-top: 3px;
+		line-height: 36px;
+		font-size: 14px;
+		text-align: center;
+	}
+	.news .chanpin ul li p{
+		font-size: 12px;
+		text-align: center;
+	}
+	.news .chanpin ul li p a{
+		/*display: block;*/
+		text-decoration: none;
+		font-size: 12px;
+		text-align: center;
+		color: #38B774;
+		padding-right: 12px;
+		background-image: url(images/sanjiaoxing.png);
+		background-repeat: no-repeat;
+		background-position: right center;
+	}
+	.news div.zhong{
+		width: 1000px;
+		height: 310px;
+		padding-top: 54px;
+
+	}
+	.news div.zhong div.xinwen{
+		position: relative;
+		float: left;
+		width: 500px;
+		height: 310px;
+		background: url(images/bynewsbg.jpg) no-repeat 0 0;
+
+	}
+	.news div.zhong div.xinwen ul{
+		list-style: none;
+		/*height: 204px;*/
+		padding-top: 110px;
+		padding-left: 20px;
+		padding-right: 20px;
+
+	}
+	.news div.zhong div.xinwen ul li{
+		float: left;
+		width: 460px;
+		line-height: 50px;
+		margin-right: 20px;
+		text-decoration: none;
+		border-bottom: 1px solid #DBE1E7;
+	}
+	.news div.zhong div.xinwen ul li span.time{
+		font-family: "宋体";
+		font-size: 13px;	
+		color: #AFBECF;
+		padding-right: 22px;
+	}
+	.news div.zhong div.xinwen ul li a{
+		color: #444866;
+		text-decoration: none;
+		font-size: 14px;
+	}
+	.news div.zhong div.xinwen ul li a:hover{
+		color: #0f0;
+	}
+	.news div.zhong .zhao{
+		position: relative;
+		float: left;
+		width: 500px;
+		height: 310px;
+		background: url(images/byhrbg3.jpg) no-repeat 0 0;
+	}
+	.news div.zhong .zhao .tou{
+		width: 420px;
+		height: 48px;
+		padding-top: 40px;
+		padding-left: 80px;
+		padding-bottom: 23px;
+	}
+	.news div.zhong .zhao .tou h2{
+		line-height: 37px;
+		font-size: 28px;
+		color: #fff;
+	}
+	.news div.zhong .zhao .tou p{
+		line-height: 11px;
+		font-size: 12px;
+		color: #fff;
+	}
+	.news div.zhong .zhao .zpgw{
+		width: 305px;
+		height: 172px;
+		padding-left: 20px;
+	}
+	.news div.zhong .zhao .zpgw h3{
+		font-size: 14px;
+		line-height: 20px;
+		color: #fff;
+	}
+	.news div.zhong .zhao .zpgw ul{
+		list-style: none;
+	}
+	.news div.zhong .zhao .zpgw ul li{
+		width: 305px;
+		line-height: 37px;
+		border-bottom: 1px solid #6FDEA3;
+	}
+	.news div.zhong .zhao .zpgw ul li a{
+		display: block;
+		width: 305px;
+		height: 37px;
+		text-decoration: none;
+		color: #fff;
+		font-size: 14px;
+	}
+	.di{
+		height: 91px;
+		/*background-image: url(images/indexmainbg.jpg);*/
+		/*padding-top: 54px;*/
+	}
+	.di .dibu{
+		height: 91px;
+		background-color: #191D3A;
+		color: #fff;
+		text-align: center;
+		font-size: 10px;
+		line-height: 91px;
+	}
+	.di .dibu .div{
+		width: 995px;
+		margin: 0 auto;
+		color: #6C6E7E;
+		padding-left: 5px;
+		
+	}
+	.di .dibu .div .div1{
+		float: left;
+	}
+	.di .dibu .div .div1 a{
+		text-decoration: none;
+		color: #6C6E7E;
+	}
+	.di .dibu .div .ditu{
+		float: right;
+		width: 36px;
+		height: 50px;
+		padding-top: 21px;
+		padding-right: 4px;
+		margin-left: 9px;
+	}
+	.di .dibu .div .div2{
+		float: right;
+		text-align: center;
+		line-height: 91px;
+	}
+	.di .dibu .div .ditu img{
+		width:36px; 
+		/*line-height: 91px;*/
+		height: 50px;
+	}
+	.shan{
+		background:  url(images/indexmainbg.jpg) no-repeat center bottom;
+		padding-bottom: 54px;
+	}
+	.shan .news .zhong .xinwen .more{
+		position: absolute;
+		top: 40px;
+		left: 218px;
+	}
+	.shan .news .zhong .zhao .more{
+		position: absolute;
+		top: 40px;
+		left: 220px;
+	}
+	.huiding{
+		position: fixed;
+		bottom: 75px;
+		right: 15px;
+		width: 68px;
+		height: 29px;
+		background-color: #C7D6E5;
+		text-align: center;
+		line-height: 29px;
+		text-decoration: none;
+		color: #fff;
+		font-size: 12px;
+		border-radius: 4px;
+	}
+	.huiding a{
+
+		width: 68px;
+		height: 29px;
+		background-color: #C7D6E5;
+		text-align: center;
+		line-height: 29px;
+		text-decoration: none;
+		color: #fff;
+		font-size: 12px;
+	}
+	.huiding img{
+		position: absolute;
+		top:12px;
+		left: 10px;
+	}
+	</style>
+</head>
+<body>
+	<div class="top">
+		<div class="banxin">
+			<div class="logo"></div>
+			<ul>
+				<li class="yi">
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">博雅游戏</a>
+				</li>
+				<li>
+					<a href="#">博雅新闻</a>
+				</li>
+				<li>
+					<a href="#">关于我们</a>
+				</li>
+				<li>
+					<a href="#">客服中心</a>
+				</li>
+				<li class="hou">
+					<a href="#">投资者关系</a>
+				</li>
+			</ul>
+			<div class="jrwm">
+				<img src="images/jrwm.png" />
+			</div>
+		</div>
+	</div>
+
+	<div class="banner">
+		<div class="dian">
+			<ol>
+				<li class="li1"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li class="li5"></li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="shan">
+		<div class="news">
+			<div class="chanpin">
+				<div class="dian2">
+					<ol>
+						<li class="li1"></li>
+						<li></li>
+						<li></li>
+						<li class="li4"></li>
+					</ol>
+				</div>
+				<ul>
+					<li>
+						<img src="images/pro1.jpg" />
+						<h3>BPT宣传片</h3>
+						<p>
+							<a href="#">点击播放</a>
+						</p>
+						<!-- 		<img src="images/sanjiaoxing.png" alt="" />
+						-->
+					</li>
+					<li>
+						<img src="images/pro2.jpg" />
+						<h3>博雅互动宣传视频</h3>
+						<p>
+							<a href="#">点击播放</a>
+						</p>
+					</li>
+					<li>
+						<img src="images/pro3.jpg" />
+						<h3>斗地主</h3>
+						<p>
+							<a href="#">LANDLORDS</a>
+						</p>
+					</li>
+					<li class="you">
+						<img src="images/pro4.jpg" />
+						<h3>德州扑克</h3>
+						<p>
+							<a href="#">TEXAS HOLD'EM POKER</a>
+						</p>
+					</li>
+
+				</ul>
+			</div>
+			<div class="zhong">
+				<div class="xinwen">
+					<p class="more"><a href="#"><img src="images/more1.png" alt="" /></a></p>
+					<ul>
+						<li>
+							<span class="time">09/28</span>
+							<a href="#">2015博雅国际扑克大赛（BPT）在澳门落幕</a>
+						</li>
+						<li>
+							<span class="time">08/26</span>
+							<a href="#">2015 BPT博雅国际扑克大赛重磅来袭</a>
+						</li>
+						<li>
+							<span class="time">08/01</span>
+							<a href="#">博雅互动与阿里游戏联手启动“淘宝杯首届电视棋牌大赛”</a>
+						</li>
+						<li>
+							<span class="time">07/21</span>
+							<a href="#">湖南省省长杜家毫一行参观博雅互动</a>
+						</li>
+					</ul>
+				</div>
+				<div class="zhao">
+					<p class="more"><a href="#"><img src="images/more2.png" alt="" /></a></p>
+					<div class="tou">
+						<h2>专场招聘</h2>
+						<p>BOYAA JOBS</p>
+					</div>
+					<div class="zpgw">
+						<h3>专场招聘岗位：</h3>
+						<ul>
+							<li>
+								<a href="#">PHP开发工程师</a>
+							</li>
+							<li>
+								<a href="#">C++开发工程师</a>
+							</li>
+							<li>
+								<a href="#">WEB前端开发工程师</a>
+							</li>
+							<li>
+								<a href="#">大数据开发工程师</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="di">
+		<div class="dibu">
+			<div class="div">
+				<div class="div1"><a href="#">网站地图</a><span> | </span><a href="#">免责声明</a></div>
+				<div class="ditu">
+					<img src="images/govIcon.gif" />
+				</div>
+				<div class="div2">
+					Copyright © 2004 - 2014 博雅互动(Boyaa Interactive) 粤ICP备05062536号 增值电信业务经营许可证：粤B2-20110513
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="huiding">
+		<img src="images/top.png" alt="" />
+		<a href="#">TOP</a>
+	</div>
+</body>
+</html>
