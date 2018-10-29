@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//第一步，输入身高和体重
+		var height = parseFloat(prompt("请输入身高，单位是米"));
+		var weight = parseFloat(prompt("请输入体重，单位是公斤"));
+
+		//第二步，计算BMI指数
+		var BMI = weight / Math.pow(height,2);
+
+		//第三步，if语句来判断。注意跳楼现象
+		if(BMI > 32){
+			alert("非常肥胖");
+		}else if(BMI >= 28){
+			alert("肥胖");
+		}else if(BMI >= 25){
+			alert("过重");
+		}else if(BMI >= 18.5){
+			alert("正常")
+		}else{
+			alert("偏瘦");
+		}
+	</script>
+</body>
+</html>

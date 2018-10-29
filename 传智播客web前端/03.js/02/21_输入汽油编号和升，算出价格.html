@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 一个加油站为了鼓励车主多加油，所以加的多有优惠。
+		// 92号汽油，每升6元；如果大于等于20升，那么每升5.9；
+		// 97号汽油，每升7元；如果大于等于30升，那么每升6.95
+		// 编写JS程序，用户输入自己的汽油编号，然后输入自己加多少升，弹出价格。
+
+		//第一步，输入
+		var bianhao = parseInt(prompt("你想加什么油？填写92或者97"));
+		var sheng = parseFloat(prompt("你想加多少升？"));
+
+		//第二步，判断
+		if(bianhao == 92){
+			//编号是92的时候做的事情
+			if(sheng >= 20){
+				var price = sheng * 5.9;
+			}else{
+				var price = sheng * 6;
+			}
+		}else if(bianhao == 97){
+			//编号是97的时候做的事情
+			if(sheng >= 30){
+				var price = sheng * 6.95;
+			}else{
+				var price = sheng * 7;
+			}
+		}else{
+			alert("对不起，没有这个编号的汽油！");
+		}
+
+		alert("价格是" + price);
+	</script>
+</body>
+</html>

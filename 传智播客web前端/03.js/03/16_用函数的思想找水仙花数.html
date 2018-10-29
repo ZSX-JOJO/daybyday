@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		for(var i = 100 ; i <= 999;i++){
+			if(panduanshibushishuixianhua(i) == true){
+				console.log(i);
+			}
+		}
+
+		//百位函数，这个函数的功能是，接收一个参数，返回这个参数的百位数
+		function baiwei(num){
+			return parseInt(num / 100);
+		}
+
+		//十位函数
+		function shiwei(num){
+			return parseInt(num % 100 / 10);
+		}
+
+		//个位函数
+		function gewei(num){
+			return num % 10;
+		}
+
+		//判断数字是否是水仙花数：
+		function panduanshibushishuixianhua(num){
+			var a = baiwei(num);
+			var b = shiwei(num);
+			var c = gewei(num);
+			if(num == Math.pow(a,3) + Math.pow(b,3) + Math.pow(c,3)){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>

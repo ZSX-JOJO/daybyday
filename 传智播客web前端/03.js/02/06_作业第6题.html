@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//第一步，用户输入数字
+		var num = parseInt(prompt("请输入数字"));
+		//第二步，得到每一位。是我们自己研究的算法
+		var baiwei = parseInt(num / 100);
+		var shiwei = parseInt(num % 100 / 10);
+		var gewei = parseInt(num % 10);
+		//第三步，计算和并显示
+		var sum = baiwei + shiwei + gewei;
+		//显示
+		alert(sum);
+	</script>
+</body>
+</html>

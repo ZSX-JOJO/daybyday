@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var a = "3" == 3;			//"3"==3是true，所以a就是true
+		var b = "4" === 4;			//"4"===4是false,所以b就是false
+		console.log(a || b);		//true || false  , 结果是true
+		console.log(a && b);		//true && false   , 结果是false
+		console.log(a && !b);		//true && !false  , 结果是true
+		console.log(!a && b); 		//!true && false   , 结果是false
+	</script>
+</body>
+</html>

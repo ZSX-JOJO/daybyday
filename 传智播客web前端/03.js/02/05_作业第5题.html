@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//提示用户输入几天后
+		var day = parseInt(prompt("请输入几天后"));
+		//然后计算。本题有很多算法，只要正确就可以咯。
+		//var xingqi = (6 + day % 7) % 7;
+		var xingqi = (6 + day) % 7
+		//输出
+		alert(day + "天后的星期是" + xingqi);
+	</script>
+</body>
+</html>

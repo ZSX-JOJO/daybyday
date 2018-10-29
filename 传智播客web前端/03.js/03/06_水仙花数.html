@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//不再题目了，看笔记
+
+		//从100~999一个一个实验，看看谁符合水仙花数特点的。
+		for(var i = 100 ; i <= 999 ; i++){
+			//得到这个i的每一个位
+			var baiwei = parseInt(i / 100);
+			var shiwei = parseInt(i % 100 / 10);
+			var gewei = i % 10;
+			//验证是否符合水仙花数的特点
+			if(Math.pow(baiwei,3) +  Math.pow(shiwei,3) + Math.pow(gewei,3) == i){
+				console.log(i);
+			}
+		}
+	</script>
+</body>
+</html>

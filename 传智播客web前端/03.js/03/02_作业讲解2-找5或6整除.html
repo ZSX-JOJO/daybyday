@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 【题目】找出1~1000，所以能被5整除，或者能被6整除的数字。
+		// 第1题，叫做“验证类”题目。验证这个数字被5、6整除的状态；
+		// 第2题，叫做“找寻类”题目。找出所有符合某种要求的题目……
+
+		// 每个同学都要当做直觉反应：
+		// 一旦出现“找寻类”题目，就要使用“穷举法”。也就是说，外层用一个for
+		// 内层是if， 一个一个试。
+
+		for(var i = 1 ; i <= 1000 ; i++){
+			//外层for循环，就是一个一个的数字去试
+			if(i % 5 == 0 || i % 6 == 0){
+				console.log(i);
+			}
+		}
+	</script>
+</body>
+</html>

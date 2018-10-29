@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 用户输入一个数字，然后告诉用户能被5、6整除的特性。
+		// 有4种反馈结果。"能被5、6同时整除"、"能被5整除，但6不能"
+		// "能被6整除，但5不能"、"被5、6都不能"
+
+		var num = parseInt(prompt("请输入一个数字"));
+		//方法1
+		// if(num % 5 == 0){
+		// 	//能够被5整除
+		// 	if(num % 6 == 0){
+		// 		alert("能被5、6同时整除");
+		// 	}else{
+		// 		alert("能被5整除，但6不");
+		// 	}
+		// }else{
+		// 	//不能够被5整除
+		// 	if(num % 6 == 0){
+		// 		alert("能被6整除，但5不能");
+		// 	}else{
+		// 		alert("被5、6都不能");
+		// 	}
+		// }
+
+		// 方法2：
+		if(num % 5 == 0 && num % 6 == 0){
+			alert("能被5、6同时整除");
+		}else if(num % 5 == 0){
+			alert("能被5整除，但6不");
+		}else if(num % 6 == 0){
+			alert("能被6整除，但5不");
+		}else{
+			alert("被5、6都不能");
+		}
+	</script>
+</body>
+</html>

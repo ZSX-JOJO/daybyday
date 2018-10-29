@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//用户输入一个数字
+		var num = parseInt(prompt("请输入数字"));
+		// 找因数
+		// 比如用户输入48，要从1~48，分别让48除以这个数
+		// 穷举法
+		var amount = 0;		//个数，累加器
+		for(var i = 1 ; i <= num ; i++){
+			if(num % i == 0){
+				// console.log(i);		//不想输出
+				amount++;		//自增1
+			}
+		}
+		//循环语句结束之后，总量就已经产生了，弹出结果：
+		if(amount == 2){
+			alert("是质数");
+		}else{
+			alert("不是！！");
+		}
+	</script>
+</body>
+</html>

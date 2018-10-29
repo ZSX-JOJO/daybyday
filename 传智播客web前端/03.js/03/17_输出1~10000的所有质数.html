@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		for(var i = 2 ; i <= 10000 ; i++){
+			if(panduanzhishu(i)){
+				console.log(i);
+			}
+		}
+
+		 
+		//因数个数函数。接收一个数字，返回这个数字的约数个数。
+		//比如，传入48，返回10。
+		//传入21，返回4
+		function yinshugeshu(num){
+			var sum = 0;		//累加器
+			//从1开始到这个数字，一个个被这个数字除
+			//如果能够除尽，那么累加器加1
+			for(var i = 1 ; i <= num ; i++){
+				if(num % i == 0){
+					sum ++;
+				}
+			}
+			//最后返回这个累加器的值
+			return sum;
+		}
+
+		//判断是否是质数。接收一个数字，返回true、false。
+		//比如，传入21，返回false
+		//比如，传入13，返回true
+		function panduanzhishu(num){
+			if(yinshugeshu(num) == 2){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+	</script>
+</body>
+</html>

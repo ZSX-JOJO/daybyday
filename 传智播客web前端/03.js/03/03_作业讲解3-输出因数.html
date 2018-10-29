@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//【题目】用户输入输入一个数字，找到所有能除尽它的数。
+		//【举例】用户输入48，那么控制台输出1、2、3、4、6、8、12、16、24、48
+		//【举例】用户输入27，那么控制台输出1、3、9、27
+
+		//【算法】穷举法
+		// 比如用户输入一个数字48，那么就从1、2、3、4、5、6、7、8……45、46、47、48
+		// 依次被48除，看看是不是余数为0。
+
+		var num = parseInt(prompt("请输入一个数字"));
+		
+		for(var i = 1 ; i <= num ; i++){
+			if(num % i == 0){
+				console.log(i);
+			}
+		}
+	</script>
+</body>
+</html>
