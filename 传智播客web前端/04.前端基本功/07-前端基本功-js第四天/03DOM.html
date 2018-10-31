@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+    <style>
+        p{
+            text-align: center;
+            font-size:22px;
+            color:red;
+        }
+        span{
+            display: block;
+            font-weight: bold;
+            color:blue;
+        }
+        ul,li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <h3>访问节点:</h3>
+    <p>
+        <span>getElementById()   id 访问节点</span>
+        <span>getElementsByTagName()    标签访问节点</span>
+        <span>getElementsByClassName()   类名    有兼容性问题</span>
+    </p>
+
+    <p>
+        以下JS中,实现自定义类 解决兼容性问题:<br>
+        <ul>
+            <li class="demo">实现自定义类 解决兼容性问题</li>
+            <li class="demo">实现自定义类 解决兼容性问题</li>
+            <li class="demo">实现自定义类 解决兼容性问题</li>
+            <li class="demo">实现自定义类 解决兼容性问题</li>
+            <li class="demo">实现自定义类 解决兼容性问题</li>
+        </ul>
+        <span id="length"></span>
+    </p>
+</body>
+<script>
+    !(function(){
+        function getClass(classname){
+            /* 如果浏览器支持 就直接返回 */
+            if(document.getElementsByClassName){
+                return document.getElementsByClassName(classname);
+            }else{
+                /*  */
+                var arr = [];
+                var dom = document.getElementsByTagName("*");
+                for(var i=0;i<dom.length;i++){
+                    if(dom[i].className == classname){
+                        arr.push(dom[i]);
+                    }
+                }
+                return arr;
+            }
+        }
+
+        console.log(getClass("demo").length);
+        document.getElementById("length").innerHTML ="demo类的长度:" + getClass("demo").length;
+    })()
+</script>
+</html>

@@ -4,9 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>下拉菜单事件-onchange</title>
+    <style>
+        body{
+            background:url(img/jd1.png) no-repeat;
+            background-size:100%;
+        }
+    </style>
 </head>
 <body>
-    
+    <p>
+        onchange 事件会在域的内容改变时发生。
+        onchange 事件也可用于单选框与复选框改变后触发的事件。
+    </p>
+    <select name="" id="sele">
+        <option value="1">背景1</option>
+        <option value="2">背景2</option>
+        <option value="3">背景3</option>
+        <option value="4">背景4</option>
+        <option value="5">背景5</option>
+    </select>
 </body>
+<script>
+    !(function(){
+        var sele = document.getElementById("sele");
+        sele.onchange = function(){
+            switch(this.value){
+                case "1":
+                document.body.style.backgroundImage = "url(img/1.jpg)";
+                break;
+                case "2":
+                document.body.style.backgroundImage = "url(img/2.jpg)";
+                break;
+                case "3":
+                document.body.style.backgroundImage = "url(img/3.jpg)";
+                break;
+                case "4":
+                document.body.style.backgroundImage = "url(img/4.jpg)";
+                break;
+                case "5":
+                document.body.style.backgroundImage = "url(img/5.jpg)";
+                break;
+            }
+        }
+    })();
+</script>
 </html>

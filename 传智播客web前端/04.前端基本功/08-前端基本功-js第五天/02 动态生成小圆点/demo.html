@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        ul,ol{list-style:none}
+        .box {
+            width: 730px;
+            height: 454px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .circle {
+            position: absolute;
+            left: 50%;
+            margin-left:-50px;
+            bottom:10px;
+        }
+        .circle span {
+            float: left;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: pink;
+            text-align: center;
+            line-height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="slider">
+        <ul>
+            <li><img src="images/11.jpg" alt=""/></li>
+            <li><img src="images/22.jpg" alt=""/></li>
+            <li><img src="images/33.jpg" alt=""/></li>
+            <li><img src="images/44.jpg" alt=""/></li>
+            <li><img src="images/55.jpg" alt=""/></li>
+            <li><img src="images/66.jpg" alt=""/></li>
+        </ul>
+    </div>
+    <div class="circle">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+    </div>
+
+</div>
+</body>
+</html>

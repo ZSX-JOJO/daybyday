@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>访问关系-节点</title>
+    <style>
+        h1{
+            text-align: center;
+            font-weight:bold;
+            color:red;
+        }
+        ul,li {
+            list-style:none;
+            color:red;
+        }
+        ul {
+            background-color:pink;
+        }
+        li {
+            background:midnightblue;
+            border:2px solid black;
+            padding:5px auto;
+        }
+        p {
+            font-weight: bold;
+        }
+        p.red {
+            color:red;
+        }
+        span {
+            display: block;
+            color:black;
+        }
+    </style>
+</head>
+<body>
+    <h1>节点:</h1>
+    <p class="red">父节点:parentNode</p>
+    <ul>
+        <li id="parentNode">id="parentNode"</li>
+        <li class="parentNode">class="parentNode"</li>
+        <li class="parentNode">class="parentNode"</li>
+        <li class="parentNode">class="parentNode"</li>
+    </ul>
+
+    <hr>
+
+    <p class="red">兄弟节点:
+        <!-- 1 -->
+        <span style="color:blue">nextSibling:[nextSibling 属性可返回某个元素之后紧跟的节点(处于同一树层级中)] [下一个兄弟    亲的]</span>
+        <!-- nextSibling例子: -->
+        <ul id="myList">
+            <li id="item1">Coffee</li>
+            <li id="item2">Tea</li>
+        </ul>
+        <p id="demo">单击按钮获取下一个元素第一项的id。</p>
+        <button onclick="myFunction()">点我</button>
+        <hr>
+        <!-- 2 -->
+        <span style="color:blue">nextElementSibling:[属性返回指定元素之后的下一个兄弟元素（相同节点树层中的下一个元素节点）]</span>
+        <!-- nextElementSibling例子: -->
+        <p>实例列表:</p>
+        <ul>
+        <li id="item1-nextElementSibling">咖啡 (第一项)</li>
+        <li id="item2-nextElementSibling">西瓜 (第二项)</li>
+        </ul>
+        <p>点击以下按钮，获取列表中第一个li元素节点之后的兄弟元素的内容。</p>
+        <button onclick="myFunction_nextElementSibling()">点我</button>
+        <p><strong>注意:</strong> IE8 及以下版本不支持 nextElementSibling 属性。</p>
+        <p id="demo-nextElementSibling"></p>
+        <p>
+            nextSibling 属性与 nextElementSibling 属性的差别：
+            nextSibling 属性返回元素节点之后的兄弟节点（包括文本节点、注释节点）；
+            nextElementSibling 属性只返回元素节点之后的兄弟元素节点（不包括文本节点、注释节点）；
+            nextElementSibling 属性为只读属性。
+        </p>
+        <hr>
+        <!-- 3 类似1-->
+        <span style="color:blue">previousSibling:[上一个兄弟][previousSibling 属性可返回某节点之前紧跟的节点(处于同一树层级)]</span>
+        <hr>
+        <!-- 4 类似2-->
+        <span style="color:blue">previousElementSibling:[属性返回指定元素的前一个兄弟元素(相同节点树层中的前一个元素节点)]</span>
+        <p>
+            previousSibling 属性与 previousElementSibling 属性的差别：
+            previousSibling 属性返回元素节点之前的兄弟节点（包括文本节点、注释节点）；
+            previousElementSibling 属性只返回元素节点之前的兄弟元素节点（不包括文本节点、注释节点）；
+            previousElementSibling 属性为只读属性。 
+        </p>
+    </p>
+
+    <hr>
+
+    <p class="red">子节点:
+        <span style="color:blue">firstChild</span>
+        <span style="color:blue">firstElementChild</span>
+        <span style="color:blue">lastChild</span>
+        <span style="color:blue">lastElementChild</span>
+    </p>
+
+    <hr>
+
+    <p class="red">孩子节点:
+        <span style="color:blue">childNodes:[childNodes 属性返回包含被选节点的子节点的 NodeList]</span>
+        
+        <hr>
+
+        <span style="color:blue">children:[属性返回元素的子元素的集合，是一个 HTMLCollection 对象]</span>
+        <p>
+            children 属性与 childNodes 属性的差别：
+            childNodes 属性返回所有的节点，包括文本节点、注释节点；
+            children 属性只返回元素节点；
+        </p>
+    </p>
+</body>
+<script>
+    window.onload = function(){
+        /* 父节点:parentNode例子: */
+        var parentNode = document.getElementById("parentNode");
+        parentNode.onclick = function(){
+            this.parentNode.style.display = "none";
+            // 关掉的是他的 父亲
+        }
+        
+        var parentNode = document.getElementsByClassName("parentNode");
+        for(var i=0;i<parentNode.length;i++){
+            parentNode[i].onclick = function(){
+                /* 改变父亲 的背景颜色 */
+                this.parentNode.style.backgroundColor = "red";
+            }
+        }
+    };
+    
+    /* nextSibling例子 */
+    function myFunction(){
+        var x=document.getElementById("demo");  
+        x.innerHTML=document.getElementById("item1").nextSibling.id;
+    }
+
+    /* nextElementSibling例子 */
+    function myFunction_nextElementSibling() {
+        var x = document.getElementById("item1-nextElementSibling").nextElementSibling.innerHTML; 
+        document.getElementById("demo-nextElementSibling").innerHTML = x;
+    }
+</script>
+</html>

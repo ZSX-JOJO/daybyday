@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom 的节点操作</title>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <p>DOM节点操作</p>
+    <ul>
+        <li>创建节点:
+            <div>
+                <code>
+                    var div = document.creatElement("li");
+                </code>
+            </div>
+        </li>
+        <hr>
+        <li>插入节点:
+            <div>
+                <code>
+                    appendChild();    添加孩子     append 添加的意思
+                    意思：  添加孩子   放到盒子的 最后面                 
+                </code>
+            </div>
+            <div>
+                <code>
+                    insertBefore(插入的节点，参照节点)   子节点  添加孩子
+                </code><br>
+                <code>
+                    demo.insertBefore(test,childrens[0]);写满两个参数  放到了第一个孩子的前面
+                </code><br>
+                <code>
+                    demo.insertBefore(test,null);如果第二个参数  为 null  则 默认这新生成的盒子放到最后面
+                </code>
+            </div>
+        </li>
+        <hr>
+        <li>移除节点:
+            <div>
+                <code>
+                    var da = document.getElementById("xiongda");                    
+                </code>
+                <code><br>
+                    demo.removeChild(da);  
+                </code>
+            </div>
+        </li>
+        <hr>
+        <li>克隆节点:
+            <div>
+                <p>
+                    cloneNode() 方法可创建指定的节点的精确拷贝。
+                    cloneNode() 方法 拷贝所有属性和值。   
+                    该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。否则，它只复制当前节点
+                </p>
+                <pre>
+                    &ltul id="myList1"&gt
+                        &ltli&gtCoffee&lt/li&gt
+                        &ltli&gtTea&lt/li&gt
+                    &lt/ul&gt
+                    &ltul id="myList2"&gt
+                        &ltli&gtWater&lt/li&gt
+                        &ltli&gtMilk&lt/li&gt
+                    &lt/ul&gt
+                    var itm=document.getElementById("myList2").lastChild;
+	                var cln=itm.cloneNode(true);
+	                document.getElementById("myList1").appendChild(cln);
+                </pre>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        ul,ol{list-style:none}
+        .box {
+            width: 730px;
+            height: 454px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .circle {
+            position: absolute;
+            left: 50%;
+            margin-left:-50px;
+            bottom:10px;
+        }
+        .circle span {
+            float: left;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: pink;
+            text-align: center;
+            line-height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .circle span.current {
+            background-color: purple;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+               var scroll = document.getElementById("scroll");
+               var circle = document.createElement("div");   // 新的
+              //circle.className = "circle";  // 更改的类名
+               circle.setAttribute("class","circle");   // 更为常用
+               scroll.appendChild(circle);
+               var ul = document.getElementById("ul");
+               var lis = ul.children;  // ul 的所有孩子
+               //alert(lis.length);
+              // 生成了新的大盒子
+
+             // 大盒子里面要放入 n个小的span
+              for(var i=0; i<lis.length; i++)
+              {
+                   var newspan = document.createElement("span");  // 创建 6次 span
+                    newspan.innerHTML = i+1;
+                   circle.appendChild(newspan);
+              }
+
+              var child = circle.children;
+              child[0].setAttribute("class","current");  // 第一个孩子 添加 current
+
+
+        }
+    </script>
+</head>
+<body>
+<div class="box" id="scroll">
+    <div class="slider">
+        <ul id="ul">
+            <li><img src="images/11.jpg" alt=""/></li>
+            <li><img src="images/22.jpg" alt=""/></li>
+            <li><img src="images/33.jpg" alt=""/></li>
+            <li><img src="images/44.jpg" alt=""/></li>
+            <li><img src="images/55.jpg" alt=""/></li>
+            <li><img src="images/55.jpg" alt=""/></li>
+            <li><img src="images/66.jpg" alt=""/></li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

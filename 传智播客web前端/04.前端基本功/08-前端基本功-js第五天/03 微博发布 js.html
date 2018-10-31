@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{
+            list-style-type: none;}
+        *{margin:0;padding: 0;}
+        .box {
+            margin: 100px auto;
+            width: 600px;
+            height: auto;
+            border:1px solid #333;
+            padding: 30px 0;
+        }
+        textarea {
+            width: 450px;
+            resize: none;  /*防止用户拖动 右下角*/
+        }
+        .box li {
+            width: 450px;
+            line-height: 30px;
+            border-bottom:1px dashed #ccc;
+            margin-left: 80px;
+        }
+        .box li a {
+            float: right;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            //获取对象   再次操作对象
+            var btn = document.getElementsByTagName("button")[0];
+            var txt = document.getElementsByTagName("textarea")[0];
+            var ul = document.createElement("ul");  // 创建ul
+            btn.parentNode.appendChild(ul);  // 追加到  他的父亲里面
+            btn.onclick = function(){
+                if(txt.value == "")
+                {
+                    alert("输入不能为空");
+                    return false;  // 终止函数执行
+                }
+                var newli = document.createElement("li");
+                newli.innerHTML = txt.value + "<a href ='javascript:;'>删除</a>";  // 吧表单的值给  新li
+
+                txt.value = "";  // 清空 表单
+                var lis = ul.children;  // 获得有多少个li
+
+               //  if else  这个片段  让我们新发布的内容 最上显示
+                if(lis.length == 0)  //  第一次创建
+                {
+                    ul.appendChild(newli); // ul 的后面追加
+                }
+                else
+                {
+                    ul.insertBefore(newli,lis[0]);  // 每次生成的新的li 放到第一个li 的前面
+                }
+                var as = document.getElementsByTagName("a");  // 获得所 a
+                for(var i=0; i<as.length;i++)
+                {
+                    as[i].onclick = function(){
+                        //removeChild
+                        ul.removeChild(this.parentNode);  // UL   他的爸爸
+
+                        // a 的粑粑是 li
+
+                    }
+                }
+
+            }
+     }
+    </script>
+</head>
+<body>
+<div class="box">
+    微博发布: <textarea name="" id="" cols="30" rows="10"></textarea>  <button>发布</button>
+
+</div>
+
+</body>
+</html>

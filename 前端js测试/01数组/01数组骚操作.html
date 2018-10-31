@@ -23,17 +23,61 @@
     <p>7:在数组 arr 开头添加元素 item。不要直接修改数组 arr，结果返回新的数组</p>
 </body>
 <script>
+    /* for in && forEach() */
+    /*  
+    JavaScript 支持不同类型的循环：
+
+    [for - 循环代码块一定的次数
+    for/in - 循环遍历对象的属性
+    while - 当指定的条件为 true 时循环指定的代码块
+    do/while - 同样当指定的条件为 true 时循环指定的代码块
+    ]
+    */
+    /*
+    for/in 语句用于循环对象属性。
+    循环中的代码每执行一次，就会对数组的元素或者对象的属性进行一次操作
+    参数	描述
+    var	必须。指定的变量可以是数组元素，也可以是对象的属性。
+    object	必须。指定迭代的的对象。
+    */
+    var person = {fname:"John", lname:"Doe", age:25}; 
+    var text = "";
+    var x;
+    for (x in person) {
+        text += person[x];
+    }//John Doe 25
+
+    /*  
+    forEach() 方法用于调用数组的每个元素，并将元素传递给回调函数。
+    注意: forEach() 对于空数组是不会执行回调函数的。
+    array.forEach(function(currentValue, index, arr), thisValue)
+    参数	描述
+    currentValue	必需。当前元素
+    index	可选。当前元素的索引值。
+    arr	可选。当前元素所属的数组对象。
+    */
+    var forEachArr = [1,2,3,4,5];
+    function sum(arr) {
+        var s = 0;
+        arr.forEach(function(currentValue, index, arr) {
+            s += currentValue;
+        }, 0);
+    
+        return s;
+    };
+    sum(forEachArr);
+
     /* 
     如果数组中存在 item，则返回元素在数组中的位置，否则返回 -1
     */
 
     /* Ⅰ 查找位置 */
-    var arr = [1,2,3,4];
+    var arr = [1,2,3,4];//此时查找3
     function indexOf(arr,item){
-        if(Array.prototype.indexOf){
+        if(Array.prototype.indexOf){//此行为神作
             return arr.indexOf(item);//lastIndexOf()查找指定的字符串最后出现的位置
         }else{
-            for(var i = 0;i < arr.length;i++){
+            for(var i = 0;i < arr.length;i++){//老生常谈 没什么露点
                 if(arr[i] === item){
                     return i;
                 }
@@ -47,11 +91,11 @@
     var arr = [{name:'zsx',sex:'男'},'18',3,5,8,[1219]];
     
      function indexOfPlus(arr,item){
-         if(!arr || !arr.length){
+         if(!arr || !arr.length){//考虑的很周到
              return -1;
          }else{
              for(var i = 0;i < arr.length;i++){
-                 if(JSON.stringify(arr[i]) === JSON.stringify(item)){
+                 if(JSON.stringify(arr[i]) === JSON.stringify(item)){//对象必须完整
                      return i;
                  };
              }
@@ -67,7 +111,7 @@
 
     /* Ⅱ  计算数组中元素的总和 */
      var arr2 = [1,2,3,4];
-     function sum(arr){
+     function sum(arr){//淡如水
          if(!arr || !arr.length){
              return -1;
          }else{
@@ -82,7 +126,7 @@
 
     /* Ⅱ plus版 */
     var arr2 = [1,2,3,4];
-    function sumPlus(arr){
+    function sumPlus(arr){//有点骚,sao味很足
         var len = arr.length;
         if(len == 0){
             return 0;
@@ -97,9 +141,19 @@
 
     /* Ⅱ 函数式编程 */
     var arr2 = [1,2,3,4];
-    function sum(arr) {
-        return arr.reduce(function(prev, curr, idx, arr){
-            return prev + curr;
+    /* 
+    https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+    reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值
+    array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+    参数	描述
+    total	必需。初始值, 或者计算结束后的返回值。
+    currentValue	必需。当前元素
+    currentIndex	可选。当前元素的索引
+    arr	可选。当前元素所属的数组对象。
+    */
+    function sum(arr) {//简洁
+        return arr.reduce(function(total, currentValue, currentIndex, arr){
+            return total + currentValue;
         });
     }
     sum(arr2);
@@ -117,9 +171,9 @@
     sum(arr2);
 
     /* Ⅱ eval 和join() */
-    var arr2 = [1,2,3,4];
+    var arr2 = [1,2,3,4];//eval(string)  ╮(╯▽╰)╭ 还是算了吧
     function sum(arr) {
-        return eval(arr.join("+"));
+        return eval(arr.join("+"));//join() 方法用于把数组中的所有元素转换一个字符串.元素是通过指定的分隔符进行分隔的。
     };
     sum(arr2);
 
@@ -129,8 +183,10 @@
 
     /* Ⅲ 
     slice() 用于添加 或 删除 或替换 数组的元素
+    slice() 方法可从已有的数组中返回选定的元素。    
+    slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。
     */
-    var arr3 = [1,2,3,4,5,6];
+    var arr3 = [1,2,3,4,5,6];//????
     function remove(arr,item){
         var newarr = arr.slice(0);
         for(var i = 0; i < newarr.length; i++){
