@@ -2,7 +2,8 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>tab点击切换原理</title>
+    <link rel="icon" href="../../img/001.jpg">
     <style>
         .box {
             width: 400px;
@@ -22,23 +23,23 @@
     </style>
     <script>
         window.onload = function(){
-            var btns = document.getElementsByTagName("button");
-            var divs = document.getElementById("divs").getElementsByTagName("div");
-            for(var i=0;i<btns.length;i++)
-            {
+            var btns = document.getElementsByTagName("button");//获取按钮
+
+            var divs = document.getElementById("divs").getElementsByTagName("div");//获取下方盒子
+
+            for(var i=0;i<btns.length;i++){
+
                 btns[i].index = i;  // 难点
+
                 btns[i].onclick = function(){
                     //让所有的 btn 类名清空
-                    //alert(this.index);
-                    for(var j=0;j<btns.length;j++)
-                    {
+                    for(var j=0;j<btns.length;j++){
                         btns[j].className = "";
                     }
                     // 当前的那个按钮 的添加 类名
                     this.className = "purple";
                     //先隐藏下面所有的 div盒子
-                    for(var i=0;i<divs.length;i++)
-                    {
+                    for(var i=0;i<divs.length;i++){
                         divs[i].style.display = "none";
                     }
                     //留下中意的那个 跟点击的序号有关系的

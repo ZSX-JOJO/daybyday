@@ -38,7 +38,9 @@
             li01.onmouseover = function(){
                 box.style.backgroundImage = "url(images/01big.jpg)";
             }*/
-            var box = document.getElementById("box");
+
+            //具体观看03 函数的参数
+            var box = document.getElementById("box");//取得元素
             function fn(liid,bg){  // 封装函数  参数的传递
                 var obj = document.getElementById(liid);
                 obj.onmouseover = function(){

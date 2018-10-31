@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>tab点击切换原理-改进</title>
     <style>
         .box {
             width: 400px;
@@ -27,19 +27,25 @@
         window.onload = function(){
             var btns = document.getElementsByTagName("button");
             var divs = document.getElementById("divs").getElementsByTagName("div");
-            for(var i= 0;i<btns.length;i++)
-            {
-                btns[i].index = i;  // 难点
+
+            /* 取得所有btn */
+            for(var i= 0;i<btns.length;i++){
+                /* 
+                难点   给每个button 定义了一个index属性  索引号
+                为了下面onclick事件,先清除后添加
+                */
+                btns[i].index = i;
+                
+                /* 点击事件一旦发生 将所有类名清空 包括'自己' */
                 btns[i].onclick = function(){
-                    //让所有的 btn 类名清空
                     //alert(this.index);
-                    for(var j=0;j<btns.length;j++)
-                    {
+                    //让所有的 btn 类名清空 包括'自己'  [清空时清除所有的类名,添加时在后面只添加当前]
+                    for(var j=0;j<btns.length;j++){
                         btns[j].className = "";
                         divs[j].className = "";
                     }
-                    // 当前的那个按钮 的添加 类名
-                    this.className = "purple";
+                    // 当前的那个按钮(点击的那个) 的添加 类名
+                    this.className = "purple";//this指向事件的调用者 指向了当前的按钮
                     //先隐藏下面所有的 div盒子
                     //留下中意的那个 跟点击的序号有关系的
                     divs[this.index].className = "show";
