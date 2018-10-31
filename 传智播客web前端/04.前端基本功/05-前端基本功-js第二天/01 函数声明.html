@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var num = 10;
+    function fun(){
+        alert("我是自定义函数");
+        alert(num);
+    }
+    // fun();  函数不调用，自己不执行
+    var fun1 = function(){
+        alert("直接量声明")
+    }
+    //fun1();
+    var fun2 = new Function("var a = 10; var b = 20; alert(a+b)");
+    fun2();
+</script>
+</body>
+</html>

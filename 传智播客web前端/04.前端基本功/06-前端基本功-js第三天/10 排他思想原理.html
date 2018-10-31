@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .damao {
+            background-color: pink;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var btns = document.getElementsByTagName("button");
+            for(var i=0;i<btns.length;i++)
+            {
+                btns[i].index = i;  // 给每个button 定义了一个index属性  索引号
+                btns[i].onclick = function(){
+                    //清除所有人的 类名   只能用 for 遍历
+                    alert(this.index);
+                    for(var j=0;j<btns.length;j++)
+                    {
+                        btns[j].className = "";
+                    }
+                    //就剩下自己 就是一个 而且是点击那个
+                    this.className = "damao";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<button>思想原理</button>
+<button>思想原理</button>
+<button>思想原理</button>
+<button>思想原理</button>
+<button>思想原理</button>
+<button>思想原理</button>
+
+</body>
+</html>

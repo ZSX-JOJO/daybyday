@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+            var txt = document.getElementById("txt");
+            var btn = document.getElementsByTagName("button")[0];
+            btn.onclick = function(){
+                //alert(typeof txt.value);
+                var num = Number(txt.value);
+                alert(num + num);
+
+
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="txt"/>
+<button>点击</button>
+</body>
+</html>

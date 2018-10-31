@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /* 
+    arguments是存储了函数传送过过来实参 
+    Javascript在创建函数的同时，会在函数内部创建一个arguments对象实例.
+    arguments对象只有函数开始时才可用。函数的 arguments 对象并不是一个数组，访问单个参数的方式与访问数组元素的方式相同
+    arguments对象的长度是由实参个数而不是形参个数决定的
+     */
+    function fn(a,b)
+    {
+        console.log(a+b);
+        console.log(`%c形参长度:${fn.length}`,`color:red;font-size:20px;`);
+        console.log(`%c实参长度:${arguments.length}`,`color:blue;font-size:24px;`);
+        // if(arguments.length == 3) console.log(2333);
+    }
+    // fn(1,2);
+    // fn(5);
+    fn(4,6,9);
+    
+</script>
+</body>
+</html>

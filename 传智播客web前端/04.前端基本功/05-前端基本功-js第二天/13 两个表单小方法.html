@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+            var txt = document.getElementById("txt");
+            var sele = document.getElementById("select");
+            // txt.focus(); //自动获得焦点  focus()方法
+            
+            txt.onfocus = function(){//onfocus事件
+                if(txt.value == "请输入..."){
+                    txt.value = "";
+                    txt.style.color = "red";
+                }
+            }
+
+            txt.onblur = function(){
+                if(txt.value == ""){
+                    txt.value = "请输入...";
+                    txt.style.color = "#ccc";
+                }
+            }
+
+            sele.onmouseover = function(){
+                this.select(); //选择  //select()是个正儿八经的方法啊
+                this.value = "已获取焦点";
+            }
+            
+            // sele.onmouseout = function(){
+            //     this.blur();// 移出时 失去焦点
+            // }
+
+            sele.onmouseout = function(){
+                this.value = "已失去焦点";
+                var that = this;  //this 主要是指事件的调用者
+                setTimeout(function(){
+                    that.blur();// 移出时 失去焦点
+                    that.value = "";
+                },200);
+            }
+        }
+    </script>
+</head>
+<body>
+自动获得焦点:
+<input type="text" id="txt" value="请输入..."/>
+
+鼠标经过选择表单(获取焦点),鼠标移出时失去焦点:
+<input type="text" id="select"/>
+</body>
+</html>

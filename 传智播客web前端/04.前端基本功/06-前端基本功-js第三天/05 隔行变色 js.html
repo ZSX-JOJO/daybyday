@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 300px;
+        }
+        li {
+            line-height: 30px;
+            list-style-type: none;
+        }
+        li span {
+            margin:5px;
+        }
+        .current{
+            background-color: #aaa!important;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var lis = document.getElementsByTagName("li");
+            for(var i=0;i<lis.length;i++)
+            {
+                if(i % 2 == 0)
+                {
+                    lis[i].style.backgroundColor = "#eee";
+                }
+                else
+                {
+                    lis[i].style.backgroundColor = "#ddd";
+                }
+
+                lis[i].onmouseover = function(){
+
+                    this.className = "current";
+                }
+                lis[i].onmouseout = function(){
+
+                    this.className = "";
+                }
+            }
+
+          /*  var lis = document.getElementsByTagName("li");  // 得到所有的li
+//alert(lis.length);
+            for(var i = 0; i<lis.length; i++)
+            {
+                if(i%2 == 0)  // 只有偶数能被2整除
+                {
+                    lis[i].style.backgroundColor = "#eee";
+                }
+                //鼠标经过li 的时候， 当前的底色变亮
+                lis[i].onmouseover = function(){
+                    this.className = "current";
+                }
+                lis[i].onmouseout = function(){
+                    this.className = "";
+                }
+            }*/
+        }
+    </script>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

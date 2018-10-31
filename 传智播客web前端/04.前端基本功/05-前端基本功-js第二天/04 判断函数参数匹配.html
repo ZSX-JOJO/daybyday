@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var aa=10,bb=20;
+    var aa= 10;
+    var bb = 20;
+    function fn(a,b)
+    {
+        console.log(fn.length); //得到是 函数的形参的个数
+        //console.log(arguments);
+        console.log(arguments.length); // 得到的是实参的个数
+        if(fn.length == arguments.length)
+        {
+            console.log(a+b);
+        }
+        else
+        {
+            console.error("对不起，您的参数不匹配，正确的参数个数为:" + fn.length);
+        }
+        //console.log(a+b);
+    }
+    fn(1,2);
+    fn(1,2,3);
+</script>
+</body>
+</html>

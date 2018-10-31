@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /* 敲黑板了哈,看注释啊啊啊啊啊啊 */
+        window.onload = function(){
+            /* 
+            getElementsByTagName();  很多个所以是复数   得到的是一个伪数组
+             */
+            var lis = document.getElementsByTagName("li");//Lis  数组
+           // lis[1].innerHTML = "abc";
+            //alert(lis.length);
+            for(var i=0; i<lis.length;i++)
+            {
+                lis[i].innerHTML = "abc";//Lis[索引号]   一个 
+            }
+
+        }
+    </script>
+</head>
+<body>
+<ul id="btn">
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            text-align: center;
+            margin:100px auto;
+        }
+        span {
+            display: inline-block;
+            width: 150px;
+            height: 20px;
+            border: 1px solid #ccc;
+            font-size:12px;
+            line-height: 20px;
+            text-align: left;
+            padding-left: 20px;
+            background-color: #eee;
+            color:#999;
+        }
+        .right {  /*正确的*/
+            color: #5EFF5E;
+            background:url(images/right.png) no-repeat #DFFFDF 4px 3px;
+            border: 1px solid #ACFFAC;
+        }
+        .wrong {  /*错误的*/
+            background:url(images/wrong.png) no-repeat #FFDCD0 4px 3px;
+            border: 1px solid #FFAC91;
+            color: #FF6B39;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    语文: <input type="text"/>  <span>请输入成绩</span>
+</div>
+</body>
+</html>

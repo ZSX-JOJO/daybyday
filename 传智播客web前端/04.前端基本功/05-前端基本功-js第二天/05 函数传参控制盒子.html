@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin:20px;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function(){}
+       //功能相同的   都是显示某个盒子
+        function fn(obj){  //形参  目的 是为了 接受 实参  有接就有送
+            var target = document.getElementById(obj);
+            target.style.display = 'block';
+        }
+
+    </script>
+</head>
+<body>
+<button onclick = "fn('demo1');">第1个按钮</button>
+<button onclick = "fn('demo2');">第2个按钮</button>
+<button onclick = "fn('demo3');">第3个按钮</button>
+<button onclick = "fn('demo4');">第4个按钮</button>
+<div id="demo1">1</div>
+<div id="demo2">2</div>
+<div id="demo3">3</div>
+<div id="demo4">4</div>
+</body>
+</html>

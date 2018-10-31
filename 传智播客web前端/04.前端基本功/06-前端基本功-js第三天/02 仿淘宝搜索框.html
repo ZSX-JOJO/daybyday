@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .search {
+            width:300px;
+            height: 30px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .search input {
+            width:200px;
+            height:25px;
+            
+        }
+        .search label {
+            font-size: 12px;
+            color:#ccc;
+            position: absolute;
+            top:8px;
+            left:20px;
+            cursor: text;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            function $(id){return document.getElementById(id);}
+            //oninput 大部分浏览器支持  检测用户表单输入内容
+            //onpropertychange  ie678  检测用户表单输入内容
+            $("txt").oninput = $("txt").onpropertychange = function(){
+                if(this.value == " ")
+                {
+                    $("message").style.display = "block";
+                }
+                else
+                {
+                    $("message").style.display = "none";
+
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="search">
+    <input type="text" id="txt"/>
+    <label for="txt" id="message">必败的国际大牌</label>
+</div>
+</body>
+</html>

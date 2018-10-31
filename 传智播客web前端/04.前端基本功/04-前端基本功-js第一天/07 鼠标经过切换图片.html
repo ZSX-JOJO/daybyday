@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div><a href="http://www.runoob.com/jsref/dom-obj-event.html">HTML DOM事件</a></div>
+<img src="images/jd1.png" alt="" id="pic"/>
+
+<!-- 笨办法 -->
+<div>
+    <!-- <img onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" src="images/jd2.png" alt="Smiley" width="32" height="32" id="pic2"> -->
+    <img onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" src="images/jd2.png" alt="dog" id="pic2">
+</div>
+<p>函数 bigImg() 在鼠标指针移动到笑脸图片是触发。</p>
+<p>函数 normalImg() 在鼠标指针移出笑脸图片是触发.</p>
+<script>
+    //事件源：   被触发者  img
+    var pic = document.getElementById("pic");
+    pic.onmouseover = function(){
+        pic.onmouseout = function(){
+            pic.src = "images/jd1.png";
+        }
+        pic.src = "images/jd2.png";
+    }
+
+    /*  */
+    function bigImg2(x){
+        x.style.height="64px";
+        x.style.width="64px";
+    }
+    function normalImg2(x){
+        x.style.height="32px";
+        x.style.width="32px";
+    }
+    
+    /*  */
+    var pic = document.getElementById("pic2");
+	pic.onmouseover = function(){
+		pic.onmouseout = function(){
+			pic.style.height = "200px";
+			pic.style.width = "200px";
+		}
+		pic.style.height = "300px";
+		pic.style.width = "300px";
+	}
+</script>
+</body>
+</html>
