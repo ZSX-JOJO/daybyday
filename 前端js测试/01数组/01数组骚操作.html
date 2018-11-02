@@ -185,25 +185,42 @@
     slice() 用于添加 或 删除 或替换 数组的元素
     slice() 方法可从已有的数组中返回选定的元素。    
     slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。
+    slice() 方法不会改变原始数组。
+    语法:array.slice(start, end)  //可取范围[start, end)
+    参数	描述
+    start	可选。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。
+    end	    可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。
+
+    splice() 方法用于插入、删除或替换数组的元素。
+    语法:array.splice(index,howmany,item1,.....,itemX)
+    这种方法会改变数组!
+    参数	描述
+    index	必需。规定从何处添加 / 删除元素。该参数是开始插入和（或）删除的数组元素的下标，必须是数字。
+    howmany	必需。规定应该删除多少元素。必须是数字，但可以是 "0"。如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。
+    item1, ..., itemX	可选。要添加到数组的新元素
     */
-    var arr3 = [1,2,3,4,5,6];//????
+    var arr3 = [1,2,3,4,5,6];
     function remove(arr,item){
-        var newarr = arr.slice(0);
+        var newarr = arr.slice(0);//创建一份原数组的副本
         for(var i = 0; i < newarr.length; i++){
+            console.log(`%c${i}  遍历数组直到找到,目前都不符合`,`color:yellow;font-size:10px`);
             if(newarr[i] == item){
-                newarr.slice(i,1);
+                newarr.splice(i,1);
+                console.log(`%c找到了,此时索引i==${i},并且已删除所查找的数组元素`,`color:white`);
                 i--;
+                console.log(`%c"减少数组长度"此时i==${i},方便继续查找下一个数组元素`,`color:green`);
+                console.log(`%c目前数组:${newarr}`,`color:red`);
             }
         }
         return newarr;
     }
-    remove(arr3,6);
+    remove(arr3,4);
 
     /* Ⅲ 
     push()向数组的末尾添加一个或多个元素，并返回新的长度
      */
     var arr3 = [1,2,3,4,5,6];
-    function remove(arr,item){
+    function remove(arr,item){//通俗易懂
         var newarr = [];
         for(var i=0;i<arr.length;i++){
             if(arr[i] != item){
