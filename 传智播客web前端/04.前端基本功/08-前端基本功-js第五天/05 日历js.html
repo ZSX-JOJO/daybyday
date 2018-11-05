@@ -11,7 +11,8 @@
             margin: 100px auto;
             text-align: center;
         }
-        .box p {text-align: center;
+        .box p {
+            text-align: center;
             line-height: 60px;
             font-size:12px;
             color: #fff;
@@ -27,18 +28,6 @@
             line-height: 75px;
         }
     </style>
-    <script>
-        window.onload = function(){
-           var box = document.getElementById("box");
-            var boys = box.children;
-             //日期函数
-            var arr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
-             var date = new Date();   // 声明日期函数
-             boys[0].innerHTML = date.getFullYear()+"年"+ (date.getMonth()+1) +
-             "月" + date.getDate() + "日" + "  " + arr[date.getDay()];
-             boys[1].innerHTML = date.getDate();  // 今天的日子
-        }
-    </script>
 </head>
 <body>
 <div class="box" id="box">
@@ -46,4 +35,16 @@
     <span></span>
 </div>
 </body>
+<script>
+    window.onload = function(){
+        var box = document.getElementById("box");
+        var boys = box.children;
+            //日期函数
+        var arr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+            var date = new Date();   // 声明日期函数
+            boys[0].innerHTML = date.getFullYear()+"年"+ (date.getMonth()+1) +
+            "月" + date.getDate() + "日" + "  " + arr[date.getDay()];
+            boys[1].innerHTML = date.getDate();  // 今天的日子
+    }
+</script>
 </html>
