@@ -13,11 +13,11 @@
     var btn = document.getElementById("btn");
     var count = 5;  // 数据的 10
     var timer = null; // 定时器的名字
-    btn.onclick = function() {
+    btn.onclick = function(){
         clearInterval(timer);  // 先清除掉原来的定时器
         // alert(11);
-        this.disabled = true;
-         //alert(this);  // this 指向的是 btn
+        this.disabled = true;//使button可用和可点击
+         //alert(this);  // this 指向的是 btn  this指向事件的调用者
         var that = this;  // 把 btn 对象 给 that  var _this = this;
         timer = setInterval(sendTextMessage,1000);  // 开启定时器 名字  timer
         function sendTextMessage() {
@@ -25,20 +25,14 @@
         //this.innerHTML = "还剩余"+count+"秒";
            // alert(this); // this 指向的是 定时器  window
             //alert(that);
-            if(count >= 0 )
-            {
+            if(count >= 0 ){
                 that.innerHTML =  "还剩余"+count+"秒";
-            }
-            else
-            {
+            }else{
                 that.innerHTML = "重新发送短信";
-                that.disabled = false;
+                that.disabled = false;//禁用button
                 clearInterval(timer);  // 清除定时器
                 count = 5;
             }
-
-
         }
-
     }
 </script>

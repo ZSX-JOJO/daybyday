@@ -14,17 +14,21 @@
     var speed = 1000;
     setTimeout(goIndexPage,speed);  //  1秒钟之后去执行  goIndexPage这个函数
     function goIndexPage() {
-        //alert(arguments.callee);
+        // alert(arguments.callee);
         count--;
         demo.innerHTML = "<a href='http://www.baidu.com'>本页面将在第"+count+"秒钟之后跳转页面</a>";
-        if(count <= 0)
-        {
+        if(count <= 0){
             // 如果 count 小于 0 就到了时间了   我们应该跳转页面
              window.location.href = "http://www.baidu.com";
-        }
-        else
-        {
+        }else{
             setTimeout(arguments.callee,speed);  //  递归调用  自己调用自己
         }
     }
+
+    /* arguments.callee 不推荐使用 耗费资源  可以给内部函数定义个名字 
+    arguments 用于保存函数的参数
+    arguments对象还有一个名叫 callee 的属性,
+    返回正被执行的 Function 对象,也就是所指定的 Function 对象的正文,
+    这有利于匿名函数的递归或者保证函数的封装性.
+    */
 </script>

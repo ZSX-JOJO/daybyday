@@ -48,19 +48,21 @@
          // alert(11);
         clearInterval(timer);
         timer =  setInterval(function(){
-             num -= 3;
+             num -= 10;
              num >= -1070 ? $("pic").style.top = num + "px" :  clearInterval(timer);
-
          },30);
     }
     $("picDown").onmouseover = function(){
         clearInterval(timer);
           timer  = setInterval(function(){
-              num++;
+              num+=10;
              num < 0 ?  $("pic").style.top = num + "px" : clearInterval(timer);
           },30);
     }
     $("picUp").parentNode.onmouseout = function() {
         clearInterval(timer);
+        // location.reload();//reload() 方法用于刷新当前文档
     }
+
+    /*  */
 </script>
