@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+            #fa {
+                position: absolute;
+            }
+    </style>
+</head>
+<body>
+<div id="gf">
+    <div id="fa">
+        <div id="son"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var son = document.getElementById("son");
+    //alert(son.parentNode.id);
+    alert(son.offsetParent.tagName);  // tagName标签的名字

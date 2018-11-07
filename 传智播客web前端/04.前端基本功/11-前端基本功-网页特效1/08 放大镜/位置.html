@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> 元素位置研究 </title>
+<style type="text/css">
+.div1{
+width:200px;
+height:300px;
+background:red;
+}
+.div2{
+width:400px;
+height:400px;
+background:red;
+}
+.div3{
+width:200px;
+height:200px;
+background:green;
+}
+</style>
+<script type="text/javascript" charset="utf-8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<body>
+<div class="div1" onmousedown="test(event)"></div>
+<p id="page"></p>
+<p id="client"></p>
+<p id="scroll"></p>
+<p id="screen"></p>
+<p id="offset"></p>
+<p id="layer"></p>
+
+<div class="div2">
+<div class="div3" onclick="test2(event)"></div>
+</div>
+<p id="eventXY"></p>
+<script type="text/javascript">
+function test2(e){
+e = e || window.event;
+// 设置或获取鼠标指针位置相对于父文档的 x , y 像素坐标。
+$("#eventXY").html("X:"+e.x+"----- Y:"+e.y);
+}
+function test(e){
+console.log("1111");
+console.log(e);
+e = e || window.event;
+var pageX=e.pageX; 
+var pageY=e.pageY;
+
+var clientX=e.clientX;
+var clientY=e.clientY;
+
+var scrollLeft=document.body.scrollLeft;
+var scrollTop=document.body.scrollTop;
+console.log(document.documentElement.scrollLeft);
+console.log(document.documentElement.scrollTop);
+
+// 鼠标在页面上的位置, 从页面左上角开始, 即是以页面为参考点, 不随滑动条移动而变化
+//pageX,pageY, 在 ie7，ie8 下都是 undefined, 在 ie9，chrome,ff 下可以取到值
+// 在 ie 下，PageY=clientY+scrollTop-clientTop; 以下为兼容代码
+// 包括滚动条
+/*if (event.pageX == null && event.clientX != null) {
+var doc = document.documentElement, body = document.body;
+event.pageX = event.clientX + 
+(doc && doc.scrollLeft || body && body.scrollLeft || 0) - 
+(doc && doc.clientLeft || body && body.clientLeft || 0);
+event.pageY = event.clientY + 
+(doc && doc.scrollTop || body && body.scrollTop || 0) - 
+(doc && doc.clientTop || body && body.clientTop || 0);
+}*/
+$("#page").html("pageX:"+pageX+"---- pageY:"+pageY+"<br/>");
+
+// 鼠标在页面上可视区域的位置, 从浏览器可视区域左上角开始, 即是以浏览器滑动条此刻的滑动到的位置为参考点, 随滑动条移动 而变化.
+// 不包括滚动条
+$("#client").html("clientX:"+clientX+"---- clientY:"+clientY);
+
+// 滚动条滚动的距离
+$("#scroll").html("scrollLeft:"+scrollLeft+"----- scrollTop:"+scrollTop);
+
+// 鼠标在屏幕上的位置, 从屏幕左上角开始
+$("#screen").html("screenX:"+e.screenX+"----- screenY:"+e.screenY);
+
+//ie,chrome 支持，ff 不支持此属性，鼠标相比较于触发事件的元素的位置, 以元素盒子模型的内容区域的左上角为参考点
+$("#offset").html("offsetX:"+e.offsetX+"----- offsetY:"+e.offsetY);
+
+//ie9,chrome,FF 都支持此属性，ie7,8, 不支持此属性，
+// 鼠标相比较于当前坐标系的位置, 即如果触发元素没有设置绝对定位或相对定位,
+// 以页面为参考点, 如果有, 将改变参考坐标系, 从触发元素盒子模型的 border 区域的左上角为参考点
+$("#layer").html("layerX:"+e.layerX+"----- layerY:"+e.layerY);
+
+
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #demo {
+            width: 200px;
+            background:black;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="demo" style="width: 300px;height:300px"></div>
+</body>
+</html>
+<script>
+ var demo = document.getElementById("demo");
+    console.log("宽度更改前: "+demo.style.width);
+    console.log("获取宽度: "+demo.offsetWidth);
+    demo.offsetWidth = 500;  // 可以得到值，但是不能更改值
+    demo.style.width = "500px";  // 可以得到 行内的值，也可以更改值
+    console.log("宽度更改后: "+demo.style.width);
+</script>

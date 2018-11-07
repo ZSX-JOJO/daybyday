@@ -28,12 +28,10 @@
     btn.onclick = function() {
         timer = setInterval(function(){
             num++;
-            if(num >=500)
-            {
+            if(num >=500){
                 clearInterval(timer);
             }
-            else
-            {
+            else{
                 box.style.left = num + "px";
             }
         },10)

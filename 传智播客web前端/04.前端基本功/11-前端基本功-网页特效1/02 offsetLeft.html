@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0; padding: 0;}
+        #yeye {
+            position: relative;
+            overflow: hidden;
+            background-color: orange;
+            width: 600px;
+            height: 600px;
+            padding: 100px;
+            margin-left:20px;
+
+        }
+        #father {
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+            margin: 100px;
+            margin-left:30px;
+
+        }
+        #son {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+<div id="yeye">
+    <div id="father">
+        <div id="son"></div>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+    var son = document.getElementById("son");
+    var father = document.getElementById("father");
+    var yeye = document.getElementById("yeye");
+    console.log("son:  "+son.offsetLeft+"px");
+    console.log("father:  "+father.offsetLeft+"px");
+    console.log("yeye:  "+yeye.offsetLeft+"px");
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    document.onclick = function(event){  // 文档中点击
+        // alert(11);
+        // console.log(window.event.clientX);  ie 678
+        /*console.log(event.clientX);
+        console.log(event.clientY);*/
+        var event = event || window.event;   // 兼容性写法
+        console.log(event.clientY);
+        console.log(event.pageY);
+        console.log(event.screenY);
+       // console.log(event.clientY);
+
+    }
+</script>

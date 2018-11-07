@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #demo {
+            width: 300px;
+            border: 1px solid red;
+            padding: 10px;
+            margin:15px;
+        }
+    </style>
+</head>
+<body>
+<div id="demo" style="width:200px;height:200px">
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+    asdfasdfasdasdfasdfasdfasdfasdf
+</div>
+</body>
+</html>
+<script>
+    var demo = document.getElementById("demo");
+    console.log(demo.style.width);  // style.width  只能得到行内式
+    console.log('1:  '+demo.offsetWidth+"px");
+    console.log('2:  '+demo.offsetHeight+"px");
+</script>
