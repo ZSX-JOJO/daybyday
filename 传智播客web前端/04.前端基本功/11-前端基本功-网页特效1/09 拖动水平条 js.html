@@ -38,6 +38,11 @@
     <div class="mask"></div>
 </div>
 <div id="demo"></div>
+
+<!-- test getSelection -->
+<div id="test">
+    1231231231312313123123
+</div>
 </body>
 </html>
 <script>
@@ -68,6 +73,9 @@
             }
             mask.style.width = that.style.left;  // 遮罩盒子的宽度
             //计算百分比
+            /*  
+            https://developer.mozilla.org/zh-CN/docs/Web/API/Selection
+            */
             demo.innerHTML = "已经走了:"+ parseInt(parseInt(that.style.left) / 390 * 100) + "%";
             window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
         }
@@ -76,4 +84,7 @@
         }
     }
 
+    /* test */
+    // var selObj = window.getSelection();
+    // console.log(selObj);
 </script>

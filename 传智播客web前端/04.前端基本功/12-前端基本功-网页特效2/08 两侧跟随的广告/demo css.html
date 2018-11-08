@@ -58,6 +58,12 @@
 </body>
 <script src="my.js" type="text/javascript"></script>
 <script>
+    /*  
+    window.top.document.compatMode)
+    BackCompat  表示怪异模式
+    CSS1Compat  表示标准模式
+    */
+    console.log(window.top.document.compatMode);
     window.onload = function() {
         var pic = $("pic");
         var leader = 0;

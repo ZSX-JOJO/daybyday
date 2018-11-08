@@ -72,7 +72,7 @@
    function startScroll(obj,target) {
        obj.onmousedown = function(event) {
            // alert(11);
-           var event = event || window.event;
+           var event = event || window.event;//获取event对象
            var t = event.clientY - this.offsetTop ; // 红色盒子距离 父亲 盒子顶部距离
            var that = this;  // 把 bar 对象给 that 对象
            document.onmousemove = function(event) {

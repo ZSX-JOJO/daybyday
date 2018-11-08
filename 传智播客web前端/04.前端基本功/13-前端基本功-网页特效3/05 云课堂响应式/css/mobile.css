@@ -1,0 +1,122 @@
+html {
+    background: #fff;
+    -webkit-text-size-adjust: none;
+    -webkit-appearance:none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+}
+body{
+    min-width: 320px;
+    max-width: 640px;
+    width: 100%;
+    font-family:Helvetica,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.wrap{
+    width: 100%;
+}
+.yunLogo a,.nav{ display: none;}
+.yunLogo{
+    background: none;
+    width: 100%;
+    height:100%;
+    margin:0;
+    text-align: center;
+    font:2em/60px "Î¢ÈíÑÅºÚ";
+    color:white;
+}
+.user,.yunLogo span,.line{
+    display: block;
+}
+.nav1{
+    position: absolute;
+    z-index: 99;
+    margin:0;
+    background-color: #262626;
+    height: 60px;
+    border-top:1px solid white;
+    width: 100%;
+    top:60px;
+}
+.nav1 li a{
+    padding:0 8px;
+}
+
+.user-btn{
+    position: absolute;
+    right:0;
+    z-index: 99;
+    width: 53px;
+    transform: translate(-30px,-350px);
+    -webkit-transform: translate(-30px,-350px);
+    -moz-transform: translate(-30px,-350px);
+    -o-transform: translate(-30px,-350px);
+    transition:all 0.2s;
+}
+.move{
+    transform:translate(-30px,70px);
+    -webkit-transform:translate(-30px,70px);
+    -moz-transform:translate(-30px,70px);
+    -o-transform:translate(-30px,70px);
+}
+.user-btn a{
+    margin:0;
+    background-color: #fff;
+    border:0;
+    border-radius: 3px;
+    color:#333;
+    width: 100%;
+    height:35px;
+    text-align: center;
+    line-height: 35px;
+}
+
+.banner{
+    display: none;
+}
+.focus{
+    display: block;
+}
+.footer-con dl
+{
+    width: 20%;
+}
+.erweima{
+    display: none;
+}
+.footer-con dl
+{
+    width: 25%;
+}
+.con-title h2{
+    height:auto;
+}
+.con-title h2 span{
+    display: block;
+}
+.price{
+    margin-left:0;
+}
+.content li{
+    width: 49%;
+    margin-right:0;
+}
+.content li:nth-child(odd)
+{
+    float:left;
+
+}
+.content li:nth-child(even)
+{
+    float:right;
+}
+.all{
+    display: none;
+}
+
+.content li{
+    width: 100%;
+    margin-right:0;
+}

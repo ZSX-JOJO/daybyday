@@ -1,0 +1,183 @@
+@charset "utf-8";
+/* CSS Document */
+  /* 初始化CSS  重置浏览器样式*/
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { margin:0; padding:0; }
+fieldset, img { border:none; } /*为了照顾ie6 链接图片有边框*/
+img{display: block;}
+ul, ol { list-style:none; }
+input { padding-top:0; padding-bottom:0; font-family: "SimSun","宋体";}
+select, input { vertical-align:middle; }
+ select, input, textarea { font-size:12px; margin:0; }
+textarea { resize:none; }
+table { border-collapse:collapse; }
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal;}
+body {font-size:12px; color:#999;}
+.clearfix:after { content:"."; display:block; height:0; visibility:hidden; clear:both; }
+ .clearfix { zoom:1; }
+ .clearit { clear:both; height:0; font-size:0; overflow:hidden; }
+ a { color:#666; text-decoration:none; }
+
+a:hover { color:#ff8400; text-decoration:none; }
+
+/*头部开始*/
+.site-nav{
+	height: 60px;
+	background-color: #262626;
+	}
+.nav-inner{
+	width: 1200px;
+	height: 60px;
+	margin: 0 auto;
+	}
+.yunLogo{
+	float: left;
+	width: 185px;
+	height: 39px;
+	background-color: purple;
+	margin-top: 9px;
+	background:url(../images/logo.png) no-repeat;
+	}
+.yunLogo a{
+	display:block;
+	width:185px;
+	height: 39px;
+	text-indent:-3000px;	
+	}
+.nav{
+	float: left;
+	margin-left:85px;	
+	}
+	
+.nav li{
+	float: left;}
+.nav li a{
+	display: inline-block;
+	padding:0 18px;
+	line-height: 60px;
+	font-size:14px;
+	color:white;
+	height:60px;
+	}
+.nav li a.current,.nav li a:hover{
+	background-color:#008aff;
+	color:white;
+	}
+
+.user-btn{
+	float: right;}
+.login,.register{	
+	width:45px;
+	height:26px;
+	border:2px solid #ff6400;
+	float:left;
+	text-align:center;
+	line-height:26px;
+	font-size:14px;
+	color:#ff6400;
+	margin-top:13px;
+	}
+.register{
+	background-color: #ff6400;
+	color:white;
+	margin-left:6px;
+	}
+/*banner start*/
+.banner{
+	height:520px;
+	background:url(../images/banner_02.jpg) top center no-repeat;
+     position:relative;
+	}
+.disc{
+	width: 94px;
+	height: 22px;
+	left:50%;
+	margin-left:-55px;
+	position: absolute;
+	bottom:10px;
+	background:rgba(0,0,0,0.6);
+	border-radius:20px;	
+	padding:8px 0 0 16px;
+	}
+.disc li{
+	float:left;
+	width:14px;
+	height:14px;
+	background-color:#968181;
+	margin-right:16px;
+	border-radius:7px;
+	cursor:pointer;
+	
+	}
+.disc li.current{
+	background-color: #fff;
+	}
+
+.footer{
+	border-top:2px solid #293751;
+	}
+.footer-t{
+	height:180px;
+	background-color: #314363;
+	}
+.footer-b{
+	height:40px;
+	line-height: 40px;
+	background-color: #1b2435;}
+.footer-con{
+	width: 1200px;
+	margin:0 auto;
+	padding-top:30px;
+	position:relative;	
+	}
+.footer-con dl{
+	width:190px;
+	float:left;}
+.footer-con dt{
+	height:36px;
+	font-size:18px;
+	color:white;}
+.footer-con dd{
+	height:25px;
+}
+.footer-con dd a{
+	color:#b0bcd0;
+	background:url(../images/square_05.png) no-repeat left center;
+	padding-left:12px;}
+.footer-con dd a:hover{
+	color:#b0bcd0;
+	text-decoration:underline;}
+.erweima{
+	position: absolute;
+	right:0;
+	top:40px;}
+.footer-b p{
+	width:1200px;
+	margin:0 auto;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>Ⅷ删除数组 arr 第一个元素。不要直接修改数组 arr，结果返回新的数组</p>
+</body>
+<script>
+    /*  Ⅷ
+    删除数组 arr 第一个元素。不要直接修改数组 arr，结果返回新的数组
+    */
+    var arr8 = [1,2,3,4,5,6,7];
+    function curtail(arr){
+        var newArr = [];
+        for(var i=0;i<arr.length;i++){
+            newArr.push(arr[i]);//不断向数组尾部添加新的元素 从而构建新的数组
+        }
+        // newArr.shift(newArr[0]);
+        newArr.shift();
+        return newArr;
+    }
+    curtail(arr8);
+
+    var arr9 = [1,2,3,4,5];
+    function insert(arr, item, index) {
+    }
+
+    /* Ⅹ */
+    var arr10 = [1,2,3,4];
+    function count(arr, item) {
+        var s=0;
+        for(var i=0;i<arr.length;i++){
+            if(arr[i] == item){
+                s+=1
+            }
+        }
+        return s;
+    }
+</script>
+</html>

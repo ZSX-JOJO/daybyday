@@ -38,7 +38,7 @@
                 
                 /* 点击事件一旦发生 将所有类名清空 包括'自己' */
                 btns[i].onclick = function(){
-                    //alert(this.index);
+                    // console.log("this: "+this+' '+"this.index: "+this.index);
                     //让所有的 btn 类名清空 包括'自己'  [清空时清除所有的类名,添加时在后面只添加当前]
                     for(var j=0;j<btns.length;j++){
                         btns[j].className = "";
