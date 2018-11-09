@@ -29,7 +29,9 @@
     function insert(arr, item, index) {
     }
 
-    /* Ⅹ */
+    /* Ⅹ 
+    找出数组中与item相同的个数
+    */
     var arr10 = [1,2,3,4];
     function count(arr, item) {
         var s=0;
@@ -39,6 +41,48 @@
             }
         }
         return s;
+    }
+
+    function count2(arr,item){
+        var s=0;
+        arr.forEach(function(e){
+            e ==item ? s++ :0;
+        })
+        return s;
+    }
+
+    function count3(arr,item){
+        var count = arr.reduce(function(total,curr){
+            return curr == item ? total+1 :total
+        },0);
+        return count;
+    }
+
+    function count4(arr,item){
+        var count = 0;
+        arr.map(function(a) {
+            if(a === item) {
+                count++;
+            }
+        });
+        return count;
+    }
+
+    function count5(arr,item){
+        var count = arr.filter(function(a) {
+            return a === item;   //返回true的项组成的数组
+        });
+        return count.length;
+    }
+
+    /* 11 
+    function (greeting, name, punctuation) {
+        return greeting + ', ' + name + (punctuation || '!');
+    }
+    // ['Hello', 'Ellie', '!']
+    */
+    function argsAsArray(fn, arr) {
+        return fn.apply(this, arr);
     }
 </script>
 </html>

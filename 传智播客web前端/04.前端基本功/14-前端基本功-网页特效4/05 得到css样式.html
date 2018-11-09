@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 200px;
+            background-color: pink;
+            left: 10px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="demo"></div>
+</body>
+</html>
+<script>
+    var demo = document.getElementById("demo");
+    console.log(demo.style.left);  // 得到的是空值   只能取行内
+    //console.log(demo.currentStyle.left);  // ie这么写
+    console.log(window.getComputedStyle(demo,null).left);
+</script>

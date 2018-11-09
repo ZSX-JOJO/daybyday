@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var arr = [1,3,5,7,9];
+    console.log(arr[3]);
+    for(var i = 0; i< arr.length;i++)  // 遍历数组
+    {
+        console.log(arr[i]);
+    }
+    var json = {width:200,height:300,left:50}
+    console.log(json.width);
+    for(var k in json)
+    {
+        console.log(`%c k=${k}`,`color:red`);   // k 遍历的是json  可以得到的是  属性
+        console.log(`%c json[k]=${json[k]}`,`color:green`);  // json[k]  得到 是属性的  值
+    }
+
+</script>
+</body>
+</html>
