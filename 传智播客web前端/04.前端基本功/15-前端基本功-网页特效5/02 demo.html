@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #demo {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+
+</div>
+</body>
+</html>
+<script>
+    var demo = document.getElementById("demo");
+    console.log(demo.currentStyle.width);
+    console.log(demo.currentStyle.opacity);  //  ie678 没有这个属性  返回 undefined
+</script>
