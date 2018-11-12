@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //   var obj = new Object();
+    var obj = {};  // 声明对象
+    obj.name = "刘德华";  // 属性
+    obj.age = 55;
+    obj.showName = function() {   // 声明方法    方法一定带有 ()
+        alert("俺是刘德华");
+    }
+    obj.showAge = function() {
+        alert("俺今年18岁");
+    }
+    console.log(obj.name);  // 调用属性
+    console.log(obj.age);
+    obj.showName();   //  调用方法
+    obj.showAge();
+</script>

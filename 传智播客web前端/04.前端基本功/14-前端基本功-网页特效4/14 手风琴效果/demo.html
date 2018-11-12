@@ -47,6 +47,7 @@
             {
                 animate(lis[i],{width:100});
             }
+            // console.log(this);//this ==> lis[i]  this指向事件的调用者
             animate(this,{width:800});
         }
         lis[i].onmouseout = function(){

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+   //   变量的作用域   全局变量 和 局部变量
+   var key = "你好吗";   // 全局变量
+    function fun() {
+        var num = 10;   // 再函数内部声明的   内部变量
+        console.log(num);
+        console.log(key);
+    }
+    fun();
+    console.log(num);
+</script>

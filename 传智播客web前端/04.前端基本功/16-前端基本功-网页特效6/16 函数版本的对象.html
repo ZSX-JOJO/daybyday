@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //  刚才 只有一个对象，我们如果需要很多就需要用到函数
+    function Person(name,age) {
+        var obj = {};  // 声明对象
+        obj.name = name;
+        obj.age = age;
+        obj.showName = function() {
+            alert("我的名字是" + name);
+        }
+        obj.showAge = function() {
+            alert("我的年龄是" + age);
+        }
+        return obj;  // 返回对象  this
+    }
+    var xiaoming = Person("小明1",12);
+    console.log(xiaoming.name);
+    console.log(xiaoming.age);
+    xiaoming.showName();
+    var daming = Person("大明1",12);
+    daming.showName();
+</script>

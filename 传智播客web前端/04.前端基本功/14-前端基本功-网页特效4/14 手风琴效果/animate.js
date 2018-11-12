@@ -62,7 +62,7 @@ function animate(obj,json,fn) {  // 给谁    json
         }
     },5)
 }
-function getStyle(obj,attr) {  //  谁的      那个属性
+function getStyle(obj,attr) {  //  谁的      那个属性 获取css样式
     if(obj.currentStyle)  // ie 等
     {
         return obj.currentStyle[attr];  // 返回传递过来的某个属性
