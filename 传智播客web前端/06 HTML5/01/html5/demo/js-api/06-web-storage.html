@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Web Storage</title>
+  <meta name="author" content="汪磊">
+</head>
+
+<body>
+  <div>
+    <textarea id="txt_value" cols="80" rows="10"></textarea>
+  </div>
+  <button id="btn_set">存储</button>
+  <button id="btn_get">读取</button>
+  <script>
+    if (!window.localStorage) {
+      alert('不支持LocalStorage');
+    } else {
+      var btnSet = document.querySelector('#btn_set');
+      var btnGet = document.querySelector('#btn_get');
+      var txtValue = document.querySelector('#txt_value');
+      btnGet.addEventListener('click', function() {
+        // txtValue.value = localStorage.getItem('key1');
+        txtValue.value = localStorage['key1'];
+      });
+      btnSet.addEventListener('click', function() {
+        // localStorage.setItem('key1', txtValue.value);
+        localStorage['key1'] = txtValue.value;
+      });
+    }
+  </script>
+</body>
+
+</html>

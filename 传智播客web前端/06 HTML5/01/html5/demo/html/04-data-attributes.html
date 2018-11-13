@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>更语义化的标签</title>
+  <meta name="author" content="汪磊">
+</head>
+
+<body>
+  <ul id="users">
+    <li class="item" data-id="1" data-age="18" data-gender="true">
+      张三
+      <pre></pre>
+    </li>
+    <li class="item" data-id="2" data-age="18" data-gender="false">
+      李四
+      <pre></pre>
+    </li>
+    <li class="item" data-id="3" data-age="18" data-gender="true">
+      王二
+      <pre></pre>
+    </li>
+  </ul>
+  <script>
+    var ul = document.getElementById('users');
+
+    for (var i = 0; i < ul.children.length; i++) {
+      var li = ul.children[i];
+      // JS 添加data属性
+      li.setAttribute('data-name', li.innerText);
+      li.children[0].innerText = '';
+      for (var key in li.dataset) {
+        li.children[0].innerText += key + ':' + li.dataset[key] + '\n';
+      }
+    }
+  </script>
+</body>
+
+</html>

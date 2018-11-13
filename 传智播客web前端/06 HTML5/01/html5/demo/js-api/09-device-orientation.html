@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>设备方向（陀螺仪）</title>
+  <meta name="author" content="汪磊">
+</head>
+
+<body>
+  <h1>晃动屏幕试一试</h1>
+  <pre></pre>
+  <img id="img" src="h5.png">
+  <script>
+    window.addEventListener('deviceorientation', function(event) {
+      var trans = "rotateX(" + event.beta + "deg) " + "rotateY(" + event.gamma + "deg) " + "rotateZ(" + (-event.alpha) + "deg)"
+      document.querySelector('pre').innerHTML = `a:${event.alpha}
+b:${event.beta}
+g:${event.gamma}`;
+      document.querySelector("#img").style.transform = trans;
+      document.querySelector("#img").style.color = 'red';
+    });
+  </script>
+</body>
+
+</html>

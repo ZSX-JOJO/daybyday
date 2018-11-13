@@ -1,0 +1,28 @@
+/*
+* @Author: iceStone
+* @Date:   2015-11-30 15:06:03
+* @Last Modified by:   iceStone
+* @Last Modified time: 2015-11-30 15:26:05
+*/
+
+
+/**
+ * 02-application-tags.html
+ */
+
+.my-progress {
+  height: 30px;
+  width: 300px;
+  /*取消默认样式*/
+  -webkit-appearance: none;
+}
+
+.my-progress::-webkit-progress-bar {
+  background-color: #c0c0c0;
+  border-radius: 5px;
+}
+
+.my-progress::-webkit-progress-value {
+  background-color: #f40;
+  border-radius: 5px;
+}

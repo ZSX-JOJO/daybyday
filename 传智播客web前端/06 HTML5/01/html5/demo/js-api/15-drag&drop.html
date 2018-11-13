@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>拖放操作</title>
+  <meta name="author" content="汪磊">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+  <style>
+    #target {
+      padding: 20px;
+      height: 300px;
+      border: 5px dashed #c0c0c0;
+      color: #e0e0e0;
+      font-size: 40px;
+      line-height: 260px;
+      text-align: center;
+      -webkit-user-select: none;
+      cursor: pointer;
+    }
+    
+    #target.actived {
+      border-color: #888;
+      color: #fafafa;
+      box-shadow: 0 0 80px #e0e0e0 inset;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1>Drag&Drop</h1></div>
+    <div class="jumbotron">
+      <p>你好啊，你今年几岁啊，哈哈，我的今天在哪里</p>
+      <img src="toy.png" alt="">
+    </div>
+    <ul id="result" class="list-group"></ul>
+    <div id="target">
+      Drag something into here
+    </div>
+  </div>
+  <script>
+    var source = document.querySelector('.jumbotron');
+    source.addEventListener('dragstart', function(e) {
+      e.dataTransfer.setData('type', e.target);
+      // e.dataTransfer.effectAllowed = 'copy';
+      return true;
+    });
+
+    var target = document.querySelector('#target');
+
+    target.addEventListener('dragenter', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      this.classList.add('actived');
+    });
+
+    target.addEventListener('dragleave', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      this.classList.remove('actived');
+    });
+
+    target.addEventListener('dragover', function(e) {
+      e.stopPropagation();
+      // 一定要组织浏览器的默认行为
+      e.preventDefault();
+    });
+
+    target.addEventListener('drop', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      this.classList.remove('actived');
+      target.innerHTML = '';
+      if (e.dataTransfer.files.length) {
+        for (var i = 0; i < e.dataTransfer.files.length; i++) {
+          var file = e.dataTransfer.files.item(i);
+          var li = document.createElement('li');
+          li.className = 'list-group-item';
+          var h4 = document.createElement('h4');
+          h4.className = 'list-group-item-heading';
+          h4.appendChild(document.createTextNode(file.name));
+          var p = document.createElement('p');
+          p.className = 'list-group-item-text';
+          p.appendChild(document.createTextNode(file.type + ' ' + file.lastModifiedDate.toLocaleDateString() + ' ' + (file.size / 1024 / 1024).toFixed(2) + 'MB'));
+          li.appendChild(h4);
+          li.appendChild(p);
+          document.querySelector('#result').appendChild(li);
+        }
+        target.innerHTML = 'Drag something into here';
+        return false;
+      }
+      var uri = e.dataTransfer.getData('text/uri-list');
+      var text = e.dataTransfer.getData('text/plain');
+      if (uri) {
+        var img = document.createElement('img');
+        img.setAttribute('src', uri);
+        target.appendChild(img);
+      } else if (text) {
+        var textNode = document.createTextNode(text);
+        target.appendChild(textNode);
+      }
+    });
+  </script>
+</body>
+
+</html>

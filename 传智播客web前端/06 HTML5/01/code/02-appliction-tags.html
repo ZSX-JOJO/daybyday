@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>应用程序标签</title>
+  <style>
+    .my-progress {
+      -webkit-appearance: none;
+    }
+    
+    .my-progress::-webkit-progress-bar {
+      background-color: #fff;
+    }
+    /*.content::after {
+      content: 'bbbbbb';
+      color: #f40;
+    }*/
+  </style>
+</head>
+<!-- Sublime Server  不要stop 直接退出 -->
+
+<body>
+  <div class="content">aaaaa</div>
+  <!-- 数据列表呈现需要载体 -->
+  <input type="text" list="input_list">
+  <datalist id="input_list">
+    <option value="laoma"></option>
+    <option value="lisi"></option>
+  </datalist>
+  <br>
+  <!-- 状态指示器 -->
+  <progress></progress>
+  <!-- 进度条默认最大值是一 -->
+  <progress class="my-progress" value="10" max="100"></progress>
+  <meter min="0" max="100" low="40" high="90" optimum="100" value="91">A+</meter>
+</body>
+
+</html>

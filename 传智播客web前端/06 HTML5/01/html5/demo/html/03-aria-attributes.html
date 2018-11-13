@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ARIA 属性</title>
+  <meta name="author" content="汪磊">
+</head>
+
+<body>
+  <h2>（1） 盲人用户如何知道当前浏览区域就是网站主导航？</h2>
+  <div id="mainnav" role="navigation">
+    <a href="http://news.qq.com/" target="_blank">新闻</a>
+    <a href="http://v.qq.com/" target="_blank">视频</a>
+    <a href="http://ent.qq.com/" target="_blank">娱乐</a>
+  </div>
+  <h2>（2） 如何让盲人用户知道我们使用li标签是用来模拟标准select控件？</h2>
+  <div class="dropdown">
+    <a href="javascript:;" role="combobox" aria-autocomplete="list" aria-owns="question-list" aria-expanded="true">选择提示问题</a>
+    <ul id="question-list" role="listbox">
+      <li role="option"><a href="javascript:;">我妈妈的名字是？</a></li>
+      <li role="option"><a href="javascript:;">我爸爸的名字是？</a></li>
+      <li role="option"><a href="javascript:;">我爱人的名字是？</a></li>
+    </ul>
+  </div>
+</body>
+
+</html>

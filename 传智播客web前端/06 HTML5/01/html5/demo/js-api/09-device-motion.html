@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>加速计</title>
+  <meta name="author" content="汪磊">
+  <style>
+    pre {
+      font-size: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <pre id="demo"></pre>
+  <script>
+    if ('ondevicemotion' in window) {
+      window.addEventListener('devicemotion', function(e) {
+        //获取加速计数据 {x,y,z}
+        var acceleration = e.accelerationIncludingGravity;
+        document.querySelector('pre').innerHTML =
+          `
+X:${acceleration.x}
+Y:${acceleration.y}
+Z:${acceleration.z}
+`;
+      });
+    } else {
+      alert('不支持');
+    }
+  </script>
+</body>
+
+</html>

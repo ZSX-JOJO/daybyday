@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>新的表单类型</title>
+  <meta name="author" content="汪磊">
+</head>
+
+<body>
+  <form action="#">
+    <label>text:
+      <input type="text" required>
+    </label>
+    <br>
+    <label>email:
+      <input type="email" value="ice@wedn.net">
+    </label>
+    <br>
+    <label>date:
+      <input type="date" min="2014-10-14" max="2020-10-14" value="2016-08-14">
+    </label>
+    <br>
+    <label>range:
+      <input type="range" min="0" max="50" value="10">
+    </label>
+    <br>
+    <label>search:
+      <input type="search" results="10" placeholder="搜点啥？">
+    </label>
+    <br>
+    <label>tel:
+      <input type="tel" placeholder="(010) 888-888" pattern="^\(?\d{3}\)?[-\s]\d{3}[-\s]\d{4}.*?$">
+    </label>
+    <br>
+    <label>color:
+      <input type="color" placeholder="e.g. #bbbbbb">
+    </label>
+    <br>
+    <label>number:
+      <input type="number" step="1" min="-5" max="10" value="0">
+    </label>
+    <br>
+    <input type="submit" value="提交">
+  </form>
+</body>
+
+</html>

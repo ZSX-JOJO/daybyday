@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>应用程序功能标签</title>
+  <meta name="author" content="汪磊">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h2>DataList</h2>
+  <input list="teachers" />
+  <datalist id="teachers">
+    <option value="段誉" />
+    <option value="乔峰" />
+    <option value="方世玉" />
+  </datalist>
+  <hr>
+  <h2>NoAutoComplate</h2>
+  <input list="students" autocomplete="false" />
+  <datalist id="students">
+    <option value="BMW" />
+    <option value="Ford" />
+    <option value="Volvo" />
+  </datalist>
+  <hr>
+  <h2>Right Menu（Firefox Only）</h2>
+  <menu>
+    <command type="command" disabled label="Publish" />
+  </menu>
+  <hr>
+  <h2>Details（Opera, Chrome, and in Safari 6）</h2>
+  <details>
+    <summary>HTML 5</summary>
+    This slide deck teaches you everything you need to know about HTML 5.
+  </details>
+  <hr>
+  <h2>Meter</h2>
+  <meter min="0" max="100" low="40" high="90" optimum="100" value="91">A+</meter>
+  <hr>
+  <h2>Progress</h2>
+  <p>在不同操作系统上展示的样式不同</p>
+  <progress>working...</progress>
+  <progress value="75" max="100">3/4 complete</progress>
+  <h3>修改进度条样式，<a href="http://www.hongkiat.com/blog/html5-progress-bar/">参考链接</a><a href="https://css-tricks.com/html5-progress-element/"></a></h3>
+  <progress class="my-progress" value="30" max="100">30/100 complete</progress>
+</body>
+
+</html>

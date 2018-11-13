@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<title>演示：跨浏览器兼容的HTML5视频音频播放器</title>
+<link rel="stylesheet" type="text/css" href="http://www.helloweba.com/demo/css/main.css" />
+<script src="//api.html5media.info/1.1.8/html5media.min.js"></script>
+<style>
+.demo{margin:60px auto}
+.audio{margin-top:20px}
+</style>
+</head>
+
+<body>
+<div id="header">
+   <div id="logo"><h1><a href="http://www.helloweba.com" title="返回helloweba首页">helloweba</a></h1></div>
+</div>
+<div id="main">
+   <h2 class="top_title"><a href="http://www.helloweba.com/view-blog-266.html">跨浏览器兼容的HTML5视频音频播放器</a></h2>
+   <div class="demo">
+        <video class="video" poster="//media.html5media.info/poster.jpg" width="618" height="347" controls preload>
+			<source src="//media.html5media.info/video.mp4" media="only screen and (min-device-width: 568px)"></source>
+			<source src="movie.mp4" media="only screen and (max-device-width: 568px)"></source>
+			<source src="//media.html5media.info/video.ogv"></source>
+		</video>
+        
+        <audio class="audio" controls preload>
+			<source src="//media.html5media.info/audio.mp3"></source>
+			<source src="//media.html5media.info/audio.ogg"></source>
+		</audio>
+   </div>
+</div>
+<div id="footer">
+    <p>Powered by helloweba.com  允许转载、修改和使用本站的DEMO，但请注明出处：<a href="http://www.helloweba.com">www.helloweba.com</a></p>
+</div>
+</body>
+</html>

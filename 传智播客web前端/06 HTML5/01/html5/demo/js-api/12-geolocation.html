@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>地理围栏</title>
+  <meta name="author" content="汪磊">
+  <style>
+    #result {
+      font-size: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <pre id="result"></pre>
+  <p>http://developer.baidu.com/map/</p>
+  <button id="btn_get_location">获取位置信息</button>
+  <script>
+    if (navigator.geolocation) {
+      document.querySelector('#btn_get_location').addEventListener('click', function() {
+        navigator.geolocation.getCurrentPosition(function(e) {
+          document.querySelector('#result').innerHTML = JSON.stringify(e.coords);
+        }, function(e) {
+          document.querySelector('#result').innerHTML = JSON.stringify(e);
+        });
+      });
+    } else {
+      // 不支持
+    }
+  </script>
+  <hr>
+  <div id="map" style="height: 1000px;"></div>
+  <button id="btn_show_in_map">在地图上显示</button>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B61195334f65b9e4d02ae75d24fa2c53"></script>
+  <script type="text/javascript">
+    if (navigator.geolocation) {
+      document.querySelector('#btn_show_in_map').addEventListener('click', function() {
+        navigator.geolocation.getCurrentPosition(function(e) {
+
+          // 百度地图API功能
+          var map = new BMap.Map("map"); // 创建Map实例
+          map.centerAndZoom(new BMap.Point(e.coords.longitude, e.coords.latitude), 20); // 初始化地图,设置中心点坐标和地图级别
+          map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
+          map.setCurrentCity("北京"); // 设置地图显示的城市 此项是必须设置的
+          map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+        }, function(e) {
+          document.querySelector('#result').innerHTML = JSON.stringify(e);
+        });
+      });
+    } else {
+      // 不支持
+    }
+  </script>
+</body>
+
+</html>

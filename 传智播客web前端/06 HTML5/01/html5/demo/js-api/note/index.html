@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html manifest="note.manifest">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0,maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta charset="utf-8">
+  <title>WEDN.NET</title>
+  <link href="imgs/icon.png" rel="apple-touch-icon" />
+  <link href="mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css" />
+  <script src="mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+  <script src="mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+  <script src="app.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <div data-role="page" id="home">
+    <div data-role="header">
+      <a href="#" data-icon="delete" id="del">清空</a>
+      <h1>EasyNote</h1>
+      <a href="#" data-icon="plus" class="ui-btn-right" id="new">新建</a>
+    </div>
+    <div data-role="content" data-scroll="y">
+      <ul data-role="listview" id="list">
+        <li>
+          <a href="#">
+            <h3>说明文档</h3>
+            <p>简易本地存储备忘录应用演示。</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div data-role="footer" data-position="fixed">
+      <h4>Copyright &copy; Wedn.Net</h4>
+    </div>
+  </div>
+  <!--添加页面-->
+  <div data-role="dialog" id="addNote">
+    <div data-role="header">
+      <h1>添加备忘</h1>
+    </div>
+    <div data-role="content" data-scroll="y">
+      <textarea cols="40" rows="8" name="textarea" id="textarea" style="max-height:300px"></textarea>
+      <hr>
+      <a href="#" data-role="button" id="saveBtn">保存</a>
+    </div>
+  </div>
+  <!--查看页面-->
+  <div data-role="dialog" id="viewNote">
+    <div data-role="header">
+      <h1>备忘详情</h1>
+    </div>
+    <div data-role="content" data-scroll="y">
+      <p id="show">内容</p>
+    </div>
+  </div>
+</body>
+
+</html>
