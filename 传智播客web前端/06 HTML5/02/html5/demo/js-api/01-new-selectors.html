@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>新的选择器</title>
+  <meta name="author" content="汪磊">
+</head>
+
+<body>
+  <div class="container">
+    <div class="inner">
+      <h1 id="title_1" class="title-1">Header 1</h1>
+      <h1 id="title_2" class="title-2">Header 2</h1>
+      <h1 id="title_3" class="title-3">Header 3</h1>
+      <h1 id="title_4" class="title-4">Header 4</h1>
+      <h1 id="title_5" class="title-5">Header 5</h1>
+      <h1 id="title_6" class="title-6">Header 6</h1>
+      <div id="div_1" class="div-1">Div</div>
+      <span id="span_1" class="span-1">span</span>
+      <ul class="list">
+        <li class="item" data-id="1">item 1</li>
+        <li class="item" data-id="2">item 2</li>
+        <li class="item" data-id="3">item 3</li>
+        <li class="item" data-id="4">item 4</li>
+        <li class="item" data-id="5">item 5</li>
+        <li class="item" data-id="6">item 6</li>
+        <li class="item" data-id="7">item 7</li>
+        <li class="item" data-id="8">item 8</li>
+        <li class="item" data-id="9">item 9</li>
+        <li class="item" data-id="10">item 10</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    var h1Element = document.getElementById('title_1');
+    var divElements = document.getElementsByTagName('div');
+    var itemElements = document.getElementsByClassName('item');
+    // 获取所有符合条件
+    var liElements = document.querySelectorAll('li');
+    var containerElement = document.querySelectorAll('.container');
+    var innerElement = document.querySelector('div.container > .inner');
+  </script>
+</body>
+
+</html>

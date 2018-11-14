@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>屏幕方向</title>
+  <meta name="author" content="汪磊">
+  <style>
+    body {
+      font-size: 80px;
+    }
+    
+    .demo {
+      border: 1px solid #c0c0c0
+    }
+    
+    @media all and (orientation: portrait) {
+      .demo::after {
+        content: '竖屏';
+      }
+    }
+    
+    @media all and (orientation: landscape) {
+      .demo::after {
+        content: '横屏';
+      }
+    }
+    
+    #jsdemo {
+      color: #f40;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo"></div>
+  <div id="jsdemo"></div>
+  <script>
+    if (screen.orientation) {
+      document.querySelector('#jsdemo').innerHTML = screen.orientation.type;
+      screen.orientation.onchange = function() {
+        document.querySelector('#jsdemo').innerHTML = screen.orientation.type;
+      };
+    } else {
+      document.querySelector('#jsdemo').innerHTML = 'js 判断不支持';
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+/*
+Theme Name: TID Blog V2
+Theme URI: http://tid.tenpay.com/
+Author:zaxgg & laotan
+Author URI: http://www.zaxgg.com/ & http://laotan.net/
+Description: 财付通设计中心-让生活支付更完美
+Version: 1.2
+*/
+/* reset from tid.css */
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,select,textarea,button,th,td,blockquote,address,pre{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;vertical-align:middle;}
+ul,dl,ol{list-style:none;}
+img,fieldset{border:none;}
+img{display:inline-block;overflow:hidden;}
+em,address{font-style:normal;}
+sup,sub{vertical-align:baseline;}
+table{border-collapse:collapse;border-spacing:0;}
+q:before{content:"";}
+q:after{content:"";}
+button{cursor:pointer;}
+
+/* HTML5 */
+article,aside,dialog,figure,footer,header,hgroup,nav,section{display:block;}
+menu{margin:0;padding:0;}
+mark{background-color:transparent;}
+
+/* global */
+body{color:#666666;font:12px/1.5 Tahoma,Arial;}
+legend, button, select, textarea, input{color:#666;font-family:Tahoma, Arial, Simsun;}
+button{min-width:68px;min-width:52px\9;*min-width:auto;height:24px;padding:0 5px 1px;*padding:0 10px 1px;}
+a{color:#0099CC;text-decoration:none;}
+a:hover{text-decoration:underline;}
+.wrap{width:1000px;margin:0 auto;}
+.sidebar .join-us,#searchform .submit,.sidebar #menu-categories li,.pager .prev,.pager .next{background:url(images/sprite.png) no-repeat;}
+::-webkit-input-placeholder{color:#D3D3D3; }
+:-moz-placeholder{color:#D3D3D3;}
+.avatar{width:48px;height:48px;border:1px solid #3399CC;}
+.avatar-48{width:48px;height:48px;}
+.avatar-60{width:60px;height:60px;}
+
+/* header */
+.header{position:relative;padding-top:55px;margin-bottom:58px;background-color:#E8E8E8;overflow:hidden;}
+.header .top{height:62px;margin-bottom:24px;/*background-color:#1E9DCC;*/}
+.header .logo{float:left;padding-right:60px;margin-right:80px;background-color:#E8E8E8;}
+.header .nav a{display:inline-block;width:133px;height:62px;padding-left:5px;color:#434343;font:20px/62px "\5FAE\8F6F\96C5\9ED1";}
+/*
+.header .nav:after{display:block;position:absolute;top:55px;left:50%;width:100%;margin-left:500px;height:62px;background-color:#1D96C2;content: " ";}
+.header .nav a:before{display:block;position:absolute;width:0;height:0;margin-left:65px;border-width:30px 30px 0 0 ;border-color:#FFFFFF transparent transparent;border-style:solid dashed dashed;line-height:0;content: " ";}
+.header .nav a:after{display:block;position:absolute;width:0px;height:0px;margin-left:65px;margin-top:-62px;border-width:29px 29px 0 0;border-style:solid dashed dashed;border-color:#1E9DCC transparent transparent;content: " ";}
+*/
+
+.banner{position:relative;height:330px;overflow:hidden;background:#002233;}
+.banner-wrap,.banner-main{width:1000px;height:330px;margin:0 auto}
+.banner-main{position:relative}
+.banner #pager{position:absolute;right:60px;bottom:30px;text-align:right;z-index:50;}
+.banner #pager a{display:inline-block;width:0px;height:9px;padding-left:9px;margin-left:8px;overflow:hidden;background-color:#FFFFFF;}
+.banner #pager .activeSlide,.banner #pager a:hover{background-color:#A3E6FF;box-shadow:0px 0px 5px #00B8FC;}
+
+/* main */
+.main{float:left;width:740px;margin-right:20px;overflow:hidden;}
+.post{margin-bottom:28px;border-bottom:1px solid #E0E0E0;}
+.not-found{border:none;}
+.post-header{margin-bottom:25px;padding-left:70px;}
+.page .post-header,.attachment .post-header{padding-left:0;}
+.post-header .avatar{position:absolute;margin-left:-70px;}
+.post-header .title{margin-bottom:10px;font:26px/26px "\5FAE\8F6F\96C5\9ED1";}
+.post-header .title a{color:#333333;}
+.post-header .title a:hover{text-decoration:none;color:#0099CC;}
+.post-header .meta{line-height:12px;}
+.post-header .meta strong{color:#63C000;}
+.post-content{font-size:14px;line-height:2;overflow:hidden;}
+.post-content h1,.post-content h2{margin-bottom:2em;}
+.post-content h3,.post-content h4{margin-bottom:1em;}
+.post-content table{border-bottom: 1px solid #ddd;margin-bottom:1em;width: 100%;}
+.post-content td{border-top: 1px solid #ddd;padding: 6px 10px 6px 0;}
+.post-content ul,.post-content ol,.post-content dl{margin:0 0 2em 2.5em;}
+.post-content ol{list-style:decimal outside none}
+.post-content ol ol{list-style:upper-alpha outside none;}
+.post-content ul{list-style:square outside none}
+.post-content p{margin-bottom:2.2em;}
+.post-content p em{font-style:italic;}
+.post-content blockquote{margin:0 3em;font-family: Georgia,"Bitstream Charter",serif;font-style:italic;}
+.post-content pre{margin-bottom:2em;padding:1em;background-color:#F4F4F4;overflow:auto;white-space:pre-wrap;word-wrap:break-word;}
+.post-content img{max-width:740px;width:inherit;height:inherit;}
+.attachment .post-content img{max-width:1000px;width:inherit;height:inherit;}
+.post-content .alignleft{display:inline-block;float:left;margin-right:1.625em;}
+.post-content .alignright{display:inline-block;float:right;margin-left:1.625em;}
+.post-content .gallery{margin-bottom:1.625em;}
+.post-content .gallery img{width:100%;}
+.post-content dl.gallery-item{margin:0;}
+.page-link {clear:both;display:block;margin-bottom:1.625em;}
+.page-link span{margin-right: 6px;}
+.page-link a {background:#EEEEEE;padding:2px 3px;text-decoration: none;}
+.page-link a:hover {background:#888888;color:#FFFFFF;font-weight:bold;}
+.post-footer{margin-bottom:25px;overflow:hidden;_zoom:1}
+.post-footer .post-meta{margin-bottom:10px;}
+.post-footer .edit-link{float:right;}
+.nav-prev{float:left;}
+.nav-next{float:right;}
+.pager .page-numbers{display:inline-block;padding:0 8px;height:28px;line-height:28px;background-color:#E9E9E9;font-size:15px;}
+.pager .current,.pager .prev,.pager .next{background-color:#2AB5E4;color:#FFFFFF;}
+.pager .prev{padding-left:20px;background-position:10px -95px;}
+.pager .next{padding-right:20px;background-position:58px -121px;}
+
+/* sidebar */
+.sidebar{width:240px;float:right;}
+.sidebar .widget{margin-bottom:20px;_zoom:1;}
+.sidebar .widget .title{height:34px;margin-bottom:10px;border-bottom:1px solid #E1E1E1;text-transform:uppercase;font:normal 14px/34px "\5FAE\8F6F\96C5\9ED1";color:#2F2F2F;}
+.sidebar .widget .title span{color:#0A6F94;}
+.sidebar .join-us{display:block;width:240px;height:49px;text-indent:-9999px;}
+.sidebar .widget-album .title{margin-bottom:0;border-bottom:none;}
+.sidebar .widget-album  .album{width:238px;height:300px;overflow:hidden;border:1px solid #1E9DCC;}
+.sidebar #menu-categories li{padding:5px 0 5px 25px;font-size:14px;}
+.sidebar #menu-categories li a,.sidebar .widget_links li a{color:#666666;}
+.sidebar #menu-categories li a:hover,.sidebar .widget_links li a:hover{color:#0099CC;}
+.sidebar #menu-categories .menu-item-53{background-position:-224px -52px;}
+.sidebar #menu-categories .menu-item-55{background-position:-224px -85px;}
+.sidebar #menu-categories .menu-item-54{background-position:-224px -115px;}
+.sidebar #menu-categories .menu-item-56{background-position:-224px -145px;}
+.sidebar #menu-categories .menu-item-57{background-position:-224px -175px;}
+.sidebar .widget-comments li{padding:10px 0 10px 60px;height:48px;overflow:hidden;border-bottom:1px solid #F1F1F1;}
+.sidebar .widget-comments li .avatar{position:absolute;margin-left:-60px;}
+.sidebar .widget_links li{height:30px;margin-bottom:5px;font-size:14px;line-height:30px;}
+.sidebar .widget_links li img{display:block;height:30px}
+
+
+/* search */
+#searchform{overflow:hidden;}
+#searchform .assistive-text{display:none;}
+#searchform .field{float:left;width:179px;height:28px;padding:0 10px;overflow:hidden;line-height:28px;border:1px solid #99C2D1;}
+#searchform .submit{float:left;width:40px;height:30px;margin-left:-1px;background-position:0 -59px;border:none;cursor:pointer;}
+
+/* 404 not found */
+.not-found #searchform .assistive-text{display:block;margin-bottom:10px;}
+.not-found #searchform .field{width:339px;}
+.not-found #searchform{margin-bottom:20px;}
+.not-found .title{margin-bottom:10px;font:18px/26px "\5FAE\8F6F\96C5\9ED1";}
+.error-404{padding:20px;border:1px solid #D1D1D1;}
+.error-header{height:200px;padding-left:220px;margin-bottom:20px;}
+.error-header .title{padding-top:20px;}
+.error-header .img-404{position:absolute;margin-left:-210px;}
+.error-header .title span{font-size:36px;color:#E7445B;}
+.error-header .title span.highlight{color:#1E9DCC;}
+.error-header .error-tips{color:#17B4D9;margin-bottom:20px;}
+.error-404 .widget{clear:none;float:left;margin-right:30px;width:230px;}
+.error-404 .widget_recent_entries{width:400px;}
+
+/* coments */
+.comments{margin-top:-10px;}
+.comments .title{margin-bottom:10px;color:#0A6F94;text-transform:uppercase;}
+.comments .title strong{color:#2F2F2F;margin-right:15px;}
+.comments .title .meta{color:#2F2F2F;font-weight:normal;}
+.commentlist li{position:relative;padding:20px 0 20px 50px;overflow:hidden;border-bottom:1px solid #F1F1F1;}
+.commentlist .children li{padding:20px 0 0 50px;border:none;overflow:hidden;}
+.commentlist article{padding-left:10px;min-height:52px;height:auto!important;height:52px;}
+.commentlist .avatar{position:absolute;margin-top:2px;margin-left:-60px;}
+.commentlist .reply{position:absolute;top:20px;right:0;}
+.comment-awaiting-moderation{color:#A2A2A2;}
+#respond{padding-top:10px;}
+#respond #reply-title{padding:10px 0;}
+.commentlist #reply-title{border-top:1px solid #F1F1F1;}
+#respond #reply-title small{font-size:100%;font-weight:normal;}
+#respond p{margin-bottom:10px;}
+.comment-form-author,.comment-form-email,.comment-form-url{height:26px;line-height:26px;}
+.comment-form-author input,.comment-form-email input,.comment-form-url input{height:24px;padding:0 2px;margin-right:5px;border:1px solid #7F9DB9;}
+.comment-form-comment{padding:5px;border:1px solid #7F9DB9;}
+.comment-form-comment textarea{width:100%;border:none;*border:1px solid none;line-height:2;overflow:hidden;}
+.form-submit #submit{height:31px;padding:0 28px;border:none;background-color:#1E9DCC;font-weight:bold;line-height:31px;color:#FFF;cursor:pointer;}
+
+/* other page */
+.page-header{padding-bottom:20px;margin-bottom:28px;overflow:hidden;border-bottom:2px solid #E0E0E0;}
+.author .post .avatar{display:none;}
+.author .post .post-header{padding:0;}
+.author .page-header .author-description{padding-left:70px;height:50px;}
+.author .page-header .avatar{position:absolute;margin-left:-70px;}
+.author .page-header .title{margin-bottom:15px;}
+.search .page-header .title{font-size:14px;}
+.search .page-header .title span,.search .not-found .title span{color:#E7445B;}
+
+/* footer */
+.footer{clear:both;padding:20px 0;text-align:center;}
+.footer .nav{*width:260px;margin:0 auto 10px auto;}
+.footer .nav ul,.footer .nav li,.footer .nav a{display:inline-block;*float:left;}
+.footer .nav a{padding:0px 7px;font-size:14px;line-height:14px;_line-height:15px;border-right:1px solid #1E9DCC;}
+.footer .copy{clear:both;}
+
+/* about */
+.page-id-2 .post-header{display:none;}
+.page-id-2 .post-content h1{margin-bottom:10px;color:#24A6BE;font:24px/26px "\5FAE\8F6F\96C5\9ED1";_font-weight:bold;}
+
+/**
+ * SyntaxHighlighter
+ * http://alexgorbatchev.com/SyntaxHighlighter
+*/
+.syntaxhighlighter,.syntaxhighlighter div,.syntaxhighlighter code,.syntaxhighlighter table,.syntaxhighlighter table td,.syntaxhighlighter table tr,.syntaxhighlighter table tbody{margin: 0 !important;padding: 0 !important;border: 0 !important;outline: 0 !important;background: none !important;text-align: left !important;float: none !important;vertical-align: baseline !important;position: static !important;left: auto !important;top: auto !important;right: auto !important;bottom: auto !important;height: auto !important;width: auto !important;line-height: 1.1em !important;font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;font-weight: normal !important;font-style: normal !important;font-size: 1em !important;min-height: inherit !important; /* For IE8, FF & WebKit */min-height: auto !important; /* For IE7 */}.syntaxhighlighter{width: 99% !important; /* 99% fixes IE8 horizontal scrollbar */margin: 1em 0 1em 0 !important;padding: 1px !important; /* adds a little border on top and bottom */position: relative !important;}.syntaxhighlighter .bold{font-weight: bold !important;}.syntaxhighlighter .italic{font-style: italic !important;}.syntaxhighlighter .line{}.syntaxhighlighter .no-wrap .line .content{white-space: pre !important;}.syntaxhighlighter .line table{border-collapse: collapse !important;}.syntaxhighlighter .line td{vertical-align: top !important;}.syntaxhighlighter .line .number{width: 3em !important;}.syntaxhighlighter .line .number code{width: 2.7em !important;padding-right: .3em !important;text-align: right !important;display: block !important;}.syntaxhighlighter .line .content{padding-left: .5em !important;}.syntaxhighlighter .line .spaces{}/* Disable border and margin on the lines when no gutter option is set */.syntaxhighlighter.nogutter .line .content{border-left: none !important;}.syntaxhighlighter .bar{display: none !important;}.syntaxhighlighter .bar.show{display: block !important;}.syntaxhighlighter.collapsed .bar{display: block !important;}/* Adjust some properties when collapsed */.syntaxhighlighter.collapsed .lines{display: none !important;}.syntaxhighlighter .lines.no-wrap{overflow: auto !important;overflow-y: hidden !important;}/* Styles for the toolbar */.syntaxhighlighter .toolbar{position: absolute !important;right: 0px !important;top: 0px !important;font-size: 12px !important;padding: 8px 8px 8px 0 !important; /* in px because images don't scale with ems */}.syntaxhighlighter.collapsed .toolbar{font-size: 80% !important;padding: .2em 0 .5em .5em !important;position: static !important;}.syntaxhighlighter .toolbar a.item,.syntaxhighlighter .toolbar .item{width: auto!important;display: block !important;float: left !important;margin-left: 8px !important;background-repeat: no-repeat !important;overflow: hidden !important;}.syntaxhighlighter.collapsed .toolbar .item{display: none !important;}.syntaxhighlighter.collapsed .toolbar .item.expandSource{display: inline !important;text-indent: 0 !important;width: auto !important;float: none !important;height: 16px !important;padding-left: 20px !important;}.syntaxhighlighter .toolbar .item.copyToClipboard{text-indent: 0 !important;background: none !important;overflow: visible !important;}/*** Print view.* Colors are based on the default theme without background.*/.syntaxhighlighter.printing,.syntaxhighlighter.printing .line.alt1 .content,.syntaxhighlighter.printing .line.alt2 .content,.syntaxhighlighter.printing .line.highlighted .number,.syntaxhighlighter.printing .line.highlighted.alt1 .content,.syntaxhighlighter.printing .line.highlighted.alt2 .content,{background: none !important;}/* Gutter line numbers */.syntaxhighlighter.printing .line .number{color: #bbb !important;}/* Add border to the lines */.syntaxhighlighter.printing .line .content{color: #000 !important;}/* Toolbar when visible */.syntaxhighlighter.printing .toolbar{display: none !important;}.syntaxhighlighter.printing a{text-decoration: none !important;}.syntaxhighlighter{background-color: #fff !important;}/* Highlighed line number */.syntaxhighlighter .line.highlighted .number{color: black !important;}/* Highlighed line */.syntaxhighlighter .line.highlighted.alt1,.syntaxhighlighter .line.highlighted.alt2{background-color: #e0e0e0 !important;}/* Gutter line numbers */.syntaxhighlighter .line .number{color: #afafaf !important;}/* Add border to the lines */.syntaxhighlighter .line .content{border-left: 3px solid #6CE26C !important;color: #000 !important;}.syntaxhighlighter.printing .line .content{border: 0 !important;}/* First line */.syntaxhighlighter .line.alt1{background-color: #fff !important;}/* Second line */.syntaxhighlighter .line.alt2{background-color: #F8F8F8 !important;}.syntaxhighlighter .toolbar{background-color: #F8F8F8 !important;border: #E7E5DC solid 1px !important;}.syntaxhighlighter .toolbar a{color: #a0a0a0 !important;}.syntaxhighlighter .toolbar a:hover{color: red !important;}/************************************* Actual syntax highlighter colors.************************************/.syntaxhighlighter .plain,.syntaxhighlighter .plain a{color: #000 !important;}.syntaxhighlighter .comments,.syntaxhighlighter .comments a{color: #008200 !important;}.syntaxhighlighter .string,.syntaxhighlighter .string a{color: blue !important;}.syntaxhighlighter .keyword{color: #069 !important;font-weight: bold !important;}.syntaxhighlighter .preprocessor{color: gray !important;}.syntaxhighlighter .variable{color: #a70 !important;}.syntaxhighlighter .value{color: #090 !important;}.syntaxhighlighter .functions{color: #ff1493 !important;}.syntaxhighlighter .constants{color: #0066CC !important;}.syntaxhighlighter .script{background-color: yellow !important;}.syntaxhighlighter .color1,.syntaxhighlighter .color1 a{color: #808080 !important;}.syntaxhighlighter .color2,.syntaxhighlighter .color2 a{color: #ff1493 !important;}.syntaxhighlighter .color3,.syntaxhighlighter .color3 a{color: red !important;}

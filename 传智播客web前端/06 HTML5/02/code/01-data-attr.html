@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>data attr</title>
+</head>
+
+<body>
+  <div class="tabs">
+    <ul>
+      <li data-target=".panel-news">新闻</li>
+      <li data-target=".panel-bagua">八卦</li>
+      <li data-target=".panel-sport">体育</li>
+    </ul>
+    <div class="panels">
+      <div class="panel-news"></div>
+      <div class="panel-bagua"></div>
+      <div class="panel-sport"></div>
+    </div>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li data-target=".panel-news">新闻</li>
+      <li data-target=".panel-bagua">八卦</li>
+      <li data-target=".panel-sport">体育</li>
+    </ul>
+    <div class="panels">
+      <div class="panel-news"></div>
+      <div class="panel-bagua"></div>
+      <div class="panel-sport"></div>
+    </div>
+  </div>
+  <script src="./jquery.min.js"></script>
+  <script>
+    (function() {
+      // 写这个是为了有一个单独作用域，避免污染
+      // api 是应用程序编程接口
+      var $lis = $('.tabs>ul>li');
+      $lis.on('click', function() {
+        // 获取目标对象的选择器
+        var targetSelector = $(this).data('target');
+        var $target = $(targetSelector);
+        //
+      });
+    })();
+  </script>
+</body>
+
+</html>

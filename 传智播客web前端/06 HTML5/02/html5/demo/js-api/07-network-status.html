@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>网络信息访问</title>
+  <meta name="author" content="汪磊">
+</head>
+
+<body>
+  <h1 id="value"></h1>
+  <script>
+    var v = document.querySelector('#value');
+    if (navigator.onLine) {
+      console.log('online');
+
+      v.innerHTML += 'online<br>';
+    } else {
+      console.log('offline');
+      v.innerHTML += 'offline<br>';
+    }
+    // Get the connection type.
+    var type = navigator.connection.type;
+    v.innerHTML += type + '<br>';
+    // Get an upper bound on the downlink speed of the first network hop
+    var max = navigator.connection.downlinkMax;
+    v.innerHTML += max + '<br>';
+
+    function changeHandler(e) {
+      // Handle change to connection here.
+      var type = navigator.connection.type;
+      v.innerHTML += type + '<br>';
+      // Get an upper bound on the downlink speed of the first network hop
+      var max = navigator.connection.downlinkMax;
+      v.innerHTML += max + '<br>';
+    }
+
+    // Register for event changes.
+    // navigator.connection.onchange = changeHandler;
+
+    // Alternatively.
+    navigator.connection.addEventListener('change', changeHandler);
+  </script>
+</body>
+
+</html>

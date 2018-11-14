@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN" manifest="cache.manifest">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Application Cache</title>
+  <meta name="author" content="汪磊">
+  <link rel="stylesheet" href="cache.css">
+</head>
+
+<body>
+  <h1>你现在就可以断开网络，刷新试一下！</h1>
+  <img src="toy.png" alt="">
+  <script src="cache.js"></script>
+  <script>
+    if (window.applicationCache) {
+      window.applicationCache.addEventListener('updateready', function(e) {
+        // 更新完成触发
+        if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+          window.applicationCache.swapCache();
+          if (confirm('更新成功，是否刷新页面?')) {
+            window.location.reload();
+          }
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

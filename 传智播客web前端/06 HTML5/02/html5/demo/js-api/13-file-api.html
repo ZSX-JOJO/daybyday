@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>读取本地文件信息</title>
+  <meta name="author" content="汪磊">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h2>读取单个文件信息</h2>
+    </div>
+    <form action="#">
+      <div class="form-group">
+        <label for="input_1">请选择文件</label>
+        <input id="input_1" class="form-control" name="input_1" type="file">
+      </div>
+      <div class="form-group">
+        <button id="btn_1" class="btn btn-default" type="button">读取文件信息</button>
+      </div>
+    </form>
+    <pre id="result"></pre>
+  </div>
+  <script>
+    (function() {
+      var btn = document.querySelector('#btn_1');
+      var input = document.querySelector('#input_1');
+      btn.addEventListener('click', function() {
+        // 获取文件域中选择的文件
+        // var file = input.files[0];
+        var file = input.files.item(0);
+        if (file) {
+          result.innerHTML =
+            '文件名：' + file.name + '\n文件最近修改时间：' + file.lastModifiedDate.toLocaleDateString() + ' ' + file.lastModifiedDate.toLocaleTimeString() + '\n文件类型：' + file.type + '\n文件大小：' + file.size + '字节'
+        } else {
+          result.innerHTML = '没有选择任何文件';
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

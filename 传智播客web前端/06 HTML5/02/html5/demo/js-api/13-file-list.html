@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>读取本地文件信息</title>
+  <meta name="author" content="汪磊">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h2>读取多个文件信息</h2>
+    </div>
+    <form action="#">
+      <div class="form-group">
+        <label for="input_1">请选择文件</label>
+        <input id="input_1" class="form-control" name="input_1" type="file" multiple>
+      </div>
+      <div class="form-group">
+        <button id="btn_1" class="btn btn-default" type="button">读取文件信息</button>
+      </div>
+    </form>
+    <ul id="result" class="list-group"></ul>
+  </div>
+  <script>
+    (function() {
+      var btn = document.querySelector('#btn_1');
+      var input = document.querySelector('#input_1');
+      var results = document.querySelector('#result');
+      btn.addEventListener('click', function() {
+        if (input.files.length) {
+          for (var i = 0; i < input.files.length; i++) {
+            var file = input.files.item(i);
+            var li = document.createElement('li');
+            li.className = 'list-group-item';
+            var h4 = document.createElement('h4');
+            h4.className = 'list-group-item-heading';
+            h4.appendChild(document.createTextNode(file.name));
+            var p = document.createElement('p');
+            p.className = 'list-group-item-text';
+            p.appendChild(document.createTextNode(file.type + ' ' + file.lastModifiedDate.toLocaleDateString() + ' ' + (file.size / 1024 / 1024).toFixed(2) + 'MB'));
+            li.appendChild(h4);
+            li.appendChild(p);
+            results.appendChild(li);
+          }
+        } else {
+          result.innerHTML = '没有选择任何文件';
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

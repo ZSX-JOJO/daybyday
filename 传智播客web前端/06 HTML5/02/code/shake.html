@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <script>
+    if ('ondevicemotion' in window) {
+      register();
+    } else {
+      console.log('不支持加速计');
+    }
+
+    var lastMoveTime = new Date();
+    var lastX, lastY, lastZ;
+
+    function register() {
+      window.addEventListener('devicemotion', function(e) {
+        var aig = e.accelerationIncludingGravity;
+        // 获取当前时间
+        var currentTime = new Date();
+        var time = currentTime - lastMoveTime;
+        if (time > 100) {
+          // 时间间隔大于 100毫秒
+          var x = aig.x; //获取加速度X方向
+          var y = aig.y; //获取加速度Y方向
+          var z = aig.z; //获取加速度垂直方向
+          var speed = Math.abs(x + y + z - lastX - lastY - lastZ) / time * 1000;
+          // console.log(speed);
+          if (speed > 60) {
+            // 摇动了手机
+            document.write('ok <br />');
+          }
+          lastMoveTime = currentTime;
+          lastX = x;
+          lastY = y;
+          lastZ = z;
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

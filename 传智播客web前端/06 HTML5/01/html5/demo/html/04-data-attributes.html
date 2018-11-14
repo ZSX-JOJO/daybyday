@@ -30,7 +30,7 @@
       // JS 添加data属性
       li.setAttribute('data-name', li.innerText);
       li.children[0].innerText = '';
-      for (var key in li.dataset) {
+      for (var key in li.dataset) {// dataset用来获取H5自定义属性中data-*的*部分
         li.children[0].innerText += key + ':' + li.dataset[key] + '\n';
       }
     }

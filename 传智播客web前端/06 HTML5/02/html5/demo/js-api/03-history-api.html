@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>History API</title>
+  <meta name="author" content="汪磊">
+  <style>
+    html,
+    body,
+    .wrapper {
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .list {
+      background-color: #e0e0e0;
+      height: 100%;
+      width: 220px;
+      float: left;
+    }
+    
+    .content {
+      height: 100%;
+      margin-left: 220px;
+      padding: 0 20px;
+    }
+    
+    #list {
+      font-size: 18px;
+      line-height: 2;
+    }
+    
+    #content {
+      width: 100%;
+      height: 100%;
+      border: none;
+      font-size: 22px;
+      line-height: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="list">
+      <ul id="list"></ul>
+    </div>
+    <div class="content">
+      <textarea id="content" cols="30" rows="10"></textarea>
+    </div>
+  </div>
+  <script src="data.js"></script>
+  <script>
+    // 将所有歌曲名字绑定到列表上
+    var listElement = document.querySelector('#list');
+    for (var title in data) {
+      var li = document.createElement('li');
+      li.innerHTML = '<a class="link" data-title="' + title + '" href="?title=' + title + '">' + title + '</a>';
+      listElement.appendChild(li);
+    }
+
+    // 为每一个链接注册点击事件
+    var links = document.querySelectorAll('.link');
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', function clickItem(e) {
+        // 获取点击元素的标题
+        var title = this.dataset['title'];
+        // 加载歌词
+        loadContent(title);
+        // 记录访问历史
+        history.pushState(title, title, '?title=' + title);
+        // history.replaceState(title, title, '?title=' + title);
+        // 它和history.pushState()方法基本相同，区别只有一点，history.replaceState()不会新生成历史记录，而是将当前历史记录替换掉。
+        // 组织原生事件
+        e.preventDefault();
+      });
+    }
+    // 当访问历史过渡到该事件
+    window.addEventListener('popstate', function(e) {
+      loadContent(e.state);
+    });
+
+    function loadContent(title) {
+      document.querySelector('#content').value = data[title];
+    }
+
+    if (window.location.search) {
+      var title = decodeURI(window.location.search.split('=')[1]);
+      loadContent(title);
+    }
+    // history.replaceState()
+  </script>
+</body>
+
+</html>

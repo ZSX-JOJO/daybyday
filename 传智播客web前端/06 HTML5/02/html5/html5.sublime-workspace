@@ -1,0 +1,754 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"el",
+				"else	(HTML5.html)"
+			],
+			[
+				"t",
+				"target"
+			],
+			[
+				"cl",
+				"cl	console.log"
+			],
+			[
+				"dra",
+				"dragend"
+			],
+			[
+				"req",
+				"requestFileSystem"
+			],
+			[
+				"def",
+				"default	(HTML5.html)"
+			],
+			[
+				"pr",
+				"progress"
+			],
+			[
+				"fi",
+				"files"
+			],
+			[
+				"co",
+				"counter"
+			],
+			[
+				"13",
+				"13-input-change.html"
+			],
+			[
+				"append",
+				"appendChild"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"cla",
+				"className"
+			],
+			[
+				"inner",
+				"innerHTML	(HTML5.html)"
+			],
+			[
+				"btn",
+				"btn_1"
+			],
+			[
+				"inpu",
+				"input_file"
+			],
+			[
+				"inn",
+				"innerHTML"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"bt",
+				"btn_get_location"
+			],
+			[
+				"m",
+				"music.mp3"
+			],
+			[
+				"elem",
+				"element"
+			],
+			[
+				"w",
+				"w	width"
+			],
+			[
+				"loc",
+				"localStorage"
+			],
+			[
+				"txt",
+				"txt_value"
+			],
+			[
+				"app",
+				"applicationCache"
+			],
+			[
+				"do",
+				"documentElement"
+			],
+			[
+				"fu",
+				"fullScreen"
+			],
+			[
+				"add",
+				"addEventListener('click	(HTML5.html)"
+			],
+			[
+				"li",
+				"link"
+			],
+			[
+				"lo",
+				"loadContent"
+			],
+			[
+				"hi",
+				"history	(HTML5.html)"
+			],
+			[
+				"click",
+				"clickItem"
+			],
+			[
+				"list",
+				"listElement"
+			],
+			[
+				"p",
+				"padding"
+			],
+			[
+				"his",
+				"history-demo.html"
+			],
+			[
+				"c",
+				"contenteditable	Attr"
+			],
+			[
+				"tr",
+				"transition"
+			],
+			[
+				"de",
+				"demoClassList"
+			],
+			[
+				"demo",
+				"demoClassList"
+			],
+			[
+				"dem",
+				"demoElement"
+			],
+			[
+				"tit",
+				"title_1"
+			],
+			[
+				"svg",
+				"svg_tiger.svg"
+			],
+			[
+				"cont",
+				"controls"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"po",
+				"pos-r	position: relative;"
+			],
+			[
+				"pos",
+				"pos-r	position: relative;"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"h",
+				"height	Attr"
+			],
+			[
+				"la",
+				"label"
+			],
+			[
+				"tal",
+				"ta:l	text-align:left"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"no",
+				"none"
+			],
+			[
+				"bgz",
+				"bgz	background-size"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"rev",
+				"reveal.js"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"last_filter": "set js",
+		"selected_items":
+		[
+			[
+				"set js",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"re",
+				"File: Rename"
+			],
+			[
+				"set",
+				"Set Syntax: HTML"
+			],
+			[
+				"setht",
+				"Set Syntax: HTML"
+			],
+			[
+				"",
+				"ANF: Delete File"
+			],
+			[
+				"emoj",
+				"Emoji: Insert Emoji"
+			],
+			[
+				"del",
+				"File: Delete"
+			],
+			[
+				"DA",
+				"DashDoc: invoke Dash with selected word"
+			],
+			[
+				"sht",
+				"Set Syntax: HTML"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"ter",
+				"Terminality: Browse Commands..."
+			],
+			[
+				"enab",
+				"Package Control: Enable Package"
+			],
+			[
+				"tin",
+				"Tint: New Terminal in Tab"
+			],
+			[
+				"disab",
+				"Package Control: Disable Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"prev",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"te",
+				"Terminality: Browse Commands..."
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"d",
+				"File: Delete"
+			],
+			[
+				"html",
+				"HTMLPrettify: Set `node` Path"
+			],
+			[
+				"new fo",
+				"File: New Folder Relative to Project Root"
+			],
+			[
+				"dele",
+				"ANF: Delete File"
+			],
+			[
+				"dash",
+				"DashDoc: invoke Dash with selected word"
+			],
+			[
+				"close",
+				"Project: Close"
+			]
+		],
+		"width": 579.0
+	},
+	"console":
+	{
+		"height": 239.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/reveal/css/theme",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/reveal/css/theme/source"
+	],
+	"file_history":
+	[
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/markdown/index.html",
+		"/Volumes/Windows/WorkSpace/Projects/rating/src/node_modules/electron-prebuilt/dist/resources/default_app/index.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/15-drag&drop.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/HTML5.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/reveal/css/theme/source/itcast.scss",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/14-file-reader.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/14-file-system-api.html",
+		"/Users/iceStone/Downloads/filesystem-files/04-03/script.js",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5-bak/2/demo/04-文件API.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/13-input-change.html",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Snippets/sw.sublime-snippet",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/13-file-api.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/13-input-style.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/13-file-list.html",
+		"/Users/iceStone/Desktop/install.cmd",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/12-geolocation.html",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/SublimeServer.sublime-settings",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/09-device-motion.html",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Snippets/if.sublime-snippet",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Snippets/ife.sublime-snippet",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/09-shake.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/shake/index.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/09-device-orientation.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/09-screen-orientation.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demoNode/public/website/JSAPI/JSAPI1.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/10-device-light.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/11-user-proximity.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/07-network-status.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/08-battery-status.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/note/note.manifest",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/07-battery-status.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/04-fullscreen-api.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/note/index.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/06-web-storage.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/05-application-cache.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/cache.manifest",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/cache.css",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/cache.js",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/temp.js",
+		"/Users/iceStone/hydra.txt",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/02-element-classlist.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/03-history-api.html",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Snippets/qs.sublime-snippet",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/data.js",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/history-demo.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/js-api/01-new-selectors.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/10-svg.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/svg_tiger.svg",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/09-media-track.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/video-subtitles-cn.vtt",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5-bak/2/demo/02-多媒体.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/08-media-video.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/07-media-audio.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/06-form-input.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/05-new-form-types.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/03-aria-attributes.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/04-data-attributes.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/02-application-tags.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/reveal/css/theme/itcast.css",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/style.css",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/01-semantic-tags.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/demo/html/progress-bar/index.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/reveal/plugin/notes/notes.js",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/reveal/lib/css/bootstrap.min.css",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/HTML5-汪磊.html",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Tint.sublime-settings",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Terminality.sublime-settings",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/Terminality/Terminality.sublime-settings",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/Tint/Tint.sublime-settings",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/Terminality/README.md",
+		"/Users/iceStone/.profile",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/Terminal/Terminal.sublime-settings",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/index.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/reveal/css/theme/sky.css",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/HTML5-汪磊.pptx",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/HTML5 - 汪磊.pptx",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/HTML5 - 汪磊.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/ppt/reveal.js-3.2.0/index.html",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Snippets/reveal.sublime-snippet",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Snippets/viewport.sublime-snippet",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/courses/html5/ppt",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/ppt/web/index.html",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/ppt/web/js/app.js",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/ppt/web/app.js",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/ppt/web/bundle.js",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/ppt/web/.bower.json",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/ppt/web/bower.json",
+		"/Users/iceStone/Documents/WorkSpace/Itcast/ppt/web/src/index.html",
+		"/Users/iceStone/Documents/WorkSpace/Micua/home/gulpfile.babel.js",
+		"/Users/iceStone/Documents/WorkSpace/Micua/home/package.json",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/package.json",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/webpack.config.js",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/src/components/App.jsx",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Snippets/import.sublime-snippet",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Snippets/require.sublime-snippet",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/src/styles/_common.scss",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/src/main.js",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/src/styles/main.scss",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/.babelrc",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/demo/.babelrc",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/.gitignore",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/src/index.html",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/FileHeader.sublime-settings",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/FileHeader/FileHeader.sublime-settings",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/.jshintrc",
+		"/Users/iceStone/Documents/Repositories/react-boilerplate/app/main.css",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Terminal.sublime-settings",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Terminal (OSX).sublime-settings",
+		"/Users/iceStone/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 49.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"p",
+			"input.files",
+			".",
+			", false",
+			"event",
+			"errorHandler",
+			"danger",
+			"pre",
+			"input_file",
+			"h1",
+			"pre",
+			"pRe",
+			"pre",
+			"h1",
+			"hide",
+			"show",
+			"$",
+			"p",
+			"ev",
+			"{}",
+			"document.write",
+			"console.log",
+			"id",
+			"function",
+			"element",
+			"phonegap.js",
+			"更语义化的标签",
+			"多线程",
+			"7",
+			"文件系统",
+			"文件",
+			"拖放操作",
+			"设备信息访问",
+			"2.1",
+			"网页存储",
+			"h3",
+			"h4",
+			"h3",
+			"全屏API",
+			"document.documentElement",
+			"body",
+			"parent",
+			"document",
+			"python",
+			"document",
+			"link",
+			"访问历史",
+			">",
+			"<",
+			"h3",
+			"通过CSS语法查找元素",
+			"var els = ",
+			"h3",
+			"p",
+			" target=\"_blank\"",
+			"en",
+			">",
+			"<",
+			"audio",
+			"<",
+			"19",
+			"tel",
+			">",
+			"<",
+			"\">",
+			" /",
+			"el",
+			">",
+			"<",
+			"\n<",
+			"ul",
+			"自定义属性",
+			"<b>li</b>",
+			">",
+			"\">\n",
+			"<",
+			"。",
+			"</td><td></td><td>",
+			"</td><td></td><td></td><td>",
+			"</td><td></td><td>",
+			" ",
+			"/&gt;",
+			"&lg;",
+			">",
+			"<",
+			"h3",
+			".html5-progress-bar progress",
+			"div",
+			"<b>|</b>",
+			" class=\"fragment\"",
+			"sessionStorage",
+			"Canvas",
+			"h4",
+			"智能表单",
+			" class=\"fragment\"",
+			"label label",
+			"\"label",
+			"p",
+			"\"label",
+			"positive",
+			"assertive",
+			"calm",
+			"assertive",
+			"energized",
+			"h4",
+			"calm",
+			"h4",
+			"p",
+			">",
+			"<",
+			"left",
+			"h3",
+			"<section>",
+			"h4",
+			"fff",
+			"link",
+			"reveal",
+			".reveal ",
+			"concave",
+			"slide",
+			"default",
+			"itcast",
+			"<li>",
+			"Web技术发展时间线",
+			"h2",
+			"h3",
+			"h4",
+			"h2"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"&gt;",
+			"&lt;"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 39.0
+	},
+	"input":
+	{
+		"height": 49.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "html5.sublime-project",
+	"replace":
+	{
+		"height": 90.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"itc",
+				"html5/reveal/css/theme/source/itcast.scss"
+			],
+			[
+				"html",
+				"html5/HTML5.html"
+			],
+			[
+				"s",
+				"reveal/css/theme/sky.css"
+			],
+			[
+				"sy",
+				"reveal/css/theme/sky.css"
+			],
+			[
+				".",
+				"web/.bower.json"
+			],
+			[
+				"bow",
+				"~/Documents/WorkSpace/Itcast/ppt/web/bower.json"
+			],
+			[
+				"b",
+				"web/bower.json"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 259.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>环境光感应器API</title>
+  <meta name="author" content="汪磊">
+</head>
+
+<body>
+  <h1 id="value"></h1>
+  <script>
+    if ('ondevicelight' in window)
+      window.addEventListener('devicelight', function(event) {
+        document.querySelector('#value').innerHTML = event.value;
+      });
+    else
+      document.write('不支持');
+  </script>
+</body>
+
+</html>

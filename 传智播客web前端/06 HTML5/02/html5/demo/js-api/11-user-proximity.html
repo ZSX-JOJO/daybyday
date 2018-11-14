@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>距离感应器</title>
+  <meta name="author" content="汪磊">
+</head>
+
+<body>
+  <h1 id="value"></h1>
+  <script>
+    if ('onuserproximity' in window)
+      window.addEventListener('userproximity', function(event) {
+        if (event.near) {
+          document.querySelector('#value').innerHTML = ('离我远点！');
+        } else {
+          document.querySelector('#value').innerHTML = ('靠近点嘛！');
+        }
+      });
+    else
+      document.write('不支持');
+  </script>
+</body>
+
+</html>

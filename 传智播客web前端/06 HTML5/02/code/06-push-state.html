@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>历史记录复习</title>
+</head>
+
+<body>
+  <input onclick="add()" type="button" value="添加一个历史记录">
+  <script>
+    function add() {
+      // 判断浏览器是否支持这个API
+      if (window.history && history.pushState) {
+        // 支持
+        history.pushState(new Date(), '设置历史状态显示的标题，但是浏览器不支持', '?demo=' + new Date().toLocaleTimeString());
+        // new Date()获取的是一个时间对象，
+        // toLocaleTimeString转换成我们能认识的时间字符串
+        // toLocaleDateString转换成我们能认识的日期字符串
+      } else {
+
+      }
+    }
+
+    window.addEventListener('popstate', function(e) {
+      // 后退或前进操作
+      console.log('11111' + e.state);
+    });
+  </script>
+</body>
+
+</html>

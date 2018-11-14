@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Element.classList</title>
+  <link rel="stylesheet" href="bootstrap.css">
+</head>
+
+<body>
+  <header class="container">
+    <h1 class="page-header">Element.classList</h1>
+  </header>
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <a href="#" class="navbar-brand">Itcast</a>
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </div>
+  <script>
+    // (function() {
+    // 获取界面上的每一个li元素
+    var liElements = document.querySelectorAll('.nav > li');
+    // 遍历每一个元素 分别注册点击事件
+    for (var i = 0; i < liElements.length; i++) {
+      liElements[i].addEventListener('mouseover', function(e) {
+        for (var i = 0; i < liElements.length; i++) {
+          liElements.item(i).classList.remove('active');
+        }
+        this.classList.add('active');
+        e.stopPropagation();
+        e.preventDefault();
+      });
+    }
+    // })();
+  </script>
+</body>
+
+</html>

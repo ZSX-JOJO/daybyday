@@ -1,0 +1,163 @@
+/*
+* Itcast theme for Reveal.js
+* @Author: iceStone
+* @Date:   2015-11-28 17:56:19
+* @Last Modified by:   iceStone
+* @Last Modified time: 2015-12-03 00:57:33
+*/
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+// // Include theme-specific fonts
+// @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
+// @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Microsoft YaHei',
+arial,
+宋体,
+sans-serif;
+$mainFontSize: 26px;
+$mainColor: #444;
+$headingFont: 'Microsoft YaHei',
+arial,
+宋体,
+sans-serif;
+$heading1Size: 4em;
+$heading2Size: 3em;
+$heading3Size: 2.2em;
+$heading4Size: 1.7em;
+$heading5Size: 1.4em;
+$heading6Size: 1.1em;
+$headingColor: #0066A1;
+$headingLetterSpacing: -0.08em;
+$headingTextShadow: none;
+$backgroundColor: #f7fbfc;
+$linkColor: #3b759e;
+$linkColorHover: lighten( $linkColor, 20%);
+$selectionBackgroundColor: #0399A0;
+// body {
+//   width: 900px;
+//   height: 675px;
+//   margin: 0 auto;
+// }
+// Fix links so they are not cut off
+#cover {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    color: #fff;
+    // text-align: center;
+    // border-bottom: none;
+  }
+}
+
+.reveal {
+  .slide-background.present {
+    background-size: contain;
+  }
+  .slides {
+    // text-align: left;
+    transform: translateY(10px);
+    a {
+      line-height: 1.3em;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-transform: none;
+    }
+    ol,
+    dl,
+    ul {
+      margin-left: 0;
+      margin-top: .5em;
+      li {
+        margin-left: 1.5em;
+        line-height: 1.8;
+      }
+    }
+    img {
+      border: none;
+      margin: 10px 0;
+      max-height: 400px;
+      &.no-shadow {
+        box-shadow: none;
+      }
+    }
+    hr {
+      border-bottom: 2px solid $headingColor;
+      margin: 0;
+      margin-top: -10px;
+    }
+    pre {
+      font-size: .7em;
+    }
+    // .hljs {
+    //   background-color: #f0f0f0;
+    // }
+    //
+    .label {
+      padding: .15em .4em;
+      border-radius: .3em;
+      color: #fff;
+      &-lg {
+        font-size: 1.6em;
+      }
+    }
+    .col-2 {
+      display: block;
+      -webkit-column-count: 2;
+      -webkit-column-gap: 2em;
+    }
+    .col-3 {
+      display: block;
+      -webkit-column-count: 3;
+      -webkit-column-gap: 2em;
+    }
+  }
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// @for $i from 18 through 36 {
+//   .fz#{$i} {
+//     font-size: #{$i}px;
+//   }
+// }
+// Background generator
+@mixin bodyBackground() {
+  @include radial-gradient( #add9e4, #f7fbfc);
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+$colors: (default:#444, primary:#337ab7, success:#5cb85c, info:#5bc0de, warning:#f0ad4e, danger:#d9534f);
+@each $name,
+$color in $colors {
+  .fg-#{$name} {
+    color: $color !important;
+  }
+  .label-#{$name} {
+    background-color: $color;
+  }
+}

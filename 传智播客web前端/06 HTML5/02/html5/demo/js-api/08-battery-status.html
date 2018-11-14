@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>电池状态</title>
+  <meta name="author" content="汪磊">
+</head>
+
+<body>
+  <p>
+    https://developer.mozilla.org/zh-CN/docs/Web/API/Battery_Status_API
+  </p>
+  <h1 id="value"></h1>
+  <script>
+    var v = document.querySelector('#value');
+    if (navigator.getBattery) {
+      navigator.getBattery().then(function(battery) {
+        v.innerHTML += ("充电状态：" + (battery.charging ? "是" : "否") + "<br />");
+        v.innerHTML += ("电池电量：" + battery.level * 100 + "%" + "<br />");
+        v.innerHTML += ("充电时间：" + battery.chargingTime + " seconds" + "<br />");
+        v.innerHTML += ("放电时间：" + battery.dischargingTime + " seconds" + "<br />");
+
+        battery.addEventListener('chargingchange', function() {
+          // 充电状态改变
+          v.innerHTML += ("充电状态：" + (battery.charging ? "是" : "否") + "<br />");
+        });
+
+        battery.addEventListener('levelchange', function() {
+          // 电量改变
+          v.innerHTML += ("电池电量：" + battery.level * 100 + "%" + "<br />");
+        });
+
+        battery.addEventListener('chargingtimechange', function() {
+          v.innerHTML += ("充电时间：" + battery.chargingTime + " seconds" + "<br />");
+        });
+
+        battery.addEventListener('dischargingtimechange', function() {
+          v.innerHTML += ("放电时间：" + battery.dischargingTime + " seconds" + "<br />");
+        });
+
+      });
+    } else {
+      v.innerHTML += "不支持";
+    }
+  </script>
+</body>
+
+</html>
