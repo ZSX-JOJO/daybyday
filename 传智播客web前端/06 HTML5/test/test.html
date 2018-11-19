@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>宽高属性</title>
     <style>
+        .sidebar {
+            --left-pos: 100px;
+            background-color: black;
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -16,7 +21,16 @@
         <track src="23332.srt" kind="subtitles" srclang="no"
         label="Norwegian">
     </video>
+
+    <div class="sidebar">123131312</div>
 </body>
 <script>
+    var sidebarElement = document.querySelector('.sidebar');
+
+    var cssStyles = getComputedStyle(sidebarElement);//
+
+    var cssVal = String(cssStyles.getPropertyValue('--left-pos')).trim();//返回指定的css样式的值 trim()去掉前后空格
+
+    console.log(cssVal); //100px
 </script>
 </html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>削铁如泥,江湖再见!</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+        .box{
+            padding:0;
+        }
+        .box div{
+            height:100px;
+            color:transparent;
+            /* text-transform: uppercase; */
+            font-weight:bold;
+            font-size:30px;
+            text-align: center;
+            line-height: 1em;
+            position: relative;
+            border-top:1px solid transparent;
+            margin:0.5em;
+            transition: 0.3s;
+        }
+        .box div:hover{
+            border-top:1px solid yellow
+        }
+        .box div::before,
+        .box div::after{
+            position: absolute;
+            content:attr(data-text);
+            top: -0.5em;
+            left: 0;
+            width: 100%;
+            color: silver;
+            transition: 0.3s ease-out;
+        }
+        .box div::before {
+            /* clip-path:polygon*() 左上角开始,水平 垂直 逆时针 直到 右上角 */
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+        }
+
+        .box div::after {
+            clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+        }
+
+        .box div:hover::before,
+        .box div:hover::after {
+            color: yellow;
+            transition: left 0.3s ease-out;
+            transition-delay: 0.2s;
+        }
+        
+        /* odd 奇数 even 偶数 */
+        .box div:nth-child(odd):hover::before,
+        .box div:nth-child(even):hover::after {
+            left: -0.15em;
+        }
+
+        .box div:nth-child(even):hover::before,
+        .box div:nth-child(odd):hover::after {
+            left: 0.15em;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div data-text="新游戏">新游戏</div>
+        <div data-text="继续游戏">继续游戏</div>
+        <div data-text="设置">设置</div>
+        <div data-text="退出游戏">退出游戏</div>
+    </div>
+</body>
+</html>
