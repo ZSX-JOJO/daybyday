@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>彩虹文字</title>
+    <style>
+        html,
+        body{
+            height:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:black;
+        }
+        .box{
+            width:100%;
+            margin:0 auto;
+            color:white;
+            font-size:10em;
+        }
+        .box span{
+            position:relative;
+            background:linear-gradient(top,yellow,red,orange,red,silver);
+        }
+        .box span::before,
+        .box span::after{
+            position:absolute;
+            content:attr(data-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span data-text="W">W</span>
+        <span data-text="E">E</span>
+        <span data-text="B">B</span>
+    </div>
+</body>
+</html>

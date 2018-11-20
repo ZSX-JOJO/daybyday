@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clip-path属性</title>
+    <style>
+        html,
+        body{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+        .clip1.text,
+        .clip2.text,
+        .clip3.text{
+            text-align: center;
+            color:#fff;
+            font-weight: bold;
+            line-height:200px;
+        }
+        .main,
+        .others{
+            width:200px;
+            height:200px;
+            padding:15px;
+        }
+        .main{
+            background-color:red;
+        }
+        .others{
+            background-color:yellow;
+        }
+        .main.clip1{
+            /* margin:0 auto; */
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        }
+        .others.clip1{
+            clip-path: url(../img/1.jpg);
+        }
+    </style>
+</head>
+<body>
+    <div class="main clip1 text">clip-path:circle()</div>
+    <div class="main clip2 text">clip-path:ellipse()</div>
+    <div class="main clip3 text">clip-path:polygon()多边形,搭配transition更佳</div>
+
+    <div class="others clip1">clip-path:url()</div>
+
+    <dl>
+        <dt>关于vertical-align:middle偶尔失灵的解析</dt>
+        <dd>
+            当 inline-block 和 inline 以及display:table-cell  时vertical-align:middle才会起作用.
+        </dd>
+    </dl>
+</body>
+</html>
