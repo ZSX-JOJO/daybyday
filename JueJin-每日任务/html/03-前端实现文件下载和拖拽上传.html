@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 4444 -->
+    <div class="upload">
+        <label for="up">
+            点击上传<input type="file" id="up">
+        </label>
+    </div>
+    <!-- other 三种方法  -->
+    <button onClick={this.windowOpen}>window.open</button>
+    <button onClick={this.formSubmit}>formSubmit</button>
+    <button onClick={this.aDownload}>aDownload</button>
+    <p>
+        检测浏览器是否支持download
+        <pre>var isSupportDownload = 'download' in document.createElement('a');</pre>
+    </p>
+
+    <div>
+        <a href="download.php?file=03.png"> 点击下载 </a>
+    </div>
+</body>
+<script>
+    /* function window.open */
+    import getImg from '../src/03-test.png';
+    import getWord from '../src/03test.docx';
+    windowOpen = () =>{
+        window.open(getImg);
+        // window.open(getWord);
+    }
+    // function windowOpen(getImg){
+    //     window.open(getImg);
+    //     // window.open(getWord);
+    // }
+</script>
+</html>
