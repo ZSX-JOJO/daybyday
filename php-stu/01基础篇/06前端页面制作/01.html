@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul type="suquare">
+        <!-- type默认disc原点 circle圆圈 suquare实心方块-->
+        <li>无序列表</li>
+        <li>无序列表</li>
+        <li>无序列表</li>
+        <li>无序列表</li>
+        <li>无序列表</li>
+    </ul>
+
+    <ol type="4" start="50">
+        <!-- <ol type="1|a|A|i|I"> -->
+        <!-- 1	默认。十进制数字 (1, 2, 3, 4)。
+            a	字母顺序的有序列表，小写 (a, b, c, d)。
+            A	字母顺序的有序列表，大写 (A, B, C, D)。
+            i	罗马数字，小写 (i, ii, iii, iv)。
+            I	罗马数字，大写 (I, II, III, IV)。
+            start 属性规定有序列表中第一个列表项目的开始值
+        -->
+        <li>有序列表</li>
+        <li>有序列表</li>
+        <li>有序列表</li>
+        <li>有序列表</li>
+    </ol>
+    <!-- 带有项目和描述的描述列表 -->
+    <!-- <dl> 标签与 <dt> （定义项目/名字）和 <dd> （描述每一个项目/名字）一起使用 -->
+    <dl>
+        <dt>Coffee</dt>
+            <dd>Black hot drink</dd>
+        <dt>Milk</dt>
+            <dd>White cold drink</dd>
+    </dl>
+    <a href="#target">锚点</a>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <p>21312313213</p>
+    <a href="" name="target">关于name规定锚的名称 HTML5 不支持。</a>
+
+    <div>
+        <img src="./2.jpg" alt="没有图片时显示" name='333' width="200" height="200">
+    </div>
+
+    <!-- 具体查各标签属性 -->
+    <!-- th表头 tr行 td表格 -->
+    <table border="1" borderColor="red" width="400" height="300">
+        <caption>表的标题</caption>
+        <colgroup span="3" style="background:red"></colgroup>
+        <col width="100"><!--HTML5 已不再支持 <col> width 属性。-->
+        <col width="50">
+        <tr align="center">
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+        </tr>
+        <tr align="left">
+            <!-- colspan合并行 -->
+            <td>赵守鑫</td>
+            <td>28</td>
+            <td>男</td>
+        </tr>
+        <tr valign="bottom">
+            <!-- rowspan合并列 -->
+            <td>赵守鑫2</td>
+            <td>28</td>
+            <td>男</td>
+        </tr>
+        <tr align="right">
+            <td>赵守鑫3</td>
+            <td>28</td>
+            <td>男</td>
+        </tr>
+    </table>
+
+    <!-- 以下为form表单 -->
+
+    <!-- 只有 method="post" 时才使用 enctype 属性。
+    enctype编码类型  默认不填写 只有上传文件的时候才指定该类型 -->
+    <form action="" enctype="multipart/form-data">
+        <!-- 具体查看input各种属性 -->
+        <input type="radio" name="sex" value="1">男
+        <input type="radio" name="sex" value="0">女
+
+        <input type="checkbox" name="aihao" checked>1
+        <input type="checkbox" name="aihao">2
+        <input type="checkbox" name="aihao">3
+        <input type="checkbox" name="aihao">4
+        <input type="checkbox" name="aihao">5
+    </form>
+
+    <select name="city" id="">
+        <option value="wf1">潍坊1</option>
+        <option value="wf2">潍坊2</option>
+        <option value="wf3">潍坊3</option>
+        <option value="wf4">潍坊4</option>
+    </select>
+
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+
+    <!-- 回顾 -->
+    <!-- 
+        块:
+            div p ul ol dl hr h1-h6
+            可以设置宽高(默认宽度100%)
+            独占一行
+            不受空格影响
+        行内:
+            span em strong b i u
+            不支持宽高(默认的宽度是根据内容撑开)
+            受空格影响
+        行内块:
+            img input
+            支持宽高
+            共处一行
+            受空格影响
+
+        行内式
+        内联式
+        外链式
+
+        选择器:
+            id 唯一
+            class
+            标签
+            组合
+                #id, .class名字, 标签名字{}
+            层级
+                #box div{}
+            伪类
+        
+        盒子模型:
+            [透明度 opacity  不透明度alpha]
+        margin:外边界
+            margin-l -r -b -t
+        padding:内边距
+
+        浮动:见2.html
+     -->
+</body>
+</html>

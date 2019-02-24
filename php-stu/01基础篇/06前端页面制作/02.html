@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .left{
+            width:200px;
+            height:40px;
+            background:red;
+            /* float: right; */
+        }
+        .right{
+            width:200px;
+            height:40px;
+            background:pink;
+        }
+        .position{
+            text-align: center;
+            line-height:150px; 
+            width: 150px;
+            height: 150px;
+            background-color: #f90;
+            position: relative;/*absolute*/
+            top: 20px;
+            left:40px;
+        }
+        .ii{
+            text-align: center;
+            line-height:150px; 
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            position: absolute;
+            top: 20px;
+            left:40px; 
+        }
+        .fixed{
+            text-align: center;
+            line-height:150px; 
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+            position: fixed;
+            top: 20px;
+            right:40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 浮动(加了浮动一定要清除浮动！！！！)
+        浮动作用: 放在一行
+            特点:
+                把元素变成块
+                顶对齐
+        清除浮动:
+            1:给父级元素增加overflow:hidden
+            2:在需要清除浮动的元素下边添加空白的块标签并添加clear:both
+            3:常用 父级上添加或者在要清除浮动的标签上添加 .clearFix:after{display:block;content:'';clear:both;zoom:1}
+     -->
+    <div class="left">左边</div>
+    <div class="right">右边</div>
+
+    <!-- 定位
+        加了定位就要写 top right bottom left 
+        相对定位 relative 不会改变元素类型 [参照物是自己本身]
+
+        绝对定位 absolute 会改变元素类型  将元素变成块;参照物默认是body
+            但是父级加了相对定位的话 [参照物就是父级]
+
+        固定定位 fixed 会改变元素类型 将元素变成块 [参照物是整个屏幕的可视区]
+    -->
+    <div class="position">相对定位</div>
+    <i class="ii">绝对定位</i>
+    <b class="fixed">固定定位</b>
+</body>
+</html>
