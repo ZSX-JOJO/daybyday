@@ -77,6 +77,15 @@ git config --global --unset https.proxy
 ​		edunpm - http://registry.enpmjs.org/
 
 	nrm use *** 【切换registry】
+	//官方太慢 使用淘宝镜像
+	临时使用
+	npm --registry https://registry.npm.taobao.org install express
+	持久使用
+	npm config set registry https://registry.npm.taobao.org
+	关于cnpm 【这货飞快】
+	npm install -g cnpm --registry=https://registry.npm.taobao.org
+	npm-check 用来检查npm依赖包是否有更新
+	npm-check -u -g检查包的状态
 
 ## 4：VUE 2.0  环境搭建
 
@@ -84,7 +93,7 @@ git config --global --unset https.proxy
 
 		vue-cli 脚手架构建工具
 	
-			npm install -g vue-cli  【全局安装】
+			npm install -g @vue/cli 和 npm install -g @vue/cli-init  【全局安装】//npm uninstall vue-cli -g 卸载 旧
 	
 			npm update vue-cli   【更新】
 	
@@ -110,7 +119,7 @@ git config --global --unset https.proxy
 	
 			4：整个项目需要的依赖资源配置 存放于package.json中
 	
-			5：定位到  " 英文文件夹名称"  运行 npm install
+			5：定位到  " 英文文件夹名称"  运行 npm install 或者cnpm install
 	
 			6：运行项目 npm run dev   
 	

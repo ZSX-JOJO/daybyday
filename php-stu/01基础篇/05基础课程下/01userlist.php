@@ -14,7 +14,7 @@
     $pageRes = mysqli_fetch_assoc($result);
     var_dump($pageRes);
     $count = $pageRes['count'];
-    //每页显示树 每页显示5条数据
+    //每页显示数 每页显示5条数据
     $num = 5;
     //根据每页显示数 求出总页数
     $pageCount = ceil($count/$num);

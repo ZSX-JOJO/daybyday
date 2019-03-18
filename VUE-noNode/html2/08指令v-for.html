@@ -9,15 +9,22 @@
         p{
             color:red;
         }
+        .test{
+            color:green;
+            font-size: 32px;
+        }
     </style>
 </head>
 <body>
     <p>指令 v-for</p>
     <div id="app">
         <ul>遍历数组 item in arr
-            <li v-for="item in arr"><!--遍历数组-->
+            <li v-for="item in arr"><!--遍历数组 与传统for/in有点区别 传统默认输出键值(索引)-->
                 {{item}}
             </li>
+        </ul>
+        <ul>配合v-text
+            <li v-for="item in arr" v-text="item"></li>
         </ul>
         <ul>遍历对象 item in obj
             <li v-for="item in obj"><!--遍历对象-->
@@ -25,10 +32,15 @@
             </li>
         </ul>
         <ul>(value,key,index) in obj
-            <li v-for="(value,key,index) in obj"><!--(value,key,index) in obj-->
+            <li v-for="(value,key,index) in obj" :class="{test: index % 2}"><!--(value,key,index) in obj    vue2.0 -->
                 {{index}}: {{key}} ---- {{value}}
             </li>
-        </ul>      
+        </ul>
+        <ul>(value,key) in arr
+            <li v-for="(value,key) in arr"><!--(value,key,index) in obj    vue2.0 此处已数组为例 数组index就不需要了吧。。。-->
+                {{key}} ---- {{value}}
+            </li>
+        </ul>
     </div>
 </body>
 <script src="../script/vue.js"></script>
@@ -36,7 +48,14 @@
     var vm = new Vue({
         el:'#app',
         data:{
-            arr:[1,2,3,4,5,6,7],
+            arr:[111,222,333,444,555,666,777],
+            arr2D:[
+                ['中国','中国唯一'],
+                ['山东','山东2'],
+                ['潍坊','潍坊2'],
+                ['诸城','诸城2'],
+                ['赵守鑫','赵守鑫唯一'],
+            ],
             obj:{
                 name:"zsx",
                 age:18,
@@ -44,5 +63,36 @@
             }
         }
     });
+</script>
+<script type="text/javascript">
+    //js for in
+
+    //遍历对象的属性
+    var person = {fname:"John", lname:"Doe", age:25};
+    var text = "";
+    var x;
+    for (x in person) {
+        console.log(text += person[x])
+    }//John Doe 25
+
+    console.log('-----------分割线-----------');
+
+    //循环遍历数组的键值(索引)
+    var arr = ['nick','freddy','mike','james'];
+    for(var key in arr){
+        console.log(key);//0 1 2 3
+    }
+
+    console.log('-----------分割线-----------');
+
+    //与for of区别
+    //for of不可以遍历对象 for in 会遍历自定义属性，for of不
+    var arr = ['nick','freddy','mike','james'];
+    for(var key in arr){
+        console.log(key);// 0 1 2 3
+    }
+    for(var item of arr){
+        console.log(item);//nick freddy mike james
+    }
 </script>
 </html>

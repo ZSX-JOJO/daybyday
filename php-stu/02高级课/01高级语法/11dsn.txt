@@ -1,0 +1,1 @@
+mysql:host=localhost;dbname=phpstu;charset=utf8

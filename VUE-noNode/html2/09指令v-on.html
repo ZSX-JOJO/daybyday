@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>vue学习-指令</title>
+    <title>09vue学习-指令</title>
     <style>
         p{
             color:red;
@@ -27,6 +27,11 @@
         <button v-on:click="warn('Form cannot be submitted yet.', $event)" type="submit">
             Submit
         </button>
+        <br>
+        <ul>
+            <li v-for="(item,key) in list">{{key}}----{{item}}</li>
+        </ul>
+        <button v-on:click="addItem()">点击添加/修改item</button>
     </div>
 </body>
 <script src="../script/vue.js"></script>
@@ -36,7 +41,22 @@
         data:{
             msg:'显示显示',
             flag:true,
-            counter:0
+            counter:0,
+            list:[
+                {
+                    name:'赵守鑫',
+                    age:'18'
+                },
+                {
+                    name2:'赵守鑫2',
+                    age2:'28'
+                },
+            ],
+            objList:{
+                name:'zsx',
+                sex:'男',
+                age:'28',
+            },
         },
         methods:{
             show:function(event){
@@ -49,6 +69,29 @@
                 // 现在我们可以访问原生事件对象
                 if (event) event.preventDefault()
                     alert(message);
+            },
+            addItem(){
+                // this.list.push({
+                //     color:'red',
+                //     price:'无价'
+                // })
+
+                // this.list.push(vm.$data.objList)
+
+                // 1直接设置值 或者 2改变数组长度  Vue 不能检测 所以页面数据未更改
+                // this.list[1] = {
+                //     name:'无名子',
+                //     age2:38
+                // }
+
+                //解决 问题1  Vue.set(vm.items, indexOfItem, newValue)
+                // Vue.set(this.list, 1, {name3:'赵守鑫3',age3:48})//通vm.$set(vm.items, indexOfItem, newValue)
+                //与上行作用相同 Vue.set的别名
+                // vm.$set(this.list, 1, {name3:'赵守鑫3',age3:48})
+                // 或者  vm.items.splice(indexOfItem, 1, newValue)
+                // this.list.splice(1, 1, {name3:'赵守鑫3',age3:48})
+
+                // 解决问题2 vm.items.splice(newLength)
             }
         }
     });

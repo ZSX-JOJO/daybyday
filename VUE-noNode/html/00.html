@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <p v-hello:sb="msg">{{msg}}</p>
+        <input type="text" name="" v-model="myValue">{{myValue}}<br>
+    </div>
+
+    <div id='example-3'>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+      <span>Checked names: {{ checkedNames }}</span>
+    </div>
+
+    <div id="example-4">
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+      <span>Picked: {{ picked }}</span>
+    </div>
+
+    <div id="example-5">
+        <select v-model="selected">
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+    </div>
+    <div id="example-6">
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+    </div>
+</body>
+<script type="text/javascript" src="../script/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            msg:'SB!',
+            myValue:'',
+        },
+        methods:{
+
+        },
+        directives:{
+            hello:function(el,binding){
+                console.log(binding.name);
+            }
+        }
+    });
+    var vm2 = new Vue({
+        el:'#example-3',
+        data:{
+            checkedNames: [],
+        }
+    });
+    var vm3 = new Vue({
+        el:'#example-4',
+        data:{
+            picked:''
+
+        }
+    });
+    var vm4 = new Vue({
+        el:'#example-5',
+        data:{
+            selected:''
+        }
+    });
+    var vm5 = new Vue({
+        el:'#example-6',
+        data:{
+            selected: 'A',
+            options:[
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+            ],
+        }
+    });
+</script>
+</html>

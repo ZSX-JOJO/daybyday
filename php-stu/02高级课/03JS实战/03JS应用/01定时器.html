@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定时器</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+        img{
+            display: block;
+            margin:0 auto;
+        }
+        #div2{
+            width:100%;
+            height:300px;
+            line-height:300px;
+            font-size: 50px;
+            text-align: center;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <div>定时器</div>
+        <img src="./img/1.png" alt="">
+    </div>
+    <div id="div">
+        <img src="./img/test.png" alt="">
+        <div><button onclick="test()">取消</button></div>
+    </div>
+    <div id="div2">
+    </div>
+</body>
+<script>
+    var oDiv = document.getElementById('div');
+    var timer = setTimeout(function(){
+        oDiv.style.display = 'none';
+    }, 3000);
+    function test(){
+        clearTimeout(timer);
+    }
+
+    //
+    var oDiv2 = document.getElementById('div2');
+    var timer2 = null;
+    var i = 0;
+    oDiv2.onmouseover = function(){
+        timer2 = setInterval(() => {
+            i++;
+            oDiv2.innerHTML = i;
+        }, 1000);
+    };
+    oDiv2.onmouseout = function(){
+        clearInterval(timer2);
+    };
+</script>
+</html>

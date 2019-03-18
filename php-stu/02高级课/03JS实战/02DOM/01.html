@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文档对象模型</title>
+    <style>
+        .title{
+            color:red;
+            font-weight: bold;
+            text-align: center;
+            font-size: 24px;
+        }
+        .title img{
+            margin:0 auto;
+        }
+        .inner{
+            color:black;
+            font-size:16px;
+        }
+        #ul{
+            color:black;
+            font-size:16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <div>节点操作</div>
+        <hr>
+        <div>
+            <div>DOM操作</div>
+            <div id="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div name="test"></div>
+            <div name="test"></div>
+            <div></div>
+            <img src="./img/0.png" alt="">
+        </div>
+        <div class="">
+            <div>window.onload加载</div>
+            <img src="./img/1.png" alt="">
+        </div>
+        <div>
+            <div>获取属性</div>
+            <img src="./img/2.png" alt="">
+        </div>
+        <div>
+            <div>节点操作</div>
+            <ul id="ul">
+                <li>节点操作测试</li>
+                <li>赵云</li>
+                <li id="zhang">张飞</li>
+                <li>赵云2</li>
+                <li>赵云3</li>
+                <li>赵云4</li>
+            </ul>
+            <img src="./img/3.png" alt="">
+            <div><img src="./img/4.png" alt=""></div>
+        </div>
+        <div>
+            <div>事件</div>
+            <img src="./img/5.png" alt="">
+            <div><img src="./img/6.png" alt=""></div>
+            <div><img src="./img/7.png" alt=""></div>
+        </div>
+        <div>
+            <div>表单对象</div>
+            <img src="./img/8.png" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    //DOM操作
+    var oDiv = document.getElementById("div");
+    // alert(oDiv);
+    var aDiv = document.getElementsByClassName('div');
+    // alert(aDiv);
+    // alert(aDiv[0]);
+    var aaDiv = document.getElementsByName('test');
+    // alert(aaDiv);
+    var aaaDiv = document.getElementsByTagName('img');
+    // alert(aaaDiv);
+    var title = document.title;
+    // alert(title);
+    var body = document.body;
+    // alert(body);
+    var clientWidth = document.documentElement.clientWidth;
+    // alert(clientWidth);
+    var clientheight = document.documentElement.clientHeight;
+    // alert(clientheight);
+    //节点操作
+    var oLi = document.createElement('li');
+    oLi.innerHTML = '赵云牛鼻';
+    var oUl = document.getElementById('ul');
+    // oUl.appendChild(oLi);
+    // oUl.removeChild(oLi);
+    var oLi1 = document.getElementById('zhang');
+    oUl.insertBefore(oLi,oLi1);
+</script>
+</html>

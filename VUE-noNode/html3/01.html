@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue学习</title>
+    <style>
+        p{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p></p>
+    <!-- 1 -->
+    <div id="app">
+        <my-header></my-header>
+    </div>
+    <hr>
+    <!-- 2 -->
+    <div id="app2">
+        <!-- <template></template> -->
+        <my-header-father></my-header-father>
+    </div>
+</body>
+<script src="../script/vue.js"></script>
+<script>
+    //注册或获取全局组件
+    Vue.component('my-header',{
+        template:'<div>{{message}}this is my header</div>',
+        data:function(){
+            return{
+                message:'注册或获取全局组件'
+            }
+        }
+    });
+    //1 vue实例对象
+    //构造函数 构造参数 参数选项
+    new Vue({
+        el:'#app',
+        data:{
+            message:'hello'
+        }
+    });
+    //2 vue 的组件
+    var myHeaderChildren = {//要写在上面 里面的内容在它的父级内渲染
+        template:'<div>this is my header children</div>'
+    }
+    var myHeaderFather = {//要写在上面
+        template:'<div>this is my header Father<my-header-children></my-header-children></div>',
+        components:{
+            'my-header-children':myHeaderChildren
+        }
+    };
+    new Vue({
+        el:'#app2',
+        // template:'<p>hello hello hello {{message}} </p>',
+        // data:{
+        //     message:'赵守鑫'
+        // },
+        data:function(){
+            return{
+                // f:'father',
+                // c:'children'
+            }
+        },
+        components:{
+            'my-header-father':myHeaderFather
+        }
+    });
+
+
+
+    // var vm = new Vue({
+    //     el:'#app',
+    //     data:{
+    //     },
+    // });
+    var text = '123,456';
+    var newText =text.split(',').reverse().join(',');
+    // console.log('%c newText','color:red;font-size:25px');
+    console.log(newText);
+    console.log(typeof newText);
+</script>
+</html>

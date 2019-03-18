@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 1050px;
+            border:1px solid red;
+            margin:0 auto;
+        }
+        .box button{
+            width:120px;
+            margin-top:20px;
+            height: 50px;
+            font-size: 20px;
+            margin-left: 20px;
+        }
+        .box div{
+            margin-top: 20px;
+            width: 1050px;
+            height: 500px;
+            font-size: 40px;
+            text-align: center;
+            background-color: pink;
+            display: none;
+        }
+        .box .show{
+            display: block;
+        }
+        .box .active{
+            width:140px;
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <button>←</button>
+        <button class="active">周杰伦</button>
+        <button>林俊杰</button>
+        <button>刘德华</button>
+        <button>张学友</button>
+        <button>陈奕迅</button>
+        <button>→</button>
+        <div class="show">等你下课 千里之外 夜曲</div>
+        <div>第几个一百天</div>
+        <div>爱你一万年</div>
+        <div>吻别</div>
+        <div>红玫瑰</div>
+    </div>
+</body>
+<script>
+    //获取中间所有的button
+    var aButton = document.getElementsByTagName('button');
+    //定义一个空数组 存放所有按钮
+    var aBtn = [];
+    for(var i = 1;i < aButton.length - 1;i++){
+        aBtn.push(aButton[i]);
+    }
+    //获取所有div
+    var oBox = document.getElementById('box');
+    var aDiv = oBox.getElementsByTagName('div');
+    //给所有button添加点击事件
+    for(var i = 0;i < aBtn.length;i++){
+        //将当前的i值保存到自定义属性中
+        aBtn[i].index = i;
+        aBtn[i].onclick = function(){//这是个匿名函数 当点击的时候才会去执行 当点击的时候 此时i的值已经是外面for循环最终的值
+            console.log(i);//i已经是5了
+            //先将所有button和div的样式全部清空
+            for(var j = 0;j < aBtn.length;j++){
+                aBtn[j].className = '';
+                aDiv[j].className = '';
+            }
+            //给当前的button和对应的div添加class
+            this.className = 'active';
+            // aDiv[i].className = 'show';//i的值一直是aBtn.length
+            aDiv[this.index].className = 'show';
+            // console.log(this.index);
+        }
+    }
+</script>
+</html>

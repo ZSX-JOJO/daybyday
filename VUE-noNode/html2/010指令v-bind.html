@@ -14,12 +14,18 @@
 <body>
     <p>指令 v-bind</p>
     <p>属性绑定</p>
+    <p>详细信息打开控制台和页面文件查看!</p>
     <div id="app">
-        <a v-bind:href="src">v-bind:href="src"</a><!--地址绑定-->
+        <a v-bind:href="link" target="_blank">v-bind:href="src"    缩写:href=""</a><!--地址绑定-->
         <div v-bind:style="fuck">
             v-bind:style="fuck"<br>
             {{name}}
         </div><!--样式绑定 class或者style--> <!--数组语法 或者 对象语法-->
+        <div class="test" v-bind:class="classStr">样式绑定</div>
+        <div class="test" v-bind:class="className">样式绑定2</div>
+        <div class="test" v-bind:style="className">样式绑定3</div>
+        <div class="test" v-bind:class="[classA,classB]">样式绑定4</div>
+        <div class="test" v-bind:class="[classA,{'red-font':hasError}]">样式绑定5</div>
     </div>
 </body>
 <script src="../script/vue.js"></script>
@@ -29,10 +35,18 @@
         data:{
             name:'fuck vue !',
             fuck:{
-                color:red,
+                color:'red',
                 'font-size':'20px'// '-'会报错,需要'' 或者  驼峰命名法 fontSize
             },
-            src:'www.baidu.com'
+            link:'http://www.baidu.com',
+            classStr:'class-test',
+            className:{//对象或者数组都可以
+                'font-size':'30px',
+                'color':'red'
+            },
+            classA:'hello',
+            classB:'world',
+            hasError:true
         },
         methods:{
         }
