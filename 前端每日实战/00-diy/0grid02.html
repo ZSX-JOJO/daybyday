@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>grid-template-columns 表示竖直方向的划分(列)</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        .info{
+            text-align: center;
+        }
+        p{
+            text-align: center;
+            /* p2 没有设置宽度的时候 会继承父类的属性可以居中 一旦设置宽度 就不适用了 */
+            /* 关于 块级元素 内的 行内元素 或 行内块元素的 水平居中的问题 */
+            /* width: 100px; */
+            font-size: 32px;
+            padding:20px;
+            color:red;
+        }
+        span{
+            font-size: 22px;
+            padding:5px;
+            color:black;
+        }
+        .img{
+            display: flex;
+            justify-content: center;
+            align-items: middle;
+        }
+        /*  */
+        .container{
+            background-color: blue;
+            display: grid;
+            grid-template-columns:repeat(3,1fr);
+            grid-column-gap:20px;
+            grid-row-gap:20px;
+        }
+        .b{
+            margin-bottom: 10px;
+        }
+        .t{
+            margin-top: 20px;
+        }
+        .inner{
+            background-color: green;
+            color:#fff;
+            font-size:22px;
+            text-align: center;
+        }
+        /*  */
+        .container1{
+            background-color: blue;
+            display:grid;
+            grid-template-columns: 40px 50px auto 50px 40px;
+            grid-template-rows: 25% 100px auto;
+        }
+        /*  */
+        .container2{
+            background-color: blue;
+            display:grid;
+            grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+            grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+        }
+    </style>
+</head>
+<body>
+    <p>容器属性详解</p>
+    <div class="info">
+        <!-- <p>容器属性详解2</p> -->
+        <span>grid-template-columns 表示竖直方向的划分(列)</span>
+        <span>grid-template-rows 表示水平方向的划分(行)</span>
+    </div>
+    <div class="img">
+        <img src="./imggrid/0grid021.png" alt="">
+    </div>
+    <div class="container b">
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+        <div class="inner">4</div>
+        <div class="inner">5</div>
+        <div class="inner">6</div>
+        <div class="inner">7</div>
+        <div class="inner">8</div>
+    </div>
+
+    <span>当你设置行或列大小为auto时，网格会自动分配空间和网格线名称</span>
+    <div class="container1 b">
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+        <div class="inner">4</div>
+        <div class="inner">5</div>
+        <div class="inner">6</div>
+        <div class="inner">7</div>
+        <div class="inner">下图所示</div>
+    </div>
+    <div class="img t">
+        <img src="./imggrid/0grid022.png" alt="">
+    </div>
+
+    <span>也可以给网格线定义名字，注意名字需要写在[]里面</span>
+    <div class="container2 b">
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+        <div class="inner">4</div>
+        <div class="inner">5</div>
+        <div class="inner">6</div>
+        <div class="inner">7</div>
+        <div class="inner">下图所示</div>
+    </div>
+    <div class="img t">
+        <img src="./imggrid/0grid023.png" alt="">
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>grid-template-areas</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        .info{
+            text-align: center;
+        }
+        p{
+            text-align: center;
+            /* p2 没有设置宽度的时候 会继承父类的属性可以居中 一旦设置宽度 就不适用了 */
+            /* 关于 块级元素 内的 行内元素 或 行内块元素的 水平居中的问题 */
+            /* width: 100px; */
+            font-size: 32px;
+            padding:20px;
+            color:red;
+        }
+        span{
+            font-size: 22px;
+            padding:5px;
+            color:black;
+        }
+        .img{
+            display: flex;
+            justify-content: center;
+            align-items: middle;
+        }
+        .item-a{
+            grid-area: header;
+            background-color: red;
+        }
+        .item-b{
+            grid-area: main;
+            background-color: yellow;
+        }
+        .item-c{
+            grid-area: sidebar;
+            background-color: pink;
+        }
+        .item-d{
+            grid-area: footer;
+            background-color: green;
+        }
+        .container{
+            display:grid;
+            grid-template-columns: 100px 100px 100px 100px;
+            grid-template-rows: 50px 50px 50px;
+            grid-template-areas: "header header header header"
+                                "main main . sidebar"
+                                "footer footer footer footer"
+        }
+    </style>
+</head>
+<body>
+    <p>容器属性详解</p>
+    <div class="info">
+        <!-- <p>容器属性详解2</p> -->
+        <span>grid-template-areas</span>
+    </div>
+    <div class="img">
+        <img src="./imggrid/0grid031.png" alt="">
+    </div>
+    
+    <div class="container b">
+        <div class="item-a">header</div>
+        <div class="item-b">main</div>
+        <div class="item-c">sidebar</div>
+        <div class="item-d">footer</div>
+    </div>
+</body>
+</html>

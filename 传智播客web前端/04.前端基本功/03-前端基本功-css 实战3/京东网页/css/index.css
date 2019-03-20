@@ -25,7 +25,8 @@
     position: absolute;
     bottom:8px;
     left: 50%;
-    margin-left: -66px;
+    /* margin-left: -66px; */
+    transform: translateX(-50%);
 }
 .circle li {
     width: 18px;
@@ -47,7 +48,8 @@
     width: 28px;
     height: 62px;
     top: 50%;
-    margin-top: -31px;
+    /* margin-top: -31px; */
+    transform: translateY(-50%);
     color: #fff;
     font: 500 18px/62px "宋体";
     text-align: center;
@@ -89,7 +91,8 @@
 .jd-news .dt a{
     float: right;
     font: 13px/43px "宋体";
-    margin-right:15px;
+    /* margin-right:15px; */
+    padding-right:15px;
 }
 .jd-news .dd ul {
     padding: 8px 0 0 15px;

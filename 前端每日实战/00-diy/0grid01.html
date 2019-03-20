@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>display: grid | inline-grid | subgrid</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        .item{
+            display: flex;
+            flex-direction: row;
+            /*垂直居中*/
+            /* align-items: center;  */
+            /*水平居中*/
+            justify-content: center; 
+        }
+        .container{
+            background-color: blue;
+            display: grid;
+            grid-template-columns:repeat(3,1fr);
+            grid-template-rows:repeat(3,1fr);
+            grid-column-gap:20px;
+            grid-row-gap:20px;
+        }
+        .inner{
+            background-color: red;
+            color:#fff;
+            font-size:22px;
+            text-align: center;
+            /* vertical-align 无效 */
+            vertical-align: middle;
+            /* float 无效 */
+            float: left;
+            /* height:40px; */
+        }
+        .inner-item{
+            /* width: 40px; */
+            background-color: green;
+            /* inline-grid | subgrid */
+            /* subgrid 这东西怎么用???? */
+            display: inline-grid;
+            grid-template-columns:repeat(3,1fr);
+        }
+    </style>
+</head>
+<body>
+    <div class="item">
+        <img src="./imggrid/0grid01.png" alt="" class="img">
+    </div>
+    <div class="container">
+        <div class="inner">
+            <div class="inner-item">1-1</div>
+            <div class="inner-item">1-1</div>
+            <div class="inner-item">1-1</div>
+            <div class="inner-item">1-1</div>
+            <div class="inner-item">1-1</div>
+            <div class="inner-item">1-1</div>
+        </div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+        <div class="inner">4</div>
+        <div class="inner">5</div>
+        <div class="inner">6</div>
+        <div class="inner">7</div>
+        <div class="inner">8</div>
+    </div>
+</body>
+</html>

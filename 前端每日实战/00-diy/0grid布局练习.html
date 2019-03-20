@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* div等 默认有间距 去除 * 效率不高 应该单独写 */
+        *{
+            margin:0;
+        }
+        /* 列 行 开始 */
+        .grid{
+            display: grid;
+            grid-template-columns:repeat(4,1fr);
+            grid-template-rows: repeat(4,1fr);
+            background-color: pink;
+
+            /* 后面3个0.25fr元素的宽度是：(容器宽度 - “宽auto”字符宽度) * 0.25。然后剩余尺寸就是第一个网格宽度 */
+            /* grid-template-columns: auto 0.25fr .25fr .25fr; */
+        }
+        .items{
+            height:100px;
+            text-align: center;
+            line-height: 100px;
+        }
+        /* 列 行 结束 */
+
+        /* 区域 开始 */
+        #page {
+            display: grid;
+            width: 100%;
+            height: 250px;
+            grid-template-areas: "head head"
+                                "nav  main"
+                                "nav  foot";
+            grid-template-rows: 50px 1fr 30px;
+            grid-template-columns: 150px 1fr;
+        }
+        #page > header {
+            grid-area: head;
+            background-color: #8ca0ff;
+        }
+        #page > nav {
+            grid-area: nav;
+            background-color: #ffa08c;
+        }
+        #page > main {
+            grid-area: main;
+            background-color: #ffff64;
+        }
+        #page > footer {
+            grid-area: foot;
+            background-color: #8cffa0;
+        }
+        /* 区域 结束 */
+
+        /* 列 间隔 开始*/
+        #grid2 {
+            display: grid;
+            height: 100px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 100px;
+            grid-column-gap: 20px;
+        }
+        #grid2 > div {
+            background-color: lime;
+        }
+        /* 列 间隔 结束 */
+
+        /* 行 间隔 开始*/
+        #grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-column-gap: 20px;
+            grid-row-gap: 10px;
+        }
+        #grid3 .item3 {
+            background-color: red;
+            height: 30px;
+        }
+        /* 行 间隔 结束*/
+
+        /* 网格元素的水平呈现方式 开始*/
+        #grid4{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-column-gap: 20px;
+            /*
+            start | end | center | stretch（默认
+            */
+            justify-items:stretch;
+        }
+        #grid4 > div {
+            height: 100px;
+            background-color: yellow;
+        }
+        /* 网格元素的水平呈现方式 结束*/
+
+        /* 网格元素的垂直呈现方式 开始*/
+        #grid5{
+            display: grid;
+            /* grid-template-columns: repeat(2, 1fr); */
+            grid-column-gap: 20px;
+            grid-row-gap: 20px;
+            /*
+            start | end | center | stretch（默认
+            */
+            align-items:center;
+        }
+        #grid5 > div {
+            /* width:200px; */
+            background-color: green;
+        }
+        /* 网格元素的垂直呈现方式 结束*/
+
+        /* 网格元素的水平分布方式 开始 */
+        #grid6{
+            display:grid;
+            width: 300px;
+            grid-template: 100px 100px/100px 100px;
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            /*  stretch | start | end | center  */
+            justify-content: start;
+            background-color: pink;
+        }
+        #grid6 > div{
+            width: 100px;
+            background-color: red;
+        }
+        /* 网格元素的水平分布方式 结束 */
+    </style>
+</head>
+<body>
+    <!-- 列 和 行 -->
+    <p>列 和 行</p>
+    <div class="grid">
+        <div class="item">1列-1行</div>
+        <div class="item">2列-1行</div>
+        <div class="item">3列-1行</div>
+        <div class="item">4列-1行</div>
+        <div class="item">1列-2行</div>
+        <div class="item">2列-2行</div>
+        <div class="item">3列-2行</div>
+        <div class="item">4列-2行</div>
+        <div class="item">1列-3行</div>
+        <div class="item">2列-3行</div>
+        <div class="item">3列-3行</div>
+        <div class="item">4列-3行</div>
+        <div class="item">1列-4行</div>
+        <div class="item">2列-4行</div>
+        <div class="item">3列-4行</div>
+        <div class="item">4列-4行</div>
+    </div>
+
+    <!-- 网格区域 grid-template-areas -->
+    <p>网格区域</p>
+    <section id="page">
+        <header>Header</header>
+        <nav>Navigation</nav>
+        <main>Main area</main>
+        <footer>Footer</footer>
+    </section>
+
+    <!-- 列 间隔 -->
+    <p>列 间隔</p>
+    <div id="grid2">
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+    </div>
+
+    <!-- 行 间隔 -->
+    <p>行 间隔</p>
+    <div id="grid3">
+        <div class="item3">1</div>
+        <div class="item3">1</div>
+        <div class="item3">1</div>
+        <div class="item3">1</div>
+        <div class="item3">1</div>
+        <div class="item3">1</div>
+        <div class="item3">1</div>
+        <div class="item3">1</div>
+        <div class="item3">1</div>
+    </div>
+
+    <p>网格元素的水平呈现方式</p>
+    <div id="grid4">
+        <div class="item4">1</div>
+        <div class="item4">2</div>
+        <div class="item4">3</div>
+        <div class="item4">4</div>
+    </div>
+
+    <p>网格元素的垂直呈现方式</p>
+    <div id="grid5">
+        <div class="item5">1</div>
+        <div class="item5">2</div>
+        <div class="item5">3</div>
+        <div class="item5">4</div>
+    </div>
+
+    <p>justify-content指定了网格元素的水平分布方式。此属性仅在网格总宽度小于grid容器宽度时候有效果</p>
+    <div id="grid6">
+        <div class="item6">1</div>
+        <div class="item6">2</div>
+        <div class="item6">3</div>
+        <div class="item6">4</div>
+        <div class="item6">5</div>
+        <div class="item6">6</div>
+    </div>
+</body>
+</html>
