@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>absolute+margin实现的文字投影效果</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        h1{
+            text-align: center;
+            font-size:30px;
+            color:#000;
+        }
+        p{
+            color:red;
+            font-size:22px;
+        }
+        .zsx-desc{
+            /* text-align: center; */
+            /* color:red; */
+            font-size:18px;
+            margin:10px auto;
+        }
+        .zsx-show{
+            padding:20px; 
+            background:#f0f3f9; 
+            color:#aaaaaa; 
+            font-size:14px;
+        }
+        .zsx-text{
+            position:absolute; 
+            margin:-1px 0 0 -1px; 
+            color:#333333;
+        }
+        .zsx-show2{
+            height:120px; 
+            padding:20px; 
+            background:#f0f3f9;
+        }
+        .zsx-img{
+            position: absolute;
+        }
+        .zsx-info{
+            padding-left:100px;
+        }
+        .zsx-info li{
+            border-bottom:1px dashed pink;
+        }
+        dt{
+            color:red;
+            font-size:18px;
+        }
+        dd{
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>绝对定位元素的非绝对定位</h1>
+    <p>栗子1: 文字投影效果</p>
+    <div class="zsx-show">
+        <span class="zsx-text">这是一段用来测试的文字，看看是否有投影效果~~</span>
+        这是一段用来测试的文字，看看是否有投影效果~~
+    </div>
+
+    <p>栗子2: 自适应布局</p>
+    <div class="zsx-show2">
+        <a href="#zsx" class="zsx-img">
+            <img src="./img/zsx.jpg" alt="" width="90" height="111">
+        </a>
+        <div class="zsx-info">
+            <div class="info">
+                我是赵守鑫，我是一个中国人!
+                我是赵守鑫，我是一个中国人!
+                我是赵守鑫，我是一个中国人!
+                我是赵守鑫，我是一个中国人!
+                我是赵守鑫，我是一个中国人!
+            </div>
+            <ul>
+                <li>姓名: <span>赵守鑫</span></li>
+                <li>年龄: <span>28</span></li>
+                <li>性别: <span>男</span></li>
+                <li>爱好: <span>跑步</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="zsx-desc">absolute定位与margin定位其实是没有什么冲突的，无论absolute元素时候设置了left/top值，其margin属性值都是可以起作用的</div>
+    <div class="zsx-desc">
+        没有设置定位值的absolute元素是个普通又不普通的元素，
+        普通之处在于其依旧在DOM tree中，对margin等属性敏感；
+        不普通在于其实际的高宽都丢失了。这非常类似于浮动(float)，
+        浮动的本质就是“包裹与破坏”，破坏高度，浮动元素的实际占据高度为0；
+        而absolute元素（无定位值）也是“包裹与破坏”，
+        只是其“破坏”比float更加凶猛，不仅实际的高度没有，连实际的宽度也没有
+    </div>
+    <div class="">
+        <dl>
+            <dt>总结:</dt>
+            <dd>无定位值的absolute元素可以使用margin定位</dd>
+            <dd>无定位值的absolute元素是个没有实际宽度的浮动元素</dd>
+        </dl>
+    </div>
+</body>
+</html>

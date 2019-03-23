@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>水平垂直居中</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .parent{
+            height: 150px;
+            line-height: 150px;  /*行高的值与height相等*/
+            text-align: center;
+            font-size: 0;   /*消除幽灵空白节点的bug*/
+            background-color: red;
+        }
+        .children{
+            display: inline-block;  /*如果是块级元素需改为行内或行内块级才生效*/
+            vertical-align: middle;
+            background-color: black;
+            font-size:22px;
+            width:100px;
+            height:100px;
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+    <p>行内/行内块级/图片 水平垂直居中</p>
+    <p>原理:
+        text-align: center; 控制行内内容相对于块父元素水平居中,然后就是line-height和vertical-align的基友关系使其垂直居中，font-size: 0; 是为了消除近似居中的bug
+    </p>
+    <div class="parent">
+        <div class="children">children</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd>代码简单；兼容性好（ie8+）</dd>
+        <dt>缺点:</dt>
+        <dd>
+            只对行内内容有效；需要添加font-size: 0; 才可以完全的垂直居中；不过需要注意html中#parent包裹#son之间需要有换行或空格；熟悉line-height和vertical-align的基友关系较难
+        </dd>
+    </dl>
+</body>
+</html>

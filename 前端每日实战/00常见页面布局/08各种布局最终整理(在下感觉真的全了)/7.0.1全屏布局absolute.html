@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用绝对定位实现 全屏布局</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .parent{
+            height:100%;
+            overflow: hidden;
+        }
+        .parent div{
+            border: 1px solid #000;
+        }
+        .header{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+        }
+        .left{
+            position: absolute;
+            top: 100px;  /*值大于等于#top的高度*/
+            left: 0;
+            bottom: 50px;  /*值大于等于#bottom的高度*/
+            width: 200px;
+            
+        }
+        .right{
+            position: absolute;
+            overflow: auto;
+            left: 200px;  /*值大于等于#left的宽度*/
+            right: 0;
+            top: 100px;  /*值大于等于#top的高度*/
+            bottom: 50px;  /*值大于等于#bottom的高度*/
+        }
+        .footer {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <p>使用绝对定位实现(最好别用) 全屏布局</p>
+    <p>原理:
+    </p>
+    <div class="parent">
+        <div class="header">头部区域</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+        <div class="footer">底部内容区域</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd></dd>
+        <dt>缺点:</dt>
+        <dd>
+            
+        </dd>
+    </dl>
+</body>
+</html>

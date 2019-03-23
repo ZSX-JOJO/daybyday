@@ -41,8 +41,89 @@
 # 项目属性
 
 ## `order`属性定义项目的排列顺序。数值越小，排列越靠前，默认为0
-## `flex-grow`属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。剩余空间分配的比例是项目这个元素占总值的比例
-## `flex-shrink`属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小，于上一个相同，空间不足时按所占的比例缩小
-## `flex-basis`属性定义了在分配多余空间之前，项目占据的主轴空间。它决定主轴的大小浏览器根据这个属性来判断主轴还有多少剩余空间，默认auto
+## `flex-grow`属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。剩余空间分配的比例是项目这个元素占总值的比例【用来“瓜分”父项的“剩余空间”】
+## `flex-shrink`属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小，于上一个相同，空间不足时按所占的比例缩小【用来“吸收”超出的空间】
+## `flex-basis`属性定义了在分配多余空间之前，项目占据的主轴空间。它决定主轴的大小浏览器根据这个属性来判断主轴还有多少剩余空间，默认auto 【用于设置子项的占用空间】
 ## `flex`属性是`flex-grow`, `flex-shrink` 和 `flex-basis`的简写，默认值为`0 1 auto`。该属性有两个快捷值：`auto (1 1 auto)` 和 `none (0 0 auto)`
 ## `align-self`允许不一样的对齐方式，可覆盖`align-items`属性。默认值为`auto`继承父元素的`align-items`属性
+
+# 细节问题自己整理
+
+项目属性之 flex 简单介绍
+
+```css
+/**
+flex 取值的各种情况(每种情况的写法互为等效)
+*/
+情况1  flex 的默认值 0 1 auto
+.item{flex: 0 1 auto};
+.item{
+    flex-grow:0;
+    flex-shrink:1;
+    flex-basis:auto;
+}
+情况2 felx取值none  0 0 auto
+.item{flex:none}
+.item{
+    flex-grow:0;
+    flex-shrink:0;
+    flex-basis:auto;
+}
+情况3 flex取值none 1 1 auto
+.item{flex:none}
+.item{
+    flex-grow:0;
+    flex-shrink:0;
+    flex-basis:auto;
+}
+情况4 flex取值auto  1 1 auto
+.item{flex:auto}
+.item{
+    flex-grow:1;
+    flex-shrink:1;
+    flex-basis:auto;
+}
+情况5 flex取值为非负数字 则该数字为flex-grow值，例如flex-shrink取1 flex-basis取0%;[0%是百分比 不是非负数字]
+.item{flex:1}
+.item{
+    flex-grow:1;
+    flex-shrink:1;
+    flex-basis:0%;
+}
+情况6 flex取值为长度或百分比 则视为flex-basis值 例如flex-grow取1 flex-sharink取1
+.item{flex:0%}
+.item{
+    flex-grow:1;
+    flex-shrink:1;
+    flex-basis:0%;
+}
+
+.item{flex:24px}
+.item{
+    flex-grow:1;
+    flex-shrink:1;
+    flex-basis:24px;
+}
+情况7 flex取值为两个非负数字 则分别视为 flex-grow和 flex-shrink的值 例如 flex-basis取0%;
+.item{flex:2 3}
+.item{
+    flex-grow:2;
+    flex-shrink:3;
+    flex-basis:0%;
+}
+情况7 flex取值为一个非负数字和一个长度或百分比 则分别视为flex-grow和 flex-basis的值 例如flex-shrink取1
+.item{flex:2 200px}
+.item{
+    flex-grow:2;
+    flex-shrink:1;
+    flex-basis:200px;
+}
+
+```
+
+项目属性之 flex详解
+
+```html
+
+```
+

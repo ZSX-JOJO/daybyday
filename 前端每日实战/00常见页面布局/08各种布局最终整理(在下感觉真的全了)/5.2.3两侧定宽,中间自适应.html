@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用Grid实现 两侧定宽,中间自适应</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .header{
+            grid-area: header; /*指定在哪个网格区域*/
+            background-color: #ccc;
+        }
+        .parent{
+            height: 500px;
+            display: grid;
+            grid-template-columns: 100px auto 200px; /*设定3列*/
+            grid-template-rows: 60px auto 60px; /*设定3行*/
+            /*设置网格区域分布*/
+            grid-template-areas: 
+                "header header header" 
+                "leftside main rightside" 
+                "footer footer footer";
+        }
+        .left{
+            grid-area: leftside;
+            background-color: #f00;
+            opacity: 0.5;
+        }
+        .center{
+            grid-area: main; /*指定在哪个网格区域*/
+            margin: 0 15px; /*设置间隔*/
+            border: 1px solid #000;
+            background-color: #eeff2b;
+        }
+        .right{
+            grid-area: rightside; /*指定在哪个网格区域*/
+            background-color: #0f0;
+            opacity: 0.5;
+        }
+        .footer {
+            grid-area: footer; /*指定在哪个网格区域*/
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <p>使用Grid实现 两侧定宽,中间自适应</p>
+    <p>原理:
+    </p>
+    <div class="parent">
+        <div class="header">头部区域</div>
+        <!-- 中间栏放在最前面 优先加载 算是页面的布局优化 -->
+        <div class="center">中间自适应</div>
+        <div class="left">左列定宽</div>
+        <div class="right">右列定宽</div>
+        <div class="footer">底部内容区域</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd></dd>
+        <dt>缺点:</dt>
+        <dd>
+        </dd>
+    </dl>
+</body>
+</html>

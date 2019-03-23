@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../base.css">
+    <title>flex布局</title>
+    <style>
+        body{
+            background-color: pink;
+            text-align: center;
+            color: #fff;
+            font-size: 22px;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .container{
+            display: flex;
+        }
+        .main{
+            flex:1 1 auto;
+            /* 等效于 */
+            /* flex-grow:1; */
+            height:300px;
+            background-color: red;
+        }
+        .left{
+            order:-1;
+            flex:0 1 200px;
+            margin-right:20px;
+            height:300px;
+            background-color: blue;
+        }
+        .right{
+            flex:0 1 100px;
+            margin-left:20px;
+            height:300px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <p>flex布局真鸡巴好用!</p>
+    <div class="container">
+        <div class="main">main</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+    <p>栅格布局 也即将上线!</p>
+</body>
+</html>

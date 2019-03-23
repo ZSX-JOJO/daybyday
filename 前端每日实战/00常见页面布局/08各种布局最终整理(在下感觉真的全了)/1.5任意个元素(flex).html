@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任意个元素(flex) 水平居中</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .parent{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+        .children{
+            background-color: black;
+            font-size:22px;
+            width:200px;
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+    <p>任意个元素(flex) 水平居中</p>
+    <p>原理:
+        就是设置当前主轴对齐方式为居中
+    </p>
+    <div class="parent">
+        <div class="children">任意个元素(flex)</div>
+        <div class="children">任意个元素(flex)</div>
+        <div class="children">任意个元素(flex)</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd>功能强大；简单方便；容易理解</dd>
+        <dt>缺点:</dt>
+        <dd>PC端兼容性不好，移动端（Android4.0+）</dd>
+    </dl>
+</body>
+</html>

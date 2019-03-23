@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单行文本/行内元素/行内块级元素 垂直居中</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .parent{
+            /* text-align: center; */
+            height: 150px;
+            line-height: 150px;  /*与height等值*/
+        }
+        .children{
+            background-color: black;
+            font-size:22px;
+            width:200px;
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+    <p>单行文本/行内元素/行内块级元素 垂直居中</p>
+    <p>原理:
+        line-height的最终表现是通过inline box实现的，而无论inline box所占据的高度是多少（无论比文字大还是比文字小），其占据的空间都是与文字内容公用水平中垂线的
+    </p>
+    <div class="parent">
+        <div class="children">2131313</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd>简单；兼容性好</dd>
+        <dt>缺点:</dt>
+        <dd>只能用于单行行内内容；要知道高度的值</dd>
+    </dl>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单列布局中最常用的水平居中1</title>
+    <link rel="stylesheet" href="../base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .bottom{
+            /*bottom: 10px;*/
+        }
+        .color{
+            color:#fff;
+        }
+        .father{
+            background-color:#bababa;
+            /* -webkit-padding-after:5px; */
+        }
+
+        .parent{
+            text-align: center;
+            /*font-size:0;*/
+            /*letter-spacing:-3px;*/
+            word-spacing:-3px;
+            /*兼容chrome浏览器  其默认有最小字体大小限制 可能下行目前已经不需要 有时间再测试*/
+            -webkit-text-size-adjust:none;
+        }
+        .child{
+            display: inline-block;
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+            color:red;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <p>单列布局中最常用的水平居中</p>
+    <p>宽高背景只是为了展示</p>
+    <p>使用 父级text-align 和 子级inline-block 实现</p>
+    <div class="father parent bottom">
+        <div class="child color">1</div>
+        <div class="child color">2</div>
+        <div class="child color">3</div>
+    </div>
+    <div style="color:red;font-size:18px;text-align:center;">
+        突然遇到了子级设置为inline-block属性后 默认出现水平间距的"问题"(默认就是如此，正常现象)
+        <ul>
+            <li>具体方法如下(都是在父级上添加)</li>
+            <li>font-size:0;</li>
+            <li>字符间距(letter-spacing) letter-spacing: 0;火狐需要-3px </li>
+            <li>单词间距(word-spacing) word-spacing: 0;火狐需要-3px </li>
+        </ul>
+    </div>
+</body>
+</html>

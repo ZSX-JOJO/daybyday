@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用flex实现 九宫格</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .header{
+            height: 60px;
+            background-color: #ccc;
+        }
+        .parent{
+            width:100%;
+            height:500px;
+            display: flex;
+            flex-direction: column;
+        }
+        .children{
+            display: flex;
+            flex:1;
+        }
+        .item{
+            flex:1;
+            border:1px solid #000;
+        }
+        .children:nth-child(odd){/*奇数个*/
+            background-color: #f00;
+        }
+        .children:nth-child(even){/*偶数个*/
+            background-color: #0f0;
+        }
+        .footer {
+            height: 60px;
+            background-color: #ccc;
+
+        }
+    </style>
+</head>
+<body>
+    <p>使用flex实现 九宫格</p>
+    <p>原理:
+    </p>
+    <div class="header">头部区域</div>
+    <div class="parent">
+        <div class="children">
+            <div class="item">item1</div>
+            <div class="item">item2</div>
+            <div class="item">item3</div>
+        </div>
+        <div class="children">
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+        </div>
+        <div class="children">
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+        </div>
+    </div>
+    <div class="footer">底部内容区域</div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd></dd>
+        <dt>缺点:</dt>
+        <dd>
+            
+        </dd>
+    </dl>
+</body>
+</html>

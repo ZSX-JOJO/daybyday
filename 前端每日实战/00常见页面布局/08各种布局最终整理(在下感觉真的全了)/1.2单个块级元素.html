@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单个块级元素 水平居中</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .parent{
+            text-align: center;
+            width:100px;
+        }
+        .children{
+            /* display: inline-block; */
+            /* display: inline-table; */
+            background-color: black;
+            font-size:22px;
+            width:200px;
+            color:#fff
+        }
+        .son{
+            width:100px;/*必须定宽*/
+            margin:0 auto;
+            background-color: black;
+            font-size:22px;
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+    <p>单个块级元素 水平居中</p>
+    <p>原理:
+        有这么一种情况：在margin有节余的同时如果左右margin设置了auto，将会均分剩余空间。另外，如果上下的margin设置了auto，其计算值为0
+    </p>
+    <div class="parent">
+        <div class="children">单个块元素1</div>
+    </div>
+
+    <div class="father">
+        <div class="son">单个块元素2</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd>简单；兼容性好</dd>
+        <dt>缺点:</dt>
+        <dd>必须定宽，并且值不能为auto；宽度要小于父元素，否则无效</dd>
+    </dl>
+</body>
+</html>

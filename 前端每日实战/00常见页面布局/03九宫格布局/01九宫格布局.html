@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>九宫格布局</title>
+	<link rel="stylesheet" href="../base.css">
+	<style type="text/css">
+		body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .bottom{
+            /*bottom: 10px;*/
+        }
+        .color{
+            color:#fff;
+        }
+        .father{
+            background-color:#bababa;
+            /*text-align:center;*/
+            font-size:0;
+            /*  此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符 */
+            display: table;
+            /* 设置表格布局算法:列宽由表格宽度和列宽度设定 */
+            table-layout:fixed;
+            width:100%;
+
+        }
+        .child{
+            /* 此表格作为一个 表格行 显示 */
+            display:table-row;
+        }
+        .item{
+            /* 此表格作为一个 单元表格 单元格 显示 */
+            display:table-cell;
+        	width: 33.3%;
+        	height: 100px;
+        	background-color: aqua;
+            border:1px solid red;
+        	color:red;
+            font-size: 18px;
+            text-align: center;
+            vertical-align:middle;
+        }
+
+        .father2{
+            background-color:#bababa;
+            /*text-align:center;*/
+            /*font-size:0;*/
+
+        }
+        .child2{
+            display: flex;
+            /*flex-direction: row;*/
+            /*justify-content: center;*/
+        }
+        .item2{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            border:1px solid red;
+            color:red;
+            font-size: 18px;
+            text-align: center;
+            vertical-align:middle;
+        }
+	</style>
+</head>
+<body>
+	<p>九宫格布局</p>
+    <p>宽高背景只是为了展示</p>
+    <p>table实现</p>
+	<div class="father parent bottom">
+        <div class="child color">
+            <div class="item">1</div>
+            <div class="item">1</div>
+            <div class="item">1</div>
+        </div>
+        <div class="child color">
+            <div class="item">2</div>
+            <div class="item">2</div>
+            <div class="item">2</div>
+        </div>
+        <div class="child color">
+            <div class="item">3</div>
+            <div class="item">3</div>
+            <div class="item">3</div>
+        </div>
+    </div>
+
+    <p>flex实现</p>
+    <div class="father2 parent bottom">
+        <div class="child2 color">
+            <div class="item2">1</div>
+            <div class="item2">2</div>
+            <div class="item2">3</div>
+        </div>
+        <div class="child2 color">
+            <div class="item2">4</div>
+            <div class="item2">5</div>
+            <div class="item2">6</div>
+        </div>
+        <div class="child2 color">
+            <div class="item2">7</div>
+            <div class="item2">8</div>
+            <div class="item2">9</div>
+        </div>
+    </div>
+    <div style="color:red;font-size:18px;text-align:center;">
+        <!-- 突然遇到了子级设置为inline-block属性后 默认出现水平间距的"问题"(默认就是如此，正常现象)
+        <ul>
+            <li>具体方法如下(都是在父级上添加)</li>
+            <li>font-size:0;</li>
+            <li>字符间距(letter-spacing) letter-spacing: 0;火狐需要-3px </li>
+            <li>单词间距(word-spacing) word-spacing: 0;火狐需要-3px </li>
+        </ul> -->
+    </div>
+</body>
+</html>

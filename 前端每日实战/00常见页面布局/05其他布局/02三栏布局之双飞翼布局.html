@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>双飞翼布局</title>
+    <link rel="stylesheet" href="../base.css">
+    <style>
+        body{
+            background-color: pink;
+            text-align: center;
+            color: #fff;
+            font-size: 22px;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .content{
+            float: left;
+            width:100%;
+        }
+        .main{
+            height:200px;
+            margin-left: 110px;
+            margin-right:220px;
+            background-color: green;
+        }
+        .left{
+            float:left;
+            height:200px;
+            width:100px;
+            margin-left: -100%;
+            background-color: red;
+        }
+        .right{
+            width:200px;
+            height:200px;
+            float:right;/*左浮动也可以*/
+            margin-left: -200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <p>三栏布局3 双飞翼布局</p>
+    <p>左模块宽度100px 右模块宽度200px，中间模块随浏览器变化自适应</p>
+    <p>宽高背景只是为了展示</p>
+    <p>使用 float实现</p>
+    <div class="content">
+        <div class="main">
+            main的父级 float: left;width:100%;
+            <div>main宽度自适应</div>
+        </div>
+    </div>
+    <div class="left">
+        left float:left; margin-left: -100%;
+    </div>
+    <div class="right">
+        right width:200px; float:right; margin-left: -200px;
+    </div>
+    <p>利用的是浮动元素 margin 负值的应用，主体内容可以优先加载</p>
+
+    <p>浮动元素 margin 负值的应用 这里面有点东西 还不百度????</p>
+</body>
+</html>

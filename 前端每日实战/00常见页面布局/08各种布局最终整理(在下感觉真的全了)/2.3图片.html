@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片 垂直居中</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .parent{
+            /* text-align: center; */
+            height: 150px;
+            line-height: 150px;  /*与height等值*/
+            font-size: 0;
+            background-color: black;
+        }
+        .children{
+            background-color: black;
+            display: inline-block;
+            font-size:22px;
+            width:200px;
+            color:#fff
+        }
+        img{
+            /*默认是基线对齐，改为middle*/
+            width:100px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <p>图片 垂直居中</p>
+    <p>原理:
+        vertical-align和line-height的基友关系
+    </p>
+    <div class="parent">
+        <!-- <div class="children">div</div>
+        <div class="children">div</div>
+        <div class="children">div</div> -->
+        <!-- <span class="children">span</span>
+        <span class="children">span</span>
+        <span class="children">span</span> -->
+        <img src="00.png" alt="">
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd>简单；兼容性好</dd>
+        <dt>缺点:</dt>
+        <dd>需要添加font-size: 0; 才可以完全的垂直居中；不过需要主要，html.parent包裹img之间需要有换行或空格</dd>
+    </dl>
+</body>
+</html>

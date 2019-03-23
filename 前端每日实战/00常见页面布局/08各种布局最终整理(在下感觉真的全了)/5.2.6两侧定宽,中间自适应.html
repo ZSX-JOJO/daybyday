@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用position实现 两侧定宽,中间自适应</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .header{
+            height: 60px;
+            background-color: #ccc;
+        }
+        .parent{
+            position: relative; /*子绝父相*/
+            /* padding-left: 100px;
+            padding-right: 200px; */
+        }
+        .left{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 500px;
+            background-color: #f00;
+        }
+        .center{
+            height: 500px;
+            /*大于等于#left的宽度,或者给#parent添加同样大小的padding-left*/
+            margin-left: 100px;
+            /*大于等于#right的宽度,或者给#parent添加同样大小的padding-right*/
+            margin-right: 200px; 
+            background-color: #eeff2b;
+        }
+        .right{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 500px;
+            background-color: #0f0;
+        }
+        .footer {
+            height: 60px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <p>使用position实现 两侧定宽,中间自适应</p>
+    <p>原理:
+    </p>
+    <div class="header">头部区域</div>
+    <div class="parent">
+        <div class="left">左列定宽</div>
+        <div class="center">中间自适应</div>
+        <div class="right">右列定宽</div>
+    </div>
+    <div class="footer">底部内容区域</div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd></dd>
+        <dt>缺点:</dt>
+        <dd>
+        </dd>
+    </dl>
+</body>
+</html>

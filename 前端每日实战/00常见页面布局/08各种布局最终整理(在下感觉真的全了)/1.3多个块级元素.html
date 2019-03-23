@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多个块级元素 水平居中</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .parent{
+            text-align: center;
+            /* 处理水平间距的问题 */
+            font-size:0;
+        }
+        .children{
+            /*改为行内或者行内块级形式，以达到text-align对其生效*/
+            /* display: inline-block; */
+            /* display: inline-table; */
+            display: inline;
+            background-color: black;
+            font-size:22px;
+            width:200px;
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+    <p>多个块级元素 水平居中</p>
+    <p>原理:
+        ext-align只控制行内内容(文字、行内元素、行内块级元素)如何相对他的块父元素对齐
+    </p>
+    <div class="parent">
+        <div class="children">多个块级元素</div>
+        <div class="children">多个块级元素</div>
+        <div class="children">多个块级元素</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd>简单，容易理解，兼容性非常好</dd>
+        <dt>缺点:</dt>
+        <dd>只对行内内容有效；属性会继承影响到后代行内内容；块级改为inline-block换行、空格会产生元素间隔(父级添加 font-size:0; 可以去除这种间隔)</dd>
+    </dl>
+</body>
+</html>

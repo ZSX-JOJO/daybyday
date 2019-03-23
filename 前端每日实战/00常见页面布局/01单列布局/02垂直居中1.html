@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>单列布局中最常用的水平居中3</title>
+	<link rel="stylesheet" href="../base.css">
+	<style type="text/css">
+		body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .bottom{
+            /*bottom: 10px;*/
+        }
+        .color{
+            color:#fff;
+        }
+        .father{
+            background-color:#bababa;
+            text-align:center;
+            display: table-cell;
+            vertical-align:middle;
+
+        }
+        .child{
+        	width: 100px;
+        	height: 100px;
+        	background-color: aqua;
+        	color:red;
+            font-size: 18px;
+        }
+        .father2{
+            background-color:#bababa;
+            text-align:center;
+            display: table;
+        }
+        .child2{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            color:red;
+            font-size: 18px;
+            display: table-cell;
+            vertical-align:middle;
+        }
+	</style>
+</head>
+<body>
+	<p>单列布局中最常用的水平居中</p>
+    <p>宽高背景只是为了展示</p>
+    <p>父级添加(应该直接子级)table-cell 和 vertical-align:middle 只可以实现子元素垂直 居中做不到</p>
+	<div class="father parent bottom">
+        <div class="child color">1</div>
+        <div class="child color">2</div>
+        <div class="child color">3</div>
+    </div>
+    <p>父级添加display: table;text-align:center; 子级添加display: table-cell;以及vertical-align:middle;可以实现子级内部元素的 水平垂直居中</p>
+    <div class="father parent2 bottom">
+        <div class="child2 color">2-1</div>
+        <div class="child2 color">2-2</div>
+        <div class="child2 color">2-3</div>
+    </div>
+    <div style="color:red;font-size:18px;text-align:center;">
+        <!-- 突然遇到了子级设置为inline-block属性后 默认出现水平间距的"问题"(默认就是如此，正常现象)
+        <ul>
+            <li>具体方法如下(都是在父级上添加)</li>
+            <li>font-size:0;</li>
+            <li>字符间距(letter-spacing) letter-spacing: 0;火狐需要-3px </li>
+            <li>单词间距(word-spacing) word-spacing: 0;火狐需要-3px </li>
+        </ul> -->
+    </div>
+</body>
+</html>

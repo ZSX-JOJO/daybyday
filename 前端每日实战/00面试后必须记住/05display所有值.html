@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>display所有值</title>
+    <link rel="stylesheet" href="../base.css">
+    <style>
+        .demo1{
+            /* 水平呈现的元素间，换行显示或空格分隔的情况下会有间距 */
+            /* select父元素使用font-size:0 */
+            font-size: 0;
+            /* letter-spacing:0; */
+        }
+        .inline-block,.inline-inline{
+            display: inline-block;
+            width:200px;
+            background-color: red;
+            font-size:32px;
+            color:#fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo1">
+        <span class="inline-block">1</span>
+        <span class="inline-block">2</span>
+        <span class="inline-block">3</span>
+        <span class="inline-block">4</span>
+    </div>
+
+    <div class="demo2">
+        <div class="inline-inline">1</div>
+        <div class="inline-inline">2</div>
+        <div class="inline-inline">3</div>
+        <div class="inline-inline">4</div>
+    </div>
+</body>
+</html>

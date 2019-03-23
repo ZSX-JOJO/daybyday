@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./base.css">
+    <title>03css3新增伪类</title>
+    <style>
+        ul{
+            margin-bottom: 30px;
+        }
+        #test li,#test2 li,#test3 li{
+            display: flex;
+            justify-content: center;
+            align-items: middle;
+            font-size:22px;
+        }
+        #test li:nth-child(3){
+            background:#f00;
+        }
+        /* elem:nth-of-type(n)是“选择父元素下第n个elem元素”。 */
+        #test2 li:nth-of-type(4){
+            background:#f00;
+        }
+        /* elem:nth-child(n)是“这个伪类选中父元素下的第n个子元素，并且这个子元素的标签名为elem” */
+        /* #test2 li:nth-child(4){
+            background:#f00;
+        } */
+        #test3 p:only-of-type{
+            background:#f00;
+        }
+        #test4 div{
+            border:1px solid black;
+        }
+        #test4 div:empty{height:25px;border:1px solid #ddd;background:#f00;}
+    </style>
+</head>
+<body>
+    <ul id="test">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+
+    <ul id="test2">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <p>强行插楼！！</p>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+
+    <ul id="test3">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <p>强行插楼！！</p>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+
+    <div id="test4">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div>  </div><!--有空格-->
+    </div>
+</body>
+</html>

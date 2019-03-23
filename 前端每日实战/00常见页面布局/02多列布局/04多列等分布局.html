@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多列布局</title>
+    <link rel="stylesheet" href="../base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .bottom{
+            /*bottom: 10px;*/
+        }
+        .color{
+            color:#fff;
+        }
+        .father{
+            background-color:#bababa;
+            /* -webkit-padding-after:5px; */
+            text-align:center;
+        }
+        .left{
+            float:left;
+            /*padding-left:20px;*/
+            width:25%;
+            /* 指定 两个box接壤 */
+            box-sizing:border-box;
+            border:1px solid red;
+            height:300px;
+            background-color: red;
+        }
+        .center{
+            float:left;
+            padding-left:20px;
+            width:25%;
+            /* 指定 两个box接壤 */
+            box-sizing:border-box;
+            border:1px solid red;
+            height:300px;
+            background-color: black;
+        }
+        .right{
+            float:left;
+            padding-left:20px;
+            width:25%;
+            /* 指定 两个box接壤 */
+            box-sizing:border-box;
+            border:1px solid red;
+            height:300px;
+            background-color: green;
+        }
+
+        .father2{
+            background-color:#bababa;
+            /* -webkit-padding-after:5px; */
+            text-align:center;
+            display: table;
+        }
+        .left2{
+            display: table-cell;
+            height:300px;
+            background-color: red;
+        }
+        .right2{
+            display: table-cell;
+            height:300px;
+            background-color: green;
+        }
+
+        .father3{
+            background-color:#bababa;
+            /* -webkit-padding-after:5px; */
+            text-align:center;
+            display: flex;
+        }
+        .left3{
+            flex:1;
+            height:300px;
+            background-color: red;
+        }
+        .center3{
+            flex:1;
+            height:300px;
+            background-color: black;
+        }
+        .right3{
+            flex:1;
+            height:300px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <p>多列等分布局</p>
+    <p>宽高背景只是为了展示</p>
+    <p>float实现</p>
+    <div class="father parent bottom clearfix">
+        <div class="child color left">左侧</div>
+        <div class="child color center">中间</div>
+        <div class="child color right">右侧1</div>
+        <div class="child color right">右侧2</div>
+        <div class="child color right">右侧3 父级要清除浮动啊!</div>
+    </div>
+    <p>父级(table)子级table-cell</p>
+    <div class="father2 parent bottom">
+        <div class="child2 color left2">左侧 宽度根据内容宽度根据内容宽度根据内容宽度根据内容</div>
+        <div class="child2 color center2">中间 宽度根据内容宽度根据内容宽度根据内容宽度根据内容</div>
+        <div class="child2 color right2">右侧1 宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容</div>
+        <div class="child2 color right2">右侧2  宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容</div>
+        <div class="child2 color right2">右侧3  宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容宽度根据内容</div>
+    </div>
+    <p>flex</p>
+    <div class="father3 parent bottom">
+        <div class="child3 color left3">左侧</div>
+        <div class="child3 color center3">中间</div>
+        <div class="child3 color right3">右侧1</div>
+        <div class="child3 color right3">右侧2</div>
+        <div class="child3 color right3">右侧3</div>
+    </div>
+    <div style="color:red;font-size:18px;text-align:center;">
+        <!-- 突然遇到了子级设置为inline-block属性后 默认出现水平间距的"问题"(默认就是如此，正常现象)
+        <ul>
+            <li>具体方法如下(都是在父级上添加)</li>
+            <li>font-size:0;</li>
+            <li>字符间距(letter-spacing) letter-spacing: 0;火狐需要-3px </li>
+            <li>单词间距(word-spacing) word-spacing: 0;火狐需要-3px </li>
+        </ul> -->
+    </div>
+</body>
+</html>

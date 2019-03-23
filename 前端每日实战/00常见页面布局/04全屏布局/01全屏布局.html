@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全屏布局</title>
+    <link rel="stylesheet" href="../base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .fullscreen2{
+            color:#fff;
+            font-size:22px;
+            display: flex;
+            flex-direction: column;
+        }
+        .fullscreen2 .top{
+            height:200px;
+            background-color: green;
+        }
+        .fullscreen2 .bottom{
+            height:200px;
+            background-color: blue;
+        }
+        .fullscreen2 .middle{
+            display: flex;
+            flex:1;
+        }
+        .middle .left{
+            width:200px;
+            height:100px;
+            background-color:red;
+        }
+        .middle .right{
+            flex:1;
+            height:100px;
+            overflow: hidden;
+            background-color:black;
+        }
+    </style>
+</head>
+<body>
+    <p>全屏布局</p>
+    <p>宽高背景只是为了展示</p>
+    <p>使用 flex实现</p>
+    <div class="fullscreen2">
+        <div class="top">top</div>
+        <div class="middle">
+            <div class="left">left</div>
+            <div class="right">right</div>
+        </div>
+        <div class="bottom">bottom</div>
+    </div>
+    <p>相对 绝对 实现 略...</p>
+    <div style="color:red;font-size:18px;text-align:center;">
+        <!-- 突然遇到了子级设置为inline-block属性后 默认出现水平间距的"问题"(默认就是如此，正常现象)
+        <ul>
+            <li>具体方法如下(都是在父级上添加)</li>
+            <li>font-size:0;</li>
+            <li>字符间距(letter-spacing) letter-spacing: 0;火狐需要-3px </li>
+            <li>单词间距(word-spacing) word-spacing: 0;火狐需要-3px </li>
+        </ul> -->
+    </div>
+</body>
+</html>

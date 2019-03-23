@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浮动元素margin负值的妙用</title>
+    <link rel="stylesheet" href="../base.css">
+    <style>
+        /* *{
+            padding: 0;
+            margin: 0;
+        } */
+        body{
+            background-color: pink;
+        }
+        p{
+            color:red;
+            font-size:18px;
+            text-align: center;
+        }
+        .container{
+            width:800px;
+            margin:0 auto;
+            border:1px solid #ccc;
+            margin-bottom:20px;
+        }
+        .list{
+            overflow: hidden;
+            margin-right:-10px;
+            text-align: center;
+        }
+        .list li{
+            width:152px;
+            height:152px;
+            line-height: 152px;
+            background-color: #ccc;
+            margin-bottom:20px;
+            float:left;
+            margin-right:10px;
+            color:red;
+        }
+        /* li img{
+            width:152px;
+        } */
+    </style>
+</head>
+<body>
+    <p>去除列表右边框</p>
+    <p>两边对齐,中间元素平均分布的布局</p>
+    <div style="text-align:center;">假设一横列展示的数量为x，元素见的间距为y，父距宽度z</div>
+    <div style="text-align:center;color:red">则元素的宽度＝（z－y（x－1））/x</div>
+    <div class="container">
+        <ul class="list">
+            <li>
+                我是一个列表1
+            </li>
+            <li>我是一个列表2</li>
+            <li>我是一个列表3</li>
+            <li>我是一个列表4</li>
+            <li>我是一个列表5</li>
+            <li>我是一个列表6</li>
+            <li>我是一个列表7</li>
+            <li>我是一个列表8</li>
+            <li>我是一个列表9</li>
+            <li>我是一个列表10</li>
+            <li>我是一个列表11</li>
+            <li>我是一个列表12</li>
+            <li>我是一个列表13</li>
+            <li>我是一个列表14</li>
+        </ul>
+    </div>
+</body>
+</html>

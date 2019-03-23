@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证浮动元素margin负值</title>
+    <!-- <link rel="stylesheet" href="../base.css"> -->
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: pink;
+        }
+        p{
+            color:red;
+            font-size:18px;
+            text-align: center;
+        }
+        .container{
+            margin: 100px auto 0;
+            border: 1px solid #000;
+            width: 300px;
+        }
+        .clearfix::before, .clearfix::after{
+            content:"";
+            display: table;
+        }
+        .clearfix::after{
+            clear: both;
+        }
+        .clearfix {
+            *zoom: 1; /*IE/7/6*/
+        }
+        .flb{
+            float: left;
+            width: 100px;
+            height: 100px;
+            /*margin-left: -25px;*/
+        }
+        .flb2{
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin-left: -25px;
+        }
+        .flbox1{background-color: rgba(33, 114, 214, 0.8);}
+        .flbox2{background-color: rgba(255, 82, 0, 0.8);}
+        .flbox3{background-color: rgba(90, 243, 151, 0.8);}
+
+        /*  */
+        .father{
+            position: relative;
+        }
+        .children{
+            position: absolute;
+            top:50%;
+            left:50%;
+            height: 100px;
+            width: 100px;
+            background-color: black;
+            transform: translate(-50%,-50%);
+            /* margin-top: -100px;
+            margin-left: -100px; */
+        }
+    </style>
+</head>
+<body>
+    <p>3 对浮动元素的影响</p>
+    <div class="container clearfix">
+        <div class="flb flbox1">box1</div>
+        <div class="flb flbox2">box2</div>
+        <div class="flb flbox3">box3</div>
+    </div>
+    <div>都设置margin-left:-25px;后,其效果为</div>
+    <div class="container clearfix">
+        <div class="flb2 flbox1">box11</div>
+        <div class="flb2 flbox2">box22</div>
+        <div class="flb2 flbox3">box33</div>
+    </div>
+    <div>
+        由于,每个box元素都发生了左位移,而其后的元素紧跟着之后,也发生了一次位移,这就形成了上面的结果.
+        即,负margin会改变浮动元素的显示位置
+        <strong>圣杯布局、双飞翼布局啊什么的，都是利用这个原理实现的</strong>
+    </div>
+
+    <p>4 对绝对定位的影响</p>
+    <!-- <div class="father">
+        <div class="children"></div>
+    </div> -->
+    <strong>对于绝对定位的元素,设置了margin负值之后,会根据它定位的位置进行再位移</strong>
+</body>
+</html>

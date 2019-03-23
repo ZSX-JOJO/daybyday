@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证浮动元素margin负值</title>
+    <!-- <link rel="stylesheet" href="../base.css"> -->
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        p{
+            color:red;
+            font-size:18px;
+            text-align: center;
+        }
+        .test{
+            background-color: #007AFF;
+            margin-left: -100px;
+            /* width:300px; */
+            height: 200px;
+            /* 解决 默认出现水平间距的"问题" */
+            font-size:0;
+        }
+        .left,.right{
+            display: inline-block;
+            color:green;
+            text-align: center;
+            /* 设置字体大小只为显示内容便于理解 */
+            font-size:22px;
+        }
+        .left{
+            width:150px;
+            height:50px;
+            background-color: pink;
+        }
+        .right{
+            width:150px;
+            height:50px;
+            background-color: black;
+        }
+        .test2{
+            background-color: #f00;
+            /* margin-left: -100px; */
+            height: 100px;
+        }
+
+        .test-center{
+            background-color: pink;
+            height:200px;
+        }
+
+        .test3{
+            background-color: #007AFF;
+            margin-top: -100px;
+            /* width:300px; */
+            height: 200px;
+        }
+        .test4{
+            background-color: black;
+            /* width:300px; */
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <p>2 对文档流的影响</p>
+    <b>
+        元素如果用了margin-left:-100px;其会向左位移100px,
+        但是和相对定位不同的是,在其后面的元素会进行补位,也就是后面的行内元素会紧贴在此元素之后.
+        即,如果不脱离文档流不浮动的话,margin为负值的元素不会破坏页面的文档流.
+        当然,如果用负margin上移一个元素,接下的元素都会跟着上移
+    </b>
+    <div class="test">
+        <span class="left">test内left</span>
+        <span class="right">test内right</span>
+    </div>
+    <div class="test2">test2</div>
+    <div class="test-center">test-center分割上下进行验证height:200px;</div>
+
+    <div class="test3">test3 height: 200px;</div>
+    <div class="test4">test4 height: 200px;</div>
+</body>
+</html>

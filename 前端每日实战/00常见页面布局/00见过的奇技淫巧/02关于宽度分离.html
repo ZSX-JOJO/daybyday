@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./base.css">
+    <title>关于"宽度分离"</title>
+    <style>
+        .box-normal{
+            width:430px;
+            padding:20px;
+            border:1px solid #ddd;
+        }
+        .tel{
+            color:red;
+        }
+
+        /*  */
+        .box-new{
+            width:470px;
+        }
+        .box-in{
+            padding:20px;
+            border:1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <p>传统写法</p>
+    <div class="box-normal">
+        <strong>温馨提示</strong><br>
+        团购成功后，消费凭证将发送到手机：<strong class="tel">183 5362 7528</strong>，凭短信去商家消费
+    </div>
+
+    <p>优化版写法</p>
+    <div class="box-new">
+        <div class="box-in">
+            <strong>温馨提示</strong><br>
+            团购成功后，消费凭证将发送到手机：<strong class="tel">183 5362 7528</strong>，凭短信去商家消费
+        </div>
+    </div>
+    <dl>
+        <dt>总结:</dt>
+        <dd>“宽度分离”的实现其实就是以牺牲一层标签为代价，将width属性放在外层标签上，其余的放在内层标签上</dd>
+    </dl>
+    <div class="tips">
+        额外内容:CSS的渲染方式是“从右往左”渲染的
+    </div>
+</body>
+</html>

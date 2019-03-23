@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用float实现2 多列等宽</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .header{
+            height: 60px;
+            background-color: #ccc;
+        }
+        .parent{
+            height: 500px;
+            /* 和6.1.1类似 注释掉的部分 为6.1.1的设置 要想盒子有间距 必须按照下面注释的写*/
+            /*使整体内容看起来居中,抵消padding-left的影响*/
+            /* margin-left: -5px */
+        }
+        .children{
+            float: left;  /*添加浮动*/
+            width: 16.66666666666667%;  /*100÷列数,得出百分比*/
+            height: 500px;
+            /* 下面注释调的地方都为 6.1.1的设置 要想盒子有间距 必须按照下面注释的写*/
+            /*盒子的边距*/
+            /* padding-left:5px; */
+            /* 盒子接壤 */
+            /* box-sizing: border-box; */
+            /*背景色从内容开始绘制,方便观察*/
+            /* background-clip: content-box; */
+        }
+        .children:nth-child(odd){/*奇数个*/
+            background-color: #f00;
+        }
+        .children:nth-child(even){/*偶数个*/
+            background-color: #0f0;
+        }
+        .footer {
+            height: 60px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <p>使用float实现 多列等宽</p>
+    <p>原理:
+    </p>
+    <div class="header">头部区域</div>
+    <div class="parent clearfix">
+        <div class="children">children</div>
+        <div class="children">children</div>
+        <div class="children">children</div>
+        <div class="children">children</div>
+        <div class="children">children</div>
+        <div class="children">children</div>
+    </div>
+    <div class="footer">底部内容区域</div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd></dd>
+        <dt>缺点:</dt>
+        <dd>
+            
+        </dd>
+    </dl>
+</body>
+</html>

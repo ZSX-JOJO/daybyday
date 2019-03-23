@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>水平垂直居中</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        button.parent{
+            height: 150px;
+            width: 200px;
+            outline: none;  
+            border: none;
+            background-color: red;
+        }
+        .children{
+            display: inline-block; /*button自带text-align: center,改为行内水平居中生效*/
+            background-color: black;
+            font-size:22px;
+            width:100px;
+            height:100px;
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+    <p>通过table-cell 水平垂直居中</p>
+    <p>原理:
+        button的默认样式，再把需要居中的元素表现形式改为行内或行内块级就好
+    </p>
+    <!-- <div class="parent">
+        <div class="children">children</div>
+    </div> -->
+    <button class="parent">
+        <div class="children">children</div>
+    </button>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd>简单方便，充分利用默认样式</dd>
+        <dt>缺点:</dt>
+        <dd>
+            只适用于行内内容；需要清除部分默认样式；水平垂直居中兼容性很好，但是ie下点击会有凹陷效果
+        </dd>
+    </dl>
+</body>
+</html>

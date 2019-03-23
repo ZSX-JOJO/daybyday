@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任意个元素(flex) 垂直居中</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .parent{
+            /* text-align: center; */
+            height: 150px;
+            display: flex;
+            align-items: center;
+            background-color: red;
+        }
+        .children{
+            width:200px;
+            height: 50px;
+            background-color: black;
+            font-size:22px;
+            color:#fff;
+        }
+        .parent2{
+            /* text-align: center; */
+            height: 150px;
+            display: flex;
+            background-color: red;
+        }
+        .children2{
+            width:200px;
+            height: 50px;
+            background-color: black;
+            font-size:22px;
+            color:#fff;
+            align-self: center;
+        }
+        .parent3{
+            /* text-align: center; */
+            height: 150px;
+            display: flex;
+            background-color: red;
+        }
+        .children3{
+            margin: auto 0;
+            width:200px;
+            height: 50px;
+            background-color: black;
+            font-size:22px;
+            color:#fff;
+        }
+
+        .parent4{
+            /* text-align: center; */
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: red;
+        }
+        .children4{
+            width:200px;
+            height: 50px;
+            background-color: black;
+            font-size:22px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <p>单个块级元素 垂直居中</p>
+    <p>原理:
+        flex设置对齐方式罢了
+    </p>
+    <div class="parent">
+        <div class="children">children1</div>
+        <div class="children">children1</div>
+        <div class="children">children1</div>
+        <div class="children">children1</div>
+    </div>
+    <hr>
+    <div class="parent2">
+        <div class="children2">children2</div>
+        <div class="children2">children2</div>
+        <div class="children2">children2</div>
+        <div class="children2">children2</div>
+    </div>
+    <hr>
+    <!-- 应该是flex使margin上下边界无限延伸至剩余空间并平分了 -->
+    <div class="parent3">
+        <div class="children3">children3</div>
+        <div class="children3">children3</div>
+        <div class="children3">children3</div>
+        <div class="children3">children3</div>
+    </div>
+    <hr>
+    <div class="parent4">
+        <div class="children4">children4</div>
+        <div class="children4">children4</div>
+        <div class="children4">children4</div>
+        <div class="children4">children4</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd>简单灵活；功能强大</dd>
+        <dt>缺点:</dt>
+        <dd>
+            PC端兼容性不好，移动端（Android4.0+）
+        </dd>
+    </dl>
+</body>
+</html>

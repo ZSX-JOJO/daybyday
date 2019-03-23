@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文本/行内元素/行内块级元素 水平居中</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .parent{
+            text-align: center;
+        }
+        .children{
+            /* display: inline-block; */
+            /* display: inline-table; */
+            /* width:200px; */
+            background-color: black;
+            font-size:22px;
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+    <p>原理:
+            text-align只控制行内内容(文字、行内元素、行内块级元素)如何相对他的块父元素对齐
+    </p>
+    <div class="parent">
+        <div class="children">213213123123132123</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd>简单快捷，容易理解，兼容性非常好</dd>
+        <dt>缺点:</dt>
+        <dd>只对行内内容有效；属性会继承影响到后代行内内容；如果子元素宽度大于父元素宽度则无效，只有后代行内内容中宽度小于设置text-align属性的元素宽度的时候，才会水平居中</dd>
+    </dl>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cookie</title>
+    <link rel="stylesheet" href="./base.css">
+</head>
+<body onload="checkCookie()"></body>
+<h1>chrome不支持?  Firefox支持</h1>
+<script>
+    /* 
+    创建cookie
+    document.cookie ="username=zsx";
+    添加过期时间 toUTCString() 根据世界时 把Date对象转换为字符串
+    document.cookie="username=zhaoshouxin; expires=Thu, 18 Dec 2043 12:00:00 UTC;
+    使用 path 参数告诉浏览器 cookie 的路径。默认情况下，cookie 属于当前页面
+    document.cookie="username=zhaoshouxin2; expire= Thu, 18 2019-03-20 12:00:00 UTC; paht=/";
+     */
+     /* 
+     使用JavaScript读取cookie
+      */
+    // 设置cookie值
+    function setCookie(cname,cvalue,exdays){//cookie 名 值 过期时间
+        var d = new Date();
+        // setTime() 方法以毫秒设置 Date 对象
+        //getTime()返回 1970 年 1 月 1 日至今的毫秒数
+        d.setTime(d.getTime()+(exdays*24*60*60*1000));
+        // toUTCString()根据世界时，把 Date 对象转换为字符串
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+    // 获取cookie值
+    function getCookie(cname){
+        // 创建一个文本变量用于检索指定 cookie :cname + "="
+        var name = cname + "=";
+        // 使用分号来分割 document.cookie 字符串，并将分割后的字符串数组赋值给 ca (ca = document.cookie.split(';'))
+        var ca = document.cookie.split(";");
+        // 循环ca数组 并且去掉前后空格
+        for(var i =0;i<ca.length;i++){
+            var c = ca[i].trim();
+            // substring(from,to)提取字符串中介于两个指定下标之间的字符【比要提取的子串的最后一个字符在 string Object 中的位置多 1】[from,to]
+            // substr()在字符串中抽取从 开始下标开始的指定数目的字符[begin,length] 不会改变源字符串
+            // slice()数组【返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素】/字符串【提取字符串的某个部分，并以新的字符串返回被提取的部分】
+            if(c.indexOf(name) == 0){
+                return c.substring(name.length,c.length);
+            }
+        }
+        return "";
+    }
+    // 检测cookie值
+    function checkCookie(){
+        var username = getCookie("username");
+        if(username != ""){
+            alert("欢迎 " + username + " 再次访问");
+        }else{
+            username = prompt("enter your username:","");
+            if(username !="" && username!=null){
+                setCookie("username",username,1);//存储名字1天
+            }
+        }
+    }
+</script>
+</html>

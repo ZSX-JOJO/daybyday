@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全屏布局</title>
+    <link rel="stylesheet" href="../base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .container{
+            color:#fff;
+            font-size:22px;
+            text-align:center;
+        }
+        .left {
+            float: left;
+            height: 200px;
+            width: 100px;
+            margin-right: 20px;
+            background-color: red;
+        }
+        .right {
+            width: 200px;
+            height: 200px;
+            float: right;
+            margin-left: 20px;
+            background-color: blue;
+        }
+        .main {
+            height: 200px;
+            overflow: hidden;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <p>三栏布局2 BFC 三栏布局</p>
+    <p>BFC 规则有这样的描述：BFC 区域，不会与浮动元素重叠</p>
+    <p>左右模块固定宽度，中间模块随浏览器变化自适应</p>
+    <p>宽高背景只是为了展示</p>
+    <p>使用 float实现</p>
+    <div class="container">
+        <div class="left">left float: left;</div>
+        <div class="right">right float: right;</div>
+        <div class="main">main overflow: hidden;</div>
+    </div>
+    <p>
+        缺点跟方法一类似，主要内容模块无法最先加载，当页面中内容较多时会影响用户体验
+    </p>
+</body>
+</html>

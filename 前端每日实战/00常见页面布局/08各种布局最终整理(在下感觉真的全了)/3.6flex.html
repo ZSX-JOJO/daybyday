@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>水平垂直居中</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .parent{
+            display: flex;
+            height: 150px;
+            width: 200px;
+            background-color: red;
+        }
+        .children{
+            margin: auto;
+            background-color: black;
+            font-size:22px;
+            width:100px;
+            height:100px;
+            color:#fff
+        }
+
+        .parent2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            width: 200px;
+            background-color: red;
+        }
+        .children2{
+            background-color: black;
+            font-size:22px;
+            width:100px;
+            height:100px;
+            color:#fff
+        }
+
+        .parent3{
+            display: flex;
+            justify-content: center;
+            height: 150px;
+            width: 200px;
+            background-color: red;
+        }
+        .children3{
+            align-self: center;
+            background-color: black;
+            font-size:22px;
+            width:100px;
+            height:100px;
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+    <p>flex 水平垂直居中</p>
+    <p>原理:
+        flex设置对齐方式
+    </p>
+    <div class="parent">
+        <div class="children">children</div>
+    </div>
+    <hr>
+    <div class="parent2">
+        <div class="children2">children2</div>
+    </div>
+    <hr>
+    <div class="parent3">
+        <div class="children3">children3</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd>简单灵活；功能强大</dd>
+        <dt>缺点:</dt>
+        <dd>
+            PC端兼容性不好，移动端（Android4.0+）
+        </dd>
+    </dl>
+</body>
+</html>

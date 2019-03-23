@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用flex实现 全屏布局</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        html,body,.parent{
+            height:100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .parent div{
+            border: 1px solid #000;
+        }
+        .header{
+            height: 100px;
+        }
+        .middle{
+            flex: 1;
+            display: flex;
+            margin:-1px;
+        }
+        .left{
+            width: 200px;  
+            margin-top:-1px;
+            margin-bottom:-1px;
+        }
+        .right{
+            flex: 1;
+            overflow: auto;
+            margin-top:-1px;
+            margin-bottom:-1px;
+            margin-left:-1px;
+        }
+        .footer {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <p>使用使用flex实现 全屏布局</p>
+    <p>原理:
+    </p>
+    <div class="parent">
+        <div class="header">头部区域</div>
+        <div class="middle">
+            <div class="left">left</div>
+            <div class="right">right</div>
+        </div>
+        <div class="footer">底部内容区域</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd></dd>
+        <dt>缺点:</dt>
+        <dd>
+            
+        </dd>
+    </dl>
+</body>
+</html>

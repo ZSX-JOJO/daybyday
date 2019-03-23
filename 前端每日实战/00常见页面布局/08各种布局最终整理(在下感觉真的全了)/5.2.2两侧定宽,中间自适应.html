@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圣杯布局方法 两侧定宽,中间自适应</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .header{
+            height: 60px;
+            background-color: #ccc;
+        }
+        .parent{
+            /* 子类必须写这玩意 03三栏布局之圣杯布局 和这里有区别 */
+            /* box-sizing: border-box; */
+            /* 高度必须在子元素上设置 不然就没有高度了 只剩下内容高度 不知道什么原因 */
+            /* height:500px; */
+            /*为了使.center摆正,左右padding分别等于左右盒子的宽,可以结合左右盒子相对定位的left调整间距 margin也可以*/
+            /* padding:0 220px 0 120px; */
+            margin-left:120px;
+            margin-right:220px;
+        }
+        .left{
+            box-sizing: border-box;
+            float:left;
+            position: relative;
+            left:-120px;/*相对定位调整.left的位置,正值大于或等于自身宽度*/
+            width:100px;
+            height:500px;
+            /* height: 500px; */
+            /*调整.left的位置,值等于自身宽度 关于margin负值的妙用 在05文件夹内*/
+            margin-left:-100%;/*使.left上去一行 这是注释*/
+            background-color: #f00;
+            opacity: 0.5;/*透明度 alpha为不透明度*/
+        }
+        .center{
+            box-sizing: border-box;
+            float: left;
+            width:100%;/*由于。parent的padding or margin,达到自适应的目的*/
+            height:500px;
+            border: 1px solid #000;
+            background-color: #eeff2b;
+        }
+        .right{
+            box-sizing: border-box;
+            float:left;
+            position: relative;
+            left: 220px; /*相对定位调整.right的位置,大于或等于自身宽度 也可以写right:-215px*/
+            width:200px;
+            height:500px;
+            /*使right到指定的位置,值等于自身宽度*/
+            margin-left: -200px;/*使.right上去一行 这是注释*/
+            background-color: #0f0;
+            opacity: 0.5;
+        }
+        .footer {
+            /*注意清除浮动!!*/
+            /* 清除浮动还是在 parent区域清除最好(清除方式已经写在base.css里面) */
+            /* clear: both;   */
+            height: 60px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <p>圣杯布局方法 两侧定宽,中间自适应</p>
+    <p>原理:
+    </p>
+    <div class="header">头部区域</div>
+    <div class="parent clearfix">
+        <!-- 中间栏放在最前面 优先加载 算是页面的布局优化 -->
+        <div class="center">中间自适应</div>
+        <div class="left">左列定宽</div>
+        <div class="right">右列定宽</div>
+    </div>
+    <div class="footer">底部内容区域</div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd></dd>
+        <dt>缺点:</dt>
+        <dd>
+        </dd>
+    </dl>
+</body>
+</html>

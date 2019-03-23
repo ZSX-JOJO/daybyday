@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>水平垂直居中</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        dl{
+            margin-top:15px;
+            text-align: center;
+        }
+        dt{
+            color: red;
+            font-size: 22px;
+            margin:10px auto;
+        }
+        dd{
+            color: black;
+            font-size: 16px;
+        }
+        .parent{
+        }
+        .children{
+            text-align: center;
+            /*0如果去掉，则会多出滚动条并且上下都是50vh的margin。如果去掉就给body加上overflow:hidden;*/
+            margin: 50vh auto 0;
+            transform: translateY(-50%);
+            background-color: black;
+            font-size:22px;
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+    <p>视窗居中 水平垂直居中</p>
+    <p>原理:
+        vh为视口单位，视口即文档可视的部分，50vh就是视口高度的50/100
+    </p>
+    <div class="parent">
+        <div class="children">children</div>
+    </div>
+
+    <dl>
+        <dt>优点:</dt>
+        <dd>简单；容易理解；两句代码达到屏幕水平垂直居中</dd>
+        <dt>缺点:</dt>
+        <dd>
+            兼容性不好（ie9+，Android4.4+）
+        </dd>
+    </dl>
+</body>
+</html>

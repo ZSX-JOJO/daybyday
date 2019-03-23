@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>垂直居中总结</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        li{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            对于垂直居中，最先想到的应该就是 line-height 了，但是这个只能用于行内内容；
+        </li>
+        <li>
+            其次就是考虑能不能用vertical-align: middle; ，不过这个一定要熟知原理才能用得顺手，建议看下vertical-align和line-height的基友关系 
+        </li>
+        <li>
+            然后便是绝对定位，虽然代码多了点，但是胜在适用于不同情况
+        </li>
+        <li>
+            移动端兼容性允许的情况下能用flex就用flex
+        </li>
+    </ul>
+</body>
+</html>

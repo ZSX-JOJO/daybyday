@@ -34,21 +34,19 @@
             display: inline-block;
         }
 
-        /* 使用 margin:0 auto 来实现 
-            子元素必须设置宽度 只能单个水平居中
-        */
+        /* 使用 margin:0 auto 来实现 */
         .row2-children{
             width:200px;
             margin:0 auto;
         }
 
-        /* 使用table实现 只能单个水平居中*/
+        /* 使用table实现 */
         .row3-children{
             display:table;
             margin:0 auto;
         }
 
-        /* 使用定位实现 若有多个子元素 子元素会 “覆盖”*/
+        /* 使用定位实现 */
         .row4{
             position: relative;
         }
@@ -436,7 +434,7 @@
 
         }
         /* 02 table实现 */
-        .more-lists2{
+        .more-list2{
             margin-left:20px;
             display: table;
             table-layout:fixed;
@@ -488,7 +486,7 @@
             vertical-align:middle;
         }
         /* 02 flex实现 */
-        .grid2{
+        .grid{
             display:flex;
             flex-direction:column;
         }
@@ -581,40 +579,25 @@
 
     <div class="row1 father">
         <div class="row1-children children">水平居中1</div>
-        <div class="row1-children children">水平居中1</div>
-        <div class="row1-children children">水平居中1</div>
     </div>
 
     <div class="row2 father">
-        <div class="row2-children children">水平居中2</div>
-        <div class="row2-children children">水平居中2</div>
         <div class="row2-children children">水平居中2</div>
     </div>
 
     <div class="row3 father">
         <div class="row3-children children">水平居中3</div>
-        <div class="row3-children children">水平居中3</div>
-        <div class="row3-children children">水平居中3</div>
     </div>
 
     <div class="row4 father">
-        <div class="row4-children children">水平居中4</div>
-        <div class="row4-children children">水平居中4</div>
-        <div class="row4-children children">水平居中4</div>
         <div class="row4-children children">水平居中4</div>
     </div>
 
     <div class="row5 father">
         <div class="row5-children children">水平居中5</div>
-        <div class="row5-children children">水平居中5</div>
-        <div class="row5-children children">水平居中5</div>
     </div>
 
     <div class="row6 father">
-        <div class="row6-children children">水平居中6</div>
-        <div class="row6-children children">水平居中6</div>
-        <div class="row6-children children">水平居中6</div>
-        <div class="row6-children children">水平居中6</div>
         <div class="row6-children children">水平居中6</div>
     </div>
 
@@ -622,13 +605,9 @@
 
     <div class="col1 col-father">
         <div class="col1-children col-children">垂直居中1</div>
-        <div class="col1-children col-children">垂直居中1</div>
-        <div class="col1-children col-children">垂直居中1</div>
     </div>
 
     <div class="col2 col-father">
-        <div class="col2-children col-children">垂直居中2</div>
-        <div class="col2-children col-children">垂直居中2</div>
         <div class="col2-children col-children">垂直居中2</div>
     </div>
 

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多列布局</title>
+    <link rel="stylesheet" href="../base.css">
+    <style>
+        body{
+            background-color: pink;
+        }
+        p{
+            text-align: center;
+            color: red;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .bottom{
+            /*bottom: 10px;*/
+        }
+        .color{
+            color:#fff;
+        }
+        .father{
+            background-color:#bababa;
+            /* -webkit-padding-after:5px; */
+            text-align:center;
+        }
+        .left{
+            float: left;
+            width:20%;
+            height:300px;
+            background-color: red;
+        }
+        .center{
+            float: left;
+            width:60%;
+            margin-right:-40%;
+            height:300px;
+            background-color: black;
+        }
+        .right{
+            float:right;
+            width:20%;
+            height:300px;
+            background-color: green;
+        }
+
+        .father2{
+            background-color:#bababa;
+            /* -webkit-padding-after:5px; */
+            display: table;
+            /*下一行 加不加都没什么变化*/
+            /*table-layout:fixed;*/
+            width:100%;
+            text-align:center;
+        }
+        .left2{
+            display: table-cell;
+            width:20%;
+            height:300px;
+            background-color: red;
+        }
+        .center2{
+            display: table-cell;
+            background-color: black;
+        }
+        .right2{
+            display: table-cell;
+            width:20%;
+            background-color: green;
+        }
+
+        .father3{
+            background-color:#bababa;
+            /* -webkit-padding-after:5px; */
+            margin:0 15px;
+            text-align:center;
+            display: flex;
+        }
+        .left3{
+            width:20%;
+            height:300px;
+            background-color: red;
+        }
+        .center3{
+            flex:1;
+            background-color: black;
+        }
+        .right3{
+            width:20%;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <p>两列定宽 中间栏自适应</p>
+    <p>宽高背景只是为了展示</p>
+    <p>float + margin实现</p>
+    <div class="father parent bottom clearfix">
+        <div class="child color left">
+            左侧定宽width:20%;float:left;
+        </div>
+        <div class="child color center">
+            中间自适应(感觉做不到自适应 中间宽度太宽 底部出现滚动条)float: left;width:60%;margin-right:-40%;
+        </div>
+        <div class="child color right">
+            右侧定宽float:right;width:20%;
+        </div>
+    </div>
+
+    <p>父级(table)且100% 子级table-cell</p>
+    <div class="father2 parent bottom">
+        <div class="child2 color left2">
+            左侧display: table-cell;width:20%;
+        </div>
+        <div class="child2 color center2">
+            中间自适应display: table-cell;
+        </div>
+        <div class="child2 color right2">
+            右侧display: table-cell;width:20%;
+        </div>
+    </div>
+
+    <p>flex实现 父级(display: flex;)</p>
+    <div class="father3 parent bottom">
+        <div class="child3 color left3">左侧width:20%;</div>
+        <div class="child3 color center3">中间自适应flex:1;</div>
+        <div class="child3 color right3">右侧width:20%;</div>
+    </div>
+    <div style="color:red;font-size:18px;text-align:center;">
+        <!-- 突然遇到了子级设置为inline-block属性后 默认出现水平间距的"问题"(默认就是如此，正常现象)
+        <ul>
+            <li>具体方法如下(都是在父级上添加)</li>
+            <li>font-size:0;</li>
+            <li>字符间距(letter-spacing) letter-spacing: 0;火狐需要-3px </li>
+            <li>单词间距(word-spacing) word-spacing: 0;火狐需要-3px </li>
+        </ul> -->
+    </div>
+</body>
+</html>

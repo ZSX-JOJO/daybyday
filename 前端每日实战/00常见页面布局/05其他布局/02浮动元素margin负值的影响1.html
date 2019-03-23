@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>验证浮动元素margin负值</title>
+        <!-- <link rel="stylesheet" href="../base.css"> -->
+        <style type="text/css">
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            p{
+                color:red;
+                font-size:18px;
+                text-align: center;
+            }
+            .wrap{
+                background-color: #f00;
+                width: 800px;
+                margin: 100px auto 0; 
+                height: 300px;
+                font-size: 30px;
+            }
+            .box{
+                background-color: #007AFF;
+                margin-left: -100px;
+                height: 200px;
+            }
+            /* 减少自身供css读取的高度 */
+            .big{
+                background-color: #007AFF;
+                margin-bottom: -100px;
+                height: 200px;
+            }
+            .small{
+                background-color: #f00;
+                height: 20px;
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>1 对自身的影响</p>
+        <b>
+            当元素不存在width属性或则width:auto的时候,
+            负值margin会增加元素的宽度.(注意:这仅仅是在元素不存在width属性或则width属性默认的时候,如果有宽度设置,margin-left和margin-right为负值时,会发生位移.)</b>
+        <div class="wrap">
+            最外层的宽度为800px
+            <div class="box">里层的元素设置了margin-left:-100px</div>
+        </div>
+        <div>里层元素的宽度增加了100px,margin-left和margin-right为负值的时候都可以增加元素的宽度</div>
+        <div>而margin-top为负值的时候,不会增加宽度,而是会让元素上移</div>
+        <div>margin-bottom为负值的时候不会位移,而是会减少自身供css读取的高度</div>
+
+        <p>什么是减少自身供css读取的高度</p>
+
+        <div class="big">高度为200px</div>
+        <div class="small">高度为20px</div>
+        <div>
+            类名为big的元素的高度依旧是200px,
+            浏览器依旧将整个元素渲染出来了,
+            但是,其在浏览器中实际读取的高度减少到了100px,类名为small的元素的位置为证,
+            现在这行是单独的div同样也可以验证
+        </div>
+    </body>
+</html>
