@@ -57,6 +57,25 @@
         dd{
             font-size:14px;
         }
+        /* 写这玩的 */
+        .ll{
+            position: relative;
+        }
+        .ll-l,.ll-r{
+            width:100px;
+            height:50px;
+        }
+        .ll-l{
+            background-color: red;
+            position: absolute;
+            z-index:0;
+        }
+        .ll-r{
+            background-color: black;
+            position: absolute;
+            left:10px;
+            top:10px;
+        }
     </style>
 </head>
 <body>
@@ -103,6 +122,19 @@
             <dd>无定位值的absolute元素可以使用margin定位</dd>
             <dd>无定位值的absolute元素是个没有实际宽度的浮动元素</dd>
         </dl>
+    </div>
+
+    <div class="ll">
+        <div class="ll-l">1</div>
+        <div class="ll-r">2</div>
+    </div>
+    <div>
+        /* 强制文本在一行内输出 */
+            white-space: nowrap;
+            /* 隐藏溢出部分 */
+            overflow: hidden;
+            /* 对溢出部分加上... */
+            text-overflow: ellipsis;
     </div>
 </body>
 </html>

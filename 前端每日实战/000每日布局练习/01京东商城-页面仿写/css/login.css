@@ -1,0 +1,491 @@
+@charset "UTF-8";
+        /*css 初始化 */
+        html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+            margin: 0;
+            padding: 0;
+        }
+        fieldset, img, input, button {
+            border: none;
+            padding: 0;
+            margin: 0;
+            outline-style: none;
+        }
+        ul, ol {
+            list-style: none;
+        }
+        input {
+            padding-top: 0;
+            padding-bottom: 0;
+            font-family: "SimSun", "宋体";
+        }
+        select, input {
+            vertical-align: middle;
+        }
+        select, input, textarea {
+            font-size: 12px;
+            margin: 0;
+        }
+        /*防止拖动*/
+        textarea {
+            resize: none;
+        }
+        /*  去掉图片低测默认的3像素空白缝隙*/
+        img {
+            border: 0;
+            vertical-align: middle;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        body {
+            font: 12px/150% Arial, Verdana, "\5b8b\4f53";
+            color: #666;
+            background: #fff
+        }
+        .clearfix:before, .clearfix:after {
+            content: "";
+            display: table;
+        }
+        .clearfix:after {
+            clear: both;
+        }
+        .clearfix {
+            *zoom: 1; /*IE/7/6*/
+        }
+        a {
+            color: #999;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #C81623;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            text-decoration: none;
+            font-weight: normal;
+            font-size: 100%;
+        }
+        s, i, em {
+            font-style: normal;
+            text-decoration: none;
+        }
+        /* 公共类 */
+        .shortcut{
+            border-bottom: 1px solid #ddd;
+            background-color: #e3e4e5;
+        }
+        .w{
+            /*版心 提取 */
+            margin: 0 auto;
+            width: 990px;
+        }
+        .fl {
+            float: left
+        }
+        
+        .fr {
+            float: right
+        }
+        .al {
+            text-align: left
+        }
+        
+        .ac {
+            text-align: center
+        }
+        
+        .ar {
+            text-align: right
+        }
+        
+        .hide {
+            display: none
+        }
+        /* 登陆 部分 */
+        #logo{
+            position: relative;
+            width: 300px;
+            margin: 10px 0;
+            height: 60px;
+            float: left;
+        }
+        #logo b {
+            display: block;
+            width: 110px;
+            height: 40px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background: url(../img/login/l-icon.png) no-repeat;
+        }
+        .q-link {
+            position: relative;
+            color: #999;
+            float: right;
+            top: 52px;
+        }
+        .q-link b{
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            width: 18px;
+            height: 14px;
+            margin: 0 5px;
+            background: url(../img/login/q-icon.png) no-repeat;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+        /*  */
+        #content{
+            clear: both;
+        }
+        #content .tips-wrapper {
+            background: #fff8f0;
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        #content .tips-wrapper .cont-wrapper {
+            display: inline-block;
+            *display: inline;
+            width: 90%;
+        }
+        #content .tips-wrapper .icon-tips {
+            background: url(../img/login/icon-tips.png);
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        #content .tips-wrapper .tips-inner p {
+            vertical-align: middle;
+            color: #999;
+            font-size: 12px;
+            display: inline-block;
+            *display: inline;
+        }
+        #content .login-wrap {
+            margin-top: 0;
+        }
+        .login-wrap {
+            position: relative;
+            height: 475px;
+            margin: 10px 0 20px;
+            z-index: 5;
+        }
+        .login-wrap .login-form {
+            float: right;
+            top: 10px;
+        }
+        .login-form {
+            position: relative;
+            z-index: 4;
+            background: #fff;
+            overflow: visible;
+            width: 346px;
+        }
+        .login-form .login-tab {
+            height: 54px;
+            font-size: 18px;
+            font-family: "microsoft yahei";
+            text-align: center;
+            border-bottom: 1px solid #f4f4f4;
+            position: absolute;
+            background: #fff;
+            display: block;
+        }
+        .login-form .login-tab-l, .login-form .login-tab-r {
+            width: 173px;
+        }
+        .login-form .login-tab-r {
+            right: 0;
+        }
+        .login-form .login-tab a {
+            width: 99%;
+            height: 18px;
+            position: absolute;
+            left: 0;
+            top: 18px;
+            border-right: 1px solid #f4f4f4;
+            text-decoration: none;
+        }
+        .login-form .login-tab a.checked, .login-form .login-tab a:hover {
+            font-weight: 700;
+            color: #e4393c;
+        }
+        .login-form .login-box {
+            width: 306px;
+            padding: 20px;
+            visibility: hidden;
+        }
+        .login-form .login-box .tab-h {
+            height: 35px;
+        }
+        .login-form .msg-wrap {
+            min-height: 23px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            height: auto!important;
+        }
+        .login-form .msg-error {
+            position: relative;
+            background: #ffebeb;
+            color: #e4393c;
+            border: 1px solid #faccc6;
+            padding: 3px 10px 3px 40px;
+            line-height: 15px;
+            height: auto;
+        }
+        .login-form .msg-error b {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            display: block;
+            margin-top: -8px;
+            width: 16px;
+            height: 16px;
+            overflow: hidden;
+            background: url(../img/login/pwd-icons-new.png) -104px -49px no-repeat;
+        }
+        .login-form .login-box .mc {
+            overflow: visible;
+        }
+        .login-form .qrcode-login {
+            display: none;
+            visibility: hidden;
+            width: 306px;
+            padding: 20px 18px 20px 20px;
+            text-align: center;
+        }
+        .login-form .qrcode-login .qrcode-error-2016 {
+            display: none;
+            font-size: 14px;
+            color: #fbfbfb;
+            margin-top: 65px;
+            position: relative;
+            z-index: 1;
+        }
+        .login-form .qrcode-login .qrcode-error-2016 .qrcode-error-mask {
+            display: block;
+            position: absolute;
+            width: 170px;
+            background: #000;
+            filter: alpha(opacity=60);
+            -moz-opacity: .6;
+            opacity: .6;
+            height: 163px;
+            left: 66px;
+            z-index: 9;
+            top: 0;
+            text-align: center;
+            line-height: 100px;
+        }
+        .login-form .qrcode-login .qrcode-error-2016 .err-cont {
+            position: absolute;
+            left: 0;
+            top: 55px;
+            width: 100%;
+            z-index: 19;
+            font-weight: 700;
+        }
+        .login-form .qrcode-login .qrcode-error-2016 .refresh-btn {
+            display: block;
+            background: #e4393c;
+            width: 80px;
+            height: 30px;
+            position: absolute;
+            top: 95px;
+            left: 113px;
+            line-height: 30px;
+            opacity: 1;
+            z-index: 19;
+            color: #fbfbfb;
+            text-decoration: none;
+        }
+
+
+        .login-form .qrcode-login .qrcode-main {
+            position: relative;
+            height: 168px;
+            margin-top: 55px;
+        }
+        .login-form .qrcode-login .qrcode-img {
+            border: 1px solid #f4f4f4;
+            padding: 8px;
+            width: 155px;
+            position: absolute;
+            left: 64px;
+        }
+        .login-form .qrcode-login .qrcode-img .qrcode-error02 {
+            padding: 30px 0;
+        }
+        .login-form .qrcode-login .qrcode-help {
+            position: absolute;
+            right: -18px;
+            top: -2px;
+            width: 141px;
+            height: 168px;
+            background: url(../img/login/phone-orange.png) no-repeat;
+            z-index: 99;
+        }
+
+
+        .login-form .qrcode-login .qrcode-panel {
+            width: 257px;
+            margin: 18px auto 14px;
+            text-align: center;
+        }
+        .login-form .qrcode-login .qrcode-panel li {
+            display: inline-block;
+            *display: inline;
+            padding: 0 0 0 5px;
+            margin: 0 5px 0 0;
+        }
+        .login-form .qrcode-login .qrcode-panel a {
+            color: #333;
+            text-decoration: none;
+            margin-left: -3px;
+        }
+        .login-form .qrcode-login .qrcode-panel ul:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        .login-form .qrcode-login .qrcode-panel .red {
+            color: #e4393c;
+        }
+
+        /* 免输入 更快 更安全 */
+        .qr-coagent {
+            background-color: #fff;
+            font-family: "microsoft yahei";
+            color: #999;
+            border: none;
+            padding: 0;
+            line-height: 25px;
+            margin-left: 40px;
+        }
+        .coagent ul:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        .qr-coagent li {
+            text-align: left;
+            position: relative;
+            margin-right: 18px;
+        }
+        .coagent li {
+            float: left;
+        }
+        .qr-coagent li b {
+            width: 25px;
+            height: 25px;
+            display: block;
+            background: url(../img/login/qr-coagent.png) no-repeat;
+            margin: 0 auto;
+            position: absolute;
+            left: 0;
+        }
+        .qr-coagent li em {
+            padding-left: 32px;
+            *display: inline-block;
+            _display: inline;
+        }
+        .qr-coagent li .faster {
+            background-position: -27px;
+        }
+        .qr-coagent li .more-safe {
+            background-position: -54px;
+        }
+
+        /* QQ 微信 登陆 */
+        .coagent2 {
+            padding-left: 20px;
+            padding-right: 20px;
+            line-height: 50px;
+            border-top: 1px solid #f4f4f4;
+            height: auto;
+            background-color: #fcfcfc;
+        }
+        .coagent2 li {
+            float: left;
+        }
+        .coagent2 li a.pdl {
+            display: inline-block;
+            position: relative;
+            padding-left: 24px;
+        }
+        a.pdl b {
+            width: 19px;
+            height: 18px;
+            display: block;
+            background: url(../img/login/QQ-weixin.png) no-repeat;
+            margin: 0 auto;
+            position: absolute;
+            float: left;
+            left: 0;
+            top: 16px;
+        }
+        .coagent2 li a.pdl b.QQ-icon {
+            background-position: 0 0;
+        }
+        .coagent2 li a.pdl b.weixin-icon {
+            background-position: -20px 0;
+        }
+        .coagent2 li .line {
+            color: #ccc;
+            padding: 0 10px;
+        }
+        .coagent2 li.extra-r {
+            float: right;
+        }
+        .coagent2 .regist-link {
+            color: #b61d1d;
+            font-size: 14px;
+        }
+        .coagent2 .regist-link a {
+            color: #b61d1d;
+        }
+        .coagent2 .regist-link b {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            width: 16px;
+            height: 16px;
+            overflow: hidden;
+            background: url(../img/login/pwd-icons-new.png) -104px -75px no-repeat;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        /* 中间的banner */
+        .login-wrap .login-banner {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 475px;
+            background: #e93854;
+        }
+        .login-wrap .i-inner {
+            position: relative;
+            z-index: 3;
+            height: 475px;
+            width:100%;
+        }
+        /* 底部footer */
+        #footer-2013 {
+            padding-bottom: 30px;
+            text-align: center;
+        }
+        #footer-2013 .links a, #footer-2013 .links span {
+            margin: 0 10px;
+        }
+        #footer-2013 .copyright {
+            margin: 10px 0;
+        }

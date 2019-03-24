@@ -40,19 +40,19 @@
             /* height:500px; */
             /*为了使.center摆正,左右padding分别等于左右盒子的宽,可以结合左右盒子相对定位的left调整间距 margin也可以*/
             /* padding:0 220px 0 120px; */
-            margin-left:120px;
-            margin-right:220px;
+            /* 为了便于理解还是 用padding吧 */
+            padding-left:120px;
+            padding-right:220px;
         }
         .left{
             box-sizing: border-box;
             float:left;
+            /*调整.left的位置,值等于自身宽度 关于margin负值的妙用 在05文件夹内*/
+            margin-left:-100%;/*使.left上去一行 这是注释*/
             position: relative;
             left:-120px;/*相对定位调整.left的位置,正值大于或等于自身宽度*/
             width:100px;
             height:500px;
-            /* height: 500px; */
-            /*调整.left的位置,值等于自身宽度 关于margin负值的妙用 在05文件夹内*/
-            margin-left:-100%;/*使.left上去一行 这是注释*/
             background-color: #f00;
             opacity: 0.5;/*透明度 alpha为不透明度*/
         }
@@ -67,12 +67,12 @@
         .right{
             box-sizing: border-box;
             float:left;
-            position: relative;
-            left: 220px; /*相对定位调整.right的位置,大于或等于自身宽度 也可以写right:-215px*/
-            width:200px;
-            height:500px;
             /*使right到指定的位置,值等于自身宽度*/
             margin-left: -200px;/*使.right上去一行 这是注释*/
+            position: relative;
+            left: 220px; /*相对定位调整.right的位置,大于或等于自身宽度 也可以写right:-220px*/
+            width:200px;
+            height:500px;
             background-color: #0f0;
             opacity: 0.5;
         }
@@ -88,13 +88,19 @@
 <body>
     <p>圣杯布局方法 两侧定宽,中间自适应</p>
     <p>原理:
+        俩种布局方式都是把主列放在文档流最前面，使主列优先加载<br>
+        两种布局方式在实现上也有相同之处，都是让三列浮动，然后通过负外边距形成三列布局<br>
+        两种布局方式的不同之处在于如何处理中间主列的位置：
+        圣杯布局是利用父容器的左、右内边距定位；
+
+        双飞翼布局是把主列嵌套在div后利用主列的左、右外边距定位
     </p>
     <div class="header">头部区域</div>
     <div class="parent clearfix">
         <!-- 中间栏放在最前面 优先加载 算是页面的布局优化 -->
         <div class="center">中间自适应</div>
-        <div class="left">左列定宽</div>
-        <div class="right">右列定宽</div>
+        <div class="left">左列定宽width:100px</div>
+        <div class="right">右列定宽width:200px 12312321312321313213</div>
     </div>
     <div class="footer">底部内容区域</div>
 
@@ -103,6 +109,18 @@
         <dd></dd>
         <dt>缺点:</dt>
         <dd>
+        </dd>
+    </dl>
+    <dl>
+        <dt>实现原理:</dt>
+        <dd>
+            center 部分首先要放在 parent 的最前部分。然后是left,right<br>
+            1:将三者都 float:left , 再加上一个position:relative (因为相对定位后面会用到）<br>
+            2:center 部分 width:100%占满<br>
+            3:此时center占满了，所以要把left拉到最左边，使用margin-left:-100%
+            4:这时left拉回来了，但会覆盖center内容的左端，要把center内容拉出来，所以在外围 parent 加上 padding:0 220px 0 120px(margin亦可)<br>
+            5:center内容拉回来了，但left也跟着过来了，所以要还原，就对left使用相对定位 left:-120px 或者 right:120px 同理，right也要相对定位还原 right:-220px 或者 left: 220px; <br>
+            6:至此 自适应ok
         </dd>
     </dl>
 </body>

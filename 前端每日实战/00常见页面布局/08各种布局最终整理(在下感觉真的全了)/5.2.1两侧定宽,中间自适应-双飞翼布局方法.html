@@ -9,6 +9,7 @@
     <style>
         body{
             background-color: pink;
+            /* overflow-y: hidden; */
         }
         p{
             text-align: center;
@@ -52,7 +53,8 @@
             /* background-color: #eeff2b; */
         }
         .center-inbox{
-            height:480px;
+            /* height:480px; */
+            height:500px;
             /*关键!!!左右边界等于左右盒子的宽度,多出来的为盒子间隔*/
             margin:0 220px 0 120px;
             /* margin-left:120px;
@@ -81,6 +83,12 @@
 <body>
     <p>双飞翼布局方法 两侧定宽,中间自适应</p>
     <p>原理:
+        俩种布局方式都是把主列放在文档流最前面，使主列优先加载<br>
+        两种布局方式在实现上也有相同之处，都是让三列浮动，然后通过负外边距形成三列布局<br>
+        两种布局方式的不同之处在于如何处理中间主列的位置：
+        圣杯布局是利用父容器的左、右内边距定位；
+
+        双飞翼布局是把主列嵌套在div后利用主列的左、右外边距定位
     </p>
     <div class="header">头部区域</div>
     <div class="parent clearfix">
@@ -98,6 +106,17 @@
         <dd></dd>
         <dt>缺点:</dt>
         <dd>
+        </dd>
+    </dl>
+    <dl>
+        <dt>实现原理:</dt>
+        <dd>
+            center要放最前边(其里面一层才是要展示的内容) left  right<br>
+            1:将center left  right 都float:left<br>
+            2:将center占满 width:100%<br>
+            3:此时center占满了，所以要把left拉到最左边，使用margin-left:-100%  同理 right使用margin-left:-200px<br>
+            4:center内容被覆盖了吧，给center增加一个内层div-- center-inbox, 然后margin:0 220px 0 120px<br>
+            5:至此 自适应ok
         </dd>
     </dl>
 </body>
