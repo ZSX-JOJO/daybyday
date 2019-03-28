@@ -1,3 +1,0 @@
-Æô¶¯ MongoDB£ºnet start MongoDB
-Í£Ö¹ MongoDB£ºnet stop MongoDB 
-É¾³ý MongoDB£ºsc delete MongoDB
