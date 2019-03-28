@@ -1,0 +1,150 @@
+*,
+::before,
+::after{
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;/*清除点击默认的高亮效果 只用于iOS (iPhone和iPad)*/
+    -webkit-box-sizing:border-box;/*以border开始计算宽度*/
+}
+body{
+    font-size:14px;
+    font-family: PingFangSC-Light,PingFang-Medium,PingFangSC-Regular,Helvetica,Droid Sans,Arial,sans-serif;
+    color;#000;
+}
+a{
+    text-decoration: none;
+    color:#000;
+}
+ul{
+    list-style: none;
+}
+input,textarea{
+    border:none;
+    resize: none;
+    outline: none;/*清除选中效果*/
+    -webkit-appearance:none;/*清除浏览器默认样式*/
+}
+.clearfix::before,
+.clearfix::after{
+    content:'';
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+/*顶部搜索*/
+/*轮播图*/
+.slider-wrapper{
+    width:100%;
+    height: 9.15rem;
+    overflow: hidden;
+    position: relative;
+}
+.slider-list{
+    height: 9.15rem;
+    overflow: hidden;
+    position: relative;
+}
+.slider-li{
+    height: 9.15rem;
+    overflow: hidden;
+    position: relative;
+}
+.ad{
+    position: relative;
+    margin-top: -1.4rem;
+    z-index: 12;
+    border-radius: .5rem .5rem 0 0;
+    overflow: hidden;
+}
+.ad-container{
+    width: 100%;
+    overflow: hidden;
+    font-size: 0;
+}
+.flsPit{
+    height: 6rem;
+    background-color: #f5f5f5;
+}
+.pit-item{
+    width: 100%;
+    background: #fff;
+    font-size: 100%;
+    overflow: hidden;
+}
+.item-list{
+    background: #fff;
+    position: relative;
+    font-family: PingFangSC-Light,PingFang-Medium,PingFangSC-Regular,Helvetica,Droid Sans,Arial,sans-serif;
+    font-size: 0;
+}
+.list-sm{
+    width: 33.33%;
+    float: left;
+    height: 5rem;
+    overflow: hidden;
+}
+.show-image{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+/*底部*/
+#commonNav {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 31;
+    box-sizing: border-box;
+    width: 100%;
+    list-style: none;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 hsla(0,6%,58%,.6);
+    -webkit-box-shadow: 0 0 10px 0 hsla(0,6%,58%,.6);
+    -moz-box-shadow: 0 0 10px 0 hsla(0,6%,58%,.6);
+    font-size: 16px;
+}
+@media screen and (max-width: 640px)
+#commonNav > a {
+    height: 13.33333vw;
+}
+#commonNav > a {
+    position: relative;
+    width: 20%;
+    height: 2.8em;
+    box-sizing: border-box;
+    float: left;
+    font-size: 16px;
+    background-color: transparent;
+    text-align: center;
+}
+#commonNav .icon-center {
+    font-size: 16px;
+    width: .0625em;
+    height: .0625em;
+}
+#commonNav .icon-center {
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    width: .0625em;
+    height: .0625em;
+    background-color: transparent;
+    z-index: 1;
+}
+#commonNav .icon-center img {
+    left: -8vw;
+    width: 16vw;
+}
+#commonNav .icon-center img {
+    position: absolute;
+    left: -2rem;
+    bottom: 0;
+    z-index: 1;
+    width: 3.6em;
+}
