@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉菜单</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,li{list-style: none;}
+        .clearfix::after,
+        .clearfix::after{
+            display: table;
+            content:'';
+        }
+        .clearfix::after{
+            clear:both;
+            *zoom:1;
+        }
+        .header{
+            background-color: pink;
+            width:600px;
+            height:40px;
+            margin:0 auto;
+        }
+        .list{
+            float:left;
+            position: relative;
+            width:120px;
+            /* padding:0 10px; */
+            line-height: 40px;
+            color:black;
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            color:black; 
+            display: block;
+            padding:0 15px;
+        }
+        a:hover{
+            color:red;
+            background-color: #666;
+        }
+        .list-inner{
+            display: none;
+            /* float:none; */
+            position: absolute;
+            /* left:0;
+            top:40px; */
+            background-color: #666;
+            margin-top:0;
+        }
+        .list-inner a:hover{
+            color:blue;
+        }
+        .list:hover .list-inner{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <ul class="clearfix">
+            <li class="list">
+                <a href="">赵守鑫1</a>
+                <ul class="list-inner">
+                    <a href=""><li>赵守鑫1-1</li></a>
+                    <a href=""><li>赵守鑫1-2</li></a>
+                </ul>
+            </li>
+            <li class="list">
+                <a href="">赵守鑫2</a>
+                <ul class="list-inner">
+                    <a href=""><li>赵守鑫2-1</li></a>
+                    <a href=""><li>赵守鑫2-2</li></a>
+                </ul>
+            </li>
+            <li class="list">
+                <a href="">赵守鑫3</a>
+                <ul class="list-inner">
+                    <a href=""><li>赵守鑫3-1</li></a>
+                    <a href=""><li>赵守鑫3-2</li></a>
+                </ul>
+            </li>
+            <li class="list">
+                <a href="">赵守鑫4</a>
+                <ul class="list-inner">
+                    <a href=""><li>赵守鑫4-1</li></a>
+                    <a href=""><li>赵守鑫4-2</li></a>
+                </ul>
+            </li>
+            <li class="list">
+                <a href="">赵守鑫5</a>
+                <ul class="list-inner">
+                    <a href=""><li>赵守鑫5-1</li></a>
+                    <a href=""><li>赵守鑫5-2</li></a>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

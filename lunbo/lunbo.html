@@ -128,7 +128,7 @@
 		var nav_div=document.getElementById("nav");
 		//获取到图片轮播的ul对象数组
 		var imgsUl=imgs_div.getElementsByTagName("ul")[0];
-		//获取到远点的ul对象数组
+		//获取到原点的ul对象数组
 		var nav=nav_div.getElementsByTagName("ul")[0];
 		//上一个
 		var prious=document.getElementById("preous");
@@ -158,6 +158,10 @@
 		}
 
 		function animate(offset){
+			/**
+			 * offsetLeft值跟offsetTop值的获取跟父级元素没关系，
+			 * 而是跟其上一级的定位元素(除position:static;外的所有定位如fixed,relative,absolute)有关系
+			*/
 			var newLeft=parseInt(imgsUl.offsetLeft)+offset;
 			// imgsUl.style.left=newLeft;
 			// console.log("定时器外面:此时offsetLeft"+imgsUl.offsetLeft+">>newLeft:"+newLeft);
@@ -196,7 +200,7 @@
 			},2000)
 		}
 		function btnShow(cur_index){
-			var list=nav.children;
+			var list=nav.children;//nav 下的li列表
 			for(var i=0;i<nav.children.length;i++){
 				nav.children[i].children[0].className="hidden";
 			}

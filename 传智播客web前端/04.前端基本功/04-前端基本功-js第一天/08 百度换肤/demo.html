@@ -24,8 +24,11 @@
             var pic1 = document.getElementById("pic1");
             var pic2 = document.getElementById("pic2");
             var pic3 = document.getElementById("pic3");
-            pic1.onclick = function(){
-                document.body.style.backgroundImage = "url(images/1.jpg)";
+            pic1.onmouseover = function(){
+                pic1.onmouseout = function(){
+                    document.body.style.backgroundImage = "url(images/1.jpg)";
+                }
+                document.body.style.backgroundImage = "url(images/2.jpg)";
             }
             pic2.onclick = function(){
                 document.body.style.backgroundImage = "url(images/2.jpg)";
