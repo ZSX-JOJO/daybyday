@@ -9,7 +9,7 @@
 
 # 容器属性
 
-## `flex-direction`主轴方向
+## `flex-direction`主轴方向(交叉轴永远是 主轴的顺时针90°的方向)
 + `row`（默认值）：主轴为水平方向，起点在左端。
 + `row-reverse`：主轴为水平方向，起点在右端。
 + `column`：主轴为垂直方向，起点在上沿。
@@ -23,7 +23,7 @@
 + `flex-start`（默认值）：左对齐
 + `flex-end`：右对齐
 + `center`： 居中
-+ `space-between`：两端对齐(左右两端)，项目之间的间隔都相等(看起来远大于左右两边的项目与边框的间隔)。
++ `space-between`：两端对齐(左右两端)，项目之间的间隔都相等(项目之间间隔  远大于  最两侧项目与边框的距离)。
 + `space-around`：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
 ## `align-items`: 定义项目在交叉轴上如何对齐。
 + `flex-start`：交叉轴的起点对齐。
@@ -69,28 +69,21 @@ flex 取值的各种情况(每种情况的写法互为等效)
     flex-shrink:0;
     flex-basis:auto;
 }
-情况3 flex取值none 1 1 auto
-.item{flex:none}
-.item{
-    flex-grow:0;
-    flex-shrink:0;
-    flex-basis:auto;
-}
-情况4 flex取值auto  1 1 auto
+情况3 flex取值auto  1 1 auto
 .item{flex:auto}
 .item{
     flex-grow:1;
     flex-shrink:1;
     flex-basis:auto;
 }
-情况5 flex取值为非负数字 则该数字为flex-grow值，例如flex-shrink取1 flex-basis取0%;[0%是百分比 不是非负数字]
+情况4 flex取值为非负数字 则该数字为flex-grow值，例如flex-shrink取1 flex-basis取0%;[0%是百分比 不是非负数字]
 .item{flex:1}
 .item{
     flex-grow:1;
     flex-shrink:1;
     flex-basis:0%;
 }
-情况6 flex取值为长度或百分比 则视为flex-basis值 例如flex-grow取1 flex-sharink取1
+情况5 flex取值为长度或百分比 则视为flex-basis值 例如flex-grow取1 flex-sharink取1
 .item{flex:0%}
 .item{
     flex-grow:1;
@@ -104,7 +97,7 @@ flex 取值的各种情况(每种情况的写法互为等效)
     flex-shrink:1;
     flex-basis:24px;
 }
-情况7 flex取值为两个非负数字 则分别视为 flex-grow和 flex-shrink的值 例如 flex-basis取0%;
+情况6 flex取值为两个非负数字 则分别视为 flex-grow和 flex-shrink的值 例如 flex-basis取0%;
 .item{flex:2 3}
 .item{
     flex-grow:2;
@@ -118,12 +111,6 @@ flex 取值的各种情况(每种情况的写法互为等效)
     flex-shrink:1;
     flex-basis:200px;
 }
-
-```
-
-项目属性之 flex详解
-
-```html
 
 ```
 
