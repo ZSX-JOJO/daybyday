@@ -1,0 +1,131 @@
+*{
+     margin: 0;
+     padding: 0;
+     list-style: none;
+     border: none;
+ }
+
+body{
+    background: url("../images/desktop.png") no-repeat fixed;
+    background-size: cover;
+}
+
+a{
+    text-decoration: none !important;
+    color: #000;
+}
+
+/*头部*/
+#header{
+    background-color: rgba(255, 255, 255, .6);
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+
+    /*box-shadow: 5px 5px 10px red;*/
+
+    /*固定定位*/
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    cursor: pointer;
+    z-index: 999;
+
+    font-size: 18px;
+}
+
+#header .header-left li{
+    float: left;
+    margin-left: 15px;
+}
+
+#header .header-right li{
+    float: right;
+    margin-right: 15px;
+}
+
+/*内容*/
+#content{
+    position: relative;
+}
+
+#content .file{
+    width: 100px;
+    text-align: center;
+    color: #fff;
+
+    position: absolute;
+    cursor: pointer;
+}
+
+#content .file img{
+    width: 100%;
+
+}
+
+#content .file:nth-child(1){
+    left: 50px;
+    top: 80px;
+}
+
+#content .file:nth-child(2){
+    left: 50px;
+    top: 220px;
+}
+
+#content .file:nth-child(3){
+    left: 50px;
+    top: 360px;
+}
+
+/*尾部*/
+#footer{
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    /*background-color: red;*/
+
+    /*定位*/
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    text-align: center;
+}
+
+#footer .dock{
+    background: url("../images/dock_bg.png");
+    width: 60%;
+    height: 100%;
+    /*块级标签居中*/
+    margin: 0 auto;
+
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+#footer .dock ul{
+    display: inline-block;
+}
+
+#footer .dock ul li{
+    float: left;
+    margin: 0 13px;
+
+    /*设置动画的过渡效果*/
+    transition: all 0.25s linear;
+}
+
+#footer .dock ul li img{
+    width: 50px;
+}
+
+/*动画*/
+#footer .dock ul li:hover{
+    /*设置动画的方向*/
+    transform-origin: bottom center;
+
+    /*放大1.5倍*/
+    transform: scale(1.5);
+}

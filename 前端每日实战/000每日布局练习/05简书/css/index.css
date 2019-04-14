@@ -1,0 +1,386 @@
+/************************通用样式-start***********************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+img {
+    vertical-align: middle;
+}
+
+input {
+    outline: none;
+}
+
+/************************通用样式-end***********************/
+
+/************************头部样式-start***********************/
+#nav {
+    width: 100%;
+    height: 56px;
+    background-color: #fff;
+    border-bottom: 1px solid #e7e7e7;
+    z-index: 999;
+
+    /*固定定位*/
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+#nav .nav-content {
+    width: 1440px;
+    height: 56px;
+    /*background-color: red;*/
+    /*版心*/
+    margin: 0 auto;
+}
+
+#nav .nav-content .nav-content-l {
+    float: left;
+}
+
+#nav .nav-content .nav-content-l a img {
+    width: 110px;
+    height: 56px;
+}
+
+#nav .nav-content .nav-content-c {
+    width: 700px;
+    height: 56px;
+    /*background-color: red;*/
+    /*浮动*/
+    float: left;
+    margin-left: 120px;
+}
+
+#nav .nav-content .nav-content-c ul li {
+    display: inline-block;
+    height: 56px;
+    line-height: 56px;
+}
+
+#nav .nav-content .nav-content-c ul li a {
+    /*background-color: red;*/
+    /*改变标签的类型*/
+    display: inline-block;
+    padding: 0 15px;
+}
+
+#nav .nav-content .nav-content-c ul li a img {
+    width: 23px;
+    height: 23px;
+    margin-right: 5px;
+}
+
+#nav .nav-content .nav-content-c ul li a:hover {
+    background-color: #ccc;
+}
+
+#nav .nav-content .nav-content-c ul li input {
+    width: 225px;
+    height: 38px;
+    background-color: #eeeeee;
+    border-radius: 40px;
+    padding-left: 15px;
+    font-size: 14px;
+    color: #b8b8b8;
+}
+
+#nav .nav-content .nav-content-c ul li.search-input {
+    position: relative;
+    margin-left: 10px;
+}
+
+#nav .nav-content .nav-content-c ul li .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 14px;
+}
+
+/*右边*/
+#nav .nav-content .nav-content-r{
+    width: 300px;
+    height: 56px;
+    line-height: 56px;
+    /*background-color: red;*/
+    float: right;
+}
+
+#nav .nav-content .nav-content-r .jsa-btn{
+    margin-left: 10px;
+}
+
+#nav .nav-content .nav-content-r .head-btn{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 0 10px;
+}
+
+#nav .nav-content .nav-content-r .write-btn{
+    background-color: #ea6f5a;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    padding-left: 10px;
+    color: #fff;
+}
+
+#nav .nav-content .nav-content-r .write-btn .write-btn img{
+    margin-right: 5px;
+}
+
+/************************头部样式-end***********************/
+
+/************************内容样式-start***********************/
+#main{
+    width: 1000px;
+    height: 2000px;
+    margin: 70px auto;
+    /*background-color: red;*/
+}
+
+#main .main-left{
+    width: 688px;
+    height: 800px;
+    /*background-color: green;*/
+    float: left;
+}
+
+#main .main-left .main-left-top{
+    height: 270px;
+}
+
+#main .main-left .main-left-top img{
+    width: 688px;
+    height: 270px;
+    border-radius: 10px;
+}
+
+#main .main-left-center{
+    width: 100%;
+    height: 110px;
+    margin-top: 20px;
+    /*background-color: red;*/
+}
+
+#main .main-left-center a{
+    display: inline-block;
+    /*background-color: red;*/
+    height: 32px;
+    border: 1px solid #dcdcdc;
+    background-color: #e7e7e7;
+    margin: 0 18px 18px 0;
+    padding-right: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+#main .main-left-center a:last-child{
+    background-color: transparent;
+    border: none;
+    line-height: 32px;
+    font-size: 16px;
+    color: #787878;
+}
+
+#main .main-left-center a img{
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 15px;
+    border-radius: 5px 0 0 5px;
+}
+
+
+/*文章列表*/
+#main .main-left-cell{
+    height: 500px;
+    /*background-color: red;*/
+}
+
+#main .main-left-cell .cell{
+    border-top: 1px solid #F0F0F0;
+    /*background-color: red;*/
+    height: 125px;
+    padding: 10px 0;
+}
+
+#main .main-left-cell .cell dt{
+    width: 20%;
+    height: 100px;
+    float: right;
+}
+
+#main .main-left-cell .cell dt img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+#main .main-left-cell .cell dd{
+    width: 80%;
+    float: left;
+}
+
+#main .main-left-cell .cell dd p{
+    font-size: 14px;
+    margin: 5px 0;
+    color: #666666;
+}
+
+#main .main-left-cell .cell dd a{
+    margin-right: 10px;
+    font-size: 12px;
+    color: #b4b4b4;
+}
+
+#main .main-left-cell .cell dd a span,
+#main .main-left-cell .cell dd a img{
+    vertical-align: middle;
+}
+
+
+#main .main-right{
+    width: 300px;
+    height: 800px;
+    float: right;
+    /*background-color: red;*/
+}
+
+#main .main-right .main-right-top{
+    height: 290px;
+    /*background-color: green;*/
+}
+
+#main .main-right .main-right-top img{
+    width: 300px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+#main .main-right .main-right-center{
+    height: 90px;
+    /*background-color: red;*/
+    border: 1px solid #F0F0F0;
+    border-radius: 5px;
+    padding: 15px 25px;
+}
+
+#main .main-right .main-right-center dl dt{
+    float: left;
+    margin-right: 10px;
+}
+
+#main .main-right .main-right-center dl dd{
+    float: left;
+    margin-top: 8px;
+}
+
+#main .main-right .main-right-center dl dd p{
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+#main .main-right .main-right-center dl dd p:last-child{
+    color: #b4b4b4;
+}
+
+#main .main-right .main-right-center dl dt img{
+    width: 60px;
+    height: 60px;
+}
+
+#main .main-right .main-right-bottom{
+    height: 300px;
+    /*background-color: red;*/
+}
+
+#main .main-right .main-right-bottom .main-right-bottom-head{
+    height: 45px;
+    line-height: 45px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #b8b8b8;
+    margin-bottom: 10px;
+}
+
+#main .main-right .main-right-bottom .main-right-bottom-head span:first-child{
+    float: left;
+    font-size: 14px;
+}
+
+#main .main-right .main-right-bottom .main-right-bottom-head span:last-child{
+    float: right;
+    font-size: 14px;
+}
+
+#main .main-right .main-right-bottom .main-right-bottom-head span:last-child a{
+    color: #b8b8b8;
+}
+
+#main .main-right .main-right-bottom ul li{
+    width: 300px;
+    height: 50px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#main .main-right .main-right-bottom ul li img{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #CCCCCC;
+    margin-right: 10px;
+}
+
+#main .main-right .main-right-bottom ul li .author-icon{
+    float: left;
+}
+
+#main .main-right .main-right-bottom ul li  a.focus{
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: slateblue;
+}
+
+#main .main-right .main-right-bottom ul li>div{
+    /*background-color: red;*/
+    float: left;
+    height: 50px;
+    line-height: 25px;
+}
+
+#main .main-right .main-right-bottom ul li>div>p{
+    color: #b4b4b4;
+}
+
+#main .main-right .main-right-bottom-footer{
+    display: inline-block;width: 300px;
+    border: 1px solid #CCCCCC;
+    padding: 7px 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: #b4b4b4;
+    margin-top: 10px;
+}
+
+
+
+/************************内容样式-end***********************/
