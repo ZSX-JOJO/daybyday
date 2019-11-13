@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>纯css实现  展开和收起 效果</title>
+    <style>
+        title-block {
+            height: 26px;
+            text-align: center;
+        }
+
+        .block {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: reverse;
+            -ms-flex-flow: column-reverse nowrap;
+            flex-flow: column-reverse nowrap;
+            width: 360px;
+            margin: 0 auto;
+            font-size: 14px;
+            color: #4C4C4C;
+            line-height: 28px;
+            border: 1px solid #999;
+            padding: 10px;
+        }
+
+        .block > .detail {
+            max-height: 163px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .block > .case-block {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 120px;
+            height: 24px;
+            margin: 0 auto 0;
+            color: #0e0e0e;
+            background: #fff;
+            border: 1px solid #0e0e0e;
+            border-radius: 5px;
+        }
+
+        .block > .case-block div:nth-of-type(1) {
+            display: block;
+        }
+
+        .block > .case-block div:nth-of-type(2) {
+            display: none;
+        }
+
+        .block > [type="checkbox"] {
+            position: relative;
+            display: block;
+            width: 120px;
+            height: 24px;
+            margin: -24px auto 0;
+            z-index: 1000;
+            opacity: 0;
+        }
+
+        .block > [type="checkbox"]:hover + .case-block {
+            background-color: #f5f5f5;
+        }
+
+        .block > [type="checkbox"]:checked + .case-block div:nth-of-type(1) {
+            display: none;
+        }
+
+        .block > [type="checkbox"]:checked + .case-block div:nth-of-type(2) {
+            display: block;
+        }
+
+        .block > [type="checkbox"]:checked + .case-block + .detail {
+            max-height: inherit;
+        }
+    </style>
+</head>
+<body>
+    <section class="block">
+        <input type="checkbox">
+        <div class="case-block">
+            <div>展开</div>
+            <div>收起</div>
+        </div>
+        <div class="detail">
+            <div>唧唧复唧唧，木兰当户织。不闻机杼声，惟闻女叹息。(惟闻 通：唯)问女何所思，问女何所忆。女亦无所思，女亦无所忆。昨夜见军帖，可汗大点兵，军书十二卷，卷卷有爷名。阿爷无大儿，木兰无长兄，愿为市鞍马，从此替爷征。(惟闻
+            通：唯)</div>
+            <div>东市买骏马，西市买鞍鞯，南市买辔头，北市买长鞭。旦辞爷娘去，暮宿黄河边，不闻爷娘唤女声，但闻黄河流水鸣溅溅。旦辞黄河去，暮至黑山头，不闻爷娘唤女声，但闻燕山胡骑鸣啾啾。</div>
+            <div>万里赴戎机，关山度若飞。朔气传金柝，寒光照铁衣。将军百战死，壮士十年归。</div>
+            <div>归来见天子，天子坐明堂。策勋十二转，赏赐百千强。可汗问所欲，木兰不用尚书郎，愿驰千里足，送儿还故乡。(一作：愿借明驼千里足)</div>
+            <div>爷娘闻女来，出郭相扶将；阿姊闻妹来，当户理红妆；小弟闻姊来，磨刀霍霍向猪羊。开我东阁门，坐我西阁床，脱我战时袍，著我旧时裳。当窗理云鬓，对镜帖花黄。出门看火伴，火伴皆惊忙：同行十二年，不知木兰是女郎。（帖
+            通：贴；惊忙一作：惶；惶 火伴 通：伙）</div>
+            <div>雄兔脚扑朔，雌兔眼迷离；双兔傍地走，安能辨我是雄雌？</div>
+        </div>
+    </section>
+</body>
+</html>

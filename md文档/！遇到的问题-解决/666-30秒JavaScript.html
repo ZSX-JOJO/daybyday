@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30秒JavaScript && 数据类型单独检测</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 关于数组的骚操作
+
+    /* 两个整数的最大公约数  */
+    /* 迭代实现 */
+    function gcd(a, b) {
+        var temp;
+        if (a < b) { //确保 a >= b
+            temp = b;
+            b = a;
+            a = temp;
+        }
+        while (b != 0) { //这里是求最大公约数的欧几里德算法
+            temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+    
+    gcd(3,33);
+
+    /* 递归实现 */
+    // //原式
+    // function gcd(a,b){
+    //     if(b==0)
+    //     return a;
+    //     return gcd(b,a%b);
+    // }
+
+    function gcd(a,b){
+        if(b==0){
+            return a;
+        }else{
+            return gcd(b,a%b);
+        }
+    }
+
+    gcd(3,33);
+
+    /* 两个整数的最小公倍数 */
+    //lcm: a*b/gcd(a,b);
+    function lcm(a,b){
+        return a*b/gcd(a,b);
+    }
+    lcm(3,44);
+
+    /* 计算数组的最大公约数 */
+    var arrayGcd = arr => {
+        var gcd = (x, y) => !y ? x : gcd(y, x % y);
+        return arr.reduce((a, b) => gcd(a, b));
+    }
+
+    console.log(arrayGcd([1, 2, 3, 4, 5]));
+    console.log(arrayGcd([4, 8, 12]));
+
+    //Math.max()和ES6的扩展运算符…返回数组中最大的值;Math.min()同理.
+    var zsx = [1,2,3,4,6];
+    var max = Math.max(...zsx);
+    console.log(max);
+
+
+    /* Array.from() */
+    var chunk = (arr, size) =>
+    Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+        arr.slice(i * size, i * size + size)
+    );
+
+    console.log(chunk([1, 2, 3, 4, 5], 2)); // [ [ 1, 2 ], [ 3, 4 ], [ 5 ] ]
+</script>
+<script>
+    /* 数据类型的单独检测!!!! */
+
+    /**
+     * @desc 是否是 Undefined 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isUndefined(obj) {
+        return obj === void 0;
+    }
+    /**
+     * @desc 是否是 Null 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isNull(obj) {
+        return obj === null;
+    }
+    /**
+     * @desc 是否是 Boolean 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isBoolean(obj) {
+        return typeof(obj) === 'boolean';
+    }
+    /**
+     * @desc 是否是 Number 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isNumber(obj) {
+        return typeof(obj) === 'number';
+    }
+    /**
+     * @desc 是否是 String 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isString(obj) {
+        return typeof(obj) === 'string';
+    }
+    /**
+     * @desc 是否是 Object 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isObject(obj) {
+        return Object.prototype.toString.call(obj) === '[object Object]';
+    }
+    /**
+     * @desc 是否是 Array 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isArray(obj){
+        return Array.isArray?Array.isArray(obj):Object.prototype.toString.call(obj) === '[object Array]';
+    }
+    /**
+     * @desc 是否是 Function 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isFunction(obj){
+        return typeof(obj) === 'function';
+    }
+    /**
+     * @desc 是否是 Date 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isDate(obj){
+        return Object.prototype.toString.call(obj) === '[object Date]';
+    }
+    /**
+     * @desc 是否是 RegExp 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isRegExp(obj){
+        return Object.prototype.toString.call(obj) === '[object RegExp]';
+    }
+    /**
+     * @desc 是否是 Error 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isError(obj){
+        return Object.prototype.toString.call(obj) === '[object Error]';
+    }
+    /**
+     * @desc 是否是 Arguments 类型检测
+     * @param obj 待检测的数据
+     * @return {Boolean} 布尔值
+     */
+    function isArguments(obj){
+        return Object.prototype.toString.call(obj) === '[object Arguments]';
+    }
+</script>
+</html>

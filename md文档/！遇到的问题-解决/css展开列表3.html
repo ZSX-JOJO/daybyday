@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, 
+    user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0;list-style: none;}
+        body{height:2000px;}
+        .box{max-width:500px;margin:0 auto;margin-top:20px;}
+        .box ul li{
+            text-align: center;
+            width:100%;
+            /*height:30px;
+            line-height: 30px;*/
+            border:1px solid #ccc;
+            overflow: hidden;
+        }
+        .box ul li a span{
+            display: inline-block;
+            width:20px;
+            height:20px;
+            background:#ccc;
+            line-height: 20px;
+            margin-right:10px;
+        }
+        .box ul li .boxChild{
+            /*display: none;*/
+            height:0px
+        }
+        .box ul li .boxChild ul li{
+            padding-left:50px;
+            font-size:14px;
+            border:none;
+            border-top:1px solid #ccc;
+        }
+        .box ul li .active{
+ 
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li id="about1">
+                <a href="#"><span>+</span>菜单1</a>
+                <div class="boxChild">
+                    <ul>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li id="about2">
+                <a href="#"><span>+</span>菜单2</a>
+                <div class="boxChild">
+                    <ul>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li id="about3">
+                <a href="#"><span>+</span>菜单3</a>
+                <div class="boxChild">
+                    <ul>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        
+                    </ul>
+                </div>
+            </li>
+            <li id="about4">菜单4</li>
+            <li id="about5">菜单5</li>
+            <li id="about6">
+                <a href="#"><span>+</span>菜单2</a>
+                <div class="boxChild">
+                    <ul>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li id="about7">
+                <a href="#"><span>+</span>菜单2</a>
+                <div class="boxChild">
+                    <ul>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li id="about8">
+                <a href="#about9"><span>+</span>菜单2</a>
+                <div class="boxChild">
+                    <ul>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单1</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="about9"></div>
+    <script>
+        var box = document.querySelector(".box");
+        var boxUl = box.children[0];
+        var boxList = boxUl.children;
+        var boxChildHeight = 0;
+        
+        
+        var about8 = document.querySelector("#about8");
+        
+        console.log(about8.offsetTop);
+        
+        
+        for(var i = 0 ; i < boxList.length; i++)
+        {
+            boxList[i].index = i;
+            boxList[i].onclick = function()
+            {
+                // alert(this.index);
+                var boxChild = boxList[this.index].children[1];
+                // console.log(boxChild.style.height);
+                var aboutId = document.getElementById(this.id);
+                var boxA = boxList[this.index].getElementsByTagName('a')[0];
+                console.log(boxA);
+ 
+                console.log(aboutId.offsetTop+1120);
+                
+                boxChildHeight = boxList[this.index].children[1].children[0].children.length;
+ 
+                if(boxChild.style.height == "" ||boxChild.style.height == "0px")
+                {                 
+                    boxChild.style.height = boxChildHeight*21+"px";
+                    boxChild.style.transition = "all 0.5s";
+                    setTimeout(function(){
+                        box.scrollTop = "1000"
+                    },1000)
+                }
+                else
+                {
+                    boxChild.style.height = 0 + "px";
+                    boxChild.style.transition = "all 0.5s";
+                }
+                
+            }
+        }
+ 
+    </script>
+</body>
+</html>

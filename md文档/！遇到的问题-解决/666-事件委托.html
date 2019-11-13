@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件委托</title>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+        ul{
+            border:4px solid red;
+        }
+        li{
+            border:2px solid yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- 栗子① -->
+    <ul id="ul1">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+    </ul>
+
+    <!-- 栗子② -->
+    <div id="box">
+        <input type="button" id="add" value="添加" />
+        <input type="button" id="remove" value="删除" />
+        <input type="button" id="move" value="移动" />
+        <input type="button" id="select" value="选择" />
+    </div>
+
+    <!-- 栗子③ 当新增节点时也增加事件 -->
+    <input type="button" name="" id="btn" value="添加" style="margin-top:20px"/>
+    <ul id="example2">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+    </ul>
+</body>
+<script>
+    /* 栗子①  01 露比写法 */
+    // window.onload = function(){
+    //     var fuck_out = document.getElementById('ul1');
+    //     var fuck_in = fuck_out.getElementsByTagName('li');
+    //     for(var i=0;i<fuck_in.length;i++){
+    //         fuck_in[i].onclick = function(){
+    //             console.log(`%c露比写法`,`color:red;font-size:14px`);
+    //         }
+    //     }
+    // };
+
+    /* 栗子①  02 事件委托 */
+    // window.onload = function(){
+    //     var fuck_out2 = document.getElementById('ul1');
+    //     fuck_out2.onclick = function(){
+    //         console.log(`%c 事件委托`,`color:blue;font-size:18px`);
+    //     }
+    // };
+
+    /* 栗子①  03 事件委托  只有当点击li标签才会触发 */
+    /* Event对象提供target属性,返回事件的目标节点 */
+    // window.onload = function(){
+    //     var fuck_out3 = document.getElementById('ul1');
+    //     fuck_out3.onclick = function(ev){
+    //         var ev = ev || window.event;//标准浏览器 或者 IE浏览器
+    //         var target = ev.target || ev.srcElement;//标准浏览器用 ev.target，IE 浏览器用 event.srcElement;此时获取到节点位置;用 nodeName 来获取具体是什么标签名,获取到的标签名为大写.
+    //         if(target.nodeName.toLowerCase() == 'li'){
+    //             console.log(`%c 事件委托-只有点击li才会触发事件`,`color:green;font-size:18px`);
+    //             console.log(target.innerHTML);
+    //         }
+    //     }
+    // };
+
+    /* 栗子② 需要多次dom操作*/
+    // window.onload = function(){
+    //     var Add = document.getElementById("add");
+    //     var Remove = document.getElementById("remove");
+    //     var Move = document.getElementById("move");
+    //     var Select = document.getElementById("select");
+        
+    //     Add.onclick = function(){
+    //         console.log(`%c 添加`,`color:green;font-size:14px`);
+    //     };
+    //     Remove.onclick = function(){
+    //         console.log(`%c 删除`,`color:red;font-size:16px`);
+    //     };
+    //     Move.onclick = function(){
+    //         console.log(`%c 移动`,`color:pink;font-size:18px`);
+    //     };
+    //     Select.onclick = function(){
+    //         console.log(`%c 选择`,`color:white;font-size:20px`);
+    //     }  
+    // }
+
+    /* 栗子② 事件委托进行优化 */
+    // window.onload = function(){
+    //     var oBox = document.getElementById("box");
+    //     oBox.onclick = function (ev) {
+    //         var ev = ev || window.event;
+    //         var target = ev.target || ev.srcElement;
+    //         if(target.nodeName.toLocaleLowerCase() == 'input'){
+    //             switch(target.id){
+    //                 case 'add' :
+    //                     console.log('添加');
+    //                     break;
+    //                 case 'remove' :
+    //                     console.log('删除');
+    //                     break;
+    //                 case 'move' :
+    //                     console.log('移动');
+    //                     break;
+    //                 case 'select' :
+    //                     console.log('选择');
+    //                     break;
+    //             }
+    //         }
+    //     } 
+    // }
+
+    /* 栗子③  新增li没有事件  改进在此一下*/
+    // window.onload = function(){
+    //     var oBtn = document.getElementById('btn');
+    //     var oUl = document.getElementById('example2');
+    //     var aLi = document.getElementsByTagName('li');
+    //     var num =4;
+
+    //     //鼠标移入变红,移出变白
+    //     for(var i=0; i<aLi.length;i++){
+    //         aLi[i].onmouseover = function(){
+    //             this.style.background = 'red';
+    //         };
+    //         aLi[i].onmouseout = function(){
+    //             this.style.background = 'green';
+    //         }
+    //     }
+    //     //添加新节点
+    //     oBtn.onclick = function(){
+    //         num++;
+    //         var oLi = document.createElement('li');
+    //         oLi.innerHTML = 111*num;
+    //         oUl.appendChild(oLi);
+    //     };
+    // };
+
+    /* 栗子③  上版改进 (再改进 使用事件委托 在下版)*/
+    // window.onload = function(){
+    //     var oBtn = document.getElementById("btn");
+    //     var oUl = document.getElementById("example2");
+    //     var aLi = oUl.getElementsByTagName('li');
+    //     var num = 4;
+        
+    //     function mHover () {
+    //         //鼠标移入变红，移出变白
+    //         for(var i=0; i<aLi.length;i++){
+    //             aLi[i].onmouseover = function(){
+    //                 this.style.background = 'red';
+    //             };
+    //             aLi[i].onmouseout = function(){
+    //                 this.style.background = 'green';
+    //             }
+    //         }
+    //     }
+    //     mHover ();
+    //     //添加新节点
+    //     oBtn.onclick = function(){
+    //         num++;
+    //         var oLi = document.createElement('li');
+    //         oLi.innerHTML = 111*num;
+    //         oUl.appendChild(oLi);
+    //         mHover ();
+    //     };
+    // }
+
+    /* 栗子③ 使用事件委托 */
+    window.onload = function(){
+        var oBtn = document.getElementById("btn");
+        var oUl = document.getElementById("example2");
+        var aLi = oUl.getElementsByTagName('li');
+        var num = 4;
+        
+        //事件委托，添加的子元素也有事件
+        oUl.onmouseover = function(ev){
+            var ev = ev || window.event;
+            var target = ev.target || ev.srcElement;
+            if(target.nodeName.toLowerCase() == 'li'){
+                target.style.background = "red";
+            }
+            
+        };
+        oUl.onmouseout = function(ev){
+            var ev = ev || window.event;
+            var target = ev.target || ev.srcElement;
+            if(target.nodeName.toLowerCase() == 'li'){
+                target.style.background = "green";
+            }
+            
+        };
+        
+        //添加新节点
+        oBtn.onclick = function(){
+            num++;
+            var oLi = document.createElement('li');
+            oLi.innerHTML = 111*num;
+            oUl.appendChild(oLi);
+        };
+    }
+</script>
+</html>

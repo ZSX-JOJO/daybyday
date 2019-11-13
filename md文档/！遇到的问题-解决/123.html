@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .selected{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"> Div1 click </div>
+    <div id="div2"> Div2 click </div>
+    <div id="div3"> Div3 click </div>
+</body>
+<script>
+    document.addEventListener('click', function(e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement,
+            text = target.textContent || text.innerText;
+        if(target.id.substr(0,3)=="div"){
+        //remove all class selected
+        var selecteds = document.getElementsByClassName("selected");
+        while (selecteds.length)
+            selecteds[0].classList.remove("selected");
+        //add class selected to target
+        target.className += "selected";
+    };
+    }, false);
+</script>
+</html>

@@ -7,15 +7,33 @@ typora-root-url: img
 从github拉取源码龟速的话,请将git设置代理
 
 ```JavaScript
+git设置
+//查看当前git代理设置
+git config --global http.proxy
+
 /**设置/
 git config --global http.proxy http://127.0.0.1:1080
 git config --global https.proxy https://127.0.0.1:1080
-git config --global http.proxy 'socks5://127.0.0.1:1080' 
-git config --global https.proxy 'socks5://127.0.0.1:1080'
+git config --global http.proxy socks5://127.0.0.1:1080
+git config --global https.proxy socks5://127.0.0.1:1080
 
 /**取消/
 git config --global --unset http.proxy
 git config --global --unset https.proxy
+
+修改文件大小限制
+git config --global http.postBuffer 1048576000
+
+单独为github设置代理
+git config --global http.http://github.com.proxy http://127.0.0.1:1087
+git config --global https.https://github.com.proxy https://127.0.0.1:1087
+
+git config --global http.http://github.com.proxy socks5://127.0.0.1:1086
+git config --global https.https://github.com.proxy socks5://127.0.0.1:1086
+
+取消
+git config --global --unset http.https://github.com.proxy
+git config --global --unset https.https://github.com.proxy
 ```
 
 

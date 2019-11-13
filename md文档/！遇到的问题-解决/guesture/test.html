@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>纯css实现左右滑动</title>
+    <style type="text/css">
+        ul,li{
+            list-style: none;
+        }
+        .slide-box{
+            margin-top:200px;
+            display: -webkit-box;
+            overflow-x: auto;
+            /*适应苹果*/
+            -webkit-overflow-scrolling:touch;
+        }
+        .slide-item{
+            width: 300px;
+            height: 300px;
+            border:1px solid #ccc;
+            margin-right: 30px;
+            background: pink;
+        }
+        /*隐藏掉滚动条*/
+        .slide-box::-webkit-scrollbar{
+            display: none;
+       }
+    </style>
+</head>
+<body>
+    <ul class="slide-box">
+        <li class="slide-item"></li>
+        <li class="slide-item"></li>
+        <li class="slide-item"></li>
+        <li class="slide-item"></li>
+        <li class="slide-item"></li>
+    </ul>
+</body>
+</html>

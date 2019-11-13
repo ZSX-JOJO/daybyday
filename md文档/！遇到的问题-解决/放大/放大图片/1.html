@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="touchTouch.css" />
+　　<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+　　<script type="text/javascript" src="touchTouch.jquery.js" ></script>
+    <style>
+        .img-container{
+            overflow: hidden;
+        }
+　　　　.img-container a{
+            float: left;
+            width: 2.36rem;
+            height: 2.36rem;
+            overflow: hidden;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="img-container" id="thumbs">
+　　　　<a href="http://images.cnblogs.com/cnblogs_com/a-cat/1193051/o_img_zone.png" style="background-image: url(http://images.cnblogs.com/cnblogs_com/a-cat/1193051/o_img_zone.png);">1</a>
+　　　　<a href="http://images.cnblogs.com/cnblogs_com/a-cat/1193051/o_img_wechat.png" style="background-image: url(http://images.cnblogs.com/cnblogs_com/a-cat/1193051/o_img_wechat.png);">2</a>
+　　　　<a href="http://images.cnblogs.com/cnblogs_com/a-cat/1193051/o_img_xlwb.png" style="background-image: url(http://images.cnblogs.com/cnblogs_com/a-cat/1193051/o_img_xlwb.png);">3</a>
+　　　</div>
+</body>
+<script>
+　　　　$(function(){
+　　　　　　$('#thumbs a').touchTouch();
+　　　　})
+</script>
+</html>

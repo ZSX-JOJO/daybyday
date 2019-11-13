@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .log{
+            padding:15px;
+            border:1px solid #d9d9d9;
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <p>未使用setTimeout函数</p>
+    <p id="one">
+        <input type="text" id="input" value="">
+        <span></span>
+    </p>
+    <p>使用setTimeout函数</p>
+    <p id="second">
+        <input type="text" id="input" value="">
+        <span></span>
+    </p>
+    <p>Debounce防抖动函数<br>
+        debounce(func, [wait=0], [options={}])
+    </p>
+    <p>throttle函数节流<br>
+        throttle(func, [wait=0], [options={}])
+    </p>
+    <p>总结:<br>
+        debounce：将触发频繁的事件合并成一次执行。debounce适用于诸如 input 事件，当用户输入时需要响应 ajax 请求，多次 input 只响应一次回调方法
+        throttle： 设置一个阀值，在阀值内，将触发的事件合并成一次执行；且当到达阀值，必定执行一次事件。throttle适用于 resize 或者鼠标移动事件，防止浏览器频繁响应事件，严重拉低性能
+    </p>
+    <h2>实例:</h2>
+    <button id="default">Default</button>
+    <button id="debounced">Debounced</button>
+    <button id="throttled">Throttled</button>
+    <div class="log" id="log1"></div>
+    <div class="log" id="log2"></div>
+    <div class="log" id="log3"></div>
+</body>
+<script>
+    document.querySelector('#one input').onkeydown = function() {
+        document.querySelector('#one span').innerHTML = this.value;
+    }
+
+    document.querySelector('#second input').onkeydown = function() {
+        setTimeout(function() {
+            document.querySelector('#second span').innerHTML = document.querySelector('#second input').value;
+        }, 0);
+    }
+
+    /* 实例: */
+    // debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 fn 方法。
+    function debounce(fn, wait, options) {
+        wait = wait || 0;
+        var timerId;
+        function debounced() {
+            if (timerId) {
+                clearTimeout(timerId);
+                timerId = null;
+            }
+            timerId = setTimeout(function() {
+                fn();
+            }, wait);
+        }
+        return debounced;
+    }
+
+    // 节流函数，在 wait 秒内最多执行 fn 一次的函数。
+    function throttle(fn, wait, options) {
+        wait = wait || 0;
+        var timerId, lastTime = 0;
+        function throttled() {
+            var currentTime = new Date();
+            if (currentTime >= lastTime + wait) {
+                fn();
+                lastTime = currentTime;
+            } else {
+                if (timerId) {
+                    clearTimeout(timerId);
+                    timerId = null;
+                }
+                timerId = setTimeout(function() {
+                    fn()
+                }, wait);
+            }
+        }
+        return throttled;
+    }
+    var detaultBtn = document.getElementById('default');
+    var debouncedBtn = document.getElementById('debounced');
+    var throttledBtn = document.getElementById('throttled');
+    var log1 = document.getElementById('log1');
+    var log2 = document.getElementById('log2');
+    var log3 = document.getElementById('log3');
+    function handleDefault() {
+    log1.innerHTML += ' defualt';
+        console.log('default');
+    }
+    function handleDebounce() {
+    log2.innerHTML += ' debounced';
+        console.log('debounced');
+    }
+    function handleThrottle() {
+    log3.innerHTML += ' throttled';
+        console.log('throttled');
+    }
+    detaultBtn.addEventListener('click', handleDefault);
+    debouncedBtn.addEventListener('click', debounce(handleDebounce, 2000));
+    throttledBtn.addEventListener('click', throttle(handleThrottle, 2000)); 
+</script>
+</html>

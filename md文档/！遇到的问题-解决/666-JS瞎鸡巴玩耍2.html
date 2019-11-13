@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="count" />
+        <input type="button" value="Start" onClick="startCount()" />
+        <input type="button" value="Stop"  onClick="stopCount()" />
+    </form>
+    
+    <ul>
+        <li>javascript</li>
+        <li>jQuery</li>
+        <li>PHP</li>
+    </ul>
+</body>
+<script type="text/javascript">
+    var num=0;
+    var i;
+    function startCount(){
+        document.getElementById('count').value=num;
+        num=num+1;
+        i=setTimeout("startCount()",1000);//调用自身实现无穷循环
+        // setTimeout(function(){},1000);
+    }
+    function stopCount(){
+        clearTimeout(i);//语法：clearTimeout(id_of_setTimeout)
+    }
+
+    /*  */
+    var x = document.getElementsByTagName("ul")[0].childNodes;//加[0]代表仅选择第一个出现的<ul>
+    document.write("UL子节点个数：" + x.length + ";");
+    document.write("节点类型：" + x[0].nodeType);
+</script>
+</html>
